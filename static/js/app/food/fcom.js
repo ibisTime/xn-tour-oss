@@ -15,8 +15,13 @@ $(function() {
 	},{
 		field : '',
 		title : '针对酒店',
-        // key:"",
-        // type:"select"
+        key:"",
+        type:"select"
+	},{
+		field : '',
+		title : '类型',
+        key:"",
+        type:"select"
 	},{
 		title:"评论时间",
 		field:"",
@@ -32,7 +37,7 @@ $(function() {
 		field:"",
 	}];
 	buildList({
-		router: 'comment',
+		router: 'fcom',
 		columns: columns,
 		pageCode: '',
 		deleteCode: ''

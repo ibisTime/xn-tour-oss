@@ -20,9 +20,11 @@ $(function() {
         field: 'roleCode',
         title: '角色',
         type: 'select',
-        listCode: '805021',
-        keyName: 'code',
-        valueName: 'name',
+        key:'user_type',
+       // formatter: Dict.getNameForList('user_type'),
+        // listCode: '805021',
+        // keyName: 'code',
+        // valueName: 'name',
         search: true
     }, {
         field: 'remark',

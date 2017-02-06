@@ -6,7 +6,8 @@ $(function() {
         title: '酒店名称',
         field: '',
         readonly:view,
-        required: true
+        required: true,
+        maxlength:32
     }, {
         field: '',
         title: '酒店类型',
@@ -17,7 +18,7 @@ $(function() {
 		title: '酒店位置',
 		required: true,
 		type: 'citySelect',
-		hidden: !!view,
+		readonly:view
 	}, {
 		placeholder: '详细地址',
 		field: 'address',
@@ -42,17 +43,19 @@ $(function() {
     }, {
         title: '酒店特色',
         field: '',
-        type: '',
-        required: true,
+        type: "textarea",
+        normalArea: true,
+        maxlength: 255,
         readonly:view,
-        maxlength:255
+        requird:true
     }, {
         title: '酒店美食',
         field: '',
-        type: '',
+        type: "textarea",
+        normalArea: true,
+        maxlength: 255,
         required: true,
         readonly:view,
-        maxlength:255
     }, {
         title: '酒店图片',
         field: '',

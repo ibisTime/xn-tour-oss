@@ -40,17 +40,17 @@ $(function() {
 		window.location.href = "pub.html";
 	});
 	
-	// $('#pubsBtn').click(function() {
-	// 	window.location.href = "pubs.html";
-	// });
-	$('#pubsBtn').click(function() {	
-		var selRecords = $('#tableList').bootstrapTable('getSelections');
-			if (selRecords.length <= 0) {
-				toastr.info("请选择记录");
-				return;
-			}
-			window.location.href = "pubWeChats.html？code=" + selRecord.code;
-		});
+	$('#pubsBtn').click(function() {
+		window.location.href = "pubs.html";
+	});
+	// $('#pubsBtn').click(function() {	
+	// 	var selRecords = $('#tableList').bootstrapTable('getSelections');
+	// 		if (selRecords.length <= 0) {
+	// 			toastr.info("请选择记录");
+	// 			return;
+	// 		}
+	// 		window.location.href = "pubWeChats.html？code=" + selRecord.code;
+	// 	});
 
 
 

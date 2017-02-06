@@ -61,17 +61,19 @@ $(function() {
     }, {
         title: '民宿特色',
         field: '',
-        type: '',
-        required: true,
+        type: "textarea",
+        normalArea: true,
+        maxlength: 255,
         readonly:view,
-        maxlength:255
+        requird:true
     }, {
         title: '民宿美食',
         field: '',
-        type: '',
-        required: true,
+        type: "textarea",
+        normalArea: true,
+        maxlength: 255,
         readonly:view,
-        maxlength:255
+        requird:true
     }, {
         title: '民宿图片',
         field: '',

@@ -72,7 +72,7 @@ $(function() {
 	if (view) {
 		options.buttons = [{
 			'title': '返回',
-			handler: function() {
+			handler: function() { 
 				goBack();
 			}
 		}];

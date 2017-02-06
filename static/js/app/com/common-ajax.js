@@ -52,13 +52,13 @@ function ajaxGet(url, param, reload, sync) {
 
 function urlDispatch(code) {
     var url;
-    if (/^80[5678]/.test(code)) {
+    // if (/^80[5678]/.test(code)) {
+    //     url = OSS.mainUrl;
+    // } else if (/^80[4]/.test(code)) {
+    //     url = OSS.smsUrl;
+    // } else {
         url = OSS.mainUrl;
-    } else if (/^80[4]/.test(code)) {
-        url = OSS.smsUrl;
-    } else {
-        url = OSS.mainUrl;
-    }
+    // }
     return url;
 }
 

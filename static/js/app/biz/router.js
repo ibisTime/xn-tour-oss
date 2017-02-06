@@ -9,7 +9,7 @@ $(function() {
 		title : '线路名称',
 		search: true
 	},{
-		field : '',
+		field : 'pppp',
 		title : '线路形式',
 		search:true,
 		formatter: Dict.getNameForList('router_type2'),
