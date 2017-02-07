@@ -38,7 +38,7 @@ $(function() {
 		title:"状态",
 		field:"",
         type:"select",
-        key:"",
+        key:"carord_status",
         search:true
 	},{
 		title:"备注",

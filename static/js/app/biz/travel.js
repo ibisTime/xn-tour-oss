@@ -18,7 +18,7 @@ $(function() {
 	},{
 		field : '',
 		title : '针对线路',
-		key:"",
+		key:"zd_router",
         type:"select"
 	},{
 		title:"更新时间",
@@ -37,12 +37,12 @@ $(function() {
 		title: '审核状态',
 		field: '',
 		type:"select",
-		key:'',
+		key:'tracheck_status',
         search:true
 	},{
 		title:"备注",
 		field:"",
-	},];
+	}];
 	buildList({
 		router: 'travel',
 		columns: columns,

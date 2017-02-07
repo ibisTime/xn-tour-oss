@@ -5,10 +5,12 @@ $(function() {
 	var fields = [{
 		title: '用户名',
 		field: '',
+		  
         readonly:view
 	},{
 		title: '手机号',
 		field: '',
+		mobile:true,
         readonly:view
 	}, {
 		title: '密码',

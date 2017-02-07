@@ -25,7 +25,7 @@ $(function() {
 		title: '审核状态',
 		field: '',
 		type:"select",
-		key:'',
+		key:'licheck_status',
         search:true
 	},{
 		title:"备注",

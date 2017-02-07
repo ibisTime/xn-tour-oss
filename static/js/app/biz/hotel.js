@@ -6,13 +6,13 @@ $(function() {
 		checkbox : true
     },{
         title:"酒店名称",
-        field:'',
+        field:'name',
         search:true
     },{
 		title: '酒店类型',
-		field: '',
+		field: 'type',
         type:"select",
-        key:""
+        key:"hotel_type"
 	},{
 		title:"酒店位置",
 		field:"",
@@ -35,8 +35,8 @@ $(function() {
 	buildList({
 		router: 'hotel',
 		columns: columns,
-		pageCode: '',
-		deleteCode: ''
+		pageCode: '617203',
+		deleteCode: '617200'
 	});
 
         $('#pulBtn').click(function() {

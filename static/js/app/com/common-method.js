@@ -1006,7 +1006,9 @@ function buildDetail(options) {
         if (item['bankCard']) {
             rules[item.field]['bankCard'] = item['bankCard'];
         }
-
+        if (item['url']) {
+            rules[item.field]['url'] = item['url'];
+        }
         if (item.type == 'title') {
             html += '<div ' + (item.field ? 'id="' + item.field + '"' : '') + ' style="' + (item.hidden ? 'display:none;' : '') + '" class="form-title">' + item.title + '</div>';
         } else if (item.type == 'hidden') {

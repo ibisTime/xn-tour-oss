@@ -149,6 +149,13 @@ jQuery.validator.addMethod("isNotFace", function(value, element) {
     return this.optional(element) || /^[\s0-9a-zA-Z\u4e00-\u9fa5\u00d7\u300a\u2014\u2018\u2019\u201c\u201d\u2026\u3001\u3002\u300b\u300e\u300f\u3010\u3011\uff01\uff08\uff09\uff0c\uff1a\uff1b\uff1f\uff0d\uff03\uffe5\x21-\x7e]*$/.test(value);
 }, "请输入合法字符");
 
+//网址链接   
+jQuery.validator.addMethod("url", function(value, element) {
+    var url = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
+    return this.optional(element) || (url.test(value));
+}, "请输入正确的网址");
+
+
 //ie6兼容after
 var $beforeAfter = function(dom) {
     if (document.querySelector || !dom && dom.nodeType !== 1) return;

@@ -4,37 +4,44 @@ $(function() {
   
     var fields = [{
         title: '酒店名称',
-        field: '',
+        field: 'name',
         readonly:view,
         required: true,
         maxlength:32
     }, {
-        field: '',
+        field: 'type',
         title: '酒店类型',
 		type:'select',
         required: true,
         readonly:view,
     },{
 		title: '酒店位置',
+        field:"province1",
 		required: true,
 		type: 'citySelect',
-		readonly:view
+		readonly:view,
+        formatter: function (v, data) {
+          var result = ( data.province || "" ) + ( data.city || "" ) + ( data.area || "" );
+          return result || "-";
+         },
 	}, {
-		placeholder: '详细地址',
-		field: 'address',
+		title: '详细地址',
+		field: 'detail',
 		required: true,
-		maxlength: 100,
+		maxlength: 32,
 		hidden: !!view
-	}, {
-		title: '酒店位置',
-		field: 'province1',
-		hidden: !view,
-		readonly: true,
-		formatter: function(v, r) {
-			var res = $.unique([r.province, r.city, r.area]).reverse();
-			return res.join(' ') + ' ' + r.address;
-		}
-	}, {
+	}, 
+    // {
+	// 	title: '酒店位置',
+	// 	field: 'province1',
+	// 	hidden: !view,
+	// 	readonly: true,
+	// 	formatter: function(v, r) {
+	// 		var res = $.unique([r.province, r.city, r.area]).reverse();
+	// 		return res.join(' ') + ' ' + r.address;
+	// 	}
+	// }, 
+    {
         title:"酒店电话",
         field: '',
         required: true,
@@ -47,7 +54,7 @@ $(function() {
         normalArea: true,
         maxlength: 255,
         readonly:view,
-        requird:true
+        required:true
     }, {
         title: '酒店美食',
         field: '',
@@ -81,14 +88,14 @@ $(function() {
             required: true,
             readonly: view,   
         },{
-            field: '',
+            field: 'type',
             title: '房间类型',
             type:"select",
             key:"",
             required: true,
             readonly: view
         }, {
-            field: '',
+            field: 'price',
             title: '价格',
             amount: true,
             formatter:moneyFormat,
@@ -101,8 +108,8 @@ $(function() {
         fields: fields,
         code: code,
         addCode:"",
-        editCode:"",
-        detailCode: ''
+        editCode:" ",
+        detailCode: '617204'
     };
 
     options.buttons = [{

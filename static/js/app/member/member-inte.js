@@ -40,7 +40,7 @@ $(function() {
         type :"select",
         key : "good_status",
         readonly:view
-	},
+	},{
 		title: '积分余额',
 		field: '',
         readonly:view

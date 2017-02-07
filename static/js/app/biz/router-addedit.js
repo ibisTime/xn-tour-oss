@@ -39,8 +39,8 @@ $(function() {
 	},{
 		title:"出行日期",
 		field:"",
-		type:"date",
-		formatter:dateFormat,
+		type: "date",
+        formatter:dateFormat,
 		required: true,
 		readonly:view
 	}, {

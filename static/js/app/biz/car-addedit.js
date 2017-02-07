@@ -39,7 +39,7 @@ $(function() {
     },{
         title:"状态"，
         field:"",
-        key:"",
+        key:"carord_status",
         type:"",
         readonly:true
     },{

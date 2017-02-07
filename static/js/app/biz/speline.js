@@ -11,6 +11,7 @@ $(function() {
 	},{
 		field : '',
 		title : '专线类型',
+		key :"spe_type",
 		search:true
 	},{
 		title: '起点',
@@ -32,7 +33,7 @@ $(function() {
 		title:"状态",
 		field:"",
         type:"select",
-        key:"",
+        key:"spe_status",
         search:true
 	},{
 		title:"备注",

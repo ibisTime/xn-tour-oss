@@ -44,7 +44,7 @@ $(function() {
             }
 
             window.location.href = "member_pwd_change.html?code=" + selRecords[0].code + "&loginName=" + encodeURI(encodeURI(selRecords[0].loginName)) ;
-
+            //  window.location.href = "member_pwd_change.html";
         });
       $('#phoneBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -52,18 +52,11 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-			 window.location.href = "member_phone_change.html?code=" + selRecords[0].code + "&loginName=" + encodeURI(encodeURI(selRecords[0].loginName)) ;
-
+			window.location.href = "member_phone_change.html?code=" + selRecords[0].code + "&loginName=" + encodeURI(encodeURI(selRecords[0].loginName)) ;
+          //window.location.href = "member_phone_change.html";
 
         });
-        $('#uorderBtn').click(function() {
-            var selRecords = $('#tableList').bootstrapTable('getSelections');
-            if(selRecords.length <= 0){
-                toastr.info("请选择记录");
-                return;
-            }
-		 window.location.href = "member_order.html?code=" + selRecords[0].code;
-        });
+       
 		$('#inteBtn').click(function() {
 			var selRecords = $('#tableList').bootstrapTable('getSelections');
 					if(selRecords.length <= 0){
@@ -71,6 +64,7 @@ $(function() {
 						return;
 					}		
 			window.location.href = "member_inte.html?code=" + selRecords[0].code;
+			//window.location.href = "member_inte.html?";
 		});
 
 

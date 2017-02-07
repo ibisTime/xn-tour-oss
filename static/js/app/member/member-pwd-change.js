@@ -18,7 +18,8 @@ $(function() {
 			json: data
 		}).then(function(data) {
 			location.href = "../main.html";
-		});
+			
+					});
 	});
 	
 	//返回
