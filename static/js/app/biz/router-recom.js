@@ -20,6 +20,7 @@ $(function() {
 		field: '',
 		required: true,
 		type: 'textarea',
+		normalArea:true,
 		maxlength:255
 	}];
 	

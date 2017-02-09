@@ -43,17 +43,21 @@ $(function() {
 	});
 
      $("#tabBtn").on("click", function() {
-        // var selRecords = $('#tableList').bootstrapTable('getSelections');
-        // if (selRecords.length <= 0) {
-        //     toastr.info("请选择记录");
-        //     return;
-        // }
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
 
-        // window.location.href = "router_tab.html?code=" + selRecords[0].code;
-		window.location.href = "router_tab.html";
+        window.location.href = "router_tab.html?code=" + selRecords[0].code;
+		 
     });
 	$("#recomBtn").on("click", function() {
-			
+			var selRecords = $('#tableList').bootstrapTable('getSelections');
+			if (selRecords.length <= 0) {
+				toastr.info("请选择记录");
+				return;
+			}
 			window.location.href = "router_recom.html";
 	});
 
@@ -63,7 +67,7 @@ $(function() {
 				toastr.info("请选择记录");
 				return;
 			}
-			var msg = selRecords[0].status == 1 ? "确认下架该线路": "确认上架该线路";
+			var msg = selRecords[0].status == 1 ? "确认下架该线路?": "确认上架该线路?";
 
 			confirm(msg).then(function() {
 				reqApi({

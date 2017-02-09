@@ -8,11 +8,19 @@ $(function() {
         readonly:view,
         required: true,
         maxlength:32
-    }, {
+    },{
+		title: '经营方式',
+		field: 'category',
+        type:"select",
+        key:"hotel_type",
+        readonly:view,
+        required: true,
+	}, {
         field: 'type',
         title: '酒店类型',
 		type:'select',
         required: true,
+        key:"hotel_type2",
         readonly:view,
     },{
 		title: '酒店位置',
@@ -21,35 +29,47 @@ $(function() {
 		type: 'citySelect',
 		readonly:view,
         formatter: function (v, data) {
-          var result = ( data.province || "" ) + ( data.city || "" ) + ( data.area || "" );
-          return result || "-";
-         },
+		          var result = ( data.province || "" ) + ( data.city || "" ) + ( data.area || "" );
+		          return result || "-";
+		      },
+				afterSet: function (v, data) {
+		          if (view) {
+		              $('#province').html(data.province);
+		              data.city && $('#city').html(data.city);
+		              data.area && $('#area').html(data.area);
+		              }
+		      },
 	}, {
 		title: '详细地址',
 		field: 'detail',
 		required: true,
-		maxlength: 32,
-		hidden: !!view
-	}, 
-    // {
-	// 	title: '酒店位置',
-	// 	field: 'province1',
-	// 	hidden: !view,
-	// 	readonly: true,
-	// 	formatter: function(v, r) {
-	// 		var res = $.unique([r.province, r.city, r.area]).reverse();
-	// 		return res.join(' ') + ' ' + r.address;
-	// 	}
-	// }, 
-    {
-        title:"酒店电话",
-        field: '',
+		maxlength: 255,
+		readonly:view
+	}, {
+		title: '经度',
+		field: 'longitude',
         required: true,
-        phone :true,
+		number:true,
+		readonly:view
+		// formatter: function(v, r) {
+		// 	var res = $.unique([r.province, r.city, r.area]).reverse();
+		// 	return res.join(' ') + ' ' + r.address;
+		// }
+	}, {
+        title:"纬度",
+        field: 'latitude',
+        required: true,
+        number:true,
+        readonly:view
+    }, {
+        title:"酒店电话",
+        field: 'telephone',
+        required: true,
+        mobile:true,
         readonly:view
     }, {
         title: '酒店特色',
-        field: '',
+        field: 'specialDesc',
         type: "textarea",
         normalArea: true,
         maxlength: 255,
@@ -57,95 +77,52 @@ $(function() {
         required:true
     }, {
         title: '酒店美食',
-        field: '',
+        field: 'foodDesc',
         type: "textarea",
         normalArea: true,
         maxlength: 255,
         required: true,
         readonly:view,
-    }, {
-        title: '酒店图片',
-        field: '',
-        type: 'img',
+    },{
+        title: '设施服务',
+        field: 'description',
+        type: 'checkbox',
+        items: [{
+            "key": "1",
+            "value": "停车场"
+        }, {
+            "key": "2",
+            "value": "SPA"
+        },{
+            "key":"3",
+            "value":"餐厅"
+        }],
         required: true,
         readonly:view
     }, {
-        title: '',
-        field: '222',
-        type: 'o2m',
-        editTable: true,
-        addeditTable: true,
-        readonly: view,
-        requird:true,
-        columns: [{
-            field: '',
-            title: '',
-            checkbox: true
-        }, {
-            field: '',
-            title: '房间号',
-            number:true,
-            required: true,
-            readonly: view,   
-        },{
-            field: 'type',
-            title: '房间类型',
-            type:"select",
-            key:"",
-            required: true,
-            readonly: view
-        }, {
-            field: 'price',
-            title: '价格',
-            amount: true,
-            formatter:moneyFormat,
-            required: true,
-            readonly: view
-        }]
+        title: '酒店图片',
+        field: 'pic1',
+        type: 'img',
+        required: true,
+        readonly:view
+    },{
+        title: '酒店缩略图',
+        field: 'pic2',
+        type: 'img',
+        required: true,
+        readonly:view
     }];
 
     var options = {
         fields: fields,
         code: code,
-        addCode:"",
-        editCode:" ",
-        detailCode: '617204'
+        view:view,
+        addCode:"618000",
+        editCode:"618003",
+        detailCode: '618012'
     };
 
-    options.buttons = [{
-        title: '返回',
-        handler: function() {
-            goBack();
-        }
-    }];
-    !view && options.buttons.unshift({
-        title: '确认',
-        handler: function() {
-            if ($('#jsForm').valid()) {
-                var data = $('#jsForm').serializeObject();
-                for (var i = 0, len = fields.length; i < len; i++) {
-                    var item = fields[i];
-                    if (item.equal && (!$('#' + item.field).is(':hidden') || !$('#' + item.field + 'Img').is(':hidden'))) {
-                        data[item.equal] = $('#' + item.field).val() || $('#' + item.field).attr('src');
-                    } else if (item.emptyValue && !data[item.field]) {
-                        data[item.field] = item.emptyValue;
-                    }
-                }
-                data['id'] = data['code'];
-                data["222"] = $('#222List').bootstrapTable('getData');
-                if( !data["222"].length ){
-                    toastr.info("房间信息不能为空");
-                    return;
-                }
-                reqApi({
-                    code: "",
-                    json: data
-                }).done(function() {
-                    sucDetail();
-                });
-            }
-        }
-    });
+     
 
     buildDetail(options);
 });

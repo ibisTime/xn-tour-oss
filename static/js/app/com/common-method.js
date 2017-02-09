@@ -987,9 +987,14 @@ function buildDetail(options) {
         if ('mobile' in item) {
             rules[item.field].mobile = item.mobile;
         }
-
+        if ('phone' in item) {
+                rules[item.field].phone = item.phone;
+            }
         if (item['Z+']) {
             rules[item.field]['Z+'] = item['Z+'];
+        }
+        if (item['phone']) {
+            rules[item.field]['phone'] = item['phone'];
         }
 
         if (item['amount']) {
@@ -1021,6 +1026,13 @@ function buildDetail(options) {
                     '<span id="area" name="area" style="display: inline-block;"></span></li>'
             } else if(item.type == 'o2m' && item.useData){
                 html += '<li class="clearfix" type="' + (item.amount ? 'amount' : '') + '" style="' + (item.width ? ('width: ' + item.width + ';display:inline-block;') : '') + (item.hidden ? 'display: none;' : '') + '"><label>' + item.title + '</label><div id="' + item.field + '" name="' + item.field + '"></div></li>';
+            } else if(item.type == "checkbox") {
+                html += '<li class="clearfix" style="display:inline-block;"><label>' + item.title + ':</label>';
+                for (var k = 0, len1 = item.items.length; k < len1; k++) {
+                    var rd = item.items[k];
+                    html += '<input type="checkbox" disabled id="checkbox' + k + '" name="' + item.field + '" value="' + rd.key + '"><label for="radio' + k + '" class="radio-text">'+(rd.value || '')+'<i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
+                }
+                html += '</li>';
             } else {
                 html += '<li class="clearfix" type="' + (item.amount ? 'amount' : '') + '" style="' + (item.width ? ('width: ' + item.width + ';display:inline-block;') : '') + (item.hidden ? 'display: none;' : '') + '"><label>' + item.title + ':</label><span id="' + item.field + '" name="' + item.field + '"></span></li>';
             }
@@ -1030,6 +1042,12 @@ function buildDetail(options) {
                 for (var k = 0, len1 = item.items.length; k < len1; k++) {
                     var rd = item.items[k];
                     html += '<input type="radio" id="radio' + k + '" name="' + item.field + '" value="' + rd.key + '"><label title="' + (rd.value || '') + '" for="radio' + k + '" class="radio-text"><i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
+                }
+                html += '</li>';
+            } else if(item.type == "checkbox") {
+                for (var k = 0, len1 = item.items.length; k < len1; k++) {
+                    var rd = item.items[k];
+                    html += '<input type="checkbox" id="checkbox' + k + '" name="' + item.field + '" value="' + rd.key + '"><label for="radio' + k + '" class="radio-text">'+(rd.value || '')+'<i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
                 }
                 html += '</li>';
             } else if (item.type == 'password') {
@@ -1113,18 +1131,18 @@ function buildDetail(options) {
                 });
                 data[el.id] = values.join('||');
             });
-            // if ($('#jsForm').find('#province')[0]) {
-            //     var province = $('#province').val();
-            //     var city = $('#city').val();
-            //     var area = $('#area').val();
-            //     if (!city) {
-            //         data['city'] = province;
-            //         data['area'] = province;
-            //     } else if (!area) {
-            //         data['city'] = province;
-            //         data['area'] = city;
-            //     }
-            // }
+            if ($('#jsForm').find('#province')[0]) {
+                var province = $('#province').val();
+                var city = $('#city').val();
+                var area = $('#area').val();
+                if (!city) {
+                    data['city'] = province;
+                    data['area'] = province;
+                } else if (!area) {
+                    data['city'] = province;
+                    data['area'] = city;
+                }
+            }
             for (var i = 0, len = fields.length; i < len; i++) {
                 var item = fields[i];
                 if (item.equal && (!$('#' + item.field).is(':hidden') || !$('#' + item.field + 'Img').is(':hidden'))) {
@@ -1136,6 +1154,9 @@ function buildDetail(options) {
                 }
                 if (item.type == 'select' && item.passValue) {
                     data[item.field] = $('#' + item.field).find('option:selected').html();
+                }
+                if(item.type == "checkbox"){
+                    data[item.field] = $.isArray(data[item.field]) ? data[item.field].join(",") : data[item.field];
                 }
             }
             data['id'] = data['code'];
@@ -1425,6 +1446,17 @@ function buildDetail(options) {
                             }
                         }
                         $('#' + item.field).html('<div class="zmdi ' + selectOne.icon + ' zmdi-hc-5x" title="' + selectOne.value + '"></div>');
+                    } else if(item.type == "checkbox"){
+                        var checkData = displayValue.split(/,/);
+                        for(var h = 0; h < checkData.length; h++){
+                            for (var k = 0, len1 = item.items.length; k < len1; k++) {
+                                var rd = item.items[k];
+                                if(rd.key == checkData[h]){
+                                    $("#checkbox" + k).prop("checked",true);
+                                    break;
+                                }
+                            }
+                        }
                     } else if (item.type == 'select' && (item.pageCode || item.listCode || item.detailCode)) {
                         var params = {};
                         if (!item.detailCode && item.pageCode) {
@@ -1529,12 +1561,12 @@ function buildDetail(options) {
                         }
 
                     } else if (item.type == "citySelect") {
-                        // if (data.province == data.city && data.city == data.area) {
-                        //     data.city = "";
-                        //     data.area = "";
-                        // } else if (data.province == data.city && data.city != data.area) {
-                        //     data.city = data.area;
-                        // }
+                        if (data.province == data.city && data.city == data.area) {
+                            data.city = "";
+                            data.area = "";
+                        } else if (data.province == data.city && data.city != data.area) {
+                            data.city = data.area;
+                        }
                         $('#province').html(data.province);
                         data.city && $('#city').html(data.city);
                         data.area && $('#area').html(data.area);
@@ -1612,17 +1644,28 @@ function buildDetail(options) {
                         });
                     } else if (item.type == 'radio') {
                         $('input[name=' + item.field + '][value=' + displayValue + ']').prop('checked', true);
+                    } else if(item.type == "checkbox"){
+                        var checkData = displayValue.split(/,/);
+                        for(var h = 0; h < checkData.length; h++){
+                            for (var k = 0, len1 = item.items.length; k < len1; k++) {
+                                var rd = item.items[k];
+                                if(rd.key == checkData[h]){
+                                    $("#checkbox" + k).prop("checked",true);
+                                    break;
+                                }
+                            }
+                        }
                     } else if (item.type == 'textarea' && !item.normalArea) {
                         $('#' + item.field)[0].editor.$txt.html(data[item.field]);
                     } else if (item.type == 'textarea' && item.normalArea) {
                         $('#' + item.field).val(data[item.field]);
                     } else if (item.type == 'citySelect') {
-                        // if (data.province == data.city && data.city == data.area) {
-                        //     data.city = "";
-                        //     data.area = "";
-                        // } else if (data.province == data.city && data.city != data.area) {
-                        //     data.city = data.area;
-                        // }
+                        if (data.province == data.city && data.city == data.area) {
+                            data.city = "";
+                            data.area = "";
+                        } else if (data.province == data.city && data.city != data.area) {
+                            data.city = data.area;
+                        }
                         $('#province').val(data.province);
                         $('#province').trigger('change');
                         data.city && $('#city').val(data.city);
@@ -2096,18 +2139,18 @@ function addEditTableListener1(addId, removeId, editId, tableId, columns, option
                 var id = el.id.substring(0, el.id.length - 6);
                 data[id] = values.join('||');
             });
-            // if ($("#model-form").find('#province-model')[0]) {
-            //     var province = $('#province-model').val();
-            //     var city = $('#city-model').val();
-            //     var area = $('#area-model').val();
-            //     if (!city) {
-            //         data['city'] = province;
-            //         data['area'] = province;
-            //     } else if (!area) {
-            //         data['city'] = province;
-            //         data['area'] = city;
-            //     }
-            // }
+            if ($("#model-form").find('#province-model')[0]) {
+                var province = $('#province-model').val();
+                var city = $('#city-model').val();
+                var area = $('#area-model').val();
+                if (!city) {
+                    data['city'] = province;
+                    data['area'] = province;
+                } else if (!area) {
+                    data['city'] = province;
+                    data['area'] = city;
+                }
+            }
             for (var i = 0, len = columns.length; i < len; i++) {
                 var item = columns[i];
                 if (item.hidden1) {
@@ -2233,6 +2276,9 @@ function buildDetail1(options) {
 
         if ('mobile' in item) {
             rules[item.field].mobile = item.mobile;
+        }
+        if ('phone' in item) {
+            rules[item.field].phone = item.phone;
         }
 
         if (item['Z+']) {
@@ -2775,12 +2821,12 @@ function buildDetail1(options) {
                 } else if (item.type == 'textarea' && item.normalArea) {
                     $('#' + item.field + "-model").val(data[item.field]);
                 } else if (item.type == 'citySelect') {
-                    // if (data.province == data.city && data.city == data.area) {
-                    //     data.city = "";
-                    //     data.area = "";
-                    // } else if (data.province == data.city && data.city != data.area) {
-                    //     data.city = data.area;
-                    // }
+                    if (data.province == data.city && data.city == data.area) {
+                        data.city = "";
+                        data.area = "";
+                    } else if (data.province == data.city && data.city != data.area) {
+                        data.city = data.area;
+                    }
                     $('#province-model').val(data.province);
                     $('#province-model').trigger('change');
                     data.city && $('#city-model').val(data.city);

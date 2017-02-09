@@ -5,6 +5,9 @@ $(function() {
     var fields = [{
         title:"订单编号",
         field:'',
+		listCode:"618031",
+		keyName:"code",
+		valueName:"",
         readonly:view
     },{
 		title: '酒店名称',
@@ -31,7 +34,7 @@ $(function() {
         readonly:view
 	},{
 		title:"房间号",
-		field:"",
+		field:"roomNum",
         readonly:view
 	},{
 		title:"酒店状态",
@@ -39,6 +42,13 @@ $(function() {
         type:"select",
         key:"hotel_status",
         readonly:view
+	},{
+		title:"入驻时间",
+		field:"",
+        formatter:dateTimeFormat,
+	},{
+		title:"入驻人数",
+		field:"",  
 	},{
 		title: '下单时间',
 		field: '',
@@ -53,13 +63,12 @@ $(function() {
        
 	}];
     
-
     buildDetail({
 		fields: fields,
 		code: code,
 		view:view,
 		addCode: '',
 		editCode: '',
-		detailCode: ''
+		detailCode: '618052'
 	});
 });

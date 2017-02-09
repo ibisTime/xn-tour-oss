@@ -10,27 +10,33 @@ $(function() {
    
     },{
 		title: '酒店名称',
-		field: '',
+		field: 'name',
         search:true
 	},{
 		title: '酒店电话',
-		field: '',
+		field: 'telephone',
 	},{
 		title: '酒店地址',
-		field: '',
-	},{
-		title:"价格",
-		field:"",
-		formatter:moneyFormat
-	},{
-		title:"房型",
-		field:"",
-        type:"select",
-        key:"home_type",
-        search:true
-	},{
+		field: 'province1',
+	},
+	// {
+	// 	title:"价格",
+	// 	field:"",
+	// 	formatter:moneyFormat
+	// },
+	// {
+	// 	title:"房型",
+	// 	field:"",
+    //     type:"select",
+    //     key:"home_type",
+    //     search:true
+	// },
+	{
 		title:"房间号",
-		field:"",
+		field:"roomNum",
+		listCode:'618031',
+		keyName:"code",
+		valueName:"roomNum"
 	},{
 		title:"酒店状态",
 		field:"",
@@ -50,7 +56,7 @@ $(function() {
 	buildList({
 		router: 'horder',
 		columns: columns,
-		pageCode: '',
+		pageCode: '618050',
 		deleteCode: ''
 	});
          
@@ -61,10 +67,10 @@ $(function() {
                 return;
             }
            // var msg = selRecords[0].status == 1 ? "确认上架该酒店？": "确认下架该酒店？";
-
+		   
             confirm("确认取消该订单？").then(function() {
                 reqApi({
-                    code: '',
+                    code: '618044',
                     json: {"code": selRecords[0].code}
                 }).then(function() {
                     sucDetail();
