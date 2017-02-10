@@ -4,43 +4,36 @@ $(function() {
   
     var fields = [{
         title: '美食名称',
-        field: '',
+        field: 'name',
         readonly:view,
         required: true,
         maxlength:32
     }, {
-        field: '',
+        field: 'price',
         title: '价格',
 		amount:true,
         formatter:moneyFormat,
         required: true,
         readonly:view,
     },{
+        field:"province1"
 		title: '地址',
 		required: true,
 		type: 'citySelect',
 		readonly:view
 	}, {
 		placeholder: '详细地址',
-		field: 'address',
+		field: 'detail',
 		required: true,
 		maxlength: 100,
-		hidden: !!view
-	}, {
-		title: '地址',
-		field: 'province1',
-		hidden: !view,
-		readonly: true,
-		formatter: function(v, r) {
-			var res = $.unique([r.province, r.city, r.area]).reverse();
-			return res.join(' ') + ' ' + r.address;
-		}
-	}, {
+		readonly:view 
+	},   {
         title:"美食类型",
-        field: '',
+        field: 'type ',
         required: true,
         type:"select",
         key:"food_type",
+        formatter:Dict.getNameForList("food_type"),
         readonly:view
     }, {
         title: '美食图片',

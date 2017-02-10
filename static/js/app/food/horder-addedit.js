@@ -4,31 +4,42 @@ $(function() {
   
     var fields = [{
         title:"订单编号",
-        field:'',
-		listCode:"618031",
-		keyName:"code",
-		valueName:"",
+        field:'code',
+		// listCode:"618031",
+		// keyName:"code",
+		// valueName:"",
         readonly:view
     },{
 		title: '酒店名称',
-		field: '',
+		field: 'name',
         readonly:view
 	},{
 		title: '酒店电话',
-		field: '',
+		field: 'telephone',
         readonly:view
 	},{
 		title: '酒店地址',
-		field: '',
-        readonly:view
+		field: 'province1',
+        readonly:view,
+		formatter: function (v, data) {
+		          var result = ( data.province || "" ) + ( data.city || "" ) + ( data.area || "" );
+		          return result || "-";
+		      },
+				afterSet: function (v, data) {
+		          if (view) {
+		              $('#province').html(data.province);
+		              data.city && $('#city').html(data.city);
+		              data.area && $('#area').html(data.area);
+		              }
+		      },
 	},{
 		title:"价格",
-		field:"",
+		field:"price",
 		formatter:moneyFormat,
         readonly:view
 	},{
 		title:"房型",
-		field:"",
+		field:"type",
         type:"select",
         key:"home_type",
         readonly:view
@@ -38,27 +49,28 @@ $(function() {
         readonly:view
 	},{
 		title:"酒店状态",
-		field:"",
+		field:"status",
         type:"select",
         key:"hotel_status",
         readonly:view
 	},{
 		title:"入驻时间",
-		field:"",
+		field:"startDate",
         formatter:dateTimeFormat,
 	},{
 		title:"入驻人数",
-		field:"",  
+		field:"quantity",  
 	},{
 		title: '下单时间',
-		field: '',
+		field: 'applyDatetime',
         formatter:dateTimeFormat,
         readonly:view
 	},{
 		title:"订单状态",
-		field:"",
+		field:"applyDatetime",
         type:"select",
         key:"horder_status",
+		formatter:Dict.getNameForList("horder_status"),
         readonly:view
        
 	}];
@@ -67,8 +79,8 @@ $(function() {
 		fields: fields,
 		code: code,
 		view:view,
-		addCode: '',
-		editCode: '',
+		// addCode: '',
+		// editCode: '',
 		detailCode: '618052'
 	});
 });

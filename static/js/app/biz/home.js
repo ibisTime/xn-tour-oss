@@ -27,14 +27,13 @@ $(function() {
             title: '民宿电话',
             mobile:true,
             search :true 
-        },
-        {
-            field: 'price',
-            title: '价格',
-            amount: true,
-            formatter:moneyFormat,
-    
-        } ];
+        },{
+		title:"状态",
+		field:"status",
+        type:"select",
+        key:"hotel_status",
+        formatter:Dict.getNameForList("hotel_status")
+	} ];
 	buildList({
 		router: 'home',
 		columns: columns,
@@ -51,7 +50,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            window.location.href = "house1.html?code =" +selRecords[0].code+"&hotalCode="+selRecords[0].hotalCode+"&name="+selRecords[0].name;    
+            window.location.href = "house1.html?hotalCode=" +selRecords[0].code+"&name="+selRecords[0].name;    
         });
         
          

@@ -13,16 +13,17 @@ $(function() {
 		field: 'mobile',
         search:true
 	}, {
-		title: '密码',
-		field: 'loginPwd',
-        
-	},{
 		title:"身份证号",
 		field:"idNo",
-	},{
-		title:"积分余额",
-		field:"",
-	},{
+	},
+	 {
+		field: 'toStatus',
+        title: '状态',
+        formatter: Dict.getNameForList('user_status'),
+        type: 'select',
+        key: 'user_status'
+	}, 
+	{ 
 		title: '备注',
 		field: 'remark',
 	}];
@@ -51,9 +52,32 @@ $(function() {
             if(selRecords.length <= 0){
                 toastr.info("请选择记录");
                 return;
-            }
-			window.location.href = "member_phone_change.html?code=" + selRecords[0].code + "&loginName=" + encodeURI(encodeURI(selRecords[0].loginName)) ;
-           
+            }     
+			var status = selRecords[0].status,toStatus;
+				status == 0 ? toStatus = 2 : toStatus = 0;
+			 var msg= selRecords[0].toStatus==0?"确定注销该账户？":"确定激活该账户？";
+			 confirm(msg).then(function() {
+                // reqApi({
+                //     code: '805052',
+                //     json: {"userId": selRecords[0].userId,"toStatus": selRecords[0].toStatus}
+                // }).then(function() {
+                //     toastr.info("操作成功");
+				// 	$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                // });
+				
+				reqApi({
+					code: '805052',
+					json: {
+						userId: selRecords[0].userId,
+						toStatus: toStatus
+					}
+				}).then(function() {
+					toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+				});
+			 
+            });
+
         });
        
 		$('#inteBtn').click(function() {
@@ -62,7 +86,7 @@ $(function() {
 						toastr.info("请选择记录");
 						return;
 					}		
-			window.location.href = "member_inte.html?code=" + selRecords[0].code;
+			window.location.href = "member_inte.html?userId=" +selRecords[0].userId;
 			 
 		});
 

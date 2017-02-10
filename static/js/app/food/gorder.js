@@ -6,7 +6,7 @@ $(function() {
 		checkbox : true
     },{
         title:"订单编号",
-        field:'',
+        field:'code',
         search:true
     },{
 		title: '商品名称',
@@ -42,23 +42,7 @@ $(function() {
 		deleteCode: ''
 	});
 
-        // $('#pulBtn').click(function() {
-        //     var selRecords = $('#tableList').bootstrapTable('getSelections');
-        //     if(selRecords.length <= 0){
-        //         toastr.info("请选择记录");
-        //         return;
-        //     }
-        //     var msg = selRecords[0].status == 1 ? "确认推荐该酒店？": "确认取消推荐该酒店？";
-             
-        //      confirm(msg).then(function() {
-        //         reqApi({
-        //             code: '',
-        //             json: {"code": selRecords[0].code}
-        //         }).then(function() {
-        //             sucDetail();
-        //         });
-        //      });
-        // });
+        
          
          $('#cancelBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -73,7 +57,8 @@ $(function() {
                     code: '',
                     json: {"code": selRecords[0].code}
                 }).then(function() {
-                    sucDetail();
+                    toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
                 });
             });
 
@@ -92,7 +77,8 @@ $(function() {
                     code: '',
                     json: {"code": selRecords[0].code}
                 }).then(function() {
-                    sucDetail();
+                   toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
                 });
             });
 

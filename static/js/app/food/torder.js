@@ -57,7 +57,8 @@ $(function() {
                     code: '',
                     json: {"code": selRecords[0].code}
                 }).then(function() {
-                    sucDetail();
+                    toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
                 });
             });
 

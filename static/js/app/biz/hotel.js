@@ -22,7 +22,7 @@ $(function() {
         formatter:Dict.getNameForList("hotel_type")
 	},{
 		title:"酒店位置",
-		field:"location",
+		field:"province1",
 		formatter: function (v, data) {
 		          var result = ( data.province || "" ) + ( data.city || "" ) + ( data.area || "" );
 		          return result || "-";
@@ -38,11 +38,9 @@ $(function() {
 		title:"酒店电话",
 		field:"telephone",
         search:true
-    },{
-        title:"价格",
-        field:"price",
-        formatter:moneyFormat
-    },{
+    },
+    // s
+    {
 		title:"状态",
 		field:"status",
         type:"select",
@@ -66,6 +64,12 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
+            //  var selRecord = selRecords[0];
+            // if(selRecord.status != "1"){
+            //     toastr.info("该酒店还未上线，不能推荐!");
+            //     return;
+            // }
+
             var msg = selRecords[0].location == 1 ? "确认取消推荐该酒店？": "确认推荐该酒店？";
              
              confirm(msg).then(function() {
