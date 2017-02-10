@@ -1,18 +1,18 @@
 $(function() {
 	var hotalCode = getQueryString("hotalCode");
     var name  = getQueryString("name");
-
+    var descriptionDict = Dict.getNameForList("ss_type");
 	var columns = [{
 		field : '',
 		title : '',
 		checkbox : true
     },{
         title:"民宿名称",
-        field:'realName',
-        listCode:"618011",
-        kayName:"code",
-        valueName:"realName", 
-        
+        field:'name',
+        value:name,
+        formatter: function(){
+            return name;
+        }
     },{
 		title: '房间号',
 		field: 'roomNum',     
@@ -26,10 +26,17 @@ $(function() {
 		title: '设施服务',
 		field: 'description',
         type:"checkbox",
-        //key:""
+        formatter: function(data){
+            var arr = data.split(/,/), str = "";
+            for(var i = 0; i < arr.length; i++){
+                str += descriptionDict(arr[i]) + "、";
+            }
+            return i && str.substr(0, str.length - 1) || "";
+        }
 	}, {
         title:"价格",
         field:"price",
+        amount:true,
         formatter:moneyFormat
     } ];
 	buildList({
@@ -38,9 +45,12 @@ $(function() {
 		pageCode: '618030',
 		deleteCode: '618021',
         searchParams:{
-            type:"2"
-            
-        }
+            type:"2",
+            hotalCode:hotalCode
+        },
+         urlParams: {
+             hotalCode:hotalCode
+         }
 	});
   
         $('#detailBtn').remove();

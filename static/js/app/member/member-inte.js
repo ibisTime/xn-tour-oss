@@ -4,11 +4,11 @@ $(function() {
 
 	var fields = [{
 		title: '用户名',
-		field: '',
+		field: 'loginName',
         readonly:view
 	},{
 		title: '手机号',
-		field: '',
+		field: 'mobile',
         readonly:view
 	},{
 		title: '业务类型',
@@ -50,7 +50,7 @@ $(function() {
 		fields: fields,
 		code: code,
         view:view,
-		detailCode: ''
+		detailCode: '805056'
 	});
  
 });

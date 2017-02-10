@@ -104,7 +104,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            window.location.href = "house.html?code =" +selRecords[0].code +"&hotalCode="+selRecords[0].hotalCode+"&name="+selRecords[0].name;    
+            window.location.href = "house.html?hotalCode=" +selRecords[0].code +"&name="+selRecords[0].name;    
         });
     
 

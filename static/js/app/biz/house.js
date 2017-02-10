@@ -9,8 +9,7 @@ $(function() {
     },{
         title:"酒店名称",
         field:'name',
-        // listCode:"618011",
-        // kayName:"hotalCode",
+        
         formatter: function(){
             return name;
         }
@@ -49,9 +48,9 @@ $(function() {
             type:"1",
             hotalCode:hotalCode
         },
-        urlParams: {
-            hotalCode:hotalCode
-        }
+         urlParams: {
+             hotalCode:hotalCode
+         }
 	});
   
         $('#detailBtn').remove();

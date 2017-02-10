@@ -60,7 +60,10 @@ $(function() {
         searchParams:{
             type:"1",
             hotalCode:hotalCode
-        }
+        },
+         urlParams: {
+             hotalCode:hotalCode
+         }
     };
 
     buildDetail(options);

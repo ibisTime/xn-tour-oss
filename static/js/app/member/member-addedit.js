@@ -4,21 +4,21 @@ $(function() {
 
 	var fields = [{
 		title: '用户名',
-		field: '',
+		field: 'loginName',
 		  
         readonly:view
 	},{
 		title: '手机号',
-		field: '',
+		field: 'mobile',
 		mobile:true,
         readonly:view
 	}, {
 		title: '密码',
-		field: '',
+		field: 'loginPwd',
         readonly:view
 	},{
 		title:"身份证号",
-		field:"",
+		field:"idNo",
         readonly:view
 	},{
 		title:"积分余额",
@@ -26,7 +26,7 @@ $(function() {
         readonly:view
 	},{
 		title: '备注',
-		field: '',
+		field: 'remark',
         readonly:view
 	}];
 	
@@ -34,7 +34,7 @@ $(function() {
 		fields: fields,
 		code: code,
         view:view,
-		detailCode: ''
+		detailCode: '805056'
 	});
  
 });

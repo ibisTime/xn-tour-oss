@@ -10,27 +10,27 @@ $(function() {
         search:true
 	},{
 		title: '手机号',
-		field: '',
+		field: 'mobile',
         search:true
 	}, {
 		title: '密码',
-		field: '',
+		field: 'loginPwd',
         
 	},{
 		title:"身份证号",
-		field:"",
+		field:"idNo",
 	},{
 		title:"积分余额",
 		field:"",
 	},{
 		title: '备注',
-		field: '',
+		field: 'remark',
 	}];
 	buildList({
 		router: 'member',
 		columns: columns,
-		pageCode: '',
-		deleteCode: '',
+		pageCode: '805054',
+		//deleteCode: '',
 		//  searchParams: {
         //     kind: '01'
         // }
@@ -43,8 +43,8 @@ $(function() {
                 return;
             }
 
-            window.location.href = "member_pwd_change.html?code=" + selRecords[0].code + "&loginName=" + encodeURI(encodeURI(selRecords[0].loginName)) ;
-            //  window.location.href = "member_pwd_change.html";
+            window.location.href = "member_pwd_change.html?userId=" + selRecords[0].userId + '&loginName=' + selRecords[0].loginName;
+            
         });
       $('#phoneBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -53,8 +53,7 @@ $(function() {
                 return;
             }
 			window.location.href = "member_phone_change.html?code=" + selRecords[0].code + "&loginName=" + encodeURI(encodeURI(selRecords[0].loginName)) ;
-          //window.location.href = "member_phone_change.html";
-
+           
         });
        
 		$('#inteBtn').click(function() {
@@ -64,7 +63,7 @@ $(function() {
 						return;
 					}		
 			window.location.href = "member_inte.html?code=" + selRecords[0].code;
-			//window.location.href = "member_inte.html?";
+			 
 		});
 
 

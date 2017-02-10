@@ -51,7 +51,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            window.location.href = "house1.html?code =" +selRecords[0].code;    
+            window.location.href = "house1.html?code =" +selRecords[0].code+"&hotalCode="+selRecords[0].hotalCode+"&name="+selRecords[0].name;    
         });
         
          

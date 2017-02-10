@@ -2,6 +2,15 @@ $(function() {
     var code = getQueryString('code');
     var view = !!getQueryString('v');
     var  hotalCode=getQueryString('hotalCode');
+    var descriptionDict = Dict.getName("ss_type"),
+        items = [];
+    for(var i = 0; i < descriptionDict.length; i++){
+        items.push({
+            key: descriptionDict[i].dkey,
+            value: descriptionDict[i].dvalue
+        });
+    }
+
     var fields = [{
         field: "hotalCode",
         value: hotalCode,
@@ -30,16 +39,7 @@ $(function() {
             field: 'description',
             title: '设施服务',
             type:"checkbox", 
-            items:[{
-                key:"1",
-                value:"免费Wi-Fi"
-            },{
-                key:"2",
-                value:"不含早餐"
-            },{
-                key:"3",
-                value:"无烟房"
-            }],
+            items:items,
             required: true,
             readonly: view
         },{
@@ -58,7 +58,7 @@ $(function() {
         editCode:"618022",
         detailCode: '618032',
         searchParams:{
-            type:"1",
+            type:"2",
             hotalCode:hotalCode
             
         }
