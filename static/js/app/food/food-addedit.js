@@ -8,28 +8,9 @@ $(function() {
         readonly:view,
         required: true,
         maxlength:32
-    }, {
-        field: 'price',
-        title: '价格',
-		amount:true,
-        formatter:moneyFormat,
-        required: true,
-        readonly:view,
-    },{
-        field:"province1"
-		title: '地址',
-		required: true,
-		type: 'citySelect',
-		readonly:view
-	}, {
-		placeholder: '详细地址',
-		field: 'detail',
-		required: true,
-		maxlength: 100,
-		readonly:view 
-	},   {
+    },  {
         title:"美食类型",
-        field: 'type ',
+        field: 'type',
         required: true,
         type:"select",
         key:"food_type",
@@ -37,19 +18,61 @@ $(function() {
         readonly:view
     }, {
         title: '美食图片',
-        field: '',
+        field: 'pic',
         type: 'img',
         required: true,
         readonly:view
-    }];
+    },{
+        field: 'price',
+        title: '价格',
+		amount:true,
+        formatter:moneyFormat,
+        required: true,
+        readonly:view,
+    },{
+        field:"province1",
+		title: '地址',
+		required: true,
+		type: 'citySelect',
+        formatter: function (v, data) {
+		          var result = ( data.province || "" ) + ( data.city || "" ) + ( data.area || "" );
+		          return result || "-";
+		      },
+				afterSet: function (v, data) {
+		          if (view) {
+		              $('#province').html(data.province);
+		              data.city && $('#city').html(data.city);
+		              data.area && $('#area').html(data.area);
+		              }
+		      },
+		readonly:view
+	}, {
+		title: '详细地址',
+		field: 'detail',
+		required: true,
+		maxlength: 100,
+		readonly:view 
+	},{
+		title: '经度',
+		field: 'longitude',
+		required: true,
+		number:true,
+		readonly:view 
+	},{
+		title: '纬度',
+		field: 'latitude',
+		required: true,
+		number:true,
+		readonly:view 
+	}];
     
 
     buildDetail({
 		fields: fields,
 		code: code,
 		view:view,
-		addCode: '',
-		editCode: '',
-		detailCode: ''
+		addCode: '618060',
+		editCode: '618062',
+		detailCode: '618072'
 	});
 });

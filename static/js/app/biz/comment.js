@@ -6,36 +6,41 @@ $(function() {
 		checkbox : true
 	},{
 		title: '关键词',
-		field: '',
+		field: 'word',
         visible:false,
         search:true
 	},{
-		field : '',
+		field : 'commer',
 		title : '用户名',
 	},{
-		field : '',
+		field : "",
 		title : '针对线路',
-        key:"",
+        key:"zd_router",
+		formatter:Dict.getNameForList("zd_router"),
         type:"select"
 	},{
 		title:"评论时间",
-		field:"",
+		field:"commDatetime",
 		formatter:dateFormat,
 	},{
 		title: '审核状态',
-		field: '',
+		field:"status",
 		type:"select",
-		key:'licheck_status',
+		key:'tracheck_status',
+		formatter:Dict.getNameForList("tracheck_status"),
         search:true
 	},{
 		title:"备注",
-		field:"",
+		field:"remark",
 	}];
 	buildList({
 		router: 'comment',
 		columns: columns,
-		pageCode: '',
-		deleteCode: ''
+		pageCode: '618315',
+		//deleteCode: '',
+		searchParams:{
+			type:"1"
+		}
 	});
     // $("#checkBtn").on("click",function(){
     //             var selRecords = $("#tableList").bootstrapTable("getSelections");

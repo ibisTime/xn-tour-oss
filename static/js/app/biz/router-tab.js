@@ -3,21 +3,21 @@ $(function() {
 	
 	var fields = [ {
 		title: '针对路线',
-		field: '',
+		field: 'lineCode',
 		type:"select",
 		key:"zd_router",
 		formatter:Dict.getNameForList("zd_router"),
 		required: true
 	},{
 		title: 'Tab名称',
-		field: '',
+		field: 'type',
 		type:'select',
 		key:"tab_type",
 		formatter: Dict.getNameForList('tab_type'),
 		required: true
 	}, {
 		title: '图文详述',
-		field: '',
+		field: 'description',
 		type: 'textarea',
 		required: true,
 		maxlength:255
@@ -30,9 +30,9 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: code,
-		addCode: '',
-		editCode: '',
-		detailCode: ''
+		// addCode: '618092',
+		// editCode: '',
+		detailCode: '618102'
 	});
 	
 	

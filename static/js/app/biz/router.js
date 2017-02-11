@@ -5,41 +5,40 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : '',
+		field : 'name',
 		title : '线路名称',
 		search: true
+	}, {
+		title: '线路形式',
+		field: 'style',
+		type:'select',
+		key:'router_type2',
+		formatter:Dict.getNameForList("router_type2"),
+		 
 	},{
-		field : 'pppp',
-		title : '线路形式',
-		search:true,
-		formatter: Dict.getNameForList('router_type2'),
-        search: true,
-        type: 'select',
-        key: 'router_type2'
-	},{
-    	field : '',
+    	field : 'joinPlace',
 		title : '集合地'
     },{
-		field : '',
+		field : 'outDate',
 		title : '出行日期',
 		formatter: dateFormat
 	}, {
 		title: '价格',
-		field: '',
+		field: 'price',
 		formatter:moneyFormat
 	},{
 		title: '收藏次数',
 		field: ''
 	},{
 		title: '状态',
-		field: '',
+		field: 'status',
 		type:"select"
 	}];
 	buildList({
 		router: 'router',
 		columns: columns,
-		pageCode: '',
-		deleteCode: ''
+		pageCode: '618100',
+		//deleteCode: ''
 	});
 
      $("#tabBtn").on("click", function() {
@@ -76,6 +75,7 @@ $(function() {
 				}).then(function() {
 					toastr.info("操作成功");
 					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+				
 				});
 			});
 	});

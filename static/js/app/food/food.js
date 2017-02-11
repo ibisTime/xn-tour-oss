@@ -13,7 +13,7 @@ $(function() {
 		field: 'type',
         type:"select",
         key:"food_type",
-        formatter:Dict.getNameForList("food_type")
+        formatter:Dict.getNameForList("food_type"),
         search:true
 	},{
 		title:"位置",
@@ -31,14 +31,14 @@ $(function() {
 		      },
 	},{
         title:"价格",
-        field:"",
+        field:"price",
         formatter:moneyFormat
     },{
 		title:"状态",
-		field:"",
+		field:"status",
         type:"select",
-        key:"food_type",
-        formatter:Dict.getNameForList("food_type"),
+        key:"food_status",
+        formatter:Dict.getNameForList("food_status"),
 	}];
 	buildList({
 		router: 'food',
@@ -46,24 +46,6 @@ $(function() {
 		pageCode: '618070',
 		deleteCode: '618061'
 	});
-
-        // $('#pulBtn').click(function() {
-        //     var selRecords = $('#tableList').bootstrapTable('getSelections');
-        //     if(selRecords.length <= 0){
-        //         toastr.info("请选择记录");
-        //         return;
-        //     }
-        //     var msg = selRecords[0].status == 1 ? "确认推荐该酒店？": "确认取消推荐该酒店？";
-             
-        //      confirm(msg).then(function() {
-        //         reqApi({
-        //             code: '',
-        //             json: {"code": selRecords[0].code}
-        //         }).then(function() {
-        //             sucDetail();
-        //         });
-        //      });
-        // });
          
          $('#frameBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -71,19 +53,19 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            var msg = selRecords[0].status == 1 ? "确认上架该美食？": "确认下架该美食？";
+            var msg = selRecords[0].status == 0 ? "确认上架该美食？": "确认下架该美食？";
 
             confirm(msg).then(function() {
                 reqApi({
-                    code: '',
+                    code: '618063',
                     json: {"code": selRecords[0].code}
                 }).then(function() {
-                    sucDetail();
+                    toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+				
                 });
             });
 
         });
        
-
-
 });

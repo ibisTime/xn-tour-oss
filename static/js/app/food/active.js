@@ -6,34 +6,39 @@ $(function() {
 		checkbox : true
     }, {
 		title: '活动名称',
-		field: '',
+		field: 'name',
         search:true
 	},{
-		title: '活动时间',
-		field: '',
+        title: '活动开始时间',
+		field: 'startDate',
+        type:'datetime',
         formatter:dateTimeFormat,
-        search:true,
-        afterSet:function(){
-
-        }
-	}, {
+        
+    },{
+        title: '活动结束时间',
+		field: 'endDate',
+        type:'datetime',
+        formatter:dateTimeFormat,
+       
+    },{
 		title: '活动地点',
-		field: '',
+		field: 'site',
         
 	},{
-		title:"订单状态",
-		field:"",
+		title:"活动状态",
+		field:"status",
         type:"select",
         key:"active_status",
+		formatter:Dict.getNameForList("active_status")
 	},{
 		title: '备注',
-		field: '',
+		field: 'remark',
 	}];
 	buildList({
 		router: 'active',
 		columns: columns,
-		pageCode: '',
-		deleteCode: ''
+		pageCode: '618090',
+		deleteCode: '618081'
 	});
          
          $('#frameBtn').click(function() {
@@ -42,11 +47,11 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            var msg = selRecords[0].status == 1 ? "确认上架该活动？": "确认下架该活动？";
+            var msg = selRecords[0].status == 1 ? "确认下架该活动？": "确认上架该活动？";
 
             confirm(msg).then(function() {
                 reqApi({
-                    code: '',
+                    code: '618083',
                     json: {"code": selRecords[0].code}
                 }).then(function() {
                     sucDetail();

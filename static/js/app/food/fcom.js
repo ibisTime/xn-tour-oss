@@ -6,7 +6,7 @@ $(function() {
 		checkbox : true
 	},{
 		title: '关键词',
-		field: '',
+		field: 'word',
         visible:false,
         search:true
 	},{
@@ -24,32 +24,28 @@ $(function() {
         type:"select"
 	},{
 		title:"评论时间",
-		field:"",
+		field:"commDatetime",
 		formatter:dateFormat,
 	},{
 		title: '审核状态',
-		field: '',
+		field: 'status',
 		type:"select",
-		key:'',
+		key:'tracheck_status',
+		formatter:Dict.getNameForList("tracheck_status"),
         search:true
 	},{
 		title:"备注",
-		field:"",
+		field:"remark",
 	}];
 	buildList({
 		router: 'fcom',
 		columns: columns,
-		pageCode: '',
-		deleteCode: ''
+		pageCode: '618315',
+		//deleteCode: '',
+		searchParams:{
+			type:"1"
+		}
 	});
-    // $("#checkBtn").on("click",function(){
-    //             var selRecords = $("#tableList").bootstrapTable("getSelections");
-    //             if ( selRecords.length <=0){
-    //                 toastr.info("请选择记录");
-    //                 return;
-    //             }
-    //         window.location.href='travel_check.html';
-    //     });
-
+    
 
 });

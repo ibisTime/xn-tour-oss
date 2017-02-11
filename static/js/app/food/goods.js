@@ -29,24 +29,6 @@ $(function() {
 		pageCode: '',
 		deleteCode: ''
 	});
-
-        // $('#pulBtn').click(function() {
-        //     var selRecords = $('#tableList').bootstrapTable('getSelections');
-        //     if(selRecords.length <= 0){
-        //         toastr.info("请选择记录");
-        //         return;
-        //     }
-        //     var msg = selRecords[0].status == 1 ? "确认推荐该酒店？": "确认取消推荐该酒店？";
-             
-        //      confirm(msg).then(function() {
-        //         reqApi({
-        //             code: '',
-        //             json: {"code": selRecords[0].code}
-        //         }).then(function() {
-        //             sucDetail();
-        //         });
-        //      });
-        // });
          
          $('#frameBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -61,7 +43,9 @@ $(function() {
                     code: '',
                     json: {"code": selRecords[0].code}
                 }).then(function() {
-                    sucDetail();
+                    toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+				
                 });
             });
 

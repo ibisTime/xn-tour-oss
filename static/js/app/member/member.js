@@ -16,13 +16,6 @@ $(function() {
 		title:"身份证号",
 		field:"idNo",
 	},
-	 {
-		field: 'toStatus',
-        title: '状态',
-        formatter: Dict.getNameForList('user_status'),
-        type: 'select',
-        key: 'user_status'
-	}, 
 	{ 
 		title: '备注',
 		field: 'remark',
@@ -90,7 +83,15 @@ $(function() {
 			 
 		});
 
+       $("#detail2Btn").click(function(){
+           var selRecords = $('#tableList').bootstrapTable('getSelections');
+					if(selRecords.length <= 0){
+						toastr.info("请选择记录");
+						return;
+					}		
+			window.location.href = "member_addedit.html?userId=" +selRecords[0].userId;
 
+	   });
 
 
 });

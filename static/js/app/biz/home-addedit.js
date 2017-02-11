@@ -76,7 +76,7 @@ $(function() {
         title:"民宿电话",
         field: 'telephone',
         required: true,
-        mobile :true,
+        tm:true,
         readonly:view
     }, {
         title: '民宿特色',

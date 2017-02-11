@@ -9,7 +9,7 @@ $(function() {
         required: true,
         maxlength:32
     },{
-		title: '经营方式',
+		title: '分类',
 		field: 'category',
         type:"select",
         key:"hotel_type",
@@ -65,7 +65,7 @@ $(function() {
         title:"酒店电话",
         field: 'telephone',
         required: true,
-        mobile:true,
+        tm:true,
         readonly:view
     }, {
         title: '酒店特色',
@@ -106,10 +106,57 @@ $(function() {
         required: true,
         readonly:view
     },{
-        title: '酒店缩略图',
+        title: '酒店轮播图',
         field: 'pic2',
         type: 'img',
         required: true,
+        readonly:view
+    },{
+        title: '最高价格',
+        field: 'highPrice',
+        amount:true,
+        formatter:moneyFormat,
+        required: true,
+        readonly:view
+    },{
+        title: '最低价格',
+        field: 'lowPrice',
+        amount:true,
+        formatter:moneyFormat,
+        required: true,
+        readonly:view
+    },{
+        title: '状态',
+        field: 'status',
+        type:"select",
+        key:"home_status",
+        formatter:Dict.getNameForList("home_status"),
+        required: true,
+        readonly:view
+    },{
+        title: 'UI位置',
+        field: 'location',
+        type:"select",
+        key:"hotel_location",
+        formatter:Dict.getNameForList("hotel_location"),
+        required: true,
+        readonly:view
+    },{
+        title: 'UI次序',
+        field: 'orderNo',
+        number:true,
+        required: true,
+        readonly:view
+    },{
+        title: '酒店法人',
+        field: 'orderNo',
+        maxlength:32,
+        required: true,
+        readonly:view
+    },{
+        title: '备注',
+        field: 'remark',
+        maxlength:255,
         readonly:view
     }];
 

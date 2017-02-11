@@ -8,23 +8,31 @@ $(function() {
 		readonly:true
 	},{
 		title: '用户名',
-		field: '',
+		field: 'commer',
 		readonly:true
 	}, {
 		title: '评论时间',
-		field: '',
+		field: 'commDatetime',
         formatter:dataTimeFormat,
 		readonly:true
 	},{
 		title: '评论内容',
-		field: '',
+		field: 'content',
+        type:"textarea",
+        normalArea:true,
 		readonly:true
+	},{
+		title: '备注',
+		field: "approveNote",
+        type:"textarea",
+        normalArea:true,
+        maxlength:255,
 	}];
 	
 	 var options = {
         fields: fields,
         code: code,
-        detailCode: ''
+        detailCode: '618317'
     };
 
     options.buttons = [{
@@ -37,7 +45,7 @@ $(function() {
                 data["approveResult"] = "1";
                 data["approveNote"] = $("#approveNote").val();
                 reqApi({
-                    code: "",
+                    code: "618311",
                     json: data
                 }).done(function () {
                     sucDetail();
@@ -54,7 +62,7 @@ $(function() {
                 data["approveResult"] = "0";
                 data["approveNote"] = $("#approveNote").val();
                 reqApi({
-                    code: "",
+                    code: "618311",
                     json: data
                 }).done(function () {
                     sucDetail();

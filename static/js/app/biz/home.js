@@ -60,7 +60,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            var msg = selRecords[0].status == 1 ? "确认上架该民宿？": "确认下架该民宿？";
+            var msg = selRecords[0].status == 0 ? "确认上架该民宿？": "确认下架该民宿？";
 
             confirm(msg).then(function() {
                 reqApi({

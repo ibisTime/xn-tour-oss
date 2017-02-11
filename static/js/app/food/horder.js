@@ -11,6 +11,9 @@ $(function() {
     },{
 		title: '酒店名称',
 		field: 'name',
+		listCode:"",
+		valueName:"",
+		keyName:"",
         search:true
 	},{
 		title: '酒店电话',
@@ -29,19 +32,25 @@ $(function() {
 		              data.area && $('#area').html(data.area);
 		              }
 		      },
+	},{
+		title:"价格",
+		field:"price",
+		// listCode:'618031',
+		// keyName:"code",
+		// valueName:"roomNum"
 	},
 	{
-		title:"房间号",
-		field:"roomNum",
-		listCode:'618031',
-		keyName:"code",
-		valueName:"roomNum"
+		title:"房间数",
+		field:"quantity",
+		 
 	},{
-		title:"酒店状态",
-		field:"status",
-        type:"select",
-        key:"hotel_status",
-		formatter:Dict.getNameForList("hotel_status")
+		title:"房型",
+		field:"room_type",
+		search:true,
+		type:"select",
+		key:"home_type",
+		formatter:Dict.getNameForList("home_type"),
+		 
 	},{
 		title: '下单时间',
 		field: 'applyDatetime',
@@ -51,7 +60,11 @@ $(function() {
 		field:"status",
         type:"select",
         key:"horder_status",
-        formatter:Dict.getNameForList("hotel_status")
+        formatter:Dict.getNameForList("horder_status")
+	},{
+		title:"买家嘱托",
+		field:"remark",
+        
 	}];
 	buildList({
 		router: 'horder',

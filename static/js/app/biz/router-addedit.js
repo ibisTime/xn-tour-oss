@@ -4,55 +4,58 @@ $(function() {
 	
 	var fields = [ {
 		title: '线路名称',
-		field: '',
+		field: 'name',
 		required: true,
 		maxlength:32,
 		readonly:view
 	},{
 		title: '线路类型',
-		field: '',
+		field: 'type',
 		type:'select',
 		key:'router_type',
+		formatter:Dict.getNameForList("router_type"),
 		required: true,
 		readonly:view
 	}, {
 		title: '线路形式',
-		field: '',
+		field: 'style',
 		type:'select',
 		key:'router_type2',
+		formatter:Dict.getNameForList("router_type2"),
 		required: true,
 		readonly:view
 	},{
-		title: '时间',
-		field: '',
+		title: '旅行时间',
+		field: 'travelTime',
 		type:'select',
 		key:'router_time',
 		required: true,
 		readonly:view
 	}, {
 		title: '集合地',
-		field: '',
+		field: 'joinPlace',
 		type:'select',
 		key:'router_di',
+		formatter:Dict.getNameForList("router_di"),
 		required: true,
 		readonly:view
 	},{
 		title:"出行日期",
-		field:"222",
+		field:"outDate",
 		type: "date",
         formatter:dateFormat,
 		required: true,
 		readonly:view
 	}, {
 		title: '价格',
-		field: '',
+		field: 'price',
 		amount:true,
 		formatter:moneyFormat,
 		required: true,
 		readonly:view
 	},{
 		title: '线路图片',
-		field: '',
+		field: 'pathPic',
 		type:"img",
 		required: true,
 		readonly:view
@@ -62,9 +65,9 @@ $(function() {
 		fields: fields,
 		code: code,
 		view:view,
-		addCode: '',
-		editCode: '',
-		detailCode: ''
+		addCode: '618090',
+		editCode: '618091',
+		detailCode: '618102'
 	});
 	
 	

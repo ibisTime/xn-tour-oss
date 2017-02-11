@@ -4,7 +4,7 @@ $(function() {
 	
 	var fields = [ {
 		title: '退款原因',
-		field: '',
+		field: 'remark',
 		readonly:true
 	},{
 		title: '订单编号',
@@ -15,14 +15,6 @@ $(function() {
 		field: 'applyDatetime',
         formatter:dateTimeFormat,
 		readonly:true
-	}, {
-		title: '备注',
-		field: 'remark',
-        type:"textarea",
-        normalArea :true,
-        maxlength:255,
-        required:true
-		
 	}];
 	
 	 var options = {

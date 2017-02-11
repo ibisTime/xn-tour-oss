@@ -6,24 +6,24 @@ $(function() {
 		checkbox : true
     },{
         title:"关键词",
-        field:"",
+        field:"word",
         search:true,
         visible:false
     },{
         title:"联系方式",
-        field:"",
+        field:"contact",
     },{
         title:"用户名",
-        field:"",
+        field:"commiter",
     },{
-		field : '',
+		field : 'type',
 		title : '类型',
         type:"select",
         key:"complain_type",
 		search: true
 	},{
         title:"内容描述",
-        field:"",
+        field:"tsContent",
     },{
 		field : 'status',
 		title : '状态',
@@ -35,7 +35,7 @@ $(function() {
 	buildList({
 		router: 'complain',
 		columns: columns,
-		pageCode: '',
+		pageCode: '618205',
 		   
 	});
 
