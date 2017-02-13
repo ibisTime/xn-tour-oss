@@ -40,7 +40,7 @@ $(function() {
 		pageCode: '618010',
 		deleteCode: '618002',
         searchParams:{
-            type:"2",
+            category:"4",
              
         }
 	});

@@ -12,16 +12,30 @@ $(function() {
 	},{
 		field : 'commer',
 		title : '用户名',
-	},{
-		field : "",
+	},
+	{
+		field : "topcode",
 		title : '针对线路',
         key:"zd_router",
-		formatter:Dict.getNameForList("zd_router"),
+		//formatter:Dict.getNameForList("zd_router"),
+		// formatter:function(v,data){
+		// 			return  data.res.topCode
+		// 		},
         type:"select"
-	},{
+	},	{
+		field : "type",
+		title : '类型',
+        key:"ht_type",
+		formatter:function(v,data){
+			return  data.res.type
+		},
+		formatter:Dict.getNameForList("ht_type"),
+        type:"select"
+	},
+	{
 		title:"评论时间",
 		field:"commDatetime",
-		formatter:dateFormat,
+		formatter:dateTimeFormat,
 	},{
 		title: '审核状态',
 		field:"status",
@@ -37,19 +51,21 @@ $(function() {
 		router: 'comment',
 		columns: columns,
 		pageCode: '618315',
-		//deleteCode: '',
-		searchParams:{
-			type:"1"
-		}
+		 
 	});
-    // $("#checkBtn").on("click",function(){
-    //             var selRecords = $("#tableList").bootstrapTable("getSelections");
-    //             if ( selRecords.length <=0){
-    //                 toastr.info("请选择记录");
-    //                 return;
-    //             }
-    //         window.location.href='travel_check.html';
-    //     });
-
+     $("#check2Btn").on("click",function(){
+			var selRecords = $("#tableList").bootstrapTable("getSelections");
+			if ( selRecords.length <=0){
+				toastr.info("请选择记录");
+				return;
+			}
+          
+		  if (selRecords[0].status !=0){
+			  toastr.info("该条记录不是待审核状态");
+				return;
+		  }
+			window.location.href = "comment_addedit.html?code=" + selRecords[0].code;
+			 
+	});
 
 });

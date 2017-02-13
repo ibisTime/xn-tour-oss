@@ -20,8 +20,8 @@ $(function() {
 		title: '房间类型',
 		field: 'type',
         type:"select",
-        key:"hm-type2",
-        formatter:Dict.getNameForList("hm-type2")
+        key:"hh_type",
+        formatter:Dict.getNameForList("hh_type")
 	},{
 		title: '设施服务',
 		field: 'description',
@@ -45,7 +45,7 @@ $(function() {
 		pageCode: '618030',
 		deleteCode: '618021',
         searchParams:{
-            type:"1",
+           // type:"1",
             hotalCode:hotalCode
         },
          urlParams: {

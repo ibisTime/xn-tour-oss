@@ -1161,7 +1161,8 @@ function buildDetail(options) {
             }
             data['id'] = data['code'];
             if (options.beforeSubmit) {
-                if (!options.beforeSubmit(data)) {
+                data = options.beforeSubmit(data)
+                if (!data) {
                     return;
                 }
             }

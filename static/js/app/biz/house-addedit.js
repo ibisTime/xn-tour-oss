@@ -25,7 +25,8 @@ $(function() {
             field: 'type',
             title: '房间类型',
             type:"select",
-            key:"hm-type2",
+            key:"hh_type",
+            formatter:Dict.getNameForList("hh_type"),
             required: true,
             readonly: view
         },{
@@ -57,10 +58,10 @@ $(function() {
         addCode:"618020",
         editCode:"618022",
         detailCode: '618032',
-        searchParams:{
-            type:"1",
-            hotalCode:hotalCode
-        },
+        // searchParams:{
+        //     type:"1",
+        //     hotalCode:hotalCode
+        // },
          urlParams: {
              hotalCode:hotalCode
          }

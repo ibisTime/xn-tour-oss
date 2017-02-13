@@ -2,10 +2,10 @@ $(function() {
 	var code = getQueryString('code');
 	//var  view =getQueryString('v');
 	
-	var fields = [ {
-		title: '针对线路',
-		field: '',
-		readonly:true
+	var fields = [{
+		title: '针对酒店',
+		field: 'topCode',
+		readonly:true,
 	},{
 		title: '用户名',
 		field: 'commer',
@@ -13,7 +13,7 @@ $(function() {
 	}, {
 		title: '评论时间',
 		field: 'commDatetime',
-        formatter:dataTimeFormat,
+        formatter:dateTimeFormat,
 		readonly:true
 	},{
 		title: '评论内容',
@@ -24,8 +24,6 @@ $(function() {
 	},{
 		title: '备注',
 		field: "approveNote",
-        type:"textarea",
-        normalArea:true,
         maxlength:255,
 	}];
 	
@@ -41,7 +39,7 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = {};
                 data['code'] = code;
-                data['approverUser'] = sessionStorage.getItem('userName');
+                data['approver'] = sessionStorage.getItem('userName');
                 data["approveResult"] = "1";
                 data["approveNote"] = $("#approveNote").val();
                 reqApi({
@@ -58,7 +56,7 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = {};
                 data['code'] = code;
-                data['approverUser'] = sessionStorage.getItem('userName');
+                data['approver'] = sessionStorage.getItem('userName');
                 data["approveResult"] = "0";
                 data["approveNote"] = $("#approveNote").val();
                 reqApi({

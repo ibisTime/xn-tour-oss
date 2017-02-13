@@ -45,7 +45,7 @@ $(function() {
 		pageCode: '618030',
 		deleteCode: '618021',
         searchParams:{
-            type:"2",
+           // type:"2",
             hotalCode:hotalCode
         },
          urlParams: {

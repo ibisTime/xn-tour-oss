@@ -3,18 +3,22 @@ $(function() {
 	//var  view =getQueryString('v');
 	
 	var fields = [ {
-		title: '退款原因',
-		field: 'remark',
-		readonly:true
-	},{
 		title: '订单编号',
-		field: 'code',
+		field: 'code1',
+        '[value]': 'code',
 		readonly:true
 	}, {
 		title: '订单时间',
 		field: 'applyDatetime',
         formatter:dateTimeFormat,
 		readonly:true
+	}, {
+		title: "备注",
+		field: 'remark',
+        type:'textarea',
+        normalArea:true,
+        maxlength:255,
+        required:true,
 	}];
 	
 	 var options = {
@@ -34,7 +38,7 @@ $(function() {
                 data["approveNote"] = $("#approveNote").val();
                 reqApi({
                     code: "618046",
-                    json: {"code": selRecords[0].code,approver:sessionStorage.getItem('userName'),approveNote:"审核通过"}
+                    json: {"code": selRecords[0].code,approver:sessionStorage.getItem('userName')}
                 }).done(function () {
                     sucDetail();
                 });
@@ -51,7 +55,7 @@ $(function() {
                 data["approveNote"] = $("#approveNote").val();
                 reqApi({
                     code: "618046",
-                    json: {"code": selRecords[0].code, approver:sessionStorage.getItem('userName'),approveNote:"审核通过"}
+                    json: {"code": selRecords[0].code, approver :sessionStorage.getItem('userName')}
                 }).done(function () {
                     sucDetail();
                 });

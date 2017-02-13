@@ -11,47 +11,54 @@ $(function() {
     },{
 		title: '酒店名称',
 		field: 'name',
-		listCode:"",
-		valueName:"",
-		keyName:"",
+		formatter :function(v, data){        
+		    return  data.hotal.name;
+		},
         search:true
 	},{
 		title: '酒店电话',
 		field: 'telephone',
+		formatter:function(v ,data){
+			return  data.hotal.telephone
+		}
 	},{
 		title: '酒店地址',
 		field: 'province1',
 		formatter: function (v, data) {
-		          var result = ( data.province || "" ) + ( data.city || "" ) + ( data.area || "" );
+		          var result = ( data.hotal.province || "" ) + ( data.hotal.city || "" ) + ( data.hotal.area || "" );
 		          return result || "-";
 		      },
 				afterSet: function (v, data) {
 		          if (view) {
-		              $('#province').html(data.province);
-		              data.city && $('#city').html(data.city);
-		              data.area && $('#area').html(data.area);
+		              $('#province').html(data.hotal.province);
+		              data.hotal.city && $('#city').html(data.hotal.city);
+		              data.hotal.area && $('#area').html(data.hotal.area);
 		              }
 		      },
-	},{
-		title:"价格",
-		field:"price",
-		// listCode:'618031',
-		// keyName:"code",
-		// valueName:"roomNum"
 	},
+	// {
+	// 	title:"价格",
+	// 	field:"price",
+		 
+	// },
 	{
 		title:"房间数",
 		field:"quantity",
 		 
-	},{
+	},
+	{
 		title:"房型",
-		field:"room_type",
+		field:"roomType",
 		search:true,
 		type:"select",
+		formatter :function(v, data){        
+		    return  data.hotal.category;
+		},
 		key:"home_type",
 		formatter:Dict.getNameForList("home_type"),
 		 
-	},{
+	},
+	{
 		title: '下单时间',
 		field: 'applyDatetime',
         formatter:dateTimeFormat
@@ -70,10 +77,10 @@ $(function() {
 		router: 'horder',
 		columns: columns,
 		pageCode: '618050',
-		deleteCode: '',
-		searchParams:{
-			type:"1"
-		}
+		//deleteCode: '',
+		// searchParams:{
+		// 	type:"1",
+		// }
 	});
          
          $('#cancelBtn').click(function() {

@@ -23,7 +23,9 @@ $(function() {
 	
 	buildDetail({
 		fields: fields,
-		code: code,
+		code: {
+			userId: code
+		},
         view:view,
 		detailCode: '805056'
 	});

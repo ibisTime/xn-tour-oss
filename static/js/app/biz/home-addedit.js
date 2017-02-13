@@ -137,40 +137,7 @@ $(function() {
         }
     };
 
-    // options.buttons = [{
-    //     title: '返回',
-    //     handler: function() {
-    //         goBack();
-    //     }
-    // }];
-    // !view && options.buttons.unshift({
-    //     title: '确认',
-    //     handler: function() {
-    //         if ($('#jsForm').valid()) {
-    //             var data = $('#jsForm').serializeObject();
-    //             for (var i = 0, len = fields.length; i < len; i++) {
-    //                 var item = fields[i];
-    //                 if (item.equal && (!$('#' + item.field).is(':hidden') || !$('#' + item.field + 'Img').is(':hidden'))) {
-    //                     data[item.equal] = $('#' + item.field).val() || $('#' + item.field).attr('src');
-    //                 } else if (item.emptyValue && !data[item.field]) {
-    //                     data[item.field] = item.emptyValue;
-    //                 }
-    //             }
-    //             data['id'] = data['code'];
-    //             data["222"] = $('#222List').bootstrapTable('getData');
-    //             if( !data["222"].length ){
-    //                 toastr.info("房间信息不能为空");
-    //                 return;
-    //             }
-    //             reqApi({
-    //                 code: "",
-    //                 json: data
-    //             }).done(function() {
-    //                 sucDetail();
-    //             });
-    //         }
-    //     }
-    // });
+   
 
     buildDetail(options);
 });

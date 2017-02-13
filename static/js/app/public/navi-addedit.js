@@ -1,8 +1,33 @@
 $(function() {
 	var code = getQueryString('code');
 	var view = getQueryString('v');
+    var isBranch = getQueryString('b');
 
 	var fields = [{
+		field: "status",
+		required: 'true',
+		hidden: true
+	}, {
+		field: "companyCode",
+		hidden: true,
+		value: sessionStorage.getItem('systemCode')
+	}, {
+		field: "belong",
+		required: 'true',
+		hidden: true
+	}, {
+		field: 'isCompanyEdit',
+		hidden: true,
+		value: 0
+	}, {
+		field: "parentCode",
+		required: 'true',
+		hidden: true
+	}, {
+		field: "contentType",
+		required: 'true',
+		hidden: true
+	}, {
 		title: '导航名称',
 		field: 'name',
         required:true,
@@ -11,19 +36,21 @@ $(function() {
 	},{
 		title: "导航位置",
 		field: 'location',
-        type:"select",
-        key:"button_type",
-        formatter:Dict.getNameForList("button_type"),
-        required:true,
-        readonly:view
+		readonly: true,
+		afterSet:function(v){
+			if(v == "depart_hotel"){
+				$('#location').html('出发-酒店')
+					.attr("data-location", v);
+			}
+		}
 	},{
 		title: "导航类型",
 		field: 'type',
-        type:"select",
-        key:"button_location",
-        formatter:Dict.getNameForList("button_location"),
-        required:true,
-        readonly:view
+        readonly:true,
+		afterSet: function(v){
+			if(v == "3")
+				$("#type").attr("data-type", v).html("模块");
+		}
 	}, {
 		title: '顺序',
 		field: 'orderNo',
@@ -32,12 +59,23 @@ $(function() {
 		number: true,
 		readonly: view,
 		 
+	},{
+		title: '图片',
+		field: 'pic',
+		required: true,
+		type:"img",
+		readonly: view,
+		 
 	},  {
 		title: 'url地址',
-		field: 'remark',
+		field: 'url',
 		//maxlength: 250,
 		required: true,
-		readonly: view
+		afterSet: function(v, data){
+			if(/^page:/i.test(v)){
+				$("#url").closest("li").hide();
+			}
+		}
 	}, {
 		title: '备注',
 		field: 'remark',
@@ -49,9 +87,14 @@ $(function() {
 		fields: fields,
 		code: code,
         view:view,
-        addCode:"",
-        editCode:"",
-		detailCode: ''
+        addCode:"806040",
+        editCode:"806042",
+		detailCode: '806053',
+		beforeSubmit: function(data){
+			data.location = $("#location").attr("data-location");
+			data.type = $("#type").attr("data-type");
+			return data;
+		}
 	});
  
 });

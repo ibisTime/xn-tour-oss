@@ -53,7 +53,7 @@ $(function() {
 		pageCode: '618010',
 		deleteCode: '618002',
         searchParams:{
-            type:"1",
+            categoryList:["1","2","3","5","6","7","8"]
              
         }
 	});
@@ -64,12 +64,10 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            //  var selRecord = selRecords[0];
-            // if(selRecord.status != "1"){
-            //     toastr.info("该酒店还未上线，不能推荐!");
-            //     return;
-            // }
-
+           if(selRecords[0].status != 1){
+                toastr.info("请先上架该酒店");
+                return;
+            }
             var msg = selRecords[0].location == 1 ? "确认取消推荐该酒店？": "确认推荐该酒店？";
              
              confirm(msg).then(function() {

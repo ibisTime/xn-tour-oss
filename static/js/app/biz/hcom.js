@@ -13,7 +13,7 @@ $(function() {
 		field : 'commer',
 		title : '用户名',
 	},{
-		field : '',
+		field : 'topCode',
 		title : '针对酒店',
         // key:"",
         // type:"select"
@@ -36,9 +36,24 @@ $(function() {
 		router: 'comment',
 		columns: columns,
 		pageCode: '618315',
-		searchParams:{
-			type:"2"
-		}
+		// searchParams:{
+		// 	type:"2"
+		// }
 	});
-    
+     $("#check2Btn").on("click",function(){
+			var selRecords = $("#tableList").bootstrapTable("getSelections");
+			if ( selRecords.length <=0){
+				toastr.info("请选择记录");
+				return;
+			}
+          
+		  if (selRecords[0].status !=0){
+			  toastr.info("该条记录不是待审核状态");
+				return;
+		  }
+
+			window.location.href = "comment_addedit.html?code=" + selRecords[0].code;
+			 
+	});
+
 });

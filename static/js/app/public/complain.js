@@ -20,10 +20,11 @@ $(function() {
 		title : '类型',
         type:"select",
         key:"complain_type",
+		formatter:Dict.getNameForList("complain_type"),
 		search: true
 	},{
         title:"内容描述",
-        field:"tsContent",
+        field:"content",
     },{
 		field : 'status',
 		title : '状态',
@@ -38,6 +39,27 @@ $(function() {
 		pageCode: '618205',
 		   
 	});
+
+    $("#edit2Btn").on("click",function(){
+			var selRecords = $("#tableList").bootstrapTable("getSelections");
+			if ( selRecords.length <=0){
+				toastr.info("请选择记录");
+				return;
+			}
+          
+		  if (selRecords[0].status !=0){
+			  toastr.info("该条记录不是待处理状态");
+				return;
+		  }
+
+			window.location.href = "complain_addedit.html?code=" + selRecords[0].code;
+			 
+	});
+
+
+
+
+
 
 });
 

@@ -2,11 +2,14 @@ $(function() {
     var code = getQueryString('code');
     var view = !!getQueryString('v');
   
-    var fields = [{
+    var fields = [
+		{
 		title: '订单编号',
-		field: 'code',
+		field:"code1",
+		 '[value]': 'code',
 		readonly:view
-	},{
+	},
+	{
 		title: '类型',
 		field: 'type',
 		type:'select',
@@ -28,20 +31,22 @@ $(function() {
 	},{
 		title: '开始入住时间',
 		field: 'startDate',
-		formatter:dateTimeFormat,
+		formatter:dateFormat,
         readonly:view
 
 	},{
 		title: '退住时间',
 		field: 'endDate',
-		formatter:dateTimeFormat,
+		formatter:dateFormat,
         readonly:view
-	},{
+	},
+	{
 		title:"入住人手机号",
 		field:"checkInMobile",
 		
         readonly:view
-	},{
+	},
+	{
 		title:"数量",
 		field:"quantity",
          
@@ -55,7 +60,7 @@ $(function() {
         readonly:view
 	},{
 		title:"下单时间",
-		field:"applyatetime",
+		field:"applyDatetime",
         formatter:dateTimeFormat,
 		readonly:view
 	},{
@@ -68,17 +73,6 @@ $(function() {
 		field: 'payAmount',
         formatter:moneyFormat,
         readonly:view
-	},{
-		title:"支付时间",
-		field:"payDatetime",
-        formatter:dateTimeFormat,
-        readonly:view
-       
-	},{
-		title:"支付单号",
-		field:"payCode",
-        readonly:view,
-       
 	},{
 		title:"状态",
 		field:"status",
@@ -93,8 +87,8 @@ $(function() {
 		fields: fields,
 		code: code,
 		view:view,
-		addCode: '',
-		editCode: '',
+		// addCode: '',
+		// editCode: '',
 		detailCode: '618052'
 	});
 });

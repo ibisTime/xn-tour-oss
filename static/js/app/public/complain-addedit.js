@@ -4,45 +4,55 @@ $(function() {
 
 	var fields = [{
 		title: '投诉人',
-		field: '',
+		field: 'commiter',
         readonly:true
 	},{
 		title: '联系方式',
-		field: '',
+		field: 'contact',
         readonly:true
 	}, {
 		title: '投诉时间',
-		field: '',
+		field: 'commitDatetime',
         formatter:dateTimeFormat,
         readonly:true
 	},{
-		field : '',
+		field : 'type',
 		title : '类型',
         type:"select",
         key:"complain_type",
+		formatter:Dict.getNameForList("complain_type"),
 		search: true,
         readonly:true
 	},{
 		title:"投诉内容",
-		field:"",
+		field:"content",
         type:"textarea",
         normalArea :true ,
         readonly:true
 	},{
 		title:"回复",
-		field:"",
+		field:"dealNote",
         type:"textarea",
         normalArea :true ,
-        //readonly:view,
-        maxlength:255
-	}];
+		required:true,
+        maxlength:255   
+	},{
+		title:"处理人",
+		field:"dealer",
+        type:"hidden",
+        value:sessionStorage.getItem('userName'),
+	},];
 	
 	buildDetail({
 		fields: fields,
 		code: code,
         view:view,
-        editCode:"",
-		detailCode: ''
+		// addCode:"618201",
+        // editCode:"618201",
+		detailCode: '618207',
+		searchParams:{
+			status:"1"
+		}
 	});
  
 });

@@ -12,29 +12,31 @@ $(function() {
 		field : 'location',
 		title : '导航位置',
 		type:"select",
-    key:"button_type",
-    formatter:Dict.getNameForList("button_type"), 
-		
-		search: true
+		formatter: function(v){
+			if(v == "depart_hotel"){
+				return '出发-酒店';
+			}
+		}
+	},{
+		field: 'type',
+		title: '导航类型',
+		formatter: function(v){
+			if(v == "3")
+				return "模块";
+		}
 	},{
     	field : 'orderNo',
 	   	title : '顺序'
-    },{
-    	field: 'belong',
-    	title: '属于',
-      type:"select",
-    	key: 'button_location',
-		  formatter: Dict.getNameForList('button_location'),
-    },{
-    	field : '',
-	   	title : 'url地址',
-
     }];
 	buildList({
 		router: 'navi',
 		columns: columns,
-		pageCode: '',
-		deleteCode:""
+		pageCode: '806050',
+		searchParams:{
+			companyCode: 0,
+			systemCode:"CD-CLW000005"
+		}
+		 
 	});
          
     
