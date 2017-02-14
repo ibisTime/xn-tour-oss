@@ -36,23 +36,40 @@ $(function() {
         normalArea :true ,
 		required:true,
         maxlength:255   
-	},{
-		title:"处理人",
-		field:"dealer",
-        type:"hidden",
-        value:sessionStorage.getItem('userName'),
-	},];
+	}];
 	
-	buildDetail({
-		fields: fields,
-		code: code,
-        view:view,
-		// addCode:"618201",
-        // editCode:"618201",
-		detailCode: '618207',
+    var options = {
+        fields: fields,
+        code: code,
+        detailCode: '618207',
 		searchParams:{
 			status:"1"
 		}
-	});
- 
+    };
+
+    options.buttons = [{
+        title: '确定',
+        handler: function () {
+            if ($('#jsForm').valid()) {
+                var data = {};
+                data['code'] = code;
+                data['dealer'] = sessionStorage.getItem('userName'); 
+                data["dealNote"] = $("#dealNote").val();
+                reqApi({
+                    code: "618201",
+                    json: data
+                }).done(function () {
+                    sucDetail();
+                });
+            }
+        }
+    },
+	 {
+        title: '返回',
+        handler: function () {
+            goBack();
+        }
+    }];
+
+    buildDetail(options);
 });

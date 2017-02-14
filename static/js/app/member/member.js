@@ -50,14 +50,6 @@ $(function() {
 				status == 0 ? toStatus = 2 : toStatus = 0;
 			 var msg= selRecords[0].toStatus==0?"确定注销该账户？":"确定激活该账户？";
 			 confirm(msg).then(function() {
-                // reqApi({
-                //     code: '805052',
-                //     json: {"userId": selRecords[0].userId,"toStatus": selRecords[0].toStatus}
-                // }).then(function() {
-                //     toastr.info("操作成功");
-				// 	$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-                // });
-				
 				reqApi({
 					code: '805052',
 					json: {

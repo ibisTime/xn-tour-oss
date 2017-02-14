@@ -1,13 +1,15 @@
 $(function() {
-	var code = getQueryString('code');
+	var code = getQueryString('lineCode');
+	//var view =getQueryString("v");
 	
-	var fields = [ {
+	var fields = [{
+		hidden: true,
+		field: "lineCode",
+		value: code
+	}, {
 		title: '针对路线',
-		field: 'lineCode',
-		type:"select",
-		key:"zd_router",
-		formatter:Dict.getNameForList("zd_router"),
-		required: true
+		field: 'name',
+		readonly: true
 	},{
 		title: 'Tab名称',
 		field: 'type',
@@ -27,13 +29,38 @@ $(function() {
 		maxlength:255
 	}];
 	
-	buildDetail({
-		fields: fields,
-		code: code,
-		// addCode: '618092',
-		// editCode: '',
-		detailCode: '618102'
-	});
-	
+	var options = {
+        fields: fields,
+        code: code,
+        detailCode: '618102',
+	}; 
+
+    options.buttons = [{
+        title: '确定',
+        handler: function () {
+            if ($('#jsForm').valid()) {
+				var data = $('#jsForm').serializeObject();
+                // var data = {};
+                // data['lineCode'] = code;
+				// data["type"]= $("#type").val();
+                // data["description"] = $("#description").val();
+				//data["comCode"] = $("#comCode").val();
+                reqApi({
+                    code: "618092",
+                    json: data
+                }).done(function () {
+                    sucDetail();
+                });
+            }
+        }
+    },
+	 {
+        title: '返回',
+        handler: function () {
+            goBack();
+        }
+    }];
+
+    buildDetail(options);
 	
 });

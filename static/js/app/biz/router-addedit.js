@@ -25,6 +25,18 @@ $(function() {
 		required: true,
 		readonly:view
 	},{
+    	field : 'category',
+		type:"select",
+		listCode:"806052",
+        keyName:"code",
+        valueName:"name",
+		params:{
+			location:"travel"
+		},
+		required: true,
+		readonly:view ,
+		title :"导航名称"
+    },{
 		title: '旅行时间',
 		field: 'travelTime',
 		type:'select',
@@ -67,7 +79,8 @@ $(function() {
 		view:view,
 		addCode: '618090',
 		editCode: '618091',
-		detailCode: '618102'
+		detailCode: '618102',
+		 
 	});
 	
 	

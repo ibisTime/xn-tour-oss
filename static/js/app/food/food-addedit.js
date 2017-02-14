@@ -8,6 +8,15 @@ $(function() {
         readonly:view,
         required: true,
         maxlength:32
+    }, {
+        title:"导航类型",
+        field: 'category',
+        required: true,
+        type:"select",
+		listCode:"",
+		keyName:"code",
+		valueCode:"", 
+        readonly:view
     },  {
         title:"美食类型",
         field: 'type',

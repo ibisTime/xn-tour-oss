@@ -28,11 +28,13 @@ $(function() {
 		formatter:moneyFormat
 	},{
 		title: '收藏次数',
-		field: ''
+		field: 'collectTimes'
 	},{
 		title: '状态',
 		field: 'status',
-		type:"select"
+		type:"select",
+		key:"hotel_status",
+		formatter:Dict.getNameForList("hotel_status")
 	}];
 	buildList({
 		router: 'router',
@@ -48,7 +50,7 @@ $(function() {
             return;
         }
 
-        window.location.href = "router_tab.html?code=" + selRecords[0].code;
+        window.location.href = "router_tab.html?lineCode=" + selRecords[0].code;
 		 
     });
 	$("#recomBtn").on("click", function() {
@@ -57,7 +59,7 @@ $(function() {
 				toastr.info("请选择记录");
 				return;
 			}
-			window.location.href = "router_recom.html";
+			window.location.href = "router_recom.html?lineCode="+selRecords[0].code;
 	});
 
 	$("#frameBtn").on("click",function(){
@@ -67,11 +69,11 @@ $(function() {
 				return;
 			}
 			var msg = selRecords[0].status == 1 ? "确认下架该线路?": "确认上架该线路?";
-
+			var price=selRecords[0].price;
 			confirm(msg).then(function() {
 				reqApi({
-					code: '',
-					json: {"code": selRecords[0].code}
+					code: '618094',
+					json: {"code": selRecords[0].code,price},
 				}).then(function() {
 					toastr.info("操作成功");
 					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });

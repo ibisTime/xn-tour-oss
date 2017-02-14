@@ -51,6 +51,6 @@ $(function() {
 		view:view,
 		addCode: '618080',
 		editCode: '618082',
-		detailCode: '618092'
+		detailCode: '618087'
 	});
 });
