@@ -16,6 +16,12 @@ $(function() {
 			if(v == "depart_hotel"){
 				return '出发-酒店';
 			}
+			if(v == "depart_deli"){
+				return '出发-美食';
+			}
+			if(v == "travel"){
+				return '旅游';
+			}
 		}
 	},{
 		field: 'type',

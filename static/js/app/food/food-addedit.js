@@ -8,22 +8,17 @@ $(function() {
         readonly:view,
         required: true,
         maxlength:32
-    }, {
-        title:"导航类型",
-        field: 'category',
-        required: true,
-        type:"select",
-		listCode:"",
-		keyName:"code",
-		valueCode:"", 
-        readonly:view
-    },  {
+    },{
         title:"美食类型",
         field: 'type',
         required: true,
-        type:"select",
-        key:"food_type",
-        formatter:Dict.getNameForList("food_type"),
+		type:'select',
+        listCode:"806052",
+        keyName:"code",
+        valueName:"name",
+        params:{
+        location:"depart_deli"
+        },
         readonly:view
     }, {
         title: '美食图片',

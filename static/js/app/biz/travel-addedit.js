@@ -2,49 +2,40 @@ $(function() {
 	var code = getQueryString('code');
 	var  view =getQueryString('v');
 	
-	var fields = [ {
-		title: '关键词',
-		field: '',
-        readonly:view
-	},{
-		field : '',
+	var fields = [  {
+		field : 'publisher',
 		title : '用户名',
         readonly:view
 	},{
-		field : '',
-		title : '游记路线',
-        readonly:view
-	},{
-		field : '',
-		title : '针对线路',
-		key:"zd_router",
-        type:"select",
+		field : 'name',
+		title : '游记名称',
         readonly:view
 	},{
 		title:"更新时间",
-		field:"",
+		field:"updateDatetime",
 		formatter:dateFormat,
         readonly:view
 	},{
 		title: '收藏次数',
-		field: ''
+		field: 'collectionTimes'
 	},{
 		title: '点赞次数',
-		field: '',
+		field: 'likeTimes',
         readonly:view
 	},{
 		title: '举报次数',
-		field: '',
+		field: 'reportTimes',
         readonly:view
 	},{
 		title: '审核状态',
-		field: '',
+		field: 'status',
 		type:"select",
 		key:'tracheck_status',
+		formatter:Dict.getNameForList("tracheck_status"),
         readonly:view
 	},{
 		title:"备注",
-		field:"",
+		field:"remark",
         readonly:view
 	},];
 	
@@ -54,7 +45,7 @@ $(function() {
 		view:view,
 		// addCode: '',
 		// editCode: '',
-		detailCode: ''
+		detailCode: '618132'
 	});
 	
 	

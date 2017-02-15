@@ -6,56 +6,61 @@ $(function() {
 		checkbox : true
 	},{
 		title: '关键词',
-		field: '',
+		field: 'name',
         visible:false,
         search:true
 	},{
-		field : '',
+		field : 'publisher',
 		title : '用户名',
 	},{
-		field : '',
-		title : '游记路线',
+		field : 'name',
+		title : '游记名称',
 	},{
-		field : '',
+		field : 'lineCode',
 		title : '针对线路',
-		key:"zd_router",
-        type:"select"
+		//key:"zd_router",
+        //type:"select"
 	},{
 		title:"更新时间",
-		field:"",
+		field:"updateDatetime",
 		formatter:dateFormat,
 	},{
 		title: '收藏次数',
-		field: ''
+		field: 'collectionTimes'
 	},{
 		title: '点赞次数',
-		field: ''
+		field: 'likeTimes'
 	},{
 		title: '举报次数',
-		field: ''
+		field: 'reportTimes'
 	},{
 		title: '审核状态',
-		field: '',
+		field: 'status',
 		type:"select",
 		key:'tracheck_status',
+		formatter:Dict.getNameForList("tracheck_status"),
         search:true
 	},{
 		title:"备注",
-		field:"",
+		field:"remark",
 	}];
 	buildList({
 		router: 'travel',
 		columns: columns,
-		pageCode: '',
-		deleteCode: ''
+		pageCode: '618130',
+		deleteCode: '618121'
 	});
-    $("#checkBtn").on("click",function(){
+    $("#check2Btn").on("click",function(){
                 var selRecords = $("#tableList").bootstrapTable("getSelections");
                 if ( selRecords.length <=0){
                     toastr.info("请选择记录");
                     return;
                 }
-            window.location.href='travel_check.html';
+				 if ( selRecords[0].status!=0){
+                    toastr.info("该游记不是待审核状态");
+                    return;
+                }
+            window.location.href='travel_check.html?code='+selRecords[0].code;
         });
 
 	$("#topBtn").on("click",function(){
@@ -64,13 +69,17 @@ $(function() {
 				toastr.info("请选择记录");
 				return;
 			}
-           
-			var msg = selRecords[0].status == 1 ? "确认置顶该游记？": "确认取消置顶该游记？";
+			 
+            if ( selRecords[0].status !=1){
+                    toastr.info("该游记不能被置顶");
+                    return;
+                }
+			var msg = selRecords[0].location == 0 ? "确认置顶该游记？": "确认取消置顶该游记？";
 
 			confirm(msg).then(function() {
 				reqApi({
-					code: '',
-					json: {"code": selRecords[0].code}
+					code: '618124',
+					json: {"code": selRecords[0].code,orderNo:1}
 				}).then(function() {
 					toastr.info("操作成功");
 					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });

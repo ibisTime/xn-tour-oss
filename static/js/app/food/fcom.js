@@ -10,18 +10,17 @@ $(function() {
         visible:false,
         search:true
 	},{
-		field : '',
+		field : 'commer',
 		title : '用户名',
 	},{
-		field : '',
+		field : 'topCode',
 		title : '针对酒店',
-        key:"",
-        type:"select"
 	},{
-		field : '',
+		field : "type",
 		title : '类型',
-        key:"",
-        type:"select"
+        type:"select",
+		key:'ht_type',
+		formatter:Dict.getNameForList("ht_type")
 	},{
 		title:"评论时间",
 		field:"commDatetime",

@@ -12,8 +12,15 @@ $(function() {
 		title: '酒店类别',
 		field: 'category',
         type:"select",
-        key:"hotel_type2",
-        formatter:Dict.getNameForList("hotel_type2")
+        // formatter: function(v, r) {
+    	// 	if (v == "depart_hotel") {
+    	// 		return '豪华酒店';
+    	// 	} else if (v == 2) {
+    	// 		return '';
+    	// 	} else {
+    	// 		return ' ';
+    	// 	}
+    	// }
 	},{
 		title: '酒店类型',
 		field: 'type',
@@ -65,10 +72,10 @@ $(function() {
                 return;
             }
            if(selRecords[0].status != 1){
-                toastr.info("请先上架该酒店");
+                toastr.info("请先上架该酒店再推荐");
                 return;
             }
-            var msg = selRecords[0].location == 1 ? "确认取消推荐该酒店？": "确认推荐该酒店？";
+            var msg = selRecords[0].location == 0 ? "确认取消推荐该酒店？": "确认推荐该酒店？";
              
              confirm(msg).then(function() {
                 reqApi({

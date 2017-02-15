@@ -33,9 +33,14 @@ $(function() {
 		params:{
 			location:"travel"
 		},
+		formatter:function(v,r){
+          if (v=="travel"){
+			  return "旅游"
+		  }
+		},
 		required: true,
 		readonly:view ,
-		title :"导航名称"
+		title :"导航名称",
     },{
 		title: '旅行时间',
 		field: 'travelTime',

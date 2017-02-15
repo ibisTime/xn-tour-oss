@@ -5,34 +5,35 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : '',
+		field : 'lineCode',
 		title : '针对线路',
 	},{
-		field : '',
+		field : 'title',
 		title : '攻略标题',
 		search:true
 	},{
 		title: '收藏次数',
-		field: ''
+		field: 'collectTimes'
 	},{
 		title:"更新时间",
-		field:"",
+		field:"updateDatetime",
 		search:true,
 		formatter:dateFormat,
 	},{
 		title: '状态',
-		field: '',
+		field: 'status',
 		type:"select",
-		key:''
+		key:'hotel_status',
+		formatter:Dict.getNameForList("hotel_status")
 	},{
 		title:"备注",
-		field:"",
+		field:"remark",
 	},];
 	buildList({
 		router: 'strategy',
 		columns: columns,
-		pageCode: '',
-		deleteCode: ''
+		pageCode: '618115',
+		deleteCode: '618111'
 	});
 
 	$("#frameBtn").on("click",function(){
@@ -45,7 +46,7 @@ $(function() {
 
 			confirm(msg).then(function() {
 				reqApi({
-					code: '',
+					code: '618113',
 					json: {"code": selRecords[0].code}
 				}).then(function() {
 					toastr.info("操作成功");

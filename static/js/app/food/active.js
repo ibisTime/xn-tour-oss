@@ -11,14 +11,14 @@ $(function() {
 	},{
         title: '活动开始时间',
 		field: 'startDate',
-        type:'datetime',
-        formatter:dateTimeFormat,
+        type:'date',
+        formatter:dateFormat,
         
     },{
         title: '活动结束时间',
 		field: 'endDate',
         type:'datetime',
-        formatter:dateTimeFormat,
+        formatter:dateFormat,
        
     },{
 		title: '活动地点',
@@ -54,7 +54,8 @@ $(function() {
                     code: '618083',
                     json: {"code": selRecords[0].code}
                 }).then(function() {
-                    sucDetail();
+                    toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
                 });
             });
 

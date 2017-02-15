@@ -49,6 +49,10 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
+		if (selRecords[0].status == 0) {
+            toastr.info("请先上架该线路再进行Tab内容设置");
+            return;
+        }
 
         window.location.href = "router_tab.html?lineCode=" + selRecords[0].code;
 		 

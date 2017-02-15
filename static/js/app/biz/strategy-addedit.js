@@ -4,45 +4,52 @@ $(function() {
 	
 	var fields = [ {
 		title: '针对线路',
-		field: '',
+		field: 'lineCode',
 		type:"select",
-		key:"",
+		listCode:"618101",
+		keyName:"code",
+		valueName:"{{code.DATA}}-{{name.DATA}}",
 		required: true,
 		readonly:view
 	},{
 		title: '攻略名称',
-		field: '',
+		field: 'title',
 		maxlength:32,
 		required: true,
 		readonly:view
 	}, {
 		title: '最佳旅行时间',
-		field: '',
+		field: 'bestDate',
 		maxlength:32,
 		readonly:view
 	},{
 		title: '攻略类型',
-		field: '',
+		field: 'type',
 		type:'select',
-		key:'',
-		readonly:view
-	}, {
-		title: '攻略形式',
-		field: '',
-		type:'select',
-		key:'',
-		
+		key:'router_type',
 		readonly:view
 	},{
+		title: '攻略形式',
+		field: 'style',
+		type:'select',
+		key:'router_type2',	
+		readonly:view
+	}, {
+		title:"攻略缩略图",
+		field:"pic",
+		type:"img",
+		required: true,
+	},{
 		title: '攻略详述',
-		field: '',
-		type:"text",
+		field: 'description',
+		type:"textarea",
+		normalArea:true,
 		required: true,
 		readonly:view,
 		maxlength:255
 	},{
 		title:"备注",
-		field:"",
+		field:"remark",
 		maxlength:255
 	}];
 	
@@ -50,9 +57,9 @@ $(function() {
 		fields: fields,
 		code: code,
 		view:view,
-		addCode: '',
-		editCode: '',
-		detailCode: ''
+		addCode: '618110',
+		editCode: '618112',
+		detailCode: '618116'
 	});
 	
 	

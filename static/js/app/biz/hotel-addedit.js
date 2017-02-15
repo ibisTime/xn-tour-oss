@@ -22,7 +22,9 @@ $(function() {
         listCode:"806052",
         keyName:"code",
         valueName:"name",
-         
+        params:{
+        location:"depart_hotel"
+        },
         required: true,
         readonly:view,
     },{

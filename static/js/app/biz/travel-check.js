@@ -4,33 +4,31 @@ $(function() {
 	
 	var fields = [ {
 		title: '针对线路',
-		field: '',
+		field: 'lineCode',
 		readonly:true
 	},{
 		title: '用户名',
-		field: '',
+		field: 'publisher',
 		readonly:true
 	}, {
 		title: '游记名称',
-		field: '',
+		field: 'name',
 		readonly:true
 	},{
 		title: '游记内容',
-		field: '',
+		field: 'description',
 		readonly:true
 	},{
 		title:"游记图片",
-		field:"",
-		// type:"date",
-		// formatter:dateFormat,
-		// required: true,
+		field:"pic",
+		type:"img", 
 		readonly:true
 	}];
 	
 	 var options = {
         fields: fields,
         code: code,
-        detailCode: ''
+        detailCode: '618132'
     };
 
     options.buttons = [{
@@ -40,10 +38,10 @@ $(function() {
                 var data = {};
                 data['code'] = code;
                 data['approverUser'] = sessionStorage.getItem('userName');
-                data["approveResult"] = "1";
-                data["approveNote"] = $("#approveNote").val();
+                data["approvelResult"] = "1";
+                //data["approveNote"] = $("#approveNote").val();
                 reqApi({
-                    code: "",
+                    code: "618123",
                     json: data
                 }).done(function () {
                     sucDetail();
@@ -57,10 +55,10 @@ $(function() {
                 var data = {};
                 data['code'] = code;
                 data['approverUser'] = sessionStorage.getItem('userName');
-                data["approveResult"] = "0";
-                data["approveNote"] = $("#approveNote").val();
+                data["approvelResult"] = "0";
+                //data["approveNote"] = $("#approveNote").val();
                 reqApi({
-                    code: "",
+                    code: "618123",
                     json: data
                 }).done(function () {
                     sucDetail();

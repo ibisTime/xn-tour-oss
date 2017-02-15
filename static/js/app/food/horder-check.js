@@ -15,8 +15,6 @@ $(function() {
 	}, {
 		title: "备注",
 		field: 'remark',
-        type:'textarea',
-        normalArea:true,
         maxlength:255,
         required:true,
 	}];

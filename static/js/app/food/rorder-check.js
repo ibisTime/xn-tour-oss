@@ -3,28 +3,28 @@ $(function() {
 	//var  view =getQueryString('v');
 	
 	var fields = [ {
-		title: '针对美食',
-		field: 'topCode',
-		readonly:true
-	},{
-		title: '用户名',
-		field: 'commer',
+		title: '订单编号',
+		field: 'code1',
+        '[value]': 'code',
 		readonly:true
 	}, {
-		title: '评论时间',
-		field: 'commDatetime',
-        formatter:dataTimeFormat,
+		title: '订单时间',
+		field: 'applyDatetime',
+        formatter:dateTimeFormat,
 		readonly:true
-	},{
-		title: '评论内容',
-		field: 'content',
-		readonly:true
+	}, {
+		title: "备注",
+		field: 'remark',
+        // type:'textarea',
+        // normalArea:true,
+        maxlength:255,
+        required:true,
 	}];
 	
 	 var options = {
         fields: fields,
         code: code,
-        detailCode: '618317'
+        detailCode: '618152'
     };
 
     options.buttons = [{
@@ -33,12 +33,12 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = {};
                 data['code'] = code;
-                data['approverUser'] = sessionStorage.getItem('userName');
+                data['approver'] = sessionStorage.getItem('userName');
                 data["approveResult"] = "1";
-                data["approveNote"] = $("#approveNote").val();
+                data["remark"] = $("#remark").val();
                 reqApi({
-                    code: "618311",
-                    json: data
+                    code: "618145",
+                    json:data
                 }).done(function () {
                     sucDetail();
                 });
@@ -54,8 +54,8 @@ $(function() {
                 data["approveResult"] = "0";
                 data["approveNote"] = $("#approveNote").val();
                 reqApi({
-                    code: "618311",
-                    json: data
+                    code: "618145",
+                    json:data
                 }).done(function () {
                     sucDetail();
                 });

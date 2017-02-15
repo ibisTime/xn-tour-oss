@@ -4,63 +4,56 @@ $(function() {
   
     var fields = [{
         title:"订单编号",
-        field:'',
+        field:"code1",
+        formatter:function(v,data){
+         return  data.code
+        },
         readonly:view
     },{
-		title: '线路名称',
-		field: '',
+		title: '下单人',
+		field: 'applyUser',
         readonly:view
        
     },{
-        title: '线路名称',
-		field: '',
-        type:'select',
-        key:"router_time",
+		title: '线路编号',
+		field: 'lineCode',
         readonly:view
-    },{
-        title: '线路形式',
-		field: '',
-        type:'select',
-        key:"router_type2",
-        readonly:view
-    },{
-        title: '线路类型',
-		field: '',
-        type:'select',
-        key:"router_type",
-        readonly:view
-    }, {
-		title:"人民币价格",
-		field:"",
+    },
+    // {
+    //     title:'支付订单号',
+    //     field:"payCode",
+    //     readonly:view
+    // },
+      {
+		title:"支付金额",
+		field:"amount",
 		formatter:moneyFormat,
-        readonly:view
-	},{
-		title:"线路状态",
-		field:"",
-        type:"select",
-        key:"router_status",
-        readonly:view
-	},{
+        readonly:view  
+    },{
 		title: '下单时间',
-		field: '',
+		field: 'applyDatetime',
         formatter:dateTimeFormat,
         readonly:view
 	},{
 		title:"订单状态",
-		field:"",
+		field:"status",
         type:"select",
         key:"rorder_status",
+        formatter:Dict.getNameForList("rorder_status"),
         readonly:view
        
-	}];
+	},{
+        title:"下单说明",
+        field:"applyNote"
+    }];
     
 
     buildDetail({
 		fields: fields,
 		code: code,
 		view:view,
-		addCode: '',
-		editCode: '',
-		detailCode: ''
+		//addCode: '',
+		//editCode: '',
+		detailCode: '618152'
 	});
 });
