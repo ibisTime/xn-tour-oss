@@ -15,6 +15,8 @@ $(function() {
 	}, {
 		title: "备注",
 		field: 'remark',
+        // type:'textarea',
+        // normalArea:true,
         maxlength:255,
         required:true,
 	}];
@@ -22,7 +24,7 @@ $(function() {
 	 var options = {
         fields: fields,
         code: code,
-        detailCode: '618052'
+        detailCode: '618152'
     };
 
     options.buttons = [{
@@ -33,10 +35,10 @@ $(function() {
                 data['code'] = code;
                 data['approver'] = sessionStorage.getItem('userName');
                 data["approveResult"] = "1";
-                data["approveNote"] = $("#approveNote").val();
+                data["remark"] = $("#remark").val();
                 reqApi({
-                    code: "618046",
-                    json: data
+                    code: "618184",
+                    json:data
                 }).done(function () {
                     sucDetail();
                 });
@@ -52,8 +54,8 @@ $(function() {
                 data["approveResult"] = "0";
                 data["approveNote"] = $("#approveNote").val();
                 reqApi({
-                    code: "618046",
-                    json: data
+                    code: "618184",
+                    json:data
                 }).done(function () {
                     sucDetail();
                 });

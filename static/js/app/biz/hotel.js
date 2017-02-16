@@ -8,10 +8,11 @@ $(function() {
         title:"酒店名称",
         field:'name', 
         search:true 
-    },{
-		title: '酒店类别',
-		field: 'category',
-        type:"select",
+    },
+    // {
+	// 	title: '酒店类别',
+	// 	field: 'category',
+    //     type:"select",
         // formatter: function(v, r) {
     	// 	if (v == "depart_hotel") {
     	// 		return '豪华酒店';
@@ -21,7 +22,8 @@ $(function() {
     	// 		return ' ';
     	// 	}
     	// }
-	},{
+	//},
+    {
 		title: '酒店类型',
 		field: 'type',
         type:"select",

@@ -43,7 +43,6 @@ $(function() {
 		title: '攻略详述',
 		field: 'description',
 		type:"textarea",
-		normalArea:true,
 		required: true,
 		readonly:view,
 		maxlength:255

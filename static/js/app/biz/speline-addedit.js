@@ -2,62 +2,73 @@ $(function() {
 	var code = getQueryString('code');
 	var  view =getQueryString('v');
 	
-	var fields = [ {
+	var fields = [{
+		title:"专线名称",
+		field:"name",
+		required:true,
+		maxlength:32,
+		readonly:view
+	}, {
 		title: '乘车地点',
-		field: '',
-		required: true,
-		type:"select",
-        key:"",
+		field: 'address',
+	    required:true,
+		maxlength:32,
+		// type:"select",
+        // key:"",
 		readonly:view
 	},{
 		title: '类型',
-		field: '',
+		field: 'type',
 		type:'select',
-		key:'',
+		listCode:"806052",
+        keyName:"code",
+        valueName:"name",
+        params:{
+        location:"goout",
+        },
 		required: true,
 		readonly:view
 	}, {
 		title: '核载人数',
-		field: '',
+		field: 'maxNum',
 		number:true,
 		required: true,
 		readonly:view
 	},{
 		title: '起点',
-		field: '',
+		field: 'startSite',
 		required: true,
 		readonly:view,
         maxlength:32
 	}, {
 		title: '终点',
-		field: '',
+		field: 'endSite',
 		maxlength:32,
 		required: true,
 		readonly:view
 	},{
 		title:"价格",
-		field:"",
+		field:"price",
 	    amount:true,
 		formatter:moneyFormat,
 		required: true,
 		readonly:view
-	}, {
-		title: '价格',
-		field: '',
-		amount:true,
-		formatter:moneyFormat,
-		required: true,
-		readonly:view
 	},{
-		title: '发生时间',
-		field: '',
-		type:"",
+		title: '出发时间',
+		field: 'outDatetime',
+		type:"datetime",
 		required: true,
 		readonly:view,
-        //formatter:timeFormat
+        formatter:dateTimeFormat
 	},{
-        titile:"备注",
-        field:'',
+		title: '剩余票数',
+		field: 'remainNum',
+		number:true,
+		required: true,
+		readonly:view,
+	},{
+        title:"备注",
+        field:'remark',
         maxlength:255
     }];
 	
@@ -65,9 +76,9 @@ $(function() {
 		fields: fields,
 		code: code,
 		view:view,
-		addCode: '',
-		editCode: '',
-		detailCode: ''
+		addCode: '618160',
+		editCode: '618162',
+		detailCode: '618172'
 	});
 	
 	

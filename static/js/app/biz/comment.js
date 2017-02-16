@@ -51,6 +51,9 @@ $(function() {
 		router: 'comment',
 		columns: columns,
 		pageCode: '618315',
+		searchParams:{
+			type:1
+		}
 		 
 	});
      $("#check2Btn").on("click",function(){

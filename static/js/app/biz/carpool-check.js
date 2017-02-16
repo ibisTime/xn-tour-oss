@@ -3,26 +3,24 @@ $(function() {
 	//var  view =getQueryString('v');
 	
 	var fields = [ {
-		title: '订单编号',
-		field: 'code1',
-        '[value]': 'code',
+		title: '订单号',
+		field: 'code',
 		readonly:true
-	}, {
-		title: '订单时间',
-		field: 'applyDatetime',
-        formatter:dateTimeFormat,
+	},{
+		title: '退款原因',
+		field: '',
 		readonly:true
-	}, {
-		title: "备注",
-		field: 'remark',
-        maxlength:255,
-        required:true,
+	},  {
+		title:"审核回复",
+		field:"remark",
+		maxlength:255,
+        required:true
 	}];
 	
 	 var options = {
         fields: fields,
         code: code,
-        detailCode: '618052'
+        detailCode: '618255'
     };
 
     options.buttons = [{
@@ -31,11 +29,11 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = {};
                 data['code'] = code;
-                data['approver'] = sessionStorage.getItem('userName');
-                data["approveResult"] = "1";
-                data["approveNote"] = $("#approveNote").val();
+                data['approverUser'] = sessionStorage.getItem('userName');
+                data["approvelResult"] = "1";
+                data["remark"] = $("#remark").val();
                 reqApi({
-                    code: "618046",
+                    code: "618123",
                     json: data
                 }).done(function () {
                     sucDetail();
@@ -49,10 +47,10 @@ $(function() {
                 var data = {};
                 data['code'] = code;
                 data['approverUser'] = sessionStorage.getItem('userName');
-                data["approveResult"] = "0";
-                data["approveNote"] = $("#approveNote").val();
+                data["approvelResult"] = "0";
+                //data["approveNote"] = $("#approveNote").val();
                 reqApi({
-                    code: "618046",
+                    code: "618123",
                     json: data
                 }).done(function () {
                     sucDetail();
@@ -67,5 +65,6 @@ $(function() {
     }];
 
     buildDetail(options);
+
 
 });

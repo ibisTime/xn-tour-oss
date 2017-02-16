@@ -40,9 +40,8 @@ $(function() {
 		router: 'fcom',
 		columns: columns,
 		pageCode: '618315',
-		//deleteCode: '',
 		searchParams:{
-			type:"1"
+			type:"3"
 		}
 	});
     

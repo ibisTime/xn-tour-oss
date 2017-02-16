@@ -16,14 +16,6 @@ $(function() {
 		formatter:Dict.getNameForList("router_type"),
 		required: true,
 		readonly:view
-	}, {
-		title: '线路形式',
-		field: 'style',
-		type:'select',
-		key:'router_type2',
-		formatter:Dict.getNameForList("router_type2"),
-		required: true,
-		readonly:view
 	},{
     	field : 'category',
 		type:"select",
@@ -33,15 +25,23 @@ $(function() {
 		params:{
 			location:"travel"
 		},
-		formatter:function(v,r){
+		afterSet:function(v,r){
           if (v=="travel"){
 			  return "旅游"
 		  }
 		},
 		required: true,
 		readonly:view ,
-		title :"导航名称",
-    },{
+		title :"类别",
+    }, {
+		title: '线路形式',
+		field: 'style',
+		type:'select',
+		key:'router_type2',
+		formatter:Dict.getNameForList("router_type2"),
+		required: true,
+		readonly:view
+	},{
 		title: '旅行时间',
 		field: 'travelTime',
 		type:'select',

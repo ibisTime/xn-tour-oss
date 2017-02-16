@@ -5,45 +5,51 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : '',
+		field : 'name',
 		title : '线路名称',
         search:true
 	},{
-		field : '',
+		field : 'type',
 		title : '专线类型',
-		key :"spe_type",
-		search:true
+		listCode:"806052",
+        keyName:"code",
+        valueName:"name",
+        params:{
+        location:"goout",
+		
+        }
 	},{
 		title: '起点',
-		field: ''
+		field: 'startSite'
 	},{
 		title:"终点",
-		field:"",
+		field:"endSite",
 		
 	},{
 		title: '价格',
-		field: '',
+		field: 'price',
 		formatter:moneyFormat
 	},{
 		title:"出发时间",
-		field:"",
+		field:"outDatetime",
         search:true,
         formatter:dateTimeFormat
 	},{
 		title:"状态",
-		field:"",
+		field:"status",
         type:"select",
         key:"spe_status",
+		formatter:Dict.getNameForList("spe_status"),
         search:true
 	},{
 		title:"备注",
-		field:"",
+		field:"remark",
 	}];
 	buildList({
 		router: 'speline',
 		columns: columns,
-		pageCode: '',
-		deleteCode: ''
+		pageCode: '618170',
+		deleteCode: '618161'
 	});
 
 	$("#frameBtn").on("click",function(){
@@ -53,10 +59,10 @@ $(function() {
 				return;
 			}
 			var msg = selRecords[0].status == 1 ? "确认下架该线路？": "确认上架该线路？";
-
-			confirm(msg).then(function() {
+           
+			confirm('价格:<input type="number" value="'+selRecords[0].price+'">').then(function() {
 				reqApi({
-					code: '',
+					code: '618163',
 					json: {"code": selRecords[0].code}
 				}).then(function() {
 					toastr.info("操作成功");

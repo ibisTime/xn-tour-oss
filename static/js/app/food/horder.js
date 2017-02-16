@@ -77,10 +77,7 @@ $(function() {
 		router: 'horder',
 		columns: columns,
 		pageCode: '618050',
-		//deleteCode: '',
-		// searchParams:{
-		// 	type:"1",
-		// }
+		 
 	});
          
          $('#cancelBtn').click(function() {
@@ -88,20 +85,38 @@ $(function() {
             if(selRecords.length <= 0){
                 toastr.info("请选择记录");
                 return;
-            }
-           // var msg = selRecords[0].status == 1 ? "确认上架该酒店？": "确认下架该酒店？";
+            } 
+		 
 		   
-            confirm("确认取消该订单？").then(function() {
-                reqApi({
-                    code: '618044',
-                    json: {"code": selRecords[0].code}
-                }).then(function() {
-                   toastr.info("操作成功");
-					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-                });
-            });
-
+			if(selRecords[0].status !=2){
+                     toastr.info("该订单不能被取消");
+                    return;	
+            }else{
+               confirm("确认取消该订单？").then(function() {
+                    reqApi({
+                        code: '618044',
+                        json: {"code": selRecords[0].code}
+                    }).then(function() {
+                    toastr.info("操作成功");
+                        $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                    });
+                  });
+            }
+       });
+        
+      $('#check2Btn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+			if(selRecords[0].status ==6){
+                window.location.href ="horder_check.html?code="+selRecords[0].code;
+            }else{
+                toastr.info("该订单不是待审核状态");
+                return;
+            }
+            
         });
-      
 
 });

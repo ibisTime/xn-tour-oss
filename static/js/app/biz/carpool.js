@@ -4,55 +4,53 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-    },{
-        title:"线路名称",
-        field:'',
-        visible:false,
-        search:true
-    },{
+    },
+    // {
+    //     title:"线路名称",
+    //     field:'',
+    //     visible:false,
+    //     search:true
+    // },
+    {
 		title: '起点',
-		field: ''
+		field: 'startSite'
 	},{
 		title:"终点",
-		field:"",
+		field:"endSite",
 		
 	},{
         title:"司机姓名",
-        field:'',
+        field:'driver',
     },{
         title:"联系方式",
-        field:""
-    },{
-		title:"出发时间",
-		field:"",
-        search:true,
-        formatter:dateTimeFormat
-    },{
+        field:"mobile"
+    }, {
         title:"拼车人数",
-        field:""
+        field:"totalNum"
     },{
-        title:"消费金额",
-        field:"",
+        title:"总价格",
+        field:"totalPrice",
         formatter:moneyFormat
     },{
         title:"出发时间",
-        field:"",
+        field:"outDatetime",
         formatter:dateTimeFormat
     },{
 		title:"状态",
-		field:"",
+		field:"status",
         type:"select",
-        key:"carpord_status",
+        key:"cpord_status",
+        formatter:Dict.getNameForList("cpord_status"),
         search:true
 	},{
 		title:"备注",
-		field:"",
+		field:"remark",
 	}];
 	buildList({
 		router: 'carpool',
 		columns: columns,
-		pageCode: '',
-		deleteCode: ''
+		pageCode: '618250',
+		  
 	});
 
     $('#receiveBtn').click(function() {
@@ -74,7 +72,7 @@ $(function() {
             confirm("确认接下该订单？").then(function() {
                 reqApi({
                     code: '',
-                    json: {"code": selRecords[0].code}
+                    json: {"orderCode": selRecords[0].code}
                 }).then(function() {
                     sucDetail();
                 });
@@ -88,27 +86,47 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status == 2){
-                toastr.warning("已经接单");
-                return;
-            }
             
-            if(selRecords[0].status == 0){
-                toastr.warning("该订单已经取消");
+            
+            if(selRecords[0].status != 2){
+                toastr.warning("该订单不能被取消");
                 return;
             }
 
             confirm("确认取消该订单？").then(function() {
                 reqApi({
-                    code: '',
-                    json: {"code": selRecords[0].code}
+                    code: '618245',
+                    json: {"orderCode": selRecords[0].code}
                 }).then(function() {
-                    sucDetail();
+                    toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
                 });
             });
 
         });
         $('#finishBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status !=2){
+                toastr.warning("该订单不是待完成状态");
+                return;
+            }
+
+            confirm("确认该订单已经完成？").then(function() {
+                reqApi({
+                    code: '618247',
+                    json: {"code": selRecords[0].code}
+                }).then(function() {
+                    toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                });
+            });
+
+        });
+         $('#check2Btn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){
                 toastr.info("请选择记录");
@@ -123,18 +141,10 @@ $(function() {
                 toastr.warning("该订单已经取消");
                 return;
             }
-
-            confirm("确认该订单已经完成？").then(function() {
-                reqApi({
-                    code: '',
-                    json: {"code": selRecords[0].code}
-                }).then(function() {
-                    sucDetail();
-                });
-            });
+          window.location.href ="carpool_check.html?code="+selRecords[0].code;
+             
 
         });
-
 
 
 
