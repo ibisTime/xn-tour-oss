@@ -14,16 +14,17 @@ $(function() {
 		field: 'applyUser',
         readonly:view
        
-    },{
-		title: '线路编号',
-		field: 'lineCode',
-        readonly:view
     },
     // {
-    //     title:'支付订单号',
-    //     field:"payCode",
+	// 	title: '线路编号',
+	// 	field: 'lineCode',
     //     readonly:view
     // },
+    {
+        title:'支付订单号',
+        field:"payCode",
+        readonly:view
+    },
       {
 		title:"支付金额",
 		field:"amount",
@@ -38,8 +39,8 @@ $(function() {
 		title:"订单状态",
 		field:"status",
         type:"select",
-        key:"rorder_status",
-        formatter:Dict.getNameForList("rorder_status"),
+        key:"torder_status",
+        formatter:Dict.getNameForList("torder_status"),
         readonly:view
        
 	},{
@@ -54,6 +55,6 @@ $(function() {
 		view:view,
 		//addCode: '',
 		//editCode: '',
-		detailCode: '618152'
+		detailCode: '618192'
 	});
 });

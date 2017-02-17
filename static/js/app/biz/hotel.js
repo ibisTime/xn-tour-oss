@@ -9,20 +9,17 @@ $(function() {
         field:'name', 
         search:true 
     },
-    // {
-	// 	title: '酒店类别',
-	// 	field: 'category',
-    //     type:"select",
-        // formatter: function(v, r) {
-    	// 	if (v == "depart_hotel") {
-    	// 		return '豪华酒店';
-    	// 	} else if (v == 2) {
-    	// 		return '';
-    	// 	} else {
-    	// 		return ' ';
-    	// 	}
-    	// }
-	//},
+    {
+		title: '酒店类别',
+		field: 'category',
+        type:"select",
+        listCode:"806052",
+        keyName:"code",
+        valueName:"name",
+        params:{
+            location:"depart_hotel"
+        }
+	},
     {
 		title: '酒店类型',
 		field: 'type',

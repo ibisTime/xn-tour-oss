@@ -24,7 +24,10 @@ $(function() {
                $('#comCode').renderDropdown({
                 listCode: '618011',
                 keyName: 'code',
-                valueName: 'name'
+                valueName: 'name',
+				params:{
+					type:"1"
+				}
                 });
 			};
 			if ( v==3){

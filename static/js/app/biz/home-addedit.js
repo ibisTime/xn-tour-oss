@@ -6,7 +6,7 @@ $(function() {
 		title: '类型',
 		field: 'type',
         type:"hidden",
-        value:"2"
+        value:"4"
 	},{
         title: '民宿主人',
         field: 'realName',
@@ -132,7 +132,7 @@ $(function() {
         editCode:"618003",
         detailCode: '618012',
         searchParams:{
-            type:"2",
+            type:"4",
 
         }
     };

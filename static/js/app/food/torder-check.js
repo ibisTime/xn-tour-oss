@@ -50,9 +50,9 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = {};
                 data['code'] = code;
-                data['approverUser'] = sessionStorage.getItem('userName');
+                data['approver'] = sessionStorage.getItem('userName');
                 data["approveResult"] = "0";
-                data["approveNote"] = $("#approveNote").val();
+                data["remark"] = $("#remark").val();
                 reqApi({
                     code: "618184",
                     json:data

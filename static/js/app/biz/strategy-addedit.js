@@ -20,18 +20,21 @@ $(function() {
 	}, {
 		title: '最佳旅行时间',
 		field: 'bestDate',
+		required: true,
 		maxlength:32,
 		readonly:view
 	},{
 		title: '攻略类型',
 		field: 'type',
 		type:'select',
+		required: true,
 		key:'router_type',
 		readonly:view
 	},{
 		title: '攻略形式',
 		field: 'style',
 		type:'select',
+		required: true,
 		key:'router_type2',	
 		readonly:view
 	}, {

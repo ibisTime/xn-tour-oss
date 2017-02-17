@@ -15,37 +15,35 @@ $(function() {
     }, {
         title: '集合地',
 		field: 'joinPlace',
+        type:'select',
         formatter:function(v,data){
             return data.line.joinPlace;
-        },
-         
+        }
     },{
         title: '线路时间',
 		field: 'travelTime',
          formatter:function(v,data){
             return data.line.travelTime;
         },
-        
+        // type:"select",
+        // key:''
     }, 
     // {
 	// 	title:"线路形式",
-	// 	field:"style",
-    //     type:"select",
+	// 	field:"style", 
     //     formatter:function(v,data){
     //         return data.line.style;
     //     },
-    //     key:"router_type2",
-    //     formatter:Dict.getNameForList("router_type2"),
-		
+    //     type:"select",
+    //      key:"router_type2",  
 	// },{
 	// 	title:"线路类型",
 	// 	field:"type",
-    //     type:"select",
     //     formatter:function(v,data){
     //         return data.line.type;
     //     },
-    //     key:"router_type",
-    //     formatter:Dict.getNameForList("router_type"),
+    //     type:"select",
+    //      key:"router_type",
 	// },
     {
 		title: '价格',

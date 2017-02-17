@@ -17,7 +17,10 @@ $(function() {
 		 
 	},{
     	field : 'joinPlace',
-		title : '集合地'
+		title : '集合地',
+		type:'select',
+		key:'router_di',
+		formatter:Dict.getNameForList("router_di"),
     },{
 		field : 'outDate',
 		title : '出行日期',

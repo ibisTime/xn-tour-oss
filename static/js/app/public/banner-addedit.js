@@ -43,9 +43,9 @@ $(function() {
 		fields: fields,
 		code: code,
         view:view,
-        addCode:"",
-        editCode:"",
-		detailCode: ''
+        addCode:"806040",
+        editCode:"806042",
+		detailCode: '806053'
 	});
  
 });

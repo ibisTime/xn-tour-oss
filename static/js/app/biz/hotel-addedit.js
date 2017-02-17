@@ -1,7 +1,7 @@
 $(function() {
     var code = getQueryString('code');
     var view = !!getQueryString('v');
-  
+      //hotel_ss
     var fields = [{
         title: '酒店名称',
         field: 'name',

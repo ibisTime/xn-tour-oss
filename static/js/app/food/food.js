@@ -1,5 +1,7 @@
 $(function() {
-	
+     var descriptionDict = Dict.getNameForList("dining_time");
+
+
 	var columns = [{
 		field : '',
 		title : '',
@@ -12,8 +14,12 @@ $(function() {
 		title: '美食类型',
 		field: 'type',
         type:"select",
-        key:"food_type",
-        formatter:Dict.getNameForList("food_type"),
+        listCode:"806052",
+        keyName:"code",
+        valueName:"name",
+        params:{
+        location:"depart_deli"
+        },
         search:true
 	},{
 		title:"位置",

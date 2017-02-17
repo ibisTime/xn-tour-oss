@@ -30,7 +30,10 @@ $(function() {
         field:"booker",
     },{
         title:"联系方式",
-        field:"mobile"
+        field:"mobile",
+        formatter:function(v,data){
+            return data.res.mobile
+        }
     },{
         title:"预定人数",
         field:"totalNum"

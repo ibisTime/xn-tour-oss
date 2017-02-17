@@ -17,8 +17,11 @@ $(function() {
 	},{
 		title:"更新时间",
 		field:"updateDatetime",
+	    formatter: function(value, row, index){
+        	return row['updateDatetime'] ? dateTimeFormat(row['updateDatetime']) : dateTimeFormat(value);
+        },
 		search:true,
-		formatter:dateFormat,
+		formatter:dateTimeFormat,
 	},{
 		title: '状态',
 		field: 'status',

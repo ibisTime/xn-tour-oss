@@ -46,7 +46,7 @@ $(function() {
 		fields: fields,
 		code: code,
 		view:view,
-		addCode: '',
+		addCode: '618410',
 		editCode: '',
 		detailCode: ''
 	});

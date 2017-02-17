@@ -11,12 +11,12 @@ $(function() {
 	},{
 		field : 'type',
 		title : '专线类型',
-		listCode:"806052",
+		type:"select",
+        listCode:"806052",
         keyName:"code",
         valueName:"name",
         params:{
-        location:"goout",
-		
+            location:"goout"
         }
 	},{
 		title: '起点',

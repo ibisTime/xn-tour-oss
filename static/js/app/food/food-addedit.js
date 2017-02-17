@@ -1,7 +1,23 @@
 $(function() {
     var code = getQueryString('code');
     var view = !!getQueryString('v');
-  
+    //var Dict.getNameForList("Dining_time");
+    var descriptionDict = Dict.getName("dining_time"),
+        items = [];
+    for(var i = 0; i < descriptionDict.length; i++){
+        items.push({
+            key: descriptionDict[i].dkey,
+            value: descriptionDict[i].dvalue
+        });
+    }
+    var descriptionDict = Dict.getName("dining_num"),
+        items2 = [];
+    for(var i = 0; i < descriptionDict.length; i++){
+        items2.push({
+            key: descriptionDict[i].dkey,
+            value: descriptionDict[i].dvalue
+        });
+    }
     var fields = [{
         title: '美食名称',
         field: 'name',
@@ -68,6 +84,20 @@ $(function() {
 		required: true,
 		number:true,
 		readonly:view 
+	},{
+		title: '用餐时段',
+		field: 'supplyTime',
+		type:"checkbox", 
+        items: items,
+		readonly:view ,
+        required: true,
+	},{
+		title: '用餐人数',
+		field: 'maxSeat',
+		type:"checkbox", 
+        items: items2,
+		readonly:view ,
+        required: true,
 	}];
     
 

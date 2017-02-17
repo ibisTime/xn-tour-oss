@@ -6,17 +6,17 @@ $(function() {
 		checkbox : true
     }, {
 		title: 'banner名称',
-		field: '',
+		field: 'name',
         search:true
 	},{
 		title: '位置',
-		field: '',
+		field: 'location',
         type:"select",
         key:"banner_location",
         search:true
 	}, {
 		title: '顺序',
-		field: '',
+		field: 'orderNo',
         
 	},{
 		title:"链接",
@@ -28,8 +28,8 @@ $(function() {
 	buildList({
 		router: 'banner',
 		columns: columns,
-		pageCode: '',
-		deleteCode: '',
+		pageCode: '806050',
+		deleteCode: '806041',
 	});
          
     

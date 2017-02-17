@@ -6,11 +6,16 @@ $(function() {
 		title: '下单人',
 		field: 'booker',
 		readonly:true
-	},{
+	},
+	{
 		title: '手机号',
 		field: 'mobile',
-		readonly:true
-	}, {
+		formatter:function(v,data){
+          return data.res.mobile
+		},
+		readonly:true,
+	},
+	 {
 		title: '出行时间',
 		field: 'outDatetime',
 		formatter:dateTimeFormat,
@@ -53,8 +58,6 @@ $(function() {
 		fields: fields,
 		code: code,
 		view:view,
-		// addCode: '',
-		// editCode: '',
 		detailCode: '618222'
 	});
 	

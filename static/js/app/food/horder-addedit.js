@@ -9,14 +9,15 @@ $(function() {
 		 '[value]': 'code',
 		readonly:view
 	},
+	// {
+	// 	title: '类型',
+	// 	field: 'type',
+	// 	type:'select',
+	// 	key:"ht_type",
+	// 	formatter:Dict.getNameForList("ht_type"),
+	// 	readonly:view
+	// }, 
 	{
-		title: '类型',
-		field: 'type',
-		type:'select',
-		key:"hotel_type2",
-		formatter:Dict.getNameForList("hotel_type2"),
-		readonly:view
-	}, {
 		title: '酒店编号',
 		field: 'hotalCode',
 		readonly:view

@@ -59,22 +59,17 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status == 2){
-                toastr.warning("已经接单");
+            if(selRecords[0].status !=1){
+                toastr.warning("该订单不是待接单状态");
                 return;
             }
-            
-            if(selRecords[0].status == 0){
-                toastr.warning("该订单已经取消");
-                return;
-            }
-
             confirm("确认接下该订单？").then(function() {
                 reqApi({
-                    code: '',
+                    code: '618244',
                     json: {"orderCode": selRecords[0].code}
                 }).then(function() {
-                    sucDetail();
+                    toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
                 });
             });
 
@@ -86,13 +81,10 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            
-            
             if(selRecords[0].status != 2){
                 toastr.warning("该订单不能被取消");
                 return;
             }
-
             confirm("确认取消该订单？").then(function() {
                 reqApi({
                     code: '618245',
@@ -118,7 +110,7 @@ $(function() {
             confirm("确认该订单已经完成？").then(function() {
                 reqApi({
                     code: '618247',
-                    json: {"code": selRecords[0].code}
+                    json: {"orderCode": selRecords[0].code}
                 }).then(function() {
                     toastr.info("操作成功");
 					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
@@ -126,26 +118,16 @@ $(function() {
             });
 
         });
-         $('#check2Btn').click(function() {
-            var selRecords = $('#tableList').bootstrapTable('getSelections');
-            if(selRecords.length <= 0){
-                toastr.info("请选择记录");
-                return;
-            }
-            if(selRecords[0].status == 2){
-                toastr.warning("已经接单");
-                return;
-            }
+
             
-            if(selRecords[0].status == 0){
-                toastr.warning("该订单已经取消");
-                return;
-            }
-          window.location.href ="carpool_check.html?code="+selRecords[0].code;
-             
+        $('#detail2Btn').click(function() {
+                var selRecords = $('#tableList').bootstrapTable('getSelections');
+                if(selRecords.length <= 0){
+                    toastr.info("请选择记录");
+                    return;
+                }
+                window.location.href="carpoli.html?code"+selRecords[0].code;
 
-        });
-
-
+            });
 
 });
