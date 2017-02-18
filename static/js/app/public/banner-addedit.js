@@ -3,38 +3,67 @@ $(function() {
 	var view = getQueryString('v');
 
 	var fields = [{
+		field: "status",
+		required: 'true',
+		value:1,
+		hidden: true
+	}, {
+		field: "companyCode",
+		hidden: true,
+		value: sessionStorage.getItem('systemCode')
+	},{
+		field: "type",
+		value:2,
+		required: 'true',
+		hidden: true
+	}, {
+		field:"belong",
+		title:'属于',
+		value:1,
+		required: 'true',
+		hidden: true
+	} ,{
+		field: "parentCode",
+		value:0,
+		required: 'true',
+		hidden: true
+	}, {
+		field: "contentType",
+		required: 'true',
+		value:1,
+		hidden: true
+	},{
 		title: 'banner名称',
-		field: '',
+		field: 'name',
         required:true,
         readonly:view,
         maxlength:32
 	},{
 		title: '位置',
-		field: '',
+		field: 'location',
         type:"select",
-        key:"banner_location",
+		data: {
+			"index_banner": "首页"
+		},
+		value: "index_banner",
         required:true,
         readonly:view
 	}, {
 		title: '顺序',
-		field: '',
+		field: 'orderNo',
         number:true,
+		maxlength:10,
         required:true,
         readonly:view
 	},{
-		title:"链接",
-		field:"",
-        url:true,
-        readonly:view
-	},{
 		title:"banner图片",
-		field:"",
+		field:"pic",
         type:"img",
         required:true,
         readonly:view
 	},{
 		title: '备注',
-		field: '',
+		field: 'remark',
         readonly:view,
         maxlength:255
 	}];

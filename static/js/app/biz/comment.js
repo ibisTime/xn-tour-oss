@@ -17,10 +17,7 @@ $(function() {
 		field : "topcode",
 		title : '针对线路',
         key:"zd_router",
-		//formatter:Dict.getNameForList("zd_router"),
-		// formatter:function(v,data){
-		// 			return  data.res.topCode
-		// 		},
+		 
         type:"select"
 	},	{
 		field : "type",

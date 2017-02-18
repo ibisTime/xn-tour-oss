@@ -17,13 +17,19 @@ $(function() {
 		title : '针对酒店',
         // key:"",
         // type:"select"
-	},{
+	},
+	// {
+	// 	field : '',
+	// 	title : '酒店类型',
+    //  type:"select"
+	// },
+	{
 		title:"评论时间",
 		field:"commDatetime",
 		formatter:dateFormat,
 	},{
 		title: '审核状态',
-		field: 'status',
+		field: 'status',	
 		type:"select",
 		key:'tracheck_status',
 		formatter:Dict.getNameForList("tracheck_status"),
@@ -37,7 +43,7 @@ $(function() {
 		columns: columns,
 		pageCode: '618315',
 		searchParams:{
-			type:"2"
+			type:2
 		}
 	});
      $("#check2Btn").on("click",function(){

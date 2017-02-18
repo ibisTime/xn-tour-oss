@@ -60,10 +60,11 @@ $(function() {
 			}
 			var msg = selRecords[0].status == 1 ? "确认下架该线路？": "确认上架该线路？";
            
-			confirm('价格:<input type="number" value="'+selRecords[0].price+'">').then(function() {
+			confirm('价格:<input type="number" id="money" value="'+selRecords[0].price+'">').then(function() {
+				var money=$("#money").val();
 				reqApi({
 					code: '618163',
-					json: {"code": selRecords[0].code}
+					json: {"code": selRecords[0].code,money}
 				}).then(function() {
 					toastr.info("操作成功");
 					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });

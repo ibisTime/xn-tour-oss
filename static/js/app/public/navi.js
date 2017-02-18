@@ -22,14 +22,26 @@ $(function() {
 			if(v == "travel"){
 				return '旅游';
 			}
-		}
+			if(v == "home_page"){
+				return '首页';
+			}	
+			if(v == "goout"){
+				return '出发';
+			}
+				
+		   
+		}  
 	},{
 		field: 'type',
 		title: '导航类型',
 		formatter: function(v){
 			if(v == "3")
 				return "模块";
+			if(v == "2")
+				return "banner";
 		}
+		 
+		
 	},{
     	field : 'orderNo',
 	   	title : '顺序'
@@ -40,7 +52,8 @@ $(function() {
 		pageCode: '806050',
 		searchParams:{
 			companyCode: 0,
-			systemCode:"CD-CLW000005"
+			systemCode:"CD-CLW000005",
+			type:3
 		}
 		 
 	});

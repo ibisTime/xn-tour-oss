@@ -3,19 +3,40 @@ $(function() {
     var view = !!getQueryString('v');
   
     var fields = [{
+        title:'大类',
+        field:"category",
+        value:"0",
+        type:"hidden", 
+    },{
+        field:"type",
+        value:"0",
+        type:"hidden",
+    },{
+        field:"advTitle",
+        value:"0",
+        type:"hidden",
+    },{
+        field:"quantity",
+        value:"0",
+        type:"hidden",
+    },{   
+        field:"advPic",
+        value:"0",         
+        type:"hidden",
+    },{
         title: '商品名称',
-        field: '',
+        field: 'name',
         readonly:view,
         required: true,
         maxlength:32
     }, {
         title: '积分价格',
-        field: '',
+        field: 'pic2',
         readonly:view,
         required: true,
         number:true
     }, {
-        field: '',
+        field: 'costPrice',
         title: '人民币价格',
 		amount:true,
         formatter:moneyFormat,
@@ -23,20 +44,20 @@ $(function() {
         readonly:view,
     },{
         title: '图文详述',
-        field: '222',
+        field: 'description',
         type: 'textarea',
         readonly:view,
         required: true,
         maxlength:255
     },  {
         title: '商品图片',
-        field: '',
+        field: 'pic1',
         type: 'img',
         required: true,
         readonly:view
     },{
         title: '备注',
-        field: '',
+        field: 'remark',
         readonly:view,
         maxlength:255
     }, ];
@@ -47,7 +68,7 @@ $(function() {
 		code: code,
 		view:view,
 		addCode: '618410',
-		editCode: '',
-		detailCode: ''
+		editCode: '618412',
+		detailCode: '618422'
 	});
 });

@@ -6,19 +6,19 @@ $(function() {
 		checkbox : true
     },{
         title:"商品名称",
-        field:'',
+        field:'name',
         search:true
     },{
 		title: '积分价格',
-		field: '',
+		field: 'pic2',
         
 	},{
 		title:"人民币价格",
-		field:"",
+		field:"costPrice",
 		formatter:moneyFormat
 	},{
 		title:"商品状态",
-		field:"",
+		field:"status",
         type:"select",
         key:"good_status",
         formatter:Dict.getNameForList("good_status"),
@@ -36,12 +36,15 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            //var msg = selRecords[0].status == 1 ? "确认上架该酒店？": "确认下架该酒店？";
-
+            if(selRecords[0].status == 1){
+                toastr.info("该商品已上架的状态");
+                return;
+            }
+          
             confirm("确认上架该商品？").then(function() {
                 reqApi({
                     code: '618413',
-                    json: {"code": selRecords[0].code}
+                    json: {"code": selRecords[0].code,price1:"0",price2:"0"}
                 }).then(function() {
                     toastr.info("操作成功");
 					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
@@ -56,11 +59,14 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            //var msg = selRecords[0].status == 1 ? "确认上架该酒店？": "确认下架该酒店？";
+            if(selRecords[0].status != 1){
+                toastr.info("该商品不是待下架的状态");
+                return;
+            }
 
-            confirm("确认上架该商品？").then(function() {
+            confirm("确认下架该商品？").then(function() {
                 reqApi({
-                    code: '618413',
+                    code: '618414',
                     json: {"code": selRecords[0].code}
                 }).then(function() {
                     toastr.info("操作成功");

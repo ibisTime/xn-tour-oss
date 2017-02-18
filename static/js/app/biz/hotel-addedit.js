@@ -1,7 +1,15 @@
 $(function() {
     var code = getQueryString('code');
     var view = !!getQueryString('v');
-      //hotel_ss
+      //
+      var descriptionDict = Dict.getName("hotel_ss"),
+        items = [];
+    for(var i = 0; i < descriptionDict.length; i++){
+        items.push({
+            key: descriptionDict[i].dkey,
+            value: descriptionDict[i].dvalue
+        });
+    }
     var fields = [{
         title: '酒店名称',
         field: 'name',
@@ -89,16 +97,7 @@ $(function() {
         title: '设施服务',
         field: 'description',
         type: 'checkbox',
-        items: [{
-            "key": "1",
-            "value": "停车场"
-        }, {
-            "key": "2",
-            "value": "SPA"
-        },{
-            "key":"3",
-            "value":"餐厅"
-        }],
+        items:items,
         required: true,
         readonly:view
     }, {
