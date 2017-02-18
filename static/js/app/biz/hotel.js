@@ -93,8 +93,9 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            var msg = selRecords[0].status == 0 ? "确认上架该酒店？": "确认下架该酒店？";
-
+            var msg = selRecords[0].status == 1 ? "确认下架该酒店？": "确认上架该酒店？";
+             
+             
             confirm(msg).then(function() {
                 reqApi({
                     code: '618004',
@@ -114,6 +115,17 @@ $(function() {
             }
             window.location.href = "house.html?hotalCode=" +selRecords[0].code +"&name="+selRecords[0].name;    
         });
-    
+        $('#edit2Btn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status == 1){
+                toastr.info("请先下架，再进行酒店信息修改");
+                return;
+            }
+            window.location.href = "hotel_addedit.html?code=" +selRecords[0].code;    
+        });
 
 });

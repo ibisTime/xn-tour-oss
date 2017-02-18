@@ -1,7 +1,9 @@
 $(function() {
 	var code = getQueryString('code');
 	var  view =getQueryString('v');
-	
+	//var 
+
+
 	var fields = [{
 		title:"专线名称",
 		field:"name",
@@ -13,21 +15,37 @@ $(function() {
 		field: 'address',
 	    required:true,
 		maxlength:32,
-		// type:"select",
-        // key:"",
+		 
 		readonly:view
 	},{
 		title: '类型',
 		field: 'type',
 		type:'select',
-		listCode:"806052",
-        keyName:"code",
-        valueName:"name",
-        params:{
-        location:"goout",
-        },
+		
+		// listCode:"806052",
+        // keyName:"code",
+        // valueName:"name",
+        // params:{
+        // location:"goout"
+        // },
+		data:{
+             "sp1":"机场专线",
+              "sp2":"快客专线",
+			  "sp3":"旅游专线",
+		},
 		required: true,
-		readonly:view
+		readonly:view,
+		afterSet:function(v,data){
+			if (v=="sp1"){
+				return "机场专线"
+			}
+			if (v=="sp2"){
+				return "快客专线"
+			}
+			if (v=="sp3"){
+				return "旅游专线"
+			}
+		}
 	}, {
 		title: '核载人数',
 		field: 'maxNum',
@@ -37,13 +55,16 @@ $(function() {
 	},{
 		title: '起点',
 		field: 'startSite',
+		type:"select",
+		key:"zero_type",
 		required: true,
 		readonly:view,
-        maxlength:32
+       
 	}, {
 		title: '终点',
 		field: 'endSite',
-		maxlength:32,
+		type:"select",
+		key:"destination_type",
 		required: true,
 		readonly:view
 	},{
@@ -56,10 +77,10 @@ $(function() {
 	},{
 		title: '出发时间',
 		field: 'outDatetime',
-		type:"datetime",
+		type:"date",
 		required: true,
 		readonly:view,
-        formatter:dateTimeFormat
+        formatter:dateFormat
 	},{
 		title: '剩余票数',
 		field: 'remainNum',

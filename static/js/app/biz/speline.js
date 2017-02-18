@@ -12,12 +12,23 @@ $(function() {
 		field : 'type',
 		title : '专线类型',
 		type:"select",
-        listCode:"806052",
-        keyName:"code",
-        valueName:"name",
-        params:{
-            location:"goout"
-        }
+        // listCode:"806052",
+        // keyName:"code",
+        // valueName:"name",
+        // params:{
+        //     location:"goout"
+        // },
+		formatter:function(v,data){
+			if (v=="sp1"){
+				return "机场专线"
+			}
+			if (v=="sp2"){
+				return "快客专线"
+			}
+			if (v=="sp3"){
+				return "旅游专线"
+			}
+		}
 	},{
 		title: '起点',
 		field: 'startSite'
@@ -33,7 +44,7 @@ $(function() {
 		title:"出发时间",
 		field:"outDatetime",
         search:true,
-        formatter:dateTimeFormat
+        formatter:dateFormat
 	},{
 		title:"状态",
 		field:"status",

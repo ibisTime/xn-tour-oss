@@ -36,11 +36,6 @@ $(function() {
 		              }
 		      },
 	},
-	// {
-	// 	title:"价格",
-	// 	field:"price",
-		 
-	// },
 	{
 		title:"房间数",
 		field:"quantity",

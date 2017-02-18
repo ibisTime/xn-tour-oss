@@ -22,7 +22,7 @@ $(function() {
 	// 	field : '',
 	// 	title : '酒店类型',
     //  type:"select"
-	// },
+	// }, 
 	{
 		title:"评论时间",
 		field:"commDatetime",

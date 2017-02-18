@@ -17,7 +17,7 @@ $(function() {
         listCode:"806052",
         keyName:"code",
         valueName:"name",
-        params:{
+        params:{ 
         location:"depart_deli"
         },
         search:true

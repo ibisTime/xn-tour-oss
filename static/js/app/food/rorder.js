@@ -1,5 +1,10 @@
 $(function() {
-	
+	var routerType = Dict.getNameForList("router_type");
+    var routerType2 =Dict.getNameForList("router_type2");
+    var routerDi= Dict.getNameForList("router_di");
+    var routerTime= Dict.getNameForList("router_time");
+
+    console.log(routerType);
 	var columns = [{
 		field : '',
 		title : '',
@@ -17,34 +22,35 @@ $(function() {
 		field: 'joinPlace',
         type:'select',
         formatter:function(v,data){
-            return data.line.joinPlace;
-        }
+            return routerDi(data.line.joinPlace);
+        },
     },{
         title: '线路时间',
 		field: 'travelTime',
          formatter:function(v,data){
-            return data.line.travelTime;
+            return  routerTime(data.line.travelTime);
         },
-        // type:"select",
-        // key:''
+        type:"select",
+        // key:'router_time',
+        // formatter:Dict.getNameForList("router_time"),
     }, 
-    // {
-	// 	title:"线路形式",
-	// 	field:"style", 
-    //     formatter:function(v,data){
-    //         return data.line.style;
-    //     },
-    //     type:"select",
-    //      key:"router_type2",  
-	// },{
-	// 	title:"线路类型",
-	// 	field:"type",
-    //     formatter:function(v,data){
-    //         return data.line.type;
-    //     },
-    //     type:"select",
-    //      key:"router_type",
-	// },
+    {
+		title:"线路形式",
+		field:"style", 
+        formatter:function(v,data){
+            return routerType2(data.line.style);
+        },
+        type:"select",
+        //  key:"router_type2",  
+        //  formatter:Dict.getNameForList("router_type2"),
+	},{
+		title:"线路类型",
+		field:"type",
+        formatter:function(v,data){
+            return routerType(data.line.type);
+        },
+        type:"select",
+	},
     {
 		title: '价格',
 		field: 'amount',

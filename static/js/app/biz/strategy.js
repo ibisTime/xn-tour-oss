@@ -13,7 +13,7 @@ $(function() {
 		search:true
 	},{
 		title: '收藏次数',
-		field: 'collectTimes'
+		field: 'collectTimes' 
 	},{
 		title:"更新时间",
 		field:"updateDatetime",
