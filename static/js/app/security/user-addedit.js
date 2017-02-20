@@ -19,18 +19,7 @@ $(function() {
 		listCode: '805021',
 		keyName: 'code',
 		valueName: 'name'
-	}, {
-		title: '所属地区',
-		field: 'province',
-		listCode:"617127",
-		params: {
-			type: "1"
-		},
-        keyName:"code",
-        valueName:"{{county.DATA}}",
-        type: 'select',
-        required: true,
-	}, {
+	}, 	{
 		title: '备注',
 		field: 'remark',
 		maxlength: 250

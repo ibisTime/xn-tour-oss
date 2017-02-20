@@ -44,9 +44,12 @@ $(function() {
 		title:"酒店电话",
 		field:"telephone",
         search:true
-    },
-    // s
-    {
+    },{
+		title:"是否推荐",
+		field:"location", 
+         key:"hotelhot_status",
+        formatter:Dict.getNameForList("hotelhot_status")
+    },{
 		title:"状态",
 		field:"status",
         type:"select",
@@ -74,7 +77,7 @@ $(function() {
                 toastr.info("请先上架该酒店再推荐");
                 return;
             }
-            var msg = selRecords[0].location == 0 ? "确认取消推荐该酒店？": "确认推荐该酒店？";
+            var msg = selRecords[0].location == 1? "确认取消推荐该酒店？": "确认推荐该酒店？";
              
              confirm(msg).then(function() {
                 reqApi({

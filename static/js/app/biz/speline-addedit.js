@@ -1,9 +1,20 @@
 $(function() {
 	var code = getQueryString('code');
 	var  view =getQueryString('v');
+	var typeObj = {};
 	//var 
-
-
+	reqApi({
+		code: "806052",
+		json: {
+			location:"goout"
+		},
+		sync: true
+	}).then(function(res){
+		$.each(res, function(i, r){
+			if ( r.code==31 ||r.code==32||r.code==35||r.code==38)
+				typeObj[r.code] = r.name;
+		});
+	});
 	var fields = [{
 		title:"专线名称",
 		field:"name",
@@ -21,31 +32,9 @@ $(function() {
 		title: '类型',
 		field: 'type',
 		type:'select',
-		
-		// listCode:"806052",
-        // keyName:"code",
-        // valueName:"name",
-        // params:{
-        // location:"goout"
-        // },
-		data:{
-             "sp1":"机场专线",
-              "sp2":"快客专线",
-			  "sp3":"旅游专线",
-		},
+		data:typeObj,
 		required: true,
 		readonly:view,
-		afterSet:function(v,data){
-			if (v=="sp1"){
-				return "机场专线"
-			}
-			if (v=="sp2"){
-				return "快客专线"
-			}
-			if (v=="sp3"){
-				return "旅游专线"
-			}
-		}
 	}, {
 		title: '核载人数',
 		field: 'maxNum',
@@ -81,6 +70,12 @@ $(function() {
 		required: true,
 		readonly:view,
         formatter:dateFormat
+	},{
+		title:"图片",
+		field:"pic",
+		type:"img",
+		required: true,
+		readonly:view,
 	},{
 		title: '剩余票数',
 		field: 'remainNum',

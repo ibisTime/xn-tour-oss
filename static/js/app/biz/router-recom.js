@@ -17,7 +17,10 @@ $(function() {
                $('#comCode').renderDropdown({
                 listCode:"618171",
                 keyName: 'code',
-                valueName: 'name'
+                valueName: 'name',
+				params:{
+					status:"1"
+				}
                 });
 			};
 			if ( v==2){
@@ -26,7 +29,8 @@ $(function() {
                 keyName: 'code',
                 valueName: 'name',
 				params:{
-					type:"1"
+				    type:"1",
+					status:"1"
 				}
                 });
 			};
@@ -34,7 +38,10 @@ $(function() {
 				$('#comCode').renderDropdown({
 					listCode: '618071',
 					keyName: 'code',
-					valueName: 'name'
+					valueName: 'name',
+					params:{
+					     status:"1"
+				    }
 					});
 				};
              

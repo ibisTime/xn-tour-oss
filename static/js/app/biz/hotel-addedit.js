@@ -1,8 +1,8 @@
 $(function() {
     var code = getQueryString('code');
     var view = !!getQueryString('v');
-      //
-      var descriptionDict = Dict.getName("hotel_ss"),
+    var categoryObj = {};
+     var descriptionDict = Dict.getName("hotel_ss"),
         items = [];
     for(var i = 0; i < descriptionDict.length; i++){
         items.push({
@@ -10,6 +10,23 @@ $(function() {
             value: descriptionDict[i].dvalue
         });
     }
+
+   
+	reqApi({
+		code: "806052",
+		json: {
+			location:"depart_hotel"
+		},
+		sync: true
+	}).then(function(res){
+		$.each(res, function(i, r){
+			if ( r.code==1 ||r.code==2||r.code==3||r.code==5||r.code==6||r.code==7||r.code==8)
+				categoryObj[r.code] = r.name;
+		});
+	});
+
+
+
     var fields = [{
         title: '酒店名称',
         field: 'name',
@@ -27,12 +44,13 @@ $(function() {
         field: "category",
         title: '酒店类别',
 		type:'select',
-        listCode:"806052",
-        keyName:"code",
-        valueName:"name",
-        params:{
-        location:"depart_hotel"
-        },
+        // listCode:"806052",
+        // keyName:"code",
+        // valueName:"name",
+        // params:{
+        // location:"depart_hotel"
+        // },
+        data:categoryObj,
         required: true,
         readonly:view,
     },{

@@ -12,30 +12,25 @@ $(function() {
 		field : 'type',
 		title : '专线类型',
 		type:"select",
-        // listCode:"806052",
-        // keyName:"code",
-        // valueName:"name",
-        // params:{
-        //     location:"goout"
-        // },
-		formatter:function(v,data){
-			if (v=="sp1"){
-				return "机场专线"
-			}
-			if (v=="sp2"){
-				return "快客专线"
-			}
-			if (v=="sp3"){
-				return "旅游专线"
-			}
-		}
+        listCode:"806052",
+        keyName:"code",
+        valueName:"name",
+        params:{
+            location:"goout"
+        },
+		
 	},{
 		title: '起点',
-		field: 'startSite'
+		field: 'startSite',
+		type:"select",
+		key:"zero_type",
+		formatter:Dict.getNameForList("zero_type")
 	},{
 		title:"终点",
 		field:"endSite",
-		
+		type:"select",
+		key:"destination_type",
+		formatter:Dict.getNameForList("destination_type")
 	},{
 		title: '价格',
 		field: 'price',
@@ -71,18 +66,32 @@ $(function() {
 			}
 			var msg = selRecords[0].status == 1 ? "确认下架该线路？": "确认上架该线路？";
            
-			confirm('价格:<input type="number" id="money" value="'+selRecords[0].price+'">').then(function() {
-				var money=$("#money").val();
+			// confirm('价格:<input type="number" id="money" value="'+selRecords[0].price+'">').then(function() {
+			confirm(msg).then(function() {
+				//var money=$("#money").val();
 				reqApi({
 					code: '618163',
-					json: {"code": selRecords[0].code,money}
+					json: {"code": selRecords[0].code,price:selRecords[0].price}
 				}).then(function() {
 					toastr.info("操作成功");
 					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
 				});
 			});
 	});
-
+     $("#edit2Btn").on("click",function(){
+			var selRecords = $("#tableList").bootstrapTable("getSelections");
+			if ( selRecords.length <=0){
+				toastr.info("请选择记录");
+				return;
+			}
+			if ( selRecords[0].status==1){
+				toastr.info("请先下架，再进信息修改");
+				return;
+			}
+           window.location.href="speline_addedit.html?code="+selRecords[0].code;
+			 
+			 
+	});
 
 
 });

@@ -11,15 +11,15 @@ $(function() {
     },{
         title: '活动开始时间',
 		field: 'startDate',
-        type:'datetime',
-        formatter:dateTimeFormat,
+        type:'date',
+        formatter:dateFormat,
         required :true,
         readonly:view
     },{
         title: '活动结束时间',
 		field: 'endDate',
-        type:'datetime',
-        formatter:dateTimeFormat,
+        type:'date',
+        formatter:dateFormat,
         required :true,
         readonly:view
     },{

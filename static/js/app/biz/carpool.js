@@ -5,12 +5,6 @@ $(function() {
 		title : '',
 		checkbox : true
     },
-    // {
-    //     title:"线路名称",
-    //     field:'',
-    //     visible:false,
-    //     search:true
-    // },
     {
 		title: '起点',
 		field: 'startSite'
@@ -66,7 +60,7 @@ $(function() {
             confirm("确认接下该订单？").then(function() {
                 reqApi({
                     code: '618244',
-                    json: {"orderCode": selRecords[0].code}
+                    json: {"code": selRecords[0].code,driver:selRecords[0].driver,mobile:selRecords[0].mobile}
                 }).then(function() {
                     toastr.info("操作成功");
 					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
@@ -110,7 +104,7 @@ $(function() {
             confirm("确认该订单已经完成？").then(function() {
                 reqApi({
                     code: '618247',
-                    json: {"orderCode": selRecords[0].code}
+                    json: {"code": selRecords[0].code}
                 }).then(function() {
                     toastr.info("操作成功");
 					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });

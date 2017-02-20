@@ -13,15 +13,14 @@ $(function() {
 		search:true
 	},{
 		title: '收藏次数',
-		field: 'collectTimes' 
+		field: 'collectionTimes' 
 	},{
 		title:"更新时间",
 		field:"updateDatetime",
 	    formatter: function(value, row, index){
         	return row['updateDatetime'] ? dateTimeFormat(row['updateDatetime']) : dateTimeFormat(value);
         },
-		search:true,
-		formatter:dateTimeFormat,
+		//formatter:dateTimeFormat,
 	},{
 		title: '状态',
 		field: 'status',
@@ -57,7 +56,20 @@ $(function() {
 				});
 			});
 	});
+    $("#edit2Btn").on("click",function(){
+			var selRecords = $("#tableList").bootstrapTable("getSelections");
+			if ( selRecords.length <=0){
+				toastr.info("请选择记录");
+				return;
+			}
+			if ( selRecords[0].status ==1){
+				toastr.info("请先下架，再修改信息");
+				return;
+			}
 
+			window.location.href="strategy_addedit.html?code="+selRecords[0].code;
+
+	});
 
 
 });

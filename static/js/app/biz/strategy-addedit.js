@@ -48,7 +48,6 @@ $(function() {
 		type:"textarea",
 		required: true,
 		readonly:view,
-		maxlength:255
 	},{
 		title:"备注",
 		field:"remark",

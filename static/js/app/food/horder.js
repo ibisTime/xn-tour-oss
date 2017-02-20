@@ -1,5 +1,7 @@
 $(function() {
 	
+
+
 	var columns = [{
 		field : '',
 		title : '',
@@ -42,18 +44,29 @@ $(function() {
 		 
 	},
 	{
-		title:"房型",
-		field:"roomType",
-		search:true,
+		title:"酒店类型",
+		field:"category",
+		search:true,      //hh_type
 		type:"select",
 		formatter :function(v, data){        
-		    return  data.hotal.category;
+			return   data.hotal.category;
 		},
-		key:"home_type",
-		formatter:Dict.getNameForList("home_type"),
-		 
+		listCode:"806052",
+        keyName:"code",
+        valueName:"name",
+        params:{
+            location:"depart_hotel"
+        } ,
+		search:true,
+		visible:false,
+	},{
+		title:"房型",
+		field:"roomType",
+		type:"select",
+		key:"hh_type",
+		formatter:Dict.getNameForList("hh_type")
 	},
-	{
+	{ 
 		title: '下单时间',
 		field: 'applyDatetime',
         formatter:dateTimeFormat
