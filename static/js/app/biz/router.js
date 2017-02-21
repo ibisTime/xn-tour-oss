@@ -14,7 +14,7 @@ $(function() {
 		type:'select',
 		key:'router_type2',
 		formatter:Dict.getNameForList("router_type2"),
-		 
+		search: true 
 	},{
     	field : 'joinPlace',
 		title : '集合地',

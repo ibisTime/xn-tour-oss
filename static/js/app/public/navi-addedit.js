@@ -42,7 +42,11 @@ $(function() {
 				$('#location').html('出发-酒店')
 					.attr("data-location", v);
 			}
+		},
+		formatter:function(v,data){
+			return  data.location
 		}
+		   
 	},{
 		title: "导航类型",
 		field: 'type',

@@ -7,6 +7,10 @@ $(function() {
 	},{
 		field : 'lineCode',
 		title : '针对线路',
+		listCode:"618101",
+		keyName:'code',
+		valueName:"name",
+		search:true
 	},{
 		field : 'title',
 		title : '攻略标题',

@@ -13,7 +13,7 @@ $(function() {
 	}, {
 		field: 'pushType',
 		type: 'hidden',
-		value: '12'
+		value: '11'
 	}, {
 		field: 'smsType',
 		type: 'hidden',

@@ -8,19 +8,25 @@ $(function() {
 		title: '关键词',
 		field: 'word',
         visible:false,
-        search:true    
-	},
-	{
-		
+        search:true
+	},{
 		field : 'commer',
 		title : '用户名',
 	},
-
 	{
-		field : "parentCode",
+		field : "topcode",
 		title : '针对线路',
         key:"zd_router",
 		 
+        type:"select"
+	},	{
+		field : "type",
+		title : '类型',
+        key:"ht_type",
+		formatter:function(v,data){
+			return  data.res.type
+		},
+		formatter:Dict.getNameForList("ht_type"),
         type:"select"
 	},
 	{
@@ -43,7 +49,7 @@ $(function() {
 		columns: columns,
 		pageCode: '618315',
 		searchParams:{
-			type:1
+			typeList:[1,4]
 		}
 		 
 	});
@@ -58,7 +64,7 @@ $(function() {
 			  toastr.info("该条记录不是待审核状态");
 				return;
 		  }
-			window.location.href = "comment_addedit.html?code=" + selRecords[0].code;
+			window.location.href = "travelcom_addedit.html?code=" + selRecords[0].code;
 			 
 	});
 

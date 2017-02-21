@@ -70,7 +70,7 @@ $(function() {
                 toastr.info("请先下架，再进行信息修改");
                 return;
             }
-            window.locaton.href="active_addedit.html?Code="+selRecords[0].code;
+            window.location.href="active_addedit.html?Code="+selRecords[0].code;
 
              
 

@@ -38,8 +38,10 @@ $(function() {
 	},{
 		title:"出发时间",
 		field:"outDatetime",
+		type:"date",
         search:true,
-        formatter:dateFormat
+        formatter:dateFormat,
+       
 	},{
 		title:"状态",
 		field:"status",

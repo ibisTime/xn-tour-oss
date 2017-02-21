@@ -5,21 +5,18 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		title: '关键词',
-		field: 'name',
-        visible:false,
-        search:true
-	},{
 		field : 'publisher',
 		title : '用户名',
 	},{
 		field : 'name',
 		title : '游记名称',
+		search:true
 	},{
 		field : 'lineCode',
 		title : '针对线路',
 		//key:"zd_router",
         //type:"select"
+		search:true
 	},{
 		title:"更新时间",
 		field:"updateDatetime",

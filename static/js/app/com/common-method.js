@@ -371,7 +371,7 @@ $.fn.renderDropdown = function (data, keyName, valueName, defaultOption, filter)
     for (var i = 0; i < data.length; i++) {
         if (filter && filters.indexOf(data[i][keyName]) > -1) {
             html += "<option value='" + data[i][keyName] + "'>" + (data[i][valueName] || valueName.temp(data[i])) + "</option>";
-        } else if (!filter) {
+        } else if (!filter && data[i][keyName]) {
             html += "<option value='" + data[i][keyName] + "'>" + (data[i][valueName] || valueName.temp(data[i])) + "</option>";
         }
     }
@@ -599,6 +599,7 @@ function buildList(options) {
     var urlParams = options.urlParams;
     var urlParamsStr = '';
     var columns = options.columns;
+    var dateTimeList = [];
     if (urlParams) {
         for (var i in urlParams) {
             urlParamsStr += '&' + i + '=' + urlParams[i];
@@ -612,9 +613,10 @@ function buildList(options) {
         if (item.search) {
             if (item.key || item.type == 'select') {
                 html += '<li><label>' + item.title + '</label><select ' + (item.multiple ? 'multiple' : '') + ' id="' + item.field + '" name="' + item.field + '"></select></li>';
-            } else if (item.type == 'date') {
-
-            } else if (item.type == "citySelect") {
+            } else if (item.type == 'date' || item.type == "datetime") {
+				dateTimeList.push(item);
+				html += '<li><label>'+item.title+'</label><input id="'+item.field+'" name="'+item.field+'" class="lay-input lay-input1"/></li>';
+			} else if (item.type == "citySelect") {
                 html += '<li class="clearfix" style="width:56%;"><label>' + item.title + '</label><div id="city-group"><select id="province" name="province" class="control-def prov"></select>' +
                     '<select id="city" name="city" class="control-def city"></select>' +
                     '<select id="area" name="area" class="control-def dist"></select></div></li>';
@@ -631,6 +633,16 @@ function buildList(options) {
     }
     html += '<li><input id="searchBtn" type="button" class="btn" value="查询" /><input type="reset" class="btn" value="重置" /></li></ul>';
     $('.search-form').append(html);
+    
+    for (var i = 0, len = dateTimeList.length; i < len; i++) {
+		var item = dateTimeList[i];
+		laydate({
+			elem: '#' + item.field,
+			min: item.minDate ? item.minDate : '',
+			istime: item.type == 'datetime',
+			format: item.type == 'datetime' ? 'YYYY-MM-DD hh:mm:ss' : 'YYYY-MM-DD'
+		});
+	}
 
     for (var i = 0, len = dropDownList.length; i < len; i++) {
         var item = dropDownList[i];
@@ -1030,7 +1042,7 @@ function buildDetail(options) {
                 html += '<li class="clearfix" style="display:inline-block;"><label>' + item.title + ':</label>';
                 for (var k = 0, len1 = item.items.length; k < len1; k++) {
                     var rd = item.items[k];
-                    html += '<input type="checkbox" disabled id="checkbox' + k + '" name="' + item.field + '" value="' + rd.key + '"><label for="radio' + k + '" class="radio-text">'+(rd.value || '')+'<i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
+                    html += '<input type="checkbox" disabled id="'+item.field+'_checkbox' + k + '" name="' + item.field + '" value="' + rd.key + '"><label for="radio' + k + '" class="radio-text">'+(rd.value || '')+'<i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
                 }
                 html += '</li>';
             } else {
@@ -1047,7 +1059,7 @@ function buildDetail(options) {
             } else if(item.type == "checkbox") {
                 for (var k = 0, len1 = item.items.length; k < len1; k++) {
                     var rd = item.items[k];
-                    html += '<input type="checkbox" id="checkbox' + k + '" name="' + item.field + '" value="' + rd.key + '"><label for="radio' + k + '" class="radio-text">'+(rd.value || '')+'<i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
+                    html += '<input type="checkbox" id="'+item.field+'_checkbox' + k + '" name="' + item.field + '" value="' + rd.key + '"><label for="radio' + k + '" class="radio-text">'+(rd.value || '')+'<i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
                 }
                 html += '</li>';
             } else if (item.type == 'password') {
@@ -1453,7 +1465,7 @@ function buildDetail(options) {
                             for (var k = 0, len1 = item.items.length; k < len1; k++) {
                                 var rd = item.items[k];
                                 if(rd.key == checkData[h]){
-                                    $("#checkbox" + k).prop("checked",true);
+                                    $("#"+item.field+"_checkbox" + k).prop("checked",true);
                                     break;
                                 }
                             }
@@ -1651,7 +1663,7 @@ function buildDetail(options) {
                             for (var k = 0, len1 = item.items.length; k < len1; k++) {
                                 var rd = item.items[k];
                                 if(rd.key == checkData[h]){
-                                    $("#checkbox" + k).prop("checked",true);
+                                    $("#"+item.field+"_checkbox" + k).prop("checked",true);
                                     break;
                                 }
                             }

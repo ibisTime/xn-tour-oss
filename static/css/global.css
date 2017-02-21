@@ -1048,3 +1048,7 @@ li input[type="radio"] {
     -ms-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
 }
+.lay-input1{
+    width: 175px !important;
+    background-position: 145px center !important;
+}

@@ -81,14 +81,16 @@ $(function() {
 		field: 'longitude',
         required: true,
 		number:true,
-		readonly:view
+		readonly:view,
+		maxlength:3
 		 
 	}, {
         title:"纬度",
         field: 'latitude',
         required: true,
         number:true,
-        readonly:view
+        readonly:view,
+        maxlength:3
     }, {
         title:"酒店电话",
         field: 'telephone',
