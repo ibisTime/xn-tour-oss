@@ -39,8 +39,8 @@ $(function() {
 		title:"出发时间",
 		field:"outDatetime",
 		type:"date",
-        search:true,
-        formatter:dateFormat,
+        //search:true,
+        formatter:dateTimeFormat,
        
 	},{
 		title:"状态",
@@ -50,6 +50,20 @@ $(function() {
 		formatter:Dict.getNameForList("spe_status"),
         search:true
 	},{
+		field1:"dateStart",
+		field2:"dateEnd",
+		title1:"出行时间",
+        type1:"datetime",
+		search:true,
+		visible:false
+	},
+	// {
+	// 	field2:"dateEnd",	 
+    //     type1:"datetime",
+	// 	search:true,
+	// 	visible:false
+	// },
+	{
 		title:"备注",
 		field:"remark",
 	}];

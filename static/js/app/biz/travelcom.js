@@ -14,21 +14,23 @@ $(function() {
 		title : '用户名',
 	},
 	{
-		field : "topcode",
+		field : "name",
 		title : '针对线路',
-        key:"zd_router",
-		 
-        type:"select"
-	},	{
-		field : "type",
-		title : '类型',
-        key:"ht_type",
 		formatter:function(v,data){
-			return  data.res.type
-		},
-		formatter:Dict.getNameForList("ht_type"),
-        type:"select"
+			return　data.name;
+		}
+        
 	},
+	// 	{
+	// 	field : "type",
+	// 	title : '类型',
+    //     key:"ht_type",
+	// 	formatter:function(v,data){
+	// 		return  data.type
+	// 	},
+	// 	formatter:Dict.getNameForList("ht_type"),
+    //     type:"select"
+	// },
 	{
 		title:"评论时间",
 		field:"commDatetime",

@@ -19,10 +19,6 @@ $(function() {
         field:"quantity",
         value:"0",
         type:"hidden",
-    },{   
-        field:"advPic",
-        value:"0",         
-        type:"hidden",
     },{
         title: '商品名称',
         field: 'name',
@@ -30,14 +26,14 @@ $(function() {
         required: true,
         maxlength:32
     }, {
-        title: '积分价格',
-        field: 'pic2',
+        title: '缩略图',
+        field: 'advPic',
         readonly:view,
         required: true,
-        number:true
+        type:"img"
     }, {
         field: 'costPrice',
-        title: '人民币价格',
+        title: '积分价格',
 		amount:true,
         formatter:moneyFormat,
         required: true,

@@ -613,9 +613,9 @@ function buildList(options) {
         if (item.search) {
             if (item.key || item.type == 'select') {
                 html += '<li><label>' + item.title + '</label><select ' + (item.multiple ? 'multiple' : '') + ' id="' + item.field + '" name="' + item.field + '"></select></li>';
-            } else if (item.type == 'date' || item.type == "datetime") {
+            }  else if (item.type1 == 'date' || item.type1 == "datetime") {
 				dateTimeList.push(item);
-				html += '<li><label>'+item.title+'</label><input id="'+item.field+'" name="'+item.field+'" class="lay-input lay-input1"/></li>';
+				html += '<li style="width: 50%;"><label>'+item.title1+'</label><input id="'+item.field1+'" name="'+item.field1+'" class="lay-input"/><label style="float:none;padding-left: 10px;">至</label><input id="'+item.field2+'" name="'+item.field2+'" class="lay-input"/></li>';
 			} else if (item.type == "citySelect") {
                 html += '<li class="clearfix" style="width:56%;"><label>' + item.title + '</label><div id="city-group"><select id="province" name="province" class="control-def prov"></select>' +
                     '<select id="city" name="city" class="control-def city"></select>' +
@@ -634,15 +634,22 @@ function buildList(options) {
     html += '<li><input id="searchBtn" type="button" class="btn" value="查询" /><input type="reset" class="btn" value="重置" /></li></ul>';
     $('.search-form').append(html);
     
-    for (var i = 0, len = dateTimeList.length; i < len; i++) {
+   for (var i = 0, len = dateTimeList.length; i < len; i++) {
 		var item = dateTimeList[i];
 		laydate({
-			elem: '#' + item.field,
+			elem: '#' + item.field1,
 			min: item.minDate ? item.minDate : '',
-			istime: item.type == 'datetime',
-			format: item.type == 'datetime' ? 'YYYY-MM-DD hh:mm:ss' : 'YYYY-MM-DD'
+			istime: item.type1 == 'datetime',
+			format: item.type1 == 'datetime' ? 'YYYY-MM-DD hh:mm:ss' : 'YYYY-MM-DD'
+		});
+		laydate({
+			elem: '#' + item.field2,
+			min: item.minDate ? item.minDate : '',
+			istime: item.type1 == 'datetime',
+			format: item.type1 == 'datetime' ? 'YYYY-MM-DD hh:mm:ss' : 'YYYY-MM-DD'
 		});
 	}
+
 
     for (var i = 0, len = dropDownList.length; i < len; i++) {
         var item = dropDownList[i];

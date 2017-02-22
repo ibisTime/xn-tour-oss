@@ -7,9 +7,9 @@ $(function() {
 	},{
 		field : 'lineCode',
 		title : '针对线路',
-		listCode:"618101",
-		keyName:'code',
-		valueName:"name",
+		formatter:function(v,data){
+			return data.line.name
+		},
 		search:true
 	},{
 		field : 'title',

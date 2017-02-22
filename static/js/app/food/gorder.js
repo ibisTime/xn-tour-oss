@@ -10,27 +10,22 @@ $(function() {
         search:true
     },{
 		title: '商品名称',
-		field: '',
+		field: 'name',
         search:true
 	},{
 		title: '积分价格',
-		field: '',
+		field: 'pic2',
 	},{
 		title:"人民币价格",
-		field:"",
+		field:"costPrice",
 		formatter:moneyFormat
-	},{
-		title:"商品状态",
-		field:"",
-        type:"select",
-        key:"good_status",
 	},{
 		title: '下单时间',
 		field: '',
         formatter:dateTimeFormat
 	},{
 		title:"订单状态",
-		field:"",
+		field:"status",
         type:"select",
         key:"gorder_status",
        
@@ -38,8 +33,8 @@ $(function() {
 	buildList({
 		router: 'gorder',
 		columns: columns,
-		pageCode: '',
-		deleteCode: ''
+		pageCode: '618470',
+		// deleteCode: ''
 	});
 
         
@@ -50,17 +45,22 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-           // var msg = selRecords[0].status == 1 ? "确认上架该酒店？": "确认下架该酒店？";
-
-            confirm("确认取消该订单？").then(function() {
-                reqApi({
-                    code: '',
-                    json: {"code": selRecords[0].code}
-                }).then(function() {
-                    toastr.info("操作成功");
-					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+             if(selRecords[0].status == 1||selRecords[0].status == 2||selRecords[0].status == 3){
+                    confirm("确认该订单不发货？").then(function() {
+                    reqApi({
+                        code: '618458',
+                        json: {"code": selRecords[0].code}
+                    }).then(function() {
+                        toastr.info("操作成功");
+                        $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                    });
                 });
-            });
+            }else {
+                toastr.info("该订单不是可以取消发货的状态");
+                return;
+            }
+
+            
 
         });
        
@@ -70,11 +70,15 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
+            if(selRecords[0].status != 2){
+                toastr.info("该订单不是待发货状态");
+                return;
+            }
            // var msg = selRecords[0].status == 1 ? "确认上架该酒店？": "确认下架该酒店？";
 
-            confirm("确认该订单已接货？").then(function() {
+            confirm("确认该订单已经发货？").then(function() {
                 reqApi({
-                    code: '',
+                    code: '618456',
                     json: {"code": selRecords[0].code}
                 }).then(function() {
                    toastr.info("操作成功");
@@ -82,8 +86,29 @@ $(function() {
                 });
             });
 
-        });
+        });   //
 
+         $('#nowestBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status != 3){
+                toastr.info("该订单不是待收货状态");
+                return;
+            }
+           // var msg = selRecords[0].status == 1 ? "确认上架该酒店？": "确认下架该酒店？";
 
+            confirm("确认该订单已到货？").then(function() {
+                reqApi({
+                    code: '618456',
+                    json: {"code": selRecords[0].code}
+                }).then(function() {
+                   toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                });
+            });
 
+        });    
 });

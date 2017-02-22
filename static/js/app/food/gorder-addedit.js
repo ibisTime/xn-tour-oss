@@ -4,25 +4,25 @@ $(function() {
   
     var fields = [{
         title:"订单编号",
-        field:'',
+        field:'code',
        
         readonly:view
     },{
 		title: '商品名称',
-		field: '',
+		field: 'name',
         readonly:view
 	},{
 		title: '积分价格',
-		field: '',
+		field: 'pic2',
         readonly:view
 	},{
 		title:"人民币价格",
-		field:"",
+		field:"costPrice",
 		formatter:moneyFormat,
         readonly:view
 	},{
 		title:"商品状态",
-		field:"",
+		field:"status",
         type:"select",
         key:"good_status",
         readonly:view
@@ -33,7 +33,7 @@ $(function() {
         readonly:view
 	},{
 		title:"订单状态",
-		field:"",
+		field:"status",
         type:"select",
         key:"gorder_status",
         readonly:view
@@ -45,8 +45,6 @@ $(function() {
 		fields: fields,
 		code: code,
 		view:view,
-		addCode: '',
-		editCode: '',
-		detailCode: ''
+		detailCode: '618472'
 	});
 });

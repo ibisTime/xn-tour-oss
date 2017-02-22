@@ -15,6 +15,9 @@ $(function() {
     },{
         title:"用户名",
         field:"commiter",
+		formatter:function(v,data){
+			return  data.res.loginName
+		}
     },{
 		field : 'type',
 		title : '类型',

@@ -77,9 +77,13 @@ $(function() {
                 toastr.info("请先上架该酒店再推荐");
                 return;
             }
-            var msg = selRecords[0].location == 1? "确认取消推荐该酒店？": "确认推荐该酒店？";
+           if(selRecords[0].location == 2){
+               toastr.info("该酒店已推荐");
+               return;
+           }
+           // var msg = selRecords[0].location != 1? "确认取消推荐该酒店？": "确认推荐该酒店？";
              
-             confirm(msg).then(function() {
+             confirm("确认推荐该酒店？").then(function() {
                 reqApi({
                     code: '618005',
                     json: {"code": selRecords[0].code}

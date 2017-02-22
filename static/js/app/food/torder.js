@@ -1,5 +1,20 @@
 $(function() {
-	
+	 
+    //   var typeObj = {};
+ 
+	// reqApi({
+	// 	code: "806052",
+	// 	json: {
+	// 		location:"goout"
+	// 	},
+	// 	sync: true
+	// }).then(function(res){
+	// 	$.each(res, function(i, r){
+	// 		if ( r.code==31 ||r.code==32||r.code==35||r.code==38)
+	// 			typeObj[r.code] = r.name;
+	// 	});
+	// });
+
 	var columns = [{
 		field : '',
 		title : '',
@@ -11,17 +26,10 @@ $(function() {
     }, {
 		title: '出行类型',
 		field: 'type', 
-        // type:'select',
-        
         formatter:function(v,data){
             return  data.specialLine.type;
         },
-        listCode:"806052",
-        keyName:"code",
-        valueName:"name",
-        params:{
-            location:"goout"
-        },
+        
 	},{
 		title:"出发人数",
 		field:"quantity",

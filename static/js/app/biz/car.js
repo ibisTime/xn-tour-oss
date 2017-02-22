@@ -4,22 +4,24 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-    },{
-        title:"线路名称",
-        field:'',
-        visible:false,
-        search:true
-    },{
+    },
+    // {
+    //     title:"线路名称",
+    //     field:'name',
+    //     visible:false,
+    //     search:true
+    // },
+    {
 		title: '起点',
-		field: 'startSite'
+		field: 'startSite',
+        search:true
 	},{
 		title:"终点",
-		field:"startSite",
+		field:"endSite",
 		
 	},{
 		title:"出发时间",
 		field:"outDatetime",
-        search:true,
         formatter:dateTimeFormat
     },{
         title:"支付金额",
@@ -28,6 +30,9 @@ $(function() {
     },{
         title:"下单人",
         field:"booker",
+        formatter:function(v,data){
+            return data.res.loginName
+        }
     },{
         title:"联系方式",
         field:"mobile",
@@ -42,6 +47,13 @@ $(function() {
         field:"price",
         formatter:moneyFormat
     },{
+		field1:"dateStart",
+		field2:"dateEnd",
+		title1:"出行时间",
+        type1:"datetime",
+		search:true,
+		visible:false
+	},{
 		title:"状态",
 		field:"status",
         type:"select",

@@ -18,8 +18,11 @@ $(function() {
 	// 	readonly:view
 	// }, 
 	{
-		title: '酒店编号',
-		field: 'hotalCode',
+		title: '酒店名称',
+		field: 'name',
+		formatter:function(v,data){
+             return  data.hotal.name
+		},
 		readonly:view
 	},{
 		title: "房间类型",

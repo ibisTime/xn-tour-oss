@@ -42,11 +42,28 @@ $(function() {
 				$('#location').html('出发-酒店')
 					.attr("data-location", v);
 			}
+			if(v == "goout"){
+				$('#location').html('出行')
+					.attr("data-location", v);
+			}
+            if(v == "travel"){
+				$('#location').html('旅游')
+					.attr("data-location", v);
+			}
+             if(v == "home_page"){
+				$('#location').html('首页')
+					.attr("data-location", v);
+			}
+             if(v == "index_banner"){
+				$('#location').html('首页-banner')
+					.attr("data-location", v);
+			}
+            if(v == "depart_deli"){
+				$('#location').html('美食')
+					.attr("data-location", v);
+			}
 		},
-		formatter:function(v,data){
-			return  data.location
-		}
-		   
+		  
 	},{
 		title: "导航类型",
 		field: 'type',

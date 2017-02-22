@@ -14,8 +14,11 @@ $(function() {
         field:'code',
         search:true
     },{
-		title: '线路编号',
-		field: 'lineCode',
+		title: '线路名称',
+		field: 'name',
+        formatter:function(v,data){
+            return data.line.name;
+        }
        
     }, {
         title: '集合地',

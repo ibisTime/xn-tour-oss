@@ -12,13 +12,13 @@ $(function() {
         title: '活动开始时间',
 		field: 'startDate',
         type:'date',
-        formatter:dateFormat,
+        formatter:dateTimeFormat,
         
     },{
         title: '活动结束时间',
 		field: 'endDate',
         type:'datetime',
-        formatter:dateFormat,
+        formatter:dateTimeFormat,
        
     },{
 		title: '活动地点',

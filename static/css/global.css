@@ -221,7 +221,7 @@ textarea.error {
     position: relative;
     height: 34px;
     overflow: hidden;
-    width: 320px;
+    width: 200px;
     border: 1px solid #ccc;
     background: url(../images/skins/danlan/icon.png) 290px center no-repeat;
     text-indent: 10px;

@@ -8,12 +8,8 @@ $(function() {
         title:"商品名称",
         field:'name',
         search:true
-    },{
-		title: '积分价格',
-		field: 'pic2',
-        
-	},{
-		title:"人民币价格",
+    }, {
+		title:"积分价格",
 		field:"costPrice",
 		formatter:moneyFormat
 	},{
@@ -36,7 +32,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status == 1){
+            if(selRecords[0].status == 1||selRecords[0].status == 0){
                 confirm("确认上架该商品？").then(function() {
                 reqApi({
                     code: '618413',
@@ -80,5 +76,18 @@ $(function() {
 
         });
 
+         $('#edit2Btn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status == 3){
+                toastr.info("请先下架，再修改信息");
+                return;
+            }
 
+            window.location.href = "goods_addedit.html?code="+selRecords[0].code;
+
+        });
 });
