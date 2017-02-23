@@ -80,8 +80,8 @@ $(function() {
 	},{
 		title:"状态",
 		field:"status",
-		key:"gorder_status",
-		formatter:Dict.getNameForList("gorder_status"),
+		key:"htorder_status",
+		formatter:Dict.getNameForList("htorder_status"),
         readonly:view
        
 	}

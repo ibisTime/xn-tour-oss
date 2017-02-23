@@ -57,8 +57,8 @@ $(function() {
 		title:"状态",
 		field:"status",
         type:"select",
-        key:"carord_status",
-        formatter:Dict.getNameForList("carord_status"),
+        key:"order_status",
+        formatter:Dict.getNameForList("order_status"),
         search:true
 	},{
 		title:"备注",

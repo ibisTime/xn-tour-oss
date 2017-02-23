@@ -45,7 +45,7 @@ $(function() {
     },{
         title:"状态",
         field:"status",
-        key:"carord_status",
+        key:"order_status",
         type:"select",
         readonly:true
     },{
