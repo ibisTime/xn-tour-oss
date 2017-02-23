@@ -96,7 +96,7 @@ $(function() {
             } 
 		 
 		   
-			if(selRecords[0].status !=2){
+			if(selRecords[0].status !=1){
                      toastr.info("该订单不能被取消");
                     return;	
             }else{
@@ -118,7 +118,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-			if(selRecords[0].status ==6){
+			if(selRecords[0].status ==2){
                 window.location.href ="horder_check.html?code="+selRecords[0].code;
             }else{
                 toastr.info("该订单不是待审核状态");

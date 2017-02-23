@@ -79,7 +79,7 @@ $(function() {
                 return;
             }
             if(selRecords[0].status != 1){
-                toastr.warning("该订单不是待结单状态 ");
+                toastr.warning("该订单不是待接单状态 ");
                 return;
             }
             confirm("确认接下该订单？").then(function() {
@@ -121,15 +121,11 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status == 2){
-                toastr.warning("已经接单");
+            if(selRecords[0].status != 32){
+                toastr.warning("该订单不是待完成的状态");
                 return;
             }
-            
-            if(selRecords[0].status == 0){
-                toastr.warning("该订单已经取消");
-                return;
-            }
+
 
             confirm("确认该订单已经完成？").then(function() {
                 reqApi({
@@ -149,7 +145,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status != 4){
+            if(selRecords[0].status != 2){
                 toastr.warning("该订单不是待审核状态");
                 return;
             }

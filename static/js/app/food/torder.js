@@ -29,7 +29,7 @@ $(function() {
         formatter:function(v,data){
             return  data.specialLine.type;
         },
-        
+        search:true
 	},{
 		title:"出发人数",
 		field:"quantity",
@@ -64,7 +64,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status != 2){
+            if(selRecords[0].status != 1){
                 toastr.info("该订单状态不能被取消");
                 return;
             }
@@ -85,7 +85,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-			if(selRecords[0].status ==4){
+			if(selRecords[0].status ==2){
                 window.location.href ="horder_check.html?code="+selRecords[0].code;
             }else{
                 toastr.info("该订单不是待审核状态");

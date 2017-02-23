@@ -4,7 +4,19 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-    },
+    },{
+        title:"线路名称",
+        field:"name",
+        search:true,
+		visible:false
+    },{
+		field1:"dateStart",
+		field2:"dateEnd",
+		title1:"出行时间",
+        type1:"datetime",
+		search:true,
+		visible:false
+	},
     {
 		title: '起点',
 		field: 'startSite'
@@ -53,7 +65,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status !=1){
+            if(selRecords[0].status !=32){
                 toastr.warning("该订单不是待接单状态");
                 return;
             }
@@ -75,7 +87,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status != 2){
+            if(selRecords[0].status != 1){
                 toastr.warning("该订单不能被取消");
                 return;
             }
@@ -96,7 +108,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status !=2){
+            if(selRecords[0].status !=32){
                 toastr.warning("该订单不是待完成状态");
                 return;
             }
