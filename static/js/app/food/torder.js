@@ -1,7 +1,5 @@
 $(function() {
 	 
-    //   var typeObj = {};
- 
 	// reqApi({
 	// 	code: "806052",
 	// 	json: {
@@ -9,11 +7,20 @@ $(function() {
 	// 	},
 	// 	sync: true
 	// }).then(function(res){
-	// 	$.each(res, function(i, r){
-	// 		if ( r.code==31 ||r.code==32||r.code==35||r.code==38)
-	// 			typeObj[r.code] = r.name;
+	// 	$.each(res, function(data){
+	// 		if ( data.code==38){
+    //             return  "旅游专线";
+    //         }else if ( data.code==32){
+    //             return  "快客专线";
+    //         }else  if ( data.code==31){
+    //             return  "机场专线";
+    //         }else  if ( data.code==35){
+    //             return  "预订大巴";
+    //         } 
+            
 	// 	});
 	// });
+   
 
 	var columns = [{
 		field : '',
@@ -29,6 +36,8 @@ $(function() {
         formatter:function(v,data){
             return  data.specialLine.type;
         },
+        type:"select",
+       
         search:true
 	},{
 		title:"出发人数",
@@ -64,7 +73,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status != 1){
+            if(selRecords[0].status != 1 && selRecords[0].status!=0){
                 toastr.info("该订单状态不能被取消");
                 return;
             }

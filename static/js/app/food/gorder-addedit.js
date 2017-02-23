@@ -28,7 +28,7 @@ $(function() {
         readonly:view
 	},{
 		title: '下单时间',
-		field: '',
+		field: 'applyDatetime',
         formatter:dateTimeFormat,
         readonly:view
 	},{

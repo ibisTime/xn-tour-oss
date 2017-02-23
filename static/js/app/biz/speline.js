@@ -57,12 +57,7 @@ $(function() {
 		search:true,
 		visible:false
 	},
-	// {
-	// 	field2:"dateEnd",	 
-    //     type1:"datetime",
-	// 	search:true,
-	// 	visible:false
-	// },
+	 
 	{
 		title:"备注",
 		field:"remark",
@@ -71,7 +66,7 @@ $(function() {
 		router: 'speline',
 		columns: columns,
 		pageCode: '618170',
-		deleteCode: '618161'
+		//deleteCode: '618161'
 	});
 
 	$("#frameBtn").on("click",function(){
@@ -108,6 +103,26 @@ $(function() {
 			 
 			 
 	});
+    $('#delete2Btn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status  != 0){
+                toastr.info("只有未上架才可删除记录");
+                return;
+            }
+            confirm("确定删除该记录？").then(function() {
+                reqApi({
+                    code: '618161',
+                    json: {"code": selRecords[0].code}
+                }).then(function() {
+                    toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                });
+            });
 
+        });
 
 });

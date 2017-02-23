@@ -43,7 +43,7 @@ $(function() {
 		columns: columns,
 		pageCode: '618315',
 		searchParams:{
-			type:1
+			type:"2"
 		}
 		 
 	});

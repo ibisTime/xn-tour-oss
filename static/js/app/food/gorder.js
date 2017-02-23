@@ -12,7 +12,7 @@ $(function() {
 		title: '商品名称',
 		field: 'productName',
         formatter:function(v,data){
-            return data.productOrderList.productName
+            return data.productOrderList[0].productName
         },
         search:true
 	},{
@@ -45,7 +45,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-             if(selRecords[0].status == 0||selRecords[0].status == 1){
+             if(selRecords[0].status != 1){
                     confirm("确认该订单不发货？").then(function() {
                     reqApi({
                         code: '618458',
@@ -76,39 +76,21 @@ $(function() {
             }
           
             window.location.href="gorder_wu.html?code="+selRecords[0].code;
-            // confirm("确认该订单已经发货？").then(function() {
-            //     reqApi({
-            //         code: '618456',
-            //         json: {"code": selRecords[0].code}
-            //     }).then(function() {
-            //        toastr.info("操作成功");
-			// 		$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-            //     });
-            // });
+            
 
         });   //
 
-        //  $('#nowestBtn').click(function() {
-        //     var selRecords = $('#tableList').bootstrapTable('getSelections');
-        //     if(selRecords.length <= 0){
-        //         toastr.info("请选择记录");
-        //         return;
-        //     }
-        //     if(selRecords[0].status != 3){
-        //         toastr.info("该订单不是待收货状态");
-        //         return;
-        //     }
-        //    // var msg = selRecords[0].status == 1 ? "确认上架该酒店？": "确认下架该酒店？";
+         $('#check2Btn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status != 2){
+                toastr.info("该订单不是待审核状态");
+                return;
+            }
+           window.location.href="gorder_check.html?code="+selRecords[0].code;
 
-        //     confirm("确认该订单已到货？").then(function() {
-        //         reqApi({
-        //             code: '618456',
-        //             json: {"code": selRecords[0].code}
-        //         }).then(function() {
-        //            toastr.info("操作成功");
-		// 			$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-        //         });
-        //     });
-
-        // });    
+        });    
 });

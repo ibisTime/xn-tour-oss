@@ -4,7 +4,7 @@ $(function() {
     var routerDi= Dict.getNameForList("router_di");
     var routerTime= Dict.getNameForList("router_time");
 
-    console.log(routerType);
+   // console.log(routerType);
 	var columns = [{
 		field : '',
 		title : '',
@@ -87,7 +87,7 @@ $(function() {
                 return;
             }
             
-            if(selRecords[0].status !=1){
+            if(selRecords[0].status !=1&& selRecords[0].status!=0){
                    toastr.info("该订单不能被取消");
                 return;    
             }else{

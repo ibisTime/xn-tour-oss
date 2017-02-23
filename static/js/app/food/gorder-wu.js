@@ -5,7 +5,7 @@ $(function() {
     var fields = [{
         title:"发货单号",
         field:'orderCode',
-       
+        required: true,
         readonly:view
     },{
 		title: '物流公司',
@@ -13,27 +13,31 @@ $(function() {
         type:"select",
         key:"wl_company",
         formatter:Dict.getNameForList("wl_company"),
-        readonly:view
+        readonly:view,
+		required: true,
 	},{
 		title: '物流单号',
 		field: 'logisticsCode',
-        readonly:view
+        readonly:view,
+		required: true,
 	},{
 		title:"发货人",
 		field:"deliverer",
+		required: true,
 		// formatter:moneyFormat,
         readonly:view
 	},{
 		title:"发货时间",
 		field:"deliveryDatetime",
         type:"datetime",
+		required: true,
        formatter:dateTimeFormat,
         readonly:view
 	},{
 		title: '物流单',
 		field: 'pdf',
         type:"img",
-         
+		required: true,
         readonly:view
 	} ];
     

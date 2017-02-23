@@ -25,6 +25,9 @@ $(function() {
 		router: 'point',
 		columns: columns,
 		pageCode: '802500',
+		searchParams:{
+			currency:"XNB"
+		}
 	 
 	});
      $('#flowBtn').click(function() {

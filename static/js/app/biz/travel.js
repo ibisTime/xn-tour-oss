@@ -45,8 +45,29 @@ $(function() {
 		router: 'travel',
 		columns: columns,
 		pageCode: '618130',
-		deleteCode: '618121'
+		//deleteCode: '618121'
 	});
+	 $('#delete2Btn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status ==1){
+                toastr.info("该记录不可删除");
+                return;
+            }
+            confirm("确定删除该记录？").then(function() {
+                reqApi({
+                    code: '618121',
+                    json: {"code": selRecords[0].code}
+                }).then(function() {
+                    toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                });
+            });
+
+        });
     $("#check2Btn").on("click",function(){
                 var selRecords = $("#tableList").bootstrapTable("getSelections");
                 if ( selRecords.length <=0){

@@ -12,6 +12,9 @@ $(function() {
 	},{
 		field : 'commer',
 		title : '用户名',
+		formatter:function(v,data){
+			return data.res.loginName
+		}
 	},{
 		field : 'topCode',
 		title : '针对酒店',
@@ -26,7 +29,7 @@ $(function() {
 	{
 		title:"评论时间",
 		field:"commDatetime",
-		formatter:dateFormat,
+		formatter:dateTimeFormat,
 	},{
 		title: '审核状态',
 		field: 'status',	
@@ -43,7 +46,7 @@ $(function() {
 		columns: columns,
 		pageCode: '618315',
 		searchParams:{
-			type:2
+			type:"1"
 		}
 	});
      $("#check2Btn").on("click",function(){

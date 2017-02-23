@@ -12,12 +12,15 @@ $(function() {
 	},{
 		field : 'commer',
 		title : '用户名',
+		formatter:function(v,data){
+			return data.res.loginName
+		}
 	},
 	{
 		field : "name",
 		title : '针对线路',
 		formatter:function(v,data){
-			return　data.name;
+			return　data.travels.name;
 		}
         
 	},
@@ -51,7 +54,7 @@ $(function() {
 		columns: columns,
 		pageCode: '618315',
 		searchParams:{
-			typeList:[1,4]
+			type:"4"
 		}
 		 
 	});

@@ -22,7 +22,7 @@ $(function() {
 		title: '接收者',
 		field: 'toMobile',
 		type: 'select',
-		listCode: '805055',
+		pageCode: '805055',
 		keyName: 'mobile',
 		valueName: 'mobile',
 		required: true
