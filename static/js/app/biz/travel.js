@@ -7,6 +7,9 @@ $(function() {
 	},{
 		field : 'publisher',
 		title : '用户名',
+		formatter:function(v,data){
+			return  data.res.loginName
+		},
 	},{
 		field : 'name',
 		title : '游记名称',
@@ -14,8 +17,9 @@ $(function() {
 	},{
 		field : 'lineCode',
 		title : '针对线路',
-		//key:"zd_router",
-        //type:"select"
+		formatter:function(v,data){
+			return  data.line.name
+		},
 		search:true
 	},{
 		title:"更新时间",

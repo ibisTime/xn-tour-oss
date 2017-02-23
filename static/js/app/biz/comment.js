@@ -14,13 +14,17 @@ $(function() {
 		
 		field : 'commer',
 		title : '用户名',
+		 formatter:function(v,data){
+			return data.res.loginName
+		},
 	},
 
 	{
 		field : "parentCode",
 		title : '针对线路',
-        key:"zd_router",
-		 
+		formatter:function(v,data){
+			return data.line.name
+		},
         type:"select"
 	},
 	{
