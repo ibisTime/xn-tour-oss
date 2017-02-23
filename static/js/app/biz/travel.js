@@ -20,7 +20,7 @@ $(function() {
 	},{
 		title:"更新时间",
 		field:"updateDatetime",
-		formatter:dateFormat,
+		formatter:dateTimeFormat,
 	},{
 		title: '收藏次数',
 		field: 'collectionTimes'

@@ -74,8 +74,8 @@ $(function() {
 		title:"订单状态",
 		field:"status",
         type:"select",
-        key:"horder_status",
-        formatter:Dict.getNameForList("horder_status")
+        key:"htorder_status",
+        formatter:Dict.getNameForList("htorder_status")
 	},{
 		title:"买家嘱托",
 		field:"remark",

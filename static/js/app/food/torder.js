@@ -54,8 +54,8 @@ $(function() {
 		title:"订单状态",
 		field:"status",
         type:"select",
-        key:"torder_status",
-       formatter:Dict.getNameForList("torder_status"),
+        key:"sporder_status",
+       formatter:Dict.getNameForList("sporder_status"),
 	},{
 		title:"买家嘱咐",
 		field:"remark",

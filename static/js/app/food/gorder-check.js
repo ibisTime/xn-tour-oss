@@ -17,7 +17,7 @@ $(function() {
 		field: 'remark',
          
         maxlength:255,
-        required:true,
+        //required:true,
 	}];
 	
 	 var options = {
@@ -33,7 +33,7 @@ $(function() {
                 var data = {};
                 data['code'] = code;
                 data['approver'] = sessionStorage.getItem('userName');
-                data["approveResult"] = "1";
+                data["approvelResult"] = "1";
                 data["remark"] = $("#remark").val();
                 reqApi({
                     code: "618460",
@@ -50,7 +50,7 @@ $(function() {
                 var data = {};
                 data['code'] = code;
                 data['approver'] = sessionStorage.getItem('userName');
-                data["approveResult"] = "0";
+                data["approvelResult"] = "0";
                 data["remark"] = $("#remark").val();
                 reqApi({
                     code: "618460",

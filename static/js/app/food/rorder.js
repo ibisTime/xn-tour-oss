@@ -66,8 +66,8 @@ $(function() {
 		title:"订单状态",
 		field:"status",
         type:"select",
-        key:"rorder_status",
-        formatter:Dict.getNameForList("rorder_status"),
+        key:"order_status",
+        formatter:Dict.getNameForList("order_status"),
 	},{
 		title:"买家嘱托",
 		field:"applyNote"
