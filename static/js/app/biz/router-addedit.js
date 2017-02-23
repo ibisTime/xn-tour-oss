@@ -51,9 +51,9 @@ $(function() {
 	}, {
 		title: '集合地',
 		field: 'joinPlace',
-		type:'select',
-		key:'router_di',
-		formatter:Dict.getNameForList("router_di"),
+		//type:'select',
+//		key:'router_di',
+//		formatter:Dict.getNameForList("router_di"),
 		required: true,
 		readonly:view
 	},{
