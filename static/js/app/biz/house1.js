@@ -43,7 +43,7 @@ $(function() {
 		router: 'house1',
 		columns: columns,
 		pageCode: '618030',
-		deleteCode: '618021',
+		//deleteCode: '618021',
         searchParams:{
            // type:"2",
             hotalCode:hotalCode
@@ -57,4 +57,32 @@ $(function() {
         $('#guanBtn').remove();
 		$('#pulBtn').remove();
         $('#frameBtn').remove();
+        $("#edit2Btn").on("click",function(){
+			var selRecords = $("#tableList").bootstrapTable("getSelections");
+			if ( selRecords.length <=0){
+				toastr.info("请选择记录");
+				return;
+			}
+			window.location.href = "house1_addedit.html?code=" + selRecords[0].code+"&hotalCode="+selRecords[0].hotalCode;
+			 
+	   });
+
+       $('#delete2Btn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            confirm("确定删除该记录？").then(function() {
+                reqApi({
+                    code: '618021',
+                    json: {"code": selRecords[0].code}
+                }).then(function() {
+                    toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                });
+            });
+
+        });
+
 });

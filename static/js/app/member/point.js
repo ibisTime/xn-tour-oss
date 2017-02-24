@@ -17,7 +17,7 @@ $(function() {
          
          
 	}, {
-		title: '余额',
+		title: "积分",
 		field: "amount",  
         formatter:moneyFormat
     }, ];

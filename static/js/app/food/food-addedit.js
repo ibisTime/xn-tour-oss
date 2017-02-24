@@ -77,13 +77,16 @@ $(function() {
 		field: 'longitude',
 		required: true,
 		number:true,
-		readonly:view 
+		readonly:view,
+        maxlength:3
 	},{
 		title: '纬度',
 		field: 'latitude',
 		required: true,
 		number:true,
-		readonly:view 
+		readonly:view,
+        maxlength:3 
+        
 	},{
 		title: '用餐时段',
 		field: 'supplyTime',

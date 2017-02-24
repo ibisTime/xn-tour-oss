@@ -57,7 +57,7 @@ $(function() {
 	}];
 	buildList({
 		columns: columns,
-		pageCode: accountCode ? '802524' : '802520',
+        pageCode:"802520",
 		searchParams: {
 			accountNumber: accountCode,
 			// status: 'effect'
