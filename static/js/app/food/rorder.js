@@ -1,7 +1,7 @@
 $(function() {
 	var routerType = Dict.getNameForList("router_type");
     var routerType2 =Dict.getNameForList("router_type2");
-    var routerDi= Dict.getNameForList("router_di");
+   // var routerDi= Dict.getNameForList("router_di");
     var routerTime= Dict.getNameForList("router_time");
 
    // console.log(routerType);
@@ -23,9 +23,9 @@ $(function() {
     }, {
         title: '集合地',
 		field: 'joinPlace',
-        type:'select',
+        //type:'select',
         formatter:function(v,data){
-            return routerDi(data.line.joinPlace);
+            return data.line.joinPlace;
         },
     },{
         title: '线路时间',

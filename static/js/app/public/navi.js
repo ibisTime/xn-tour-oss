@@ -28,6 +28,9 @@ $(function() {
 			if(v == "goout"){
 				return '出发';
 			}
+			if(v == "go_query"){
+				return '查询';
+			}
 				
 		   
 		}  

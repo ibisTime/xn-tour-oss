@@ -21,8 +21,8 @@ $(function() {
     //     readonly:view
     // },
     {
-        title:'支付订单号',
-        field:"payCode",
+        title:'专线编号',
+        field:"specialLineCode",
         readonly:view
     },
       {

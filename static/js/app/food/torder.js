@@ -36,8 +36,7 @@ $(function() {
         formatter:function(v,data){
             return  data.specialLine.type;
         },
-        type:"select",
-       
+       // type:"select",
         search:true
 	},{
 		title:"出发人数",

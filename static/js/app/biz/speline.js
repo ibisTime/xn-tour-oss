@@ -16,9 +16,10 @@ $(function() {
         keyName:"code",
         valueName:"name",
         params:{
-            location:"goout"
+            location:"goout",
+			//codeList:["31","32","35","38"]
         },
-		
+		//search:true,
 	},{
 		title: '起点',
 		field: 'startSite',

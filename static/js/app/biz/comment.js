@@ -6,7 +6,7 @@ $(function() {
 		checkbox : true
 	},{
 		title: '关键词',
-		field: 'word',
+		field: 'content',
         visible:false,
         search:true    
 	},

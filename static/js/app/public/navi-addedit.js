@@ -62,6 +62,10 @@ $(function() {
 				$('#location').html('美食')
 					.attr("data-location", v);
 			}
+			 if(v == "go_query"){
+				$('#location').html('查询')
+					.attr("data-location", v);
+			}
 		},
 		  
 	},{
@@ -96,6 +100,7 @@ $(function() {
 			if(/^page:/i.test(v)){
 				$("#url").closest("li").hide();
 			}
+			
 		}
 	}, {
 		title: '备注',

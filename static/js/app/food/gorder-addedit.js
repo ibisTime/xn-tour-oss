@@ -1,7 +1,7 @@
 $(function() {
     var code = getQueryString('code');
     var view = !!getQueryString('v');
-    var Status=Dict.getNameForList("order_status");
+    //var Status=Dict.getNameForList("order_status");
     
     
     var fields = [{
@@ -13,14 +13,14 @@ $(function() {
         readonly:view
     },{
 		title: '商品名称',
-		field: 'name',  //
+		field: 'name',   
         readonly:view,
         formatter:function(v,data){
         	return data.productOrderList[0].productName;
         },
 	},{
 		title: '商品数量',
-		field: 'quantity',  //
+		field: 'quantity',   
         readonly:view,
         formatter:function(v,data){
         	return data.productOrderList[0].quantity;
@@ -29,13 +29,8 @@ $(function() {
 		title: '积分价格',
 		field: 'amount1',
         readonly:view
-	},{
-		title:"商品状态",
-		field:"status",
-        type:"select",
-        key:"good_status",
-        readonly:view
-	},{
+	},
+	{
 		title: '下单时间',
 		field: 'applyDatetime',
         formatter:dateTimeFormat,   // 
@@ -64,9 +59,9 @@ $(function() {
 	}, {
 		title:"订单状态",
 		field:"status",
-//        formatter:function(v,data){
-//        	return data.status
-//        },
+       formatter:function(v,data){
+		   return data.productOrderList[0].status
+       },
         readonly:view 
 	}];
     
