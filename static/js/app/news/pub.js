@@ -25,6 +25,9 @@ $(function() {
 		pageCode: '805055',
 		keyName: 'mobile',
 		valueName: 'mobile',
+		// params:{
+		// 	kind:"f1"
+		// },
 		required: true
 	}, {
 		title: '内容',

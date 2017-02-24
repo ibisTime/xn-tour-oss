@@ -30,7 +30,9 @@ $(function() {
 		router: 'member',
 		columns: columns,
 		pageCode: '805054',
-		 
+		searchParams:{
+			kind:"f1"
+		}
 	});
          
          $('#loginBtn').click(function() {

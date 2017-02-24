@@ -24,7 +24,7 @@ $(function() {
         field: 'name',
         readonly:view,
         required: true,
-        maxlength:32
+        maxlength:255
     }, {
         title: '缩略图',
         field: 'advPic',
@@ -43,8 +43,7 @@ $(function() {
         field: 'description',
         type: 'textarea',
         readonly:view,
-        required: true,
-        maxlength:255
+        required: true
     },  {
         title: '商品图片',
         field: 'pic1',

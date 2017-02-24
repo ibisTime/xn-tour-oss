@@ -6,7 +6,8 @@ $(function() {
         title:"发货单号",
         field:'orderCode',
         required: true,
-        readonly:view
+        readonly:view,
+		maxlength:32
     },{
 		title: '物流公司',
 		field: 'logisticsCompany',
@@ -20,6 +21,7 @@ $(function() {
 		field: 'logisticsCode',
         readonly:view,
 		required: true,
+		maxlength:32
 	},{
 		title:"发货人",
 		field:"deliverer",

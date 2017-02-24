@@ -49,7 +49,7 @@ $(function() {
                     confirm("确认该订单不发货？").then(function() {
                     reqApi({
                         code: '618458',
-                        json: {"code": selRecords[0].code}
+                        json: {"code": selRecords[0].code,remark:"商户不发货"}
                     }).then(function() {
                         toastr.info("操作成功");
                         $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
