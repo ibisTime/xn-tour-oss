@@ -11,14 +11,13 @@ $(function() {
     });
 	
 	var fields = [ {
-		title: '公司信息',
-		field: 'cvalue',
+		title: '关于我们',
+		field: 'note',
 		type:"textarea",
 	},{
-		title: '',
-		field: 'note',
-        value:"note",
-		hidden:true
+		field: 'cvalue',
+        value: "关于我们",
+		type:'hidden'
 	},{
          field:"id",
          value:code,
@@ -29,38 +28,24 @@ $(function() {
    var options={
         fields: fields,
 		code: code,
-		//editCode: '807711',
-		detailCode: '807716'
-       };
-
-    options.buttons = [{
-        title: "确定",
-        handler: function () {
-            if ($('#jsForm').valid()) {
-                var data = {};
-                data["cvalue"] = $("#cvalue").val();
-                data["note"] = $("#note").val();
-                data["id"] = $("#id").val();
-                reqApi({
-                    code: "807711",
-                    json: data
-                }).done(function () {
-                    toastr.info("操作成功");
-                });
-            }
-        }
-    },
-    //  {
-    //     title: '返回',
-    //     handler: function () {
-    //         goBack();
-    //     }
-    // }
-    ];   
-		
-   
-
-
-
-	buildDetail(options);
+		detailCode: '807716',
+		buttons: [{
+	        title: "确定",
+	        handler: function () {
+	            if ($('#jsForm').valid()) {
+	                var data = {};
+	                data["cvalue"] = $("#cvalue").val();
+	                data["note"] = $("#note").val();
+	                data["id"] = $("#id").val();
+	                reqApi({
+	                    code: "807711",
+	                    json: data
+	                }).done(function () {
+	                    toastr.info("操作成功");
+	                });
+	            }
+	        }
+	    }]
+   };
+   buildDetail(options);
 });

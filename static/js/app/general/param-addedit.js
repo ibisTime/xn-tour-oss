@@ -1,21 +1,32 @@
 $(function() {
 	var code = getQueryString('code');
+	var noteConfig = {
+		title: '参数值',
+		field: 'note',
+		required: true
+	};
+	reqApi({
+		code: '807716',
+		json: {
+			id: code
+		},
+		sync: true
+	}).then(function (data) {
+		if(data.ckey == "aboutus" || data.ckey == "inte" || data.ckey == "soft"){
+			noteConfig.type = "textarea";
+		}
+	})
 	
 	var fields = [{
 		title: '参数键',
 		field: 'ckey',
 		required: true,
 		maxlength: 20
-	}, {
-		title: '参数值',
+	}, noteConfig, {
+		title: '参数说明',
 		field: 'cvalue',
 		required: true,
-		maxlength: 200
-	}, {
-		title: '参数说明',
-		field: 'note',
-		required: true,
-		maxlength: 30
+		maxlength: 255
 	}, {
 		title: '备注',
 		field: 'remark',
