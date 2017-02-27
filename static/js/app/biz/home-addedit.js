@@ -8,6 +8,11 @@ $(function() {
         type:"hidden",
         value:"4"
 	},{
+		title: '',
+		field: 'category',
+        type:"hidden",
+        value:"4"
+	},{
         title: '民宿主人',
         field: 'realName',
         readonly:view,
@@ -22,7 +27,7 @@ $(function() {
     }, {
         field: 'mobile',
         title: '联系电话',
-		tm:true,
+		mobile:true,
         required: true,
         readonly:view,
     },{

@@ -69,7 +69,7 @@ Dict.getNameForList = function(type,code) {
 		}
 	}).then(function(data) {
 		res = function(key) {
-			return key ? Dict.findName(data, key) : '-';
+			return key != undefined ? Dict.findName(data, key) : '-';
 		}
 	});
 	return res;

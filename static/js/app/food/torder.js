@@ -54,6 +54,7 @@ $(function() {
 		field:"status",
         type:"select",
         key:"sporder_status",
+        search:true,
        formatter:Dict.getNameForList("sporder_status"),
 	},{
 		title:"买家嘱咐",

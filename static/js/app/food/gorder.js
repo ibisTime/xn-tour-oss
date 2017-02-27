@@ -27,6 +27,7 @@ $(function() {
 		field:"status",
         type:"select",
         key:"order_status",
+        search:true,
         formatter:Dict.getNameForList("order_status")
        
 	}];

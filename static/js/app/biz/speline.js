@@ -96,8 +96,8 @@ $(function() {
 				toastr.info("请选择记录");
 				return;
 			}
-			if ( selRecords[0].status==1){
-				toastr.info("请先下架，再进信息修改");
+			if ( selRecords[0].status!=0){
+				toastr.info("只有未上架，才可进行信息修改");
 				return;
 			}
            window.location.href="speline_addedit.html?code="+selRecords[0].code;

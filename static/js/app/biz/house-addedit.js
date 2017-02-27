@@ -27,13 +27,34 @@ $(function() {
             type:"select",
             key:"hh_type",
             formatter:Dict.getNameForList("hh_type"),
+            afterSet:function(v){
+			if(v == 1){
+				 $('#price').renderDropdown({
+                    listCode:" ",
+                    keyName: 'code',
+                    valueName: 'price',
+                    });
+			}
+			if(v == 2){
+				 $('#price').renderDropdown({
+                listCode:"",
+                keyName: 'code',
+                valueName: 'price',
+                });
+			}
+             
+		},
             required: true,
             readonly: view
         },{
             field: 'price',
             title: '价格',
+            //pageCode:"618031",
+            // keyName:"code",
+            // valueName:'price',
             amount: true,
             formatter:moneyFormat,
+
             required: true,
             readonly: view
         },{

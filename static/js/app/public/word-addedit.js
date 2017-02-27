@@ -12,6 +12,7 @@ $(function() {
 		title:"权重",
         type:'select',
         key:"weight_type",
+        formatter:Dict.getNameForList("weight_type"),
         readonly:view,
 		required:true,  
 	}, {

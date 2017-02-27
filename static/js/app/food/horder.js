@@ -74,6 +74,7 @@ $(function() {
 		title:"订单状态",
 		field:"status",
         type:"select",
+		search:true,
         key:"htorder_status",
         formatter:Dict.getNameForList("htorder_status")
 	},{

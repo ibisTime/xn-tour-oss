@@ -24,7 +24,7 @@ $(function() {
     },{
 		field : 'outDate',
 		title : '出行日期',
-		formatter: dateFormat
+		formatter: dateTimeFormat
 	}, {
 		title: '价格',
 		field: 'price',

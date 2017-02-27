@@ -66,6 +66,7 @@ $(function() {
 		title:"订单状态",
 		field:"status",
         type:"select",
+        search:true,
         key:"order_status",
         formatter:Dict.getNameForList("order_status"),
 	},{

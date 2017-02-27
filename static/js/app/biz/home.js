@@ -104,7 +104,7 @@ $(function() {
                 toastr.info("请先下架，再进行民宿信息修改");
                 return;
             }
-            window.location.href = "house_addedit.html?code=" +selRecords[0].code;    
+            window.location.href = "home_addedit.html?code=" +selRecords[0].code;    
         });
 
       

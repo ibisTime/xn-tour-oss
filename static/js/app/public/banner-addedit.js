@@ -32,14 +32,19 @@ $(function() {
 		required: 'true',
 		value:1,
 		hidden: true
+	}, {
+		field: "isCompanyEdit",
+		required: 'true',
+		value:0,
+		hidden: true
 	},{
 		title: 'banner名称',
 		field: 'name',
         required:true,
         readonly:view,
-        maxlength:32
+        maxlength:32    //
 	},{
-		title: '位置',
+		title: '位置',  
 		field: 'location',
         type:"select",
 		data: {
