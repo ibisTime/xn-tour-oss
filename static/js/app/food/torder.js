@@ -1,26 +1,5 @@
 $(function() {
-	 
-	// reqApi({
-	// 	code: "806052",
-	// 	json: {
-	// 		location:"goout"
-	// 	},
-	// 	sync: true
-	// }).then(function(res){
-	// 	$.each(res, function(data){
-	// 		if ( data.code==38){
-    //             return  "旅游专线";
-    //         }else if ( data.code==32){
-    //             return  "快客专线";
-    //         }else  if ( data.code==31){
-    //             return  "机场专线";
-    //         }else  if ( data.code==35){
-    //             return  "预订大巴";
-    //         } 
-            
-	// 	});
-	// });
-   
+    
 
 	var columns = [{
 		field : '',
@@ -34,10 +13,18 @@ $(function() {
 		title: '出行类型',
 		field: 'type', 
         formatter:function(v,data){
-            return  data.specialLine.type;
+            if ( data.specialLine.type==38){
+                return  "旅游专线";
+            }else if (data.specialLine.type==32){
+                return  "快客专线";
+            }else  if ( data.specialLine.type==31){
+                return  "机场专线";
+            }else  if ( data.specialLine.type==35){
+                return  "预订大巴";
+            } 
         },
-       // type:"select",
-        search:true
+       type:"select",
+       // search:true
 	},{
 		title:"出发人数",
 		field:"quantity",
