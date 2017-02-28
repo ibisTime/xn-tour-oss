@@ -29,7 +29,7 @@ $(function() {
                 keyName: 'code',
                 valueName: 'name',
 				params:{
-				    type:"1",
+				    //type:"1",
 					status:"1"
 				}
                 });

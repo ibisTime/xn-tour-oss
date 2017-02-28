@@ -94,7 +94,7 @@ $(function() {
             confirm("确认取消该订单？").then(function() {
                 reqApi({
                     code: '618245',
-                    json: {"orderCode": selRecords[0].code}
+                    json: {"code": selRecords[0].code}
                 }).then(function() {
                     toastr.info("操作成功");
 					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });

@@ -27,36 +27,22 @@ $(function() {
             type:"select",
             key:"hh_type",
             formatter:Dict.getNameForList("hh_type"),
-            afterSet:function(v){
-			if(v == 1){
-				 $('#price').renderDropdown({
-                    listCode:" ",
-                    keyName: 'code',
-                    valueName: 'price',
-                    });
-			}
-			if(v == 2){
-				 $('#price').renderDropdown({
-                listCode:"",
-                keyName: 'code',
-                valueName: 'price',
-                });
-			}
-             
-		},
             required: true,
-            readonly: view
-        },{
+            readonly: view 
+		},{
             field: 'price',
             title: '价格',
-            //pageCode:"618031",
-            // keyName:"code",
-            // valueName:'price',
             amount: true,
             formatter:moneyFormat,
-
             required: true,
-            readonly: view
+            readonly: view,
+           //formatter:function(){
+            //      if code !=null{
+            //          $("#price").val(v)
+            //          .html(v)
+            //          .attr("readonly",true);
+            //      }
+            //  },
         },{
             field: 'description',
             title: '设施服务',

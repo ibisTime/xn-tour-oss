@@ -66,10 +66,10 @@ $(function() {
 	},{
 		title: '出发时间',
 		field: 'outDatetime',
-		type:"datetime",
+		type:"date",
 		required: true,
 		readonly:view,
-        formatter:dateTimeFormat
+        formatter: dateFormat
 	},{
 		title:"图片",
 		field:"pic",

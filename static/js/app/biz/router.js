@@ -94,8 +94,8 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status == 1){
-                toastr.info("请先下架，再进行线路信息修改");
+			if(selRecords[0].status != 0){
+                toastr.info("只有为上架才可信息修改");
                 return;
             }
             window.location.href = "router_addedit.html?code=" +selRecords[0].code;    

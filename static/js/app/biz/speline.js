@@ -39,9 +39,7 @@ $(function() {
 	},{
 		title:"出发时间",
 		field:"outDatetime",
-		type:"date",
-        //search:true,
-        formatter:dateTimeFormat,
+        formatter: dateFormat
        
 	},{
 		title:"状态",
@@ -54,7 +52,7 @@ $(function() {
 		field1:"dateStart",
 		field2:"dateEnd",
 		title1:"出行时间",
-        type1:"datetime",
+        type1:"date",
 		search:true,
 		visible:false
 	},
