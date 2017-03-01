@@ -73,25 +73,11 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-           if(selRecords[0].status != 1){
-                toastr.info("请先上架该酒店再推荐");
+           if(selRecords[0].status == 1){
+                toastr.info("该酒店已经上架");
                 return;
             }
-           if(selRecords[0].location == 2){
-               toastr.info("该酒店已推荐");
-               return;
-           }
-           // var msg = selRecords[0].location != 1? "确认取消推荐该酒店？": "确认推荐该酒店？";
-             
-             confirm("确认推荐该酒店？").then(function() {
-                reqApi({
-                    code: '618005',
-                    json: {"code": selRecords[0].code}
-                }).then(function() {
-                   toastr.info("操作成功");
-					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-                });
-             });
+            window.location.href="hotel_tu.html?code="+selRecords[0].code;
         });
          
          $('#frameBtn').click(function() {
@@ -100,12 +86,14 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            var msg = selRecords[0].status == 1 ? "确认下架该酒店？": "确认上架该酒店？";
-             
-             
-            confirm(msg).then(function() {
+            if(selRecords[0].status ==2){
+                toastr.info("该酒店已下架");
+                 
+                return;
+            }
+            confirm("确认下架该酒店？").then(function() {
                 reqApi({
-                    code: '618004',
+                    code: '618005',
                     json: {"code": selRecords[0].code}
                 }).then(function() {
                     toastr.info("操作成功");

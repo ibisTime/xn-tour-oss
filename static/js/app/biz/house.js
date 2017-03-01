@@ -6,19 +6,17 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-    },{
+    },
+    {
         title:"酒店名称",
-        field:'name',
+        field:'name1',
         
         formatter: function(){
             return name;
         }
     },{
-		title: '房间号',
-		field: 'roomNum',     
-	},{
-		title: '房间类型',
-		field: 'type',
+		title: '房型',
+		field: 'name',
         type:"select",
         key:"hh_type",
         formatter:Dict.getNameForList("hh_type")
@@ -37,7 +35,12 @@ $(function() {
         title:"价格",
         field:"price",
         amount:true,
-        formatter:moneyFormat
+        formatter:moneyFormat    
+    } , {
+        title:"总数",
+        field:"totalNum",
+        number:true,
+        
     } ];
 	buildList({
 		router: 'house',

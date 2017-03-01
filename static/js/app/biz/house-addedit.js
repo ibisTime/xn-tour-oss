@@ -15,18 +15,20 @@ $(function() {
         field: "hotalCode",
         value: hotalCode,
         type: 'hidden'
-    }, {
-            field: 'roomNum',
-            title: '房间号',
-            number:true,
-            required: true,
-            readonly: view,   
-        },{
-            field: 'type',
-            title: '房间类型',
+    }, 
+    // {
+    //         field: 'roomNum',
+    //         title: '房间号',
+    //        // number:true,
+    //         required: true,
+    //         readonly: view,   
+    //     },
+        {
+            field: 'name',
+            title: '房型',
             type:"select",
             key:"hh_type",
-            formatter:Dict.getNameForList("hh_type"),
+           // formatter:Dict.getNameForList("hh_type"),
             required: true,
             readonly: view 
 		},{
@@ -36,13 +38,7 @@ $(function() {
             formatter:moneyFormat,
             required: true,
             readonly: view,
-           //formatter:function(){
-            //      if code !=null{
-            //          $("#price").val(v)
-            //          .html(v)
-            //          .attr("readonly",true);
-            //      }
-            //  },
+           
         },{
             field: 'description',
             title: '设施服务',
@@ -56,7 +52,13 @@ $(function() {
             type:"img",
             required: true,
             readonly: view
-        }];
+        } , {
+            title:"房间总数",
+            field:"totalNum",
+            number:true,
+            required: true,
+            readonly: view
+    }];
 
     var options = {
         fields: fields,

@@ -16,17 +16,11 @@ $(function() {
         value: hotalCode,
         type: 'hidden'
     },{
-            field: 'roomNum',
-            title: '房间号',
-            number:true,
-            required: true,
-            readonly: view,   
-        },{
-            field: 'type',
+            field: 'name',
             title: '房间类型',
             type:"select",
             key:"hh_type",
-            formatter:Dict.getNameForList("hh_type"),
+           // formatter:Dict.getNameForList("hh_type"),
             required: true,
             readonly: view
         },{
@@ -49,7 +43,13 @@ $(function() {
             type:"img",
             required: true,
             readonly: view
-        }];
+        },{
+            field: 'totalNum',
+            title: '房间总数',
+            number:true,
+            required: true,
+            readonly: view,   
+        },];
 
     var options = {
         fields: fields,

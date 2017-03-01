@@ -15,12 +15,18 @@ $(function() {
 	},{
         title: '民宿主人',
         field: 'realName',
+        formatter:function(v,data){
+           return data.oriData.realName;
+        },
         readonly:view,
         required: true,
         maxlength:32
     }, {
         title: '身份证件',
         field: 'idNo',
+        formatter:function(v,data){
+           return data.oriData.idNo;
+        },
         idCard :true,
         readonly:view,
         required: true,
@@ -28,11 +34,17 @@ $(function() {
         field: 'mobile',
         title: '联系电话',
 		mobile:true,
+        formatter:function(v,data){
+           return data.oriData.mobile;
+        },
         required: true,
         readonly:view,
     },{
         field: 'loginName',
         title: '登录账号',
+         formatter:function(v,data){
+           return data.oriData.loginName;
+        },
 		maxlength:32,
         required: true,
         readonly:view,
@@ -141,7 +153,8 @@ $(function() {
         searchParams:{
             type:"4",
 
-        }
+        },
+        dataType: "hotal"
     };
 
    

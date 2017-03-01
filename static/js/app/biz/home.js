@@ -81,9 +81,13 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            var msg = selRecords[0].status == 0 ? "确认上架该民宿？": "确认下架该民宿？";
+            if(selRecords[0].status == 1){
+                toastr.info("该民宿已上架");
+                return;
+            }
+           // var msg = selRecords[0].status == 0 ? : ;
 
-            confirm(msg).then(function() {
+            confirm("确认上架该民宿？").then(function() {
                 reqApi({
                     code: '618004',
                     json: {"code": selRecords[0].code}
@@ -94,6 +98,32 @@ $(function() {
             });
 
         });
+        //
+        $('#downBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status == 2){
+                toastr.info("该民宿已下架");
+                return;
+            }
+            //var msg = selRecords[0].status == 0 ? "确认上架该民宿？": "确认下架该民宿？";
+
+            confirm("确认下架该民宿？").then(function() {
+                reqApi({
+                    code: '618005',
+                    json: {"code": selRecords[0].code}
+                }).then(function() {
+                   toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                });
+            });
+
+        });
+
+
          $('#edit2Btn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){

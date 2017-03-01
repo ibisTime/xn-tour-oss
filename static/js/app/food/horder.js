@@ -13,28 +13,22 @@ $(function() {
     },{
 		title: '酒店名称',
 		field: 'name',
-		formatter :function(v, data){        
-		    return  data.hotal.name;
-		},
         search:true
 	},{
 		title: '酒店电话',
 		field: 'telephone',
-		formatter:function(v ,data){
-			return  data.hotal.telephone
-		}
 	},{
 		title: '酒店地址',
 		field: 'province1',
 		formatter: function (v, data) {
-		          var result = ( data.hotal.province || "" ) + ( data.hotal.city || "" ) + ( data.hotal.area || "" );
+		          var result = ( data.province || "" ) + ( data.city || "" ) + ( data.area || "" );
 		          return result || "-";
 		      },
 				afterSet: function (v, data) {
 		          if (view) {
-		              $('#province').html(data.hotal.province);
-		              data.hotal.city && $('#city').html(data.hotal.city);
-		              data.hotal.area && $('#area').html(data.hotal.area);
+		              $('#province').html(data.province);
+		              data.city && $('#city').html(data.city);
+		              data.area && $('#area').html(data.area);
 		              }
 		      },
 	},
@@ -46,11 +40,8 @@ $(function() {
 	{
 		title:"酒店类型",
 		field:"category",
-		search:true,      //hh_type
+		search:true,      
 		type:"select",
-		formatter :function(v, data){        
-			return   data.hotal.category;
-		},
 		listCode:"806052",
         keyName:"code",
         valueName:"name",
@@ -79,7 +70,7 @@ $(function() {
         formatter:Dict.getNameForList("htorder_status")
 	},{
 		title:"买家嘱托",
-		field:"remark",
+		field:"applyNote",
         
 	}];
 	buildList({
@@ -103,7 +94,7 @@ $(function() {
             }else{
                confirm("确认取消该订单？").then(function() {
                     reqApi({
-                        code: '618044',
+                        code: '618043',
                         json: {"code": selRecords[0].code}
                     }).then(function() {
                     toastr.info("操作成功");

@@ -1343,7 +1343,13 @@ function buildDetail(options) {
         reqApi({
             code: options.detailCode,
             json: detailParams
-        }).done(function (data) {
+        }).done(function (d) {
+            var data = d;
+            if(options.dataType){
+                data = d[options.dataType];
+                data.oriData = d;
+            }
+
             for (var i = 0, len = imgList.length; i < len; i++) {
                 (function (i) {
                     setTimeout(function () {
@@ -1357,6 +1363,7 @@ function buildDetail(options) {
                 var item = fields[i];
                 var value = item.value;
                 var displayValue = data[item.field];
+             
                 if (item.onKeyup) {
 
                     (function (i, d) {
@@ -1735,7 +1742,8 @@ function buildDetail(options) {
                             .val( (item.type == 'datetime' ?
                                     dateTimeFormat : dateFormat)(data[item.field]) );
                     } else {
-                        $('#' + item.field).val(item.amount ? moneyFormat(displayValue) : displayValue);
+                        $('#' + item.field).val(item.amount ? moneyFormat(displayValue) : 
+                        item.formatter ? item.formatter(displayValue, data) : displayValue);
                     }
                 }
 
