@@ -57,8 +57,8 @@ $(function() {
 		title:"状态",
 		field:"status",
         type:"select",
-        key:"order_status",
-        formatter:Dict.getNameForList("order_status"),
+        key:"sporder_status",
+        formatter:Dict.getNameForList("sporder_status"),
         search:true
 	},{
 		title:"备注",
@@ -82,16 +82,7 @@ $(function() {
                 toastr.warning("该订单不是待接单状态 ");
                 return;
             }
-            confirm("确认接下该订单？").then(function() {
-                reqApi({
-                    code: '618211',
-                    json: {"code": selRecords[0].code}
-                }).then(function() {
-                     toastr.info("操作成功");
-					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-                });
-            });
-
+              window.location.href="car_receive.html?code="+selRecords[0].code;
         });
          
          $('#cancelBtn').click(function() {
@@ -106,7 +97,7 @@ $(function() {
             }
             confirm("确认取消该订单？").then(function() {
                 reqApi({
-                    code: '618215',
+                    code: '618213',
                     json: {"code": selRecords[0].code}
                 }).then(function() {
                      toastr.info("操作成功");
@@ -129,7 +120,7 @@ $(function() {
 
             confirm("确认该订单已经完成？").then(function() {
                 reqApi({
-                    code: '618212',
+                    code: '618217',
                     json: {"code": selRecords[0].code}
                 }).then(function() {
                   toastr.info("操作成功");
@@ -151,6 +142,17 @@ $(function() {
             }
             window.location.href="car_check.html?code="+selRecords[0].code;
         });
-
-
+  //
+        $('#payBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status != 0){
+                toastr.warning("该订单不是待支付状态");
+                return;
+            }
+            window.location.href="car_pay.html?code="+selRecords[0].code;
+        });
 });

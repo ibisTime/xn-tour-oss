@@ -45,8 +45,8 @@ $(function() {
 		title:"状态",
 		field:"status",
         type:"select",
-        key:"sporder_status",
-        formatter:Dict.getNameForList("sporder_status"),
+        key:"cporder_status",
+        formatter:Dict.getNameForList("cporder_status"),
         search:true
 	},{
 		title:"备注",
@@ -69,15 +69,7 @@ $(function() {
                 toastr.warning("该订单不是待接单状态");
                 return;
             }
-            confirm("确认接下该订单？").then(function() {
-                reqApi({
-                    code: '618244',
-                    json: {"code": selRecords[0].code,driver:selRecords[0].driver,mobile:selRecords[0].mobile}
-                }).then(function() {
-                    toastr.info("操作成功");
-					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-                });
-            });
+            window.location.href="carpool_rece.html?code="+selRecords[0].code;
 
         });
          
@@ -132,7 +124,7 @@ $(function() {
                     toastr.info("请选择记录");
                     return;
                 }
-                window.location.href="carpoli.html?code"+selRecords[0].code;
+                window.location.href="carpoli.html?code="+selRecords[0].code;
 
             });
 

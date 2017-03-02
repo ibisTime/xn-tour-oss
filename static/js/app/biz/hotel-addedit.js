@@ -186,7 +186,7 @@ $(function() {
         addCode:"618000",
         editCode:"618003",
         detailCode: '618012',
-        data1: "hotal"
+        dataType: "hotal"
         // searchParams:{
         //     type:"1",
         // },

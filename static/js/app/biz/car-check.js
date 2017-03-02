@@ -11,7 +11,7 @@ $(function() {
 		readonly:true
 	}, {
 		title:"审核回复",
-		field:"remark",
+		field:"approveNote",
 		maxlength:255,
         required:true
 	}];
@@ -25,14 +25,15 @@ $(function() {
     options.buttons = [{
         title: '通过',
         handler: function () {
-            if ($('#jsForm').valid()) {
+            if ($('#jsForm').valid()) {  
                 var data = {};
                 data['code'] = code;
                 data['approver'] = sessionStorage.getItem('userName');
                 data["approveResult"] = "1";
-                data["remark"] = $("#remark").val();
+
+                data["approveNote"] = $("#approveNote").val();
                 reqApi({
-                    code: "618214",
+                    code: "618216",
                     json: data
                 }).done(function () {
                     sucDetail();
@@ -49,7 +50,7 @@ $(function() {
                 data["approveResult"] = "0";
                 data["remark"] = $("#remark").val();
                 reqApi({
-                    code: "618214",
+                    code: "618216",
                     json: data
                 }).done(function () {
                     sucDetail();

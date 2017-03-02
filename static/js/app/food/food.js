@@ -40,6 +40,11 @@ $(function() {
         field:"price",
         formatter:moneyFormat
     },{
+        title:"是否推荐",
+        field:"location",
+        key:"hotelhot_status",
+		formatter: Dict.getNameForList('hotelhot_status'),
+    },{
 		title:"状态",
 		field:"status",
         type:"select",
@@ -73,24 +78,42 @@ $(function() {
             });
 
         });
+        //
+         $('#downBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status ==1){
+               
+                    confirm("确定下架该美食？").then(function() {
+                    reqApi({
+                        code: '618064',
+                        json: {"code": selRecords[0].code}
+                    }).then(function() {
+                        toastr.info("操作成功");
+                        $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                    });
+                });
+            }else{
+                 toastr.info("该美食不是上架的状态");
+                return;
+            }
+            
+        });
          $('#frameBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){
                 toastr.info("请选择记录");
                 return;
             }
-            var msg = selRecords[0].status == 0 ? "确认上架该美食？": "确认下架该美食？";
-
-            confirm(msg).then(function() {
-                reqApi({
-                    code: '618063',
-                    json: {"code": selRecords[0].code}
-                }).then(function() {
-                    toastr.info("操作成功");
-					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-				
-                });
-            });
+             
+             if(selRecords[0].status  == 1){
+                toastr.info("该美食已上架");
+                return;
+            }
+             window.location.href = "food_top.html?code="+selRecords[0].code;
 
         });
          $('#edit2Btn').click(function() {

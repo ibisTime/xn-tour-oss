@@ -11,7 +11,7 @@ $(function() {
 		sync: true
 	}).then(function(res){
 		$.each(res, function(i, r){
-			if ( r.code==31 ||r.code==32||r.code==35||r.code==38)
+			if ( r.code==31 ||r.code==32||r.code==33||r.code==38)
 				typeObj[r.code] = r.name;
 		});
 	});

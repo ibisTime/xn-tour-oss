@@ -10,6 +10,13 @@ $(function() {
         field:'code',
         search:true
     }, {
+        title:"专线名称",
+        field:'specialLineName',
+        formatter:function(v,data){
+            return data.specialLine.name;
+        },
+        //search:true
+    }, {
 		title: '出行类型',
 		field: 'type', 
         formatter:function(v,data){
@@ -19,8 +26,8 @@ $(function() {
                 return  "快客专线";
             }else  if ( data.specialLine.type==31){
                 return  "机场专线";
-            }else  if ( data.specialLine.type==35){
-                return  "预订大巴";
+            }else  if ( data.specialLine.type==33){
+                return  "长途班车";
             } 
         },
        type:"select",
@@ -75,6 +82,27 @@ $(function() {
                 });
 
         });
+         $('#receBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status != 1){
+                toastr.info("该订单不是待接单的状态");
+                return;
+            }
+                confirm("确认接下该订单？").then(function() {
+                    reqApi({
+                        code: '618184',
+                        json: {"code": selRecords[0].code}
+                    }).then(function() {
+                        toastr.info("操作成功");
+                       $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                    });
+                });
+
+        });
        $('#check2Btn').click(function() {
            var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){
@@ -82,12 +110,33 @@ $(function() {
                 return;
             }
 			if(selRecords[0].status ==2){
-                window.location.href ="horder_check.html?code="+selRecords[0].code;
+                window.location.href ="torder_check.html?code="+selRecords[0].code;
             }else{
                 toastr.info("该订单不是待审核状态");
                 return;
             }
 
         });
-       
+       $('#finishBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status != 32){
+                toastr.info("该订单不是待完成的状态");
+                return;
+            }
+
+                 confirm("确认该订单已经完成？").then(function() {
+                    reqApi({
+                        code: '618187',
+                        json: {"code": selRecords[0].code}
+                    }).then(function() {
+                        toastr.info("操作成功");
+                       $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                    });
+                });
+
+        });
 });

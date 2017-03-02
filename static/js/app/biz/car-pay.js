@@ -1,6 +1,6 @@
 $(function() {
-	var code = getQueryString('code');
-	var  view =getQueryString('v');
+	var code = getQueryString('Code');
+	
 	
 	var fields = [ {
 		title: '下单人',
@@ -53,14 +53,46 @@ $(function() {
         title:"备注",
         field:'remark',
         readonly:true
+    },{
+		hidden: true,
+		field: "orderCodeList",
+		value:["code"] ,
+        required: true
+	}, {
+		title: '支付类型',
+		field: 'payType',
+        type:'select',
+        key:'pay_type',
+		required: true,
+	}];
+	
+	var options = {
+        fields: fields,
+        code: code,
+        detailCode: '618222',
+	}; 
+
+    options.buttons = [{
+        title: '确定',
+        handler: function () {
+            if ($('#jsForm').valid()) {
+				var data = $('#jsForm').serializeObject();
+                reqApi({
+                    code: "618212",
+                    json: data
+                }).done(function () {
+                    sucDetail();
+                });
+            }
+        }
+    },
+	 {
+        title: '返回',
+        handler: function () {
+            goBack();
+        }
     }];
-	
-	buildDetail({
-		fields: fields,
-		code: code,
-		view:view,
-		detailCode: '618222'
-	});
-	
+
+    buildDetail(options);
 	
 });

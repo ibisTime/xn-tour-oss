@@ -27,27 +27,26 @@ $(function() {
          readonly:true,  
     },{
         title:"首次支付金额",
-        field:"firstPayAmount",
+        field:"firstAmount",
         formatter:moneyFormat ,
          readonly:true, 
+    },{
+        title:"首次支付时间",
+        field:"firstPayDatetime",
+        formatter:dateTimeFormat ,
+        readonly:true, 
     },
-    {
-        title:"首次支付编号",
-        field:"firstPayCode",
-        readonly:true,
-         
-    },
-    {
-        title:"第二次支付金额",
-        field:"firstPayAmount",
-        formatter:moneyFormat,
-         readonly:true,    
-    },
-    {
-        title:"第二次支付编号",
-        field:"secondpayCode",
-         readonly:true,
-     }, 
+    // {
+    //     title:"第二次支付金额",
+    //     field:"firstPayAmount",
+    //     formatter:moneyFormat,
+    //      readonly:true,    
+    // },
+    // {
+    //     title:"第二次支付编号",
+    //     field:"secondpayCode",
+    //      readonly:true,
+    //  }, 
      {
 		title:"状态",
 		field:"status",

@@ -67,7 +67,7 @@ function reqApi(options) {
     var commonParams = {
         token: sessionStorage.getItem('token') || '',
         updater: sessionStorage.getItem('userName'),
-        systemCode: sessionStorage.getItem('systemCode')
+        systemCode: sessionStorage.getItem('systemCode'),
     };
     //车贷权限控制
     if(options.code == "617015"){

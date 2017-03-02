@@ -110,6 +110,7 @@ $(function() {
 		view:view,
 		addCode: '618060',
 		editCode: '618062',
-		detailCode: '618072'
+		detailCode: '618072',
+        dataType: "food"
 	});
 });

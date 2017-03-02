@@ -1,6 +1,6 @@
 $(function() {
 	var code = getQueryString('code');
-	var code = getQueryString('code');
+
     var RoomType=Dict.getNameForList("hh_type");
 
 
@@ -17,42 +17,43 @@ $(function() {
 		type:"select",
 		key:"hh_type",
         formatter:function(v,data){
-		   return RoomType(data.oriData.roomType);
-        }
+		   return   RoomType(data.oriData.roomType);
+        },
+		readonly:true
 	},{
 		title: '开始入住时间',
 		field: 'startDate',
 		formatter:dateTimeFormat,
-       
+        readonly:true
 
 	},{
 		title: '退住时间',
 		field: 'endDate',
 		formatter:dateTimeFormat,
-       
+        readonly:true
 	},
 	{
 		title:"入住人手机号",
 		field:"checkInMobile",
-		
+		readonly:true
        
 	},{
 		title:"入住人姓名",
 		field:"checkInName",
-       
+        readonly:true
 	},
 	{
 		title:"数量",
 		field:"quantity",
-         
+        readonly:true
 	},{
 		title:"下单人编号",
 		field:"applyUser",
-       
+        readonly:true
 	},{
 		title:"下单说明",
 		field:"applyNote",
-       
+        readonly:true
 	},{
 		title:"下单时间",
 		field:"applyDatetime",
@@ -67,18 +68,17 @@ $(function() {
 		title: '支付金额',
 		field: 'payAmount',
         formatter:moneyFormat,
-       
+       readonly:true
 	},{
 		title:"状态",
 		field:"status",
 		key:"htorder_status",
 		formatter:Dict.getNameForList("htorder_status"),
-       
-       
+        readonly:true
 	},
     {
 		title: "审核说明",
-		field: 'remark',
+		field: 'approveNote',
         maxlength:255,
         
 	}];
