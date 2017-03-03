@@ -1,5 +1,8 @@
 $(function() {
 	
+    var carpoolCode = getQueryString('code');
+     var code = getQueryString('code');
+
 	var columns = [{
 		field : '',
 		title : '',
@@ -52,14 +55,18 @@ $(function() {
 	buildList({
 		router: 'carpoli',
 		columns: columns,
+        code:code,
 		pageCode: '618253',
-         
+        searchParams:{
+           carpoolCode:carpoolCode
+        }
 		//deleteCode: ''
 	});
     $("#receiveBtn").remove();
     $("#cancelBtn").remove();
      $("#finishBtn").remove();
      $("#exportBtn").remove();
+
      $("#detail2Btn").on("click",function(){
       var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){

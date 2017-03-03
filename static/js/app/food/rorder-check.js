@@ -54,7 +54,7 @@ $(function() {
                 data["approveResult"] = "0";
                 data["remark"] = $("#remark").val();
                 reqApi({
-                    code: "618145",
+                    code: "618146",
                     json:data
                 }).done(function () {
                     sucDetail();

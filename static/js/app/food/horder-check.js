@@ -80,7 +80,7 @@ $(function() {
 		title: "审核说明",
 		field: 'approveNote',
         maxlength:255,
-        
+        required:true
 	}];
 	
 	 var options = {

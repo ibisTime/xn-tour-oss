@@ -46,7 +46,6 @@ $(function() {
 		router: 'house',
 		columns: columns,
 		pageCode: '618030',
-		//deleteCode: '618021',
         searchParams:{
            // type:"1",
             hotalCode:hotalCode

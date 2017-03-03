@@ -15,20 +15,11 @@ $(function() {
         field: "hotalCode",
         value: hotalCode,
         type: 'hidden'
-    }, 
-    // {
-    //         field: 'roomNum',
-    //         title: '房间号',
-    //        // number:true,
-    //         required: true,
-    //         readonly: view,   
-    //     },
-        {
+    },  {
             field: 'name',
             title: '房型',
             type:"select",
             key:"hh_type",
-           // formatter:Dict.getNameForList("hh_type"),
             required: true,
             readonly: view 
 		},{
