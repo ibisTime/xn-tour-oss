@@ -65,7 +65,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status !=1){
+            if(selRecords[0].status !=1&&  selRecords[0].status!=2){
                 toastr.warning("该订单不是待接单状态");
                 return;
             }
@@ -100,7 +100,7 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status !=32){
+            if(selRecords[0].status !=3){
                 toastr.warning("该订单不是待完成状态");
                 return;
             }

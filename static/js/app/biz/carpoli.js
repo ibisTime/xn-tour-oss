@@ -45,8 +45,8 @@ $(function() {
 		title:"状态",
 		field:"status",
         type:"select",
-        key:"carord_status",
-        formatter:Dict.getNameForList("carord_status"),
+        key:"carpoord_status",
+        formatter:Dict.getNameForList("carpoord_status"),
         search:true
 	} ];
 	buildList({

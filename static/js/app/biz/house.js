@@ -55,7 +55,7 @@ $(function() {
              hotalCode:hotalCode
          }
 	});
-  
+        $('#downBtn').remove();
         $('#detailBtn').remove();
         $('#guanBtn').remove();
 		$('#pulBtn').remove();

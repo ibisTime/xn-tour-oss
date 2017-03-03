@@ -105,8 +105,8 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status == 2){
-                toastr.info("该民宿已下架");
+            if(selRecords[0].status != 1){
+                toastr.info("未上架，无法下架");
                 return;
             }
             //var msg = selRecords[0].status == 0 ? "确认上架该民宿？": "确认下架该民宿？";

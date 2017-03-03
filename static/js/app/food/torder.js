@@ -51,7 +51,7 @@ $(function() {
         search:true,
        formatter:Dict.getNameForList("sporder_status"),
 	},{
-		title:"买家嘱咐",
+		title:"备注",
 		field:"remark",
 	}];
 	buildList({

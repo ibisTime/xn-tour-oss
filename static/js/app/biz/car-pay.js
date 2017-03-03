@@ -56,7 +56,7 @@ $(function() {
     },{
 		hidden: true,
 		field: "orderCodeList",
-		value:["code"] ,
+		value:code ,
         required: true
 	}, {
 		title: '支付类型',
@@ -77,6 +77,7 @@ $(function() {
         handler: function () {
             if ($('#jsForm').valid()) {
 				var data = $('#jsForm').serializeObject();
+				data["orderCodeList"]=[code]
                 reqApi({
                     code: "618212",
                     json: data

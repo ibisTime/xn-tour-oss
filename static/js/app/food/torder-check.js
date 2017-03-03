@@ -2,17 +2,54 @@ $(function() {
 	var code = getQueryString('code');
 	//var  view =getQueryString('v');
 	
-	var fields = [ {
-		title: '订单编号',
-		field: 'code1',
-        '[value]': 'code',
-		readonly:true
-	}, {
-		title: '订单时间',
+	var fields = [
+        {
+        title:"订单编号",
+        field:"code1",
+        formatter:function(v,data){
+         return  data.code
+        },
+        readonly:true 
+    },{
+		title: '下单人',
+		field: 'applyUser',
+        readonly:true 
+       
+    },
+    // {
+	// 	title: '线路编号',
+	// 	field: 'lineCode',
+    //     readonly:view
+    // },
+    {
+        title:'专线编号',
+        field:"specialLineCode",
+
+        // pageCode:"618171",
+        // keyName:"code",
+        // valueName:"name",
+        
+        readonly:true 
+    },
+      {
+		title:"支付金额",
+		field:"amount",
+		formatter:moneyFormat,
+        readonly:true  
+    },{
+		title: '下单时间',
 		field: 'applyDatetime',
         formatter:dateTimeFormat,
-		readonly:true
-	}, {
+        readonly:true 
+	},{
+		title:"订单状态",
+		field:"status",
+        type:"select",
+        key:"sporder_status",
+        formatter:Dict.getNameForList("sporder_status"),
+        readonly:true 
+       
+	},{
 		title: "审核说明",
 		field: 'approveNote',
         maxlength:255,
