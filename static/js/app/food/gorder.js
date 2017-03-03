@@ -46,10 +46,10 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-             if(selRecords[0].status != 1){
-                    confirm("确认该订单不发货？").then(function() {
+             if(selRecords[0].status == 1 ||selRecords[0].status == 2 ||selRecords[0].status == 32){
+                    confirm("确认取消该订单？").then(function() {
                     reqApi({
-                        code: '618458',
+                        code: '618454',
                         json: {"code": selRecords[0].code,remark:"商户不发货"}
                     }).then(function() {
                         toastr.info("操作成功");
@@ -57,7 +57,7 @@ $(function() {
                     });
                 });
             }else {
-                toastr.info("该订单不是可以取消发货的状态");
+                toastr.info("该订单不是可以取消的状态");
                 return;
             }
 
@@ -79,8 +79,31 @@ $(function() {
             window.location.href="gorder_wu.html?code="+selRecords[0].code;
             
 
-        });   //
+        });   
+        $('#nowestBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+             if(selRecords[0].status == 32){
+                    confirm("确认该订单已经收货？").then(function() {
+                    reqApi({
+                        code: '618458',
+                        json: {"code": selRecords[0].code,remark:"已经收到货"}
+                    }).then(function() {
+                        toastr.info("操作成功");
+                        $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                    });
+                });
+            }else {
+                toastr.info("该订单不是可以确认收货的状态");
+                return;
+            }
 
+            
+
+        });
          $('#check2Btn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){

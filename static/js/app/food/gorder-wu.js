@@ -48,7 +48,7 @@ $(function() {
 		fields: fields,
 		code: code,
 		view:view,
-        editCode:"618456",
+        editCode:"618455",
 		detailCode: '618472'
 	});
 });

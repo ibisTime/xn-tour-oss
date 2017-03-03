@@ -13,7 +13,7 @@ $(function() {
         formatter:dateTimeFormat,
 		readonly:true
 	}, {
-		title: "备注",
+		title: "审核说明",
 		field: 'remark',
         // type:'textarea',
         // normalArea:true,
@@ -37,7 +37,7 @@ $(function() {
                 data["approveResult"] = "1";
                 data["remark"] = $("#remark").val();
                 reqApi({
-                    code: "618145",
+                    code: "618146",
                     json:data
                 }).done(function () {
                     sucDetail();

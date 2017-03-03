@@ -22,6 +22,13 @@ $(function() {
 		},
 		search:true
 	},{
+		title: '是否置顶',
+		field: 'location',
+		type:"select",
+		key:'trahot_status',
+		formatter:Dict.getNameForList("trahot_status"),
+        search:true
+	},{
 		title:"更新时间",
 		field:"updateDatetime",
 		formatter:dateTimeFormat,

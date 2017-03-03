@@ -13,10 +13,11 @@ $(function() {
 		field: 'type',
 		type:'select',
 		key:'router_type',
-		formatter:Dict.getNameForList("router_type"),
+		//formatter:Dict.getNameForList("router_type"),
 		required: true,
 		readonly:view
-	},{
+	},
+	{
     	field : 'category',
 		type:"select",
 		listCode:"806052",
@@ -33,12 +34,13 @@ $(function() {
 		required: true,
 		readonly:view ,
 		title :"类别",
-    }, {
+    },
+	 {
 		title: '线路形式',
 		field: 'style',
 		type:'select',
 		key:'router_type2',
-		formatter:Dict.getNameForList("router_type2"),
+		//formatter:Dict.getNameForList("router_type2"),
 		required: true,
 		readonly:view
 	},{

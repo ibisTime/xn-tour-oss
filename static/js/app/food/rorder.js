@@ -104,7 +104,52 @@ $(function() {
             }
             
         });
-         
+        $('#receBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            
+            if(selRecords[0].status !=1){
+                   toastr.info("该订单不能接单");
+                return;    
+            }else{
+                confirm("确认接单？").then(function() {
+                    reqApi({
+                        code: '618144',
+                        json: {"code": selRecords[0].code,remark:"接单"}
+                    }).then(function() {
+                    toastr.info("操作成功");
+                        $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                    });
+                  });
+            }
+            
+        });
+         $('#finishBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            
+            if(selRecords[0].status !=32){
+                   toastr.info("该订单不是待完成状态");
+                return;    
+            }else{
+                confirm("确认该订单已经完成？").then(function() {
+                    reqApi({
+                        code: '618147',
+                        json: {"code": selRecords[0].code,remark:"接单"}
+                    }).then(function() {
+                    toastr.info("操作成功");
+                        $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+                    });
+                  });
+            }
+            
+        });
          $('#check2Btn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){

@@ -23,7 +23,7 @@ $(function() {
 		router: 'goods',
 		columns: columns,
 		pageCode: '618420',
-		deleteCode: '618411'
+		//deleteCode: '618411'
 	});
          
          $('#frameBtn').click(function() {
@@ -32,25 +32,13 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-            if(selRecords[0].status == 1||selRecords[0].status == 0){
-                confirm("确认上架该商品？").then(function() {
-                reqApi({
-                    code: '618413',
-                    json: {"code": selRecords[0].code,price1:"0",price2:"0"}
-                }).then(function() {
-                    toastr.info("操作成功");
-					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-				
-                });
-            })
-                
+            if(selRecords[0].status== 0 || selRecords[0].status== 1){
+                window.location.href = "goods_up.html?code="+selRecords[0].code;
+        
             }else{
-                toastr.info("该商品不是该上架的状态");
+                toastr.info("该商品不是待上架的状态");
                 return;
             }
-          
-            
-
         });
          $('#frame2Btn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -66,7 +54,7 @@ $(function() {
             confirm("确认下架该商品？").then(function() {
                 reqApi({
                     code: '618414',
-                    json: {"code": selRecords[0].code,remark:"通过"}
+                    json: {"code": selRecords[0].code,remark:"商品已售完"}
                 }).then(function() {
                     toastr.info("操作成功");
 					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
@@ -88,6 +76,30 @@ $(function() {
             }
 
             window.location.href = "goods_addedit.html?code="+selRecords[0].code;
+
+        });
+    
+         $('#deleteBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+            if(selRecords[0].status == 3){
+                toastr.info("已上架，不可删除商品");
+                return;
+            }
+
+            confirm("确认删除该商品？").then(function() {
+                reqApi({
+                    code: '618411',
+                    json: {"code": selRecords[0].code,}
+                }).then(function() {
+                    toastr.info("操作成功");
+					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+				
+                });
+            });
 
         });
 });

@@ -75,18 +75,22 @@ $(function() {
 				toastr.info("请选择记录");
 				return;
 			}
-			var msg = selRecords[0].status == 1 ? "确认下架该线路?": "确认上架该线路?";
-			var price=selRecords[0].price;
-			confirm(msg).then(function() {
-				reqApi({
-					code: '618094',
-					json: {"code": selRecords[0].code,price},
-				}).then(function() {
-					toastr.info("操作成功");
-					$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
-				
+			if ( selRecords[0].status == 1 ){
+					confirm('确认下架该线路?').then(function() {
+					reqApi({
+						code: '618094',
+						json: {"code": selRecords[0].code,price:selRecords[0].price},
+					}).then(function() {
+						toastr.info("操作成功");
+						$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
+					
+					});
 				});
-			});
+			}
+			if ( selRecords[0].status != 1 ){
+				 window.location.href = "router_up.html?code=" +selRecords[0].code+"&price="+selRecords[0].price; 	
+			}	
+			
 	});
      $('#edit2Btn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -95,7 +99,7 @@ $(function() {
                 return;
             }
 			if(selRecords[0].status != 0){
-                toastr.info("只有为上架才可信息修改");
+                toastr.info("只有未上架才可信息修改");
                 return;
             }
             window.location.href = "router_addedit.html?code=" +selRecords[0].code;    

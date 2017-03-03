@@ -4,7 +4,7 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-    }, {
+    },{
 		title: '活动名称',
 		field: 'name',
         search:true
@@ -38,7 +38,6 @@ $(function() {
 		router: 'active',
 		columns: columns,
 		pageCode: '618085',
-		//deleteCode: '618081'
 	});
          
          $('#frameBtn').click(function() {
@@ -60,31 +59,19 @@ $(function() {
             });
 
         });
-         $('#edit2Btn').click(function() {
+         $('#edit3Btn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){
                 toastr.info("请选择记录");
                 return;
             }
-             if(selRecords[0].status== 1){
-                toastr.info("请先下架，再进行信息修改");
+             if(selRecords[0].status!= 0){
+                toastr.info("只有未上架才可进行信息修改");
                 return;
             }
             window.location.href="active_addedit.html?Code="+selRecords[0].code;
         });
-       $('#edit2Btn').click(function() {
-            var selRecords = $('#tableList').bootstrapTable('getSelections');
-            if(selRecords.length <= 0){
-                toastr.info("请选择记录");
-                return;
-            }
-             if(selRecords[0].status== 1){
-                toastr.info("请先下架，再进行信息修改");
-                return;
-            }
-            window.location.href="active_addedit.html?Code="+selRecords[0].code;
-        });
-    //
+ 
         $('#delete2Btn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){

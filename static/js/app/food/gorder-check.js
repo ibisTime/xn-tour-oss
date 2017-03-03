@@ -3,16 +3,65 @@ $(function() {
 	//var  view =getQueryString('v');
 	
 	var fields = [ {
-		title: '订单编号',
-		field: 'code1',
-        '[value]': 'code',
-		readonly:true
-	}, {
-		title: '订单时间',
+        title:"订单编号",
+        field:'code1',
+        formatter:function(v,data){
+        	return data.code
+        },
+        readonly:true
+    },{
+		title: '商品名称',
+		field: 'name',   
+        readonly:true,
+        formatter:function(v,data){
+        	return data.productOrderList[0].productName;
+        },
+	},{
+		title: '商品数量',
+		field: 'quantity',   
+        readonly:true,
+        formatter:function(v,data){
+        	return data.productOrderList[0].quantity;
+        },
+	},{
+		title: '积分价格',
+		field: 'amount1',
+        readonly:true
+	},
+	{
+		title: '下单时间',
 		field: 'applyDatetime',
-        formatter:dateTimeFormat,
-		readonly:true
+        formatter:dateTimeFormat,   // 
+        readonly:true
+	},{
+		title:"收货地址",
+		field:"reAddress",
+        formatter:function(v,data){
+        	return data.reAddress
+        },
+        readonly:true 
+	},{
+		title:"收货人",
+		field:"receiver",
+        formatter:function(v,data){
+        	return data.receiver
+        },
+        readonly:true 
+	},{
+		title:"收货人手机号码",
+		field:"reMobile",
+        formatter:function(v,data){
+        	return data.reMobile
+        },
+        readonly:true 
 	}, {
+		title:"订单状态",
+		field:"status",
+       formatter:function(v,data){
+		   return data.productOrderList[0].status
+       },
+        readonly:true 
+	},{
 		title: "备注",
 		field: 'remark',
          
@@ -36,7 +85,7 @@ $(function() {
                 data["approvelResult"] = "1";
                 data["remark"] = $("#remark").val();
                 reqApi({
-                    code: "618460",
+                    code: "618457",
                     json:data
                 }).done(function () {
                     sucDetail();
@@ -53,7 +102,7 @@ $(function() {
                 data["approvelResult"] = "0";
                 data["remark"] = $("#remark").val();
                 reqApi({
-                    code: "618460",
+                    code: "618457",
                     json:data
                 }).done(function () {
                     sucDetail();

@@ -33,11 +33,9 @@ $(function() {
         type:"img"
     }, {
         field: 'costPrice',
-        title: '积分价格',
-		amount:true,
-        formatter:moneyFormat,
-        required: true,
-        readonly:view,
+        title: '成本价',
+        value:"0",
+        type:"hidden",
     },{
         title: '图文详述',
         field: 'description',
@@ -55,7 +53,7 @@ $(function() {
         field: 'remark',
         readonly:view,
         maxlength:255
-    }, ];
+    }];
     
 
     buildDetail({
@@ -64,6 +62,7 @@ $(function() {
 		view:view,
 		addCode: '618410',
 		editCode: '618412',
-		detailCode: '618422'
+		detailCode: '618422',
+        dataType:"product"
 	});
 });
