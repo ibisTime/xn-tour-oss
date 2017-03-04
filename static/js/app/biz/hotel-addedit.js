@@ -2,14 +2,6 @@ $(function() {
     var code = getQueryString('code');
     var view = !!getQueryString('v');
     var categoryObj = {};
-    // var descriptionDict = Dict.getName("hotel_ss"),
-    //     items = [];
-    // for(var i = 0; i < descriptionDict.length; i++){
-    //     items.push({
-    //         key: descriptionDict[i].dkey,
-    //         value: descriptionDict[i].dvalue
-    //     });
-    // }
     var items = Dict.getName("hotel_ss").map(function(item){
         return {
             key: item.dkey,
@@ -36,18 +28,12 @@ $(function() {
     var fields = [{
         title: '酒店名称',
         field: 'name',
-        // formatter:function(v,data){
-        //     return data.hotal.name
-        // },
         readonly:view,
         required: true,
         maxlength:32
     },{
 		title: '分类',
 		field: 'type',
-        // formatter:function(v,data){
-        //     return data.hotal.type
-        // },
         type:"select",
         key:"hotel_type",
         readonly:view,
@@ -56,9 +42,6 @@ $(function() {
         field: "category",
         title: '酒店类别',
 		type:'select',
-        // formatter:function(v,data){
-        //     return data.hotal.category
-        // },
         data:categoryObj,
         required: true,
         readonly:view,
@@ -68,23 +51,10 @@ $(function() {
 		required: true,
 		type: 'citySelect',
 		readonly:view,
-        // formatter: function (v, data) {
-		//           var result = ( data.hotal.province || "" ) + ( data.hotal.city || "" ) + ( data.hotal.area || "" );
-		//           return result || "-";
-		//       },
-		// 		afterSet: function (v, data) {
-		//           if (view) {
-		//               $('#province').html(data.hotal.province);
-		//               data.hotal.city && $('#city').html(data.hotal.city);
-		//               data.hotal.area && $('#area').html(data.hotal.area);
-		//               }
-		//       },
 	}, {
 		title: '详细地址',
 		field: 'detail',
-        // formatter:function(v,data){
-        //     return data.hotal.detail
-        // },
+       
 		required: true,
 		maxlength: 255,
 		readonly:view
@@ -92,31 +62,20 @@ $(function() {
 		title: '经度',
 		field: 'longitude',
         required: true,
-        // formatter:function(v,data){
-        //     return data.hotal.longitude
-        // },
-		number:true,
+        west:true,
 		readonly:view,
-		maxlength:3
-		 
 	}, {
         title:"纬度",
         field: 'latitude',
         required: true,
-        number:true,
-        // formatter:function(v,data){
-        //     return data.hotal.latitude
-        // },
+        north:true,
         readonly:view,
-        maxlength:3
+      
     }, {
         title:"酒店电话",
         field: 'telephone',
         required: true,
         tm:true,
-        // formatter:function(v,data){
-        //     return data.hotal.telephone
-        // },
         readonly:view
     }, {
         title: '酒店特色',
@@ -143,9 +102,6 @@ $(function() {
     },{
         title: '设施服务',
         field: 'description',
-        // formatter:function(v,data){
-        //     return data.hotal.description
-        // },
         type: 'checkbox',
         items:items,
         required: true,

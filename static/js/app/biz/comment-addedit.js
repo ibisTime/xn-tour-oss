@@ -4,11 +4,17 @@ $(function() {
 	
 	var fields = [{
 		title: '针对酒店',
-		field: 'topCode',
+		field: 'name1',
+        formatter:function(v,data){
+            return data.line.name;
+        },
 		readonly:true,
 	},{
 		title: '用户名',
 		field: 'commer',
+         formatter:function(v,data){
+            return data.res.nickname;
+        },
 		readonly:true
 	}, {
 		title: '评论时间',

@@ -13,12 +13,16 @@ $(function() {
 	}, {
 		title: '评论时间',
 		field: 'commDatetime',
-        formatter:dataTimeFormat,
+        formatter:dateTimeFormat,
 		readonly:true
 	},{
 		title: '评论内容',
 		field: 'content',
 		readonly:true
+	},{
+		title: '备注',
+		field: 'remark',
+		maxlength:255
 	}];
 	
 	 var options = {
@@ -33,9 +37,9 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = {};
                 data['code'] = code;
-                data['approverUser'] = sessionStorage.getItem('userName');
+                data['approver'] = sessionStorage.getItem('userName');
                 data["approveResult"] = "1";
-                data["approveNote"] = $("#approveNote").val();
+                data["remark"] = $("#remark").val();
                 reqApi({
                     code: "618311",
                     json: data
@@ -50,9 +54,9 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = {};
                 data['code'] = code;
-                data['approverUser'] = sessionStorage.getItem('userName');
+                data['approver'] = sessionStorage.getItem('userName');
                 data["approveResult"] = "0";
-                data["approveNote"] = $("#approveNote").val();
+                data["remark"] = $("#remark").val();
                 reqApi({
                     code: "618311",
                     json: data

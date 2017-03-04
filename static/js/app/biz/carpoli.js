@@ -18,6 +18,12 @@ $(function() {
 		field:"applyUser",
 		
 	},{
+		title:"手机号",
+		field:"mobile",
+		// formatter:function(v,data){
+        //     return data.carpool.mobile
+        // }
+	},{
 		title:"下单说明",
 		field:"applyNote",
         

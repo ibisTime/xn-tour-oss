@@ -10,8 +10,8 @@ $(function() {
         search:true
     }, {
 		title:"积分价格",
-		field:"costPrice",
-		formatter:moneyFormat
+		field:"price1",
+        formatter:moneyFormat
 	},{
 		title:"商品状态",
 		field:"status",
@@ -79,7 +79,7 @@ $(function() {
 
         });
     
-         $('#deleteBtn').click(function() {
+         $('#delete2Btn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){
                 toastr.info("请选择记录");

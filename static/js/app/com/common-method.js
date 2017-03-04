@@ -1033,6 +1033,12 @@ function buildDetail(options) {
         if (item['url']) {
             rules[item.field]['url'] = item['url'];
         }
+        if (item['west']) {
+            rules[item.field]['west'] = item['west'];
+        }
+        if (item['north']) {
+            rules[item.field]['north'] = item['north'];
+        }
         if (item.type == 'title') {
             html += '<div ' + (item.field ? 'id="' + item.field + '"' : '') + ' style="' + (item.hidden ? 'display:none;' : '') + '" class="form-title">' + item.title + '</div>';
         } else if (item.type == 'hidden') {

@@ -22,7 +22,7 @@ $(function() {
 		field: 'description',
 		type: 'textarea',
 		required: true,
-		maxlength:255
+		
 	},{
 		title: '备注',
 		field: 'remark',

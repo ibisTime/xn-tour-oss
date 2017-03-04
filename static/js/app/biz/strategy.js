@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	},{
-		field : 'lineCode',
+		field : 'name',
 		title : '针对线路',
 		formatter:function(v,data){
 			return data.line.name

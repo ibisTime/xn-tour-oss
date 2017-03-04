@@ -18,15 +18,7 @@ $(function() {
 	},{
 		field : 'topCode',
 		title : '针对酒店',
-        // key:"",
-        // type:"select"
-	},
-	// {
-	// 	field : '',
-	// 	title : '酒店类型',
-    //  type:"select"
-	// }, 
-	{
+	},{
 		title:"评论时间",
 		field:"commDatetime",
 		formatter:dateTimeFormat,

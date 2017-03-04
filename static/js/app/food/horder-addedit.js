@@ -52,12 +52,11 @@ $(function() {
 		field:"quantity",
          
 	},{
-		title:"下单人编号",
+		title:"下单人",
 		field:"applyUser",
-        readonly:view
-	},{
-		title:"下单说明",
-		field:"applyNote",
+		formatter:function(v,data){
+		   return data.oriData.applyUser;
+        },
         readonly:view
 	},{
 		title:"下单时间",
@@ -81,6 +80,10 @@ $(function() {
 		formatter:Dict.getNameForList("htorder_status"),
         readonly:view
        
+	},{
+		title:"下单说明",
+		field:"applyNote",
+        readonly:view
 	}
 ];
     

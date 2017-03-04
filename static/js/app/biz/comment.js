@@ -15,7 +15,7 @@ $(function() {
 		field : 'commer',
 		title : '用户名',
 		 formatter:function(v,data){
-			return data.res.loginName
+			return data.res.nickname
 		},
 	},
 

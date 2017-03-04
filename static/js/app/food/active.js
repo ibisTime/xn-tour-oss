@@ -65,8 +65,8 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-             if(selRecords[0].status!= 0){
-                toastr.info("只有未上架才可进行信息修改");
+             if(selRecords[0].status== 1){
+                toastr.info("已上架，不可以修改信息");
                 return;
             }
             window.location.href="active_addedit.html?Code="+selRecords[0].code;

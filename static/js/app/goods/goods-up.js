@@ -3,11 +3,19 @@ $(function() {
 
 	var fields = [
      {
-		title: '商品价格',
+		title: '商品积分价格',
 		field: 'price1',
-		formatter:moneyFormat,
+		amount:true,
 		required: true,
 		
+	},
+     {
+		
+		field: 'price2',
+		value:"0",
+		hidden: true,
+		required: true,
+
 	}];
 	
 	var options = {

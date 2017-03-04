@@ -47,8 +47,11 @@ $(function() {
 		field:"quantity",
         readonly:true
 	},{
-		title:"下单人编号",
+		title:"下单人",
 		field:"applyUser",
+        formatter:function(v,data){
+		   return data.oriData.applyUser;
+        },
         readonly:true
 	},{
 		title:"下单说明",

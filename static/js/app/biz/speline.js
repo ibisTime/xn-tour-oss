@@ -39,7 +39,7 @@ $(function() {
 	},{
 		title:"出发时间",
 		field:"outDatetime",
-        formatter: dateFormat
+        formatter: dateTimeFormat
        
 	},{
 		title:"状态",
@@ -48,14 +48,15 @@ $(function() {
         key:"spe_status",
 		formatter:Dict.getNameForList("spe_status"),
         search:true
-	},{
-		field1:"dateStart",
-		field2:"dateEnd",
-		title1:"出行时间",
-        type1:"date",
-		search:true,
-		visible:false
 	},
+	// {
+	// 	field1:"dateStart",
+	// 	field2:"dateEnd",
+	// 	title1:"出行时间",
+    //     type1:"datetime",
+	// 	search:true,
+	// 	visible:false
+	// },
 	 
 	{
 		title:"备注",

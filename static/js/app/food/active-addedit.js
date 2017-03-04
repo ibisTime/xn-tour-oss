@@ -32,8 +32,6 @@ $(function() {
         title: '活动详情',
 		field: 'description',
         type:'textarea',
-        //normalArea :true, 
-        maxlength:255,
         required :true,
         readonly:view
     },{

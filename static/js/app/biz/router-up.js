@@ -5,15 +5,13 @@ $(function() {
      {
 		title: '线路价格',
 		field: 'price',
-		formatter:moneyFormat,
+        amount:true,
 		required: true,
 		
 	}];
 	
 	var options = {
         fields: fields,
-        // code: code,
-         //detailCode: '618012',
 	}; 
 
     options.buttons = [{
@@ -22,7 +20,7 @@ $(function() {
             if ($('#jsForm').valid()) {
 				var data = $('#jsForm').serializeObject();
                 data["code"] = code;
-                confirm("确认上架该商品？").then(function() {  
+                confirm("确认上架该线路？").then(function() {  
                     reqApi({
                         code: "618094",
                         json: data

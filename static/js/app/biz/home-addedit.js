@@ -1,7 +1,13 @@
 $(function() {
     var code = getQueryString('code');
     var view = !!getQueryString('v');
-  
+    var items = Dict.getName("hotel_ss").map(function(item){
+        return {
+            key: item.dkey,
+            value: item.dvalue
+        };
+    });
+
     var fields = [{
 		title: '类型',
 		field: 'type',
@@ -42,6 +48,7 @@ $(function() {
     },{
         field: 'loginName',
         title: '登录账号',
+        mobile:true,
          formatter:function(v,data){
            return data.oriData.loginName;
         },
@@ -80,17 +87,14 @@ $(function() {
 		title: '经度',
 		field: 'longitude',
         required: true,
-		number:true,
-		readonly:view,
-		maxlength: 3,
-		 
+		west:true,
+		readonly:view
 	}, {
         title:"纬度",
         field: 'latitude',
         required: true,
-        number:true,
-        readonly:view,
-        maxlength: 3,
+        north:true,
+        readonly:view
     }, {
         title:"民宿电话",
         field: 'telephone',
@@ -114,22 +118,6 @@ $(function() {
         readonly:view,
         required:true
     },{
-        title: '设施服务',
-        field: 'description',
-        type: 'checkbox',
-        items: [{
-            "key": "1",
-            "value": "停车场"
-        }, {
-            "key": "2",
-            "value": "SPA"
-        },{
-            "key":"3",
-            "value":"餐厅"
-        }],
-        required: true,
-        readonly:view
-    }, {
         title: '民宿图片',
         field: 'pic1',
         type: 'img',
@@ -141,6 +129,13 @@ $(function() {
         type: 'img',
         required: true,
         readonly:view
+    } ,{
+        title: '设施服务',
+        field: 'description',
+        type: 'checkbox',
+        items: items,
+        readonly:view,
+        required:true
     }];
 
     var options = {

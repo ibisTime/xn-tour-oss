@@ -6,22 +6,14 @@ $(function() {
 		title: '下单人',
 		field: 'booker',
 		readonly:true
-	},
-	{
+	},{
 		title: '手机号',
 		field: 'mobile',
 		formatter:function(v,data){
           return data.res.mobile
 		},
 		readonly:true,
-	},
-	//  {
-	// 	title: '出行时间',
-	// 	field: 'outDatetime',
-	// 	formatter:dateTimeFormat,
-	// 	readonly:true
-	// },
-	 {
+	}, {
 		title: '预约时间',
 		field: 'bookDatetime',
 		readonly:true,

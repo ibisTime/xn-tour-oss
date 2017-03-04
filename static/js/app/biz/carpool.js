@@ -5,11 +5,11 @@ $(function() {
 		title : '',
 		checkbox : true
     },{
-        title:"线路名称",
-        field:"name",
+		title: '起点',
+		field: 'name',
         search:true,
-		visible:false
-    },{
+        visible:false
+	},{
 		field1:"dateStart",
 		field2:"dateEnd",
 		title1:"出行时间",
@@ -19,7 +19,8 @@ $(function() {
 	},
     {
 		title: '起点',
-		field: 'startSite'
+		field: 'startSite',
+        
 	},{
 		title:"终点",
 		field:"endSite",
@@ -35,7 +36,7 @@ $(function() {
         field:"totalNum"
     },{
         title:"总价格",
-        field:"totalPrice",
+        field:"distancePrice",
         formatter:moneyFormat
     },{
         title:"出发时间",
