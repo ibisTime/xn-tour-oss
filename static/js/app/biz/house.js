@@ -17,9 +17,9 @@ $(function() {
     },{
 		title: '房型',
 		field: 'name',
-        type:"select",
-        key:"hh_type",
-        formatter:Dict.getNameForList("hh_type")
+        // type:"select",
+        // key:"hh_type",
+        // formatter:Dict.getNameForList("hh_type")
 	},{
 		title: '设施服务',
 		field: 'description',

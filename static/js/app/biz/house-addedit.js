@@ -18,8 +18,9 @@ $(function() {
     },  {
             field: 'name',
             title: '房型',
-            type:"select",
-            key:"hh_type",
+            // type:"select",
+            // key:"hh_type",
+            maxlength:32,
             required: true,
             readonly: view 
 		},{

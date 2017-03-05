@@ -2,7 +2,7 @@ $(function() {
 	var code = getQueryString('code');
 	var  view =getQueryString('v');
 	var typeObj = {};
-	//var 
+ 
 	reqApi({
 		code: "806052",
 		json: {
@@ -69,7 +69,7 @@ $(function() {
 		type:"datetime",
 		required: true,
 		readonly:view,
-        formatter: dateTimeFormat
+        formatter:dateTimeFormat,
 	},{
 		title:"图片",
 		field:"pic",

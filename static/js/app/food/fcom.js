@@ -4,17 +4,25 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-	},{
-		title: '关键词',
-		field: 'content',
-        visible:false,
-        search:true
-	},{
-		field : 'commer',
+	},
+	// {
+	// 	title: '关键词',
+	// 	field: 'content',
+    //     visible:false,
+    //     search:true
+	// },
+	{
+		field : 'commer1',
 		title : '用户名',
+		formatter:function(v,data){
+			return  data.res.nickname;
+		}
 	},{
 		field : 'topCode',
 		title : '针对美食',
+		formatter:function(v,data){
+			return data.line.name
+		},
 	},{
 		field : "type",
 		title : '美食类型',

@@ -49,9 +49,9 @@ $(function() {
 		router: 'account',
 		columns: columns,
 		pageCode: '802500',
-		searchParams:{
-			currency:"CNY"
-		}
+		// searchParams:{
+		// 	currency:"CNY"
+		// }
 	});
 	
 	$('#flowBtn').click(function() {
@@ -61,7 +61,14 @@ $(function() {
 			return;
 		}
 		window.location.href = "ledger.html?accountCode="+selRecords[0].accountNumber;
-	});
-	
+	});  //
+	$('#enchasBtn').click(function() {
+		var selRecords = $('#tableList').bootstrapTable('getSelections');
+		if(selRecords.length <= 0){
+			toastr.info("请选择记录");
+			return;
+		}
+		window.location.href = "enchas.html?code="+selRecords[0].accountCode;
+	});  //enchasBtn
 });
 

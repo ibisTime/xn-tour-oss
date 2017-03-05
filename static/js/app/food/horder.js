@@ -31,31 +31,13 @@ $(function() {
 		              data.area && $('#area').html(data.area);
 		              }
 		      },
-	},
-	{
+	},{
 		title:"房间数",
-		field:"quantity",
-		 
-	},
-	{
-		title:"酒店类型",
-		field:"category",
-		search:true,      
-		type:"select",
-		listCode:"806052",
-        keyName:"code",
-        valueName:"name",
-        params:{
-            location:"depart_hotel"
-        } ,
-		search:true,
-		visible:false,
+		field:"quantity", 
 	},{
 		title:"房型",
 		field:"roomType",
-		type:"select",
-		key:"hh_type",
-		formatter:Dict.getNameForList("hh_type")
+		search:true
 	},
 	{ 
 		title: '下单时间',

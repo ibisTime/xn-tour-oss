@@ -5,10 +5,13 @@ $(function() {
 	var fields = [ {
 		title: '下单人',
 		field: 'booker',
+		formatter:function(v,data){
+          return data.res.realName;
+		},
 		readonly:true
 	},{
 		title: '手机号',
-		field: 'mobile',
+		field: 'mobile2',
 		formatter:function(v,data){
           return data.res.mobile
 		},
@@ -40,6 +43,14 @@ $(function() {
         field:"status",
         key:"order_status",
         type:"select",
+        readonly:true
+    },{
+        title:"司机",
+        field:'driver',
+        readonly:true
+    },{
+        title:"联系方式",
+        field:'mobile',
         readonly:true
     },{
         title:"备注",

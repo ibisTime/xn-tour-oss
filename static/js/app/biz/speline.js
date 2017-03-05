@@ -39,7 +39,7 @@ $(function() {
 	},{
 		title:"出发时间",
 		field:"outDatetime",
-        formatter: dateTimeFormat
+        formatter:dateTimeFormat,
        
 	},{
 		title:"状态",
@@ -48,17 +48,7 @@ $(function() {
         key:"spe_status",
 		formatter:Dict.getNameForList("spe_status"),
         search:true
-	},
-	// {
-	// 	field1:"dateStart",
-	// 	field2:"dateEnd",
-	// 	title1:"出行时间",
-    //     type1:"datetime",
-	// 	search:true,
-	// 	visible:false
-	// },
-	 
-	{
+	},{
 		title:"备注",
 		field:"remark",
 	}];
@@ -77,9 +67,9 @@ $(function() {
 			}
 			var msg = selRecords[0].status == 1 ? "确认下架该线路？": "确认上架该线路？";
            
-			// confirm('价格:<input type="number" id="money" value="'+selRecords[0].price+'">').then(function() {
+			 
 			confirm(msg).then(function() {
-				//var money=$("#money").val();
+				 
 				reqApi({
 					code: '618163',
 					json: {"code": selRecords[0].code,price:selRecords[0].price}

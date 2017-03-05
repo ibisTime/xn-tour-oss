@@ -5,6 +5,9 @@ $(function() {
 	var fields = [{
 		title: '投诉人',
 		field: 'commiter',
+        // formatter:function(v,data){
+		// 	return  data.res.realName
+		// },
         readonly:true
 	},{
 		title: '联系方式',
@@ -42,9 +45,9 @@ $(function() {
         fields: fields,
         code: code,
         detailCode: '618207',
-		searchParams:{
-			status:"1"
-		}
+		// searchParams:{
+		// 	status:"1"
+		// }
     };
 
     options.buttons = [{

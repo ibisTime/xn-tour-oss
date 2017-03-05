@@ -6,7 +6,7 @@ $(function() {
 		checkbox : true
     }, {
 		title: '用户名',
-		field: 'loginName',
+		field: 'realName',
         search:true
 	},{
 		title: '手机号',

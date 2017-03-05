@@ -36,6 +36,7 @@ function dateTimeFormat(date) {
         return '-';
     }
     var format = "yyyy-MM-dd HH:mm:ss";
+    date = date.replace(/(12:\d\d:\d\d\s)AM$/, "$1PM");
     date = new Date(date);
     var o = {
         'M+': date.getMonth() + 1, //month

@@ -17,6 +17,10 @@ $(function() {
 		field: 'mobile',
 		mobile:true,
 		required: true
+	},{
+		title: '备注',
+		field: 'remark',
+		maxlength:255
 	}];
 	
 	var options = {

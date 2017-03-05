@@ -31,7 +31,7 @@ $(function() {
         title:"下单人",
         field:"booker",
         formatter:function(v,data){
-            return data.res.loginName
+            return data.res.realName
         }
     },{
         title:"联系方式",
@@ -43,13 +43,13 @@ $(function() {
         title:"预定人数",
         field:"totalNum"
     },{
-        title:"价格",
-        field:"price",
+        title:"总价格",
+        field:"distancePrice",
         formatter:moneyFormat
     },{
 		field1:"dateStart",
 		field2:"dateEnd",
-		title1:"出行时间",
+		title1:"出发时间",
         type1:"datetime",
 		search:true,
 		visible:false

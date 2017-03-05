@@ -4,12 +4,13 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-	},{
-		title: '关键词',
-		field: 'content',
-        visible:false,
-        search:true    
 	},
+	// {
+	// 	title: '关键词',
+	// 	field: 'content',
+    //     visible:false,
+    //     search:true    
+	// },
 	{
 		
 		field : 'commer',

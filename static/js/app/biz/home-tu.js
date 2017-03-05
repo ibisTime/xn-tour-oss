@@ -1,14 +1,14 @@
 $(function() {
 	var code = getQueryString('code');
-   
+
 	var fields = [
+    //     {
+	// 	hidden: true,
+	// 	field: "code",
+	// 	value: code,
+    //     data1:"code"
+	//    },
      {
-		title: '线路价格',
-		field: 'price',
-        amount:true,
-		required: true,
-		
-	},{
 		title: 'UI位置',
 		field: 'location',
 		type:'select',
@@ -27,6 +27,8 @@ $(function() {
 	
 	var options = {
         fields: fields,
+        // code: code,
+        // detailCode: '618012',
 	}; 
 
     options.buttons = [{
@@ -35,9 +37,9 @@ $(function() {
             if ($('#jsForm').valid()) {
 				var data = $('#jsForm').serializeObject();
                 data["code"] = code;
-                confirm("确认上架该线路？").then(function() {  
+                confirm("确认上架该民宿？").then(function() {  
                     reqApi({
-                        code: "618094",
+                        code: "618004",
                         json: data
                     }).done(function () {
                         sucDetail();

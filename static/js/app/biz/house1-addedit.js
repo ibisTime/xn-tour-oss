@@ -18,9 +18,9 @@ $(function() {
     },{
             field: 'name',
             title: '房间类型',
-            type:"select",
-            key:"hh_type",
-           // formatter:Dict.getNameForList("hh_type"),
+             maxlength:32,
+            // type:"select",
+            // key:"hh_type",
             required: true,
             readonly: view
         },{
@@ -46,9 +46,9 @@ $(function() {
         },{
             field: 'totalNum',
             title: '房间总数',
-            number:true,
+            value:"1",
             required: true,
-            readonly: view,   
+            readonly: true,   
         },];
 
     var options = {

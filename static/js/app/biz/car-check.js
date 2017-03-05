@@ -12,7 +12,10 @@ $(function() {
 	}, {
 		title: '下单人',
 		field: 'booker',
-		readonly:true
+		readonly:true,
+        formatter:function(v,data){
+          return data.res.realName;
+		},
 	},
 	{
 		title: '手机号',

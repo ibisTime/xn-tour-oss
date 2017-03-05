@@ -110,26 +110,17 @@ $(function() {
         title: '酒店图片',
         field: 'pic1',
         type: 'img',
-        // formatter:function(v,data){
-        //     return data.hotal.pic1
-        // },
         required: true, 
         readonly:view
     },{
         title: '酒店轮播图',
         field: 'pic2',
         type: 'img',
-        //  formatter:function(v,data){
-        //     return data.hotal.pic2
-        // },
         required: true,
         readonly:view
     }, {
         title: '备注',
         field: 'remark',
-        // formatter:function(v,data){
-        //     return data.hotal.remark
-        // },
         maxlength:255,
         readonly:view
     }];

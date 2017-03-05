@@ -4,12 +4,14 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-	},{
-		title: '关键词',
-		field: 'content',
-        visible:false,
-        search:true
-	},{
+	},
+	// {
+	// 	title: '关键词',
+	// 	field: 'content',
+    //     visible:false,
+    //     search:true
+	// },
+	{
 		field : 'commer',
 		title : '用户名',
 		formatter:function(v,data){
@@ -18,6 +20,9 @@ $(function() {
 	},{
 		field : 'topCode',
 		title : '针对酒店',
+		formatter:function(v,data){
+			return data.line.name
+		},
 	},{
 		title:"评论时间",
 		field:"commDatetime",

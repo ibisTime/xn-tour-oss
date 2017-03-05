@@ -75,23 +75,37 @@ $(function() {
 				toastr.info("请选择记录");
 				return;
 			}
+			if ( selRecords[0].status != 1 ){
+				 window.location.href = "router_up.html?code=" +selRecords[0].code; 	
+			}	
+			
+	});
+	$("#downBtn").on("click",function(){
+			var selRecords = $("#tableList").bootstrapTable("getSelections");
+			if ( selRecords.length <=0){
+				toastr.info("请选择记录");
+				return;
+			}
 			if ( selRecords[0].status == 1 ){
 					confirm('确认下架该线路?').then(function() {
 					reqApi({
-						code: '618094',
-						json: {"code": selRecords[0].code,price:selRecords[0].price},
+						code: '618095',
+						json: {"code": selRecords[0].code},
 					}).then(function() {
 						toastr.info("操作成功");
 						$('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
 					
 					});
 				});
+			}else{
+				toastr.info("不是待下架状态");
+				return;
 			}
-			if ( selRecords[0].status != 1 ){
-				 window.location.href = "router_up.html?code=" +selRecords[0].code+"&price="+selRecords[0].price; 	
-			}	
-			
 	});
+
+
+
+
      $('#edit2Btn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){

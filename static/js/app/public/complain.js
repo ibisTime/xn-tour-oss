@@ -4,19 +4,21 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-    },{
-        title:"关键词",
-        field:"word",
-        search:true,
-        visible:false
-    },{
+    },
+	// {
+    //     title:"关键词",
+    //     field:"word",
+    //     search:true,
+    //     visible:false
+    // },
+	{
         title:"联系方式",
         field:"contact",
     },{
         title:"用户名",
         field:"commiter",
 		formatter:function(v,data){
-			return  data.res.loginName
+			return  data.res.mobile
 		}
     },{
 		field : 'type',

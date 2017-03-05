@@ -12,7 +12,7 @@ $(function() {
 	},{
 		field1:"dateStart",
 		field2:"dateEnd",
-		title1:"出行时间",
+		title1:"出发时间",
         type1:"datetime",
 		search:true,
 		visible:false
