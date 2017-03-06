@@ -106,12 +106,26 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-			if(selRecords[0].status ==32){
+			if(selRecords[0].status ==1){
                 window.location.href ="horder_in.html?code="+selRecords[0].code;
             }else{
-                toastr.info("该订单不是待可以入住的状态");
+                toastr.info("该订单不是可以入住的状态");
                 return;
             }
             
-        }); 
+        });    
+         $('#outBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+			if(selRecords[0].status ==32){
+                window.location.href ="horder_out.html?code="+selRecords[0].code;
+            }else{
+                toastr.info("该订单不是可以退房的状态");
+                return;
+            }
+            
+        });   
 });

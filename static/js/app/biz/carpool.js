@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
     },{
-		title: '起点',
+		title: '起点/终点',
 		field: 'name',
         search:true,
         visible:false

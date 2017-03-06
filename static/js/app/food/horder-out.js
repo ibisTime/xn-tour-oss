@@ -32,9 +32,6 @@ $(function() {
 	
 	 var options = {
         fields: fields,
-        // code: code,
-        // detailCode: '618052',
-		// dataType:"hotalOrder"
     };
 
     options.buttons = [{
@@ -43,7 +40,7 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
                 reqApi({
-                    code: "618044",
+                    code: "618047",
                     json: data
                 }).done(function () {
                     sucDetail();

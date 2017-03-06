@@ -18,7 +18,7 @@ $(function() {
 		
 	},
 	{
-		title: 'UI编号',
+		title: 'UI顺序',
 		field: 'orderNo',
         number:true,
 		required: true,

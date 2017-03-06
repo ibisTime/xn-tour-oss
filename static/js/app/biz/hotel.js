@@ -45,11 +45,16 @@ $(function() {
 		field:"telephone",
         search:true
     },{
-		title:"是否推荐",
-		field:"location", 
-         key:"hotelhot_status",
-        formatter:Dict.getNameForList("hotelhot_status")
-    },{
+		title: '是否推荐',
+		field: 'location',
+		type:'select',
+		key:"hotelhot_status",
+		formatter: Dict.getNameForList('hotelhot_status')
+	},
+	{
+		title: 'UI顺序',
+		field: 'orderNo',
+	},{
 		title:"状态",
 		field:"status",
         type:"select",

@@ -68,6 +68,7 @@ function reqApi(options) {
         token: sessionStorage.getItem('token') || '',
         updater: sessionStorage.getItem('userName'),
         systemCode: sessionStorage.getItem('systemCode'),
+         //updaterId: sessionStorage.getItem('userId'),
     };
     //车贷权限控制
     if(options.code == "617015"){

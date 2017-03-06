@@ -5,9 +5,9 @@ $(function() {
 	var fields = [{
 		title: '投诉人',
 		field: 'commiter',
-        // formatter:function(v,data){
-		// 	return  data.res.realName
-		// },
+        formatter:function(v,data){
+			return  data.res.realName
+		},
         readonly:true
 	},{
 		title: '联系方式',

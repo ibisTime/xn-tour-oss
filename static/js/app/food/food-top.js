@@ -2,12 +2,7 @@ $(function() {
 	var code = getQueryString('code');
 
 	var fields = [
-    //     {
-	// 	hidden: true,
-	// 	field: "code",
-	// 	value: code,
-    //     data1:"code"
-	//    },
+     
      {
 		title: 'UI位置',
 		field: 'location',
@@ -18,7 +13,7 @@ $(function() {
 		
 	},
 	{
-		title: 'UI编号',
+		title: 'UI顺序',
 		field: 'orderNo',
         number:true,
 		required: true,

@@ -44,12 +44,17 @@ $(function() {
             required: true,
             readonly: view
         },{
-            field: 'totalNum',
+            field: 'totalNum1',
             title: '房间总数',
             value:"1",
+            readonly: true, 
+        },{
+            field: 'totalNum',
+            type:"hidden", 
+            value:"1",
             required: true,
-            readonly: true,   
-        },];
+            
+        }];
 
     var options = {
         fields: fields,
@@ -59,10 +64,9 @@ $(function() {
         editCode:"618022",
         detailCode: '618032',
         searchParams:{
-           // type:"2",
             hotalCode:hotalCode
             
-        }
+        },
     };
 
     buildDetail(options);

@@ -18,7 +18,7 @@ $(function() {
 		
 	},
 	{
-		title: 'UI编号',
+		title: 'UI顺序',
 		field: 'orderNo',
         number:true,
 		required: true,
@@ -27,8 +27,7 @@ $(function() {
 	
 	var options = {
         fields: fields,
-        // code: code,
-        // detailCode: '618012',
+        
 	}; 
 
     options.buttons = [{

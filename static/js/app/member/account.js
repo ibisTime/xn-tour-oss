@@ -54,6 +54,14 @@ $(function() {
 		// }
 	});
 	
+	$('#applyBtn').click(function() {
+		var selRecords = $('#tableList').bootstrapTable('getSelections');
+		if(selRecords.length <= 0){
+			toastr.info("请选择记录");
+			return; 
+		}
+		window.location.href = "apply.html?accountCode="+selRecords[0].accountNumber;
+	});  
 	$('#flowBtn').click(function() {
 		var selRecords = $('#tableList').bootstrapTable('getSelections');
 		if(selRecords.length <= 0){
@@ -61,14 +69,14 @@ $(function() {
 			return;
 		}
 		window.location.href = "ledger.html?accountCode="+selRecords[0].accountNumber;
-	});  //
+	});   
 	$('#enchasBtn').click(function() {
 		var selRecords = $('#tableList').bootstrapTable('getSelections');
 		if(selRecords.length <= 0){
 			toastr.info("请选择记录");
 			return;
 		}
-		window.location.href = "enchas.html?code="+selRecords[0].accountCode;
-	});  //enchasBtn
+		window.location.href = "enchas.html?accountNumber="+selRecords[0].accountNumber;
+	});   
 });
 

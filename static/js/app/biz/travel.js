@@ -27,20 +27,19 @@ $(function() {
 		type:"select",
 		key:'trahot_status',
 		formatter:Dict.getNameForList("trahot_status"),
-        search:true
+        
 	},{
 		title:"更新时间",
-		field:"updateDatetime",
-		formatter:dateTimeFormat,
+		field:"publishDatetime",	 
+		formatter: function(value, row, index){
+        	return row['updateDatetime'] ? dateTimeFormat(row['updateDatetime']) : dateTimeFormat(value);
+        }
 	},{
 		title: '收藏次数',
 		field: 'collectionTimes'
 	},{
 		title: '点赞次数',
 		field: 'likeTimes'
-	},{
-		title: '举报次数',
-		field: 'reportTimes'
 	},{
 		title: '审核状态',
 		field: 'status',

@@ -1,11 +1,12 @@
 $(function() {
-	var code = getQueryString('code');
+	var accountNumber = getQueryString('accountNumber');
 	 
 	
 	var fields = [ 
 	 {
 		title: '流水单号',
-		field: 'code',
+		field: 'codeList',
+        value:accountNumber,
 		readonly:true,
       
 	}, 
@@ -18,8 +19,7 @@ $(function() {
 	
 	 var options = {
         fields: fields,
-        // code: code,
-        // detailCode: '618222'
+         
     };
 
     options.buttons = [{
@@ -27,7 +27,7 @@ $(function() {
         handler: function () {
             if ($('#jsForm').valid()) {  
                 var data = {};
-                data['code'] = code;
+                data['codeList'] = [accountNumber];
                 data['rollbackUser'] = sessionStorage.getItem('userName');
                 data["rollbackResult"] = "1";
 
@@ -45,7 +45,7 @@ $(function() {
         handler: function () {
             if ($('#jsForm').valid()) {
                 var data = {};
-                data['code'] = code;
+                data['codeList'] = [accountNumber];
                 data['rollbackUser'] = sessionStorage.getItem('userName');
                 data["approveResult"] = "0";
                 data["rollbackNote"] = $("#rollbackNote").val();

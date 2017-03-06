@@ -15,8 +15,10 @@ $(function() {
 		field: 'quantity'
 	},{
 		title:"下单人",
-		field:"applyUser",
-		
+		field:"name",
+		// formatter:function(v,data){
+        //     return data.carpool.name
+        // }
 	},{
 		title:"手机号",
 		field:"mobile",

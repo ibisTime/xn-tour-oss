@@ -49,6 +49,7 @@ $(function() {
         field: 'loginName',
         title: '登录账号',
         mobile:true,
+        placeholder:"请使用手机号作为登录账号",
          formatter:function(v,data){
            return data.oriData.loginName;
         },

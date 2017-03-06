@@ -31,7 +31,7 @@ $(function() {
 		columns: columns,
 		pageCode: '805054',
 		searchParams:{
-			kind:"f1"
+			kind:"ff3"
 		}
 	});
          

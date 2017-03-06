@@ -18,9 +18,6 @@ $(function() {
 	},{
     	field : 'joinPlace',
 		title : '集合地',
-//		type:'select',
-//		key:'router_di',
-//		formatter:Dict.getNameForList("router_di"),
     },{
 		field : 'outDate',
 		title : '出行日期',
@@ -32,6 +29,16 @@ $(function() {
 	},{
 		title: '收藏次数',
 		field: 'collectTimes'
+	},{
+		title: '是否推荐',
+		field: 'location',
+		type:'select',
+		key:"hotelhot_status",
+		formatter: Dict.getNameForList('hotelhot_status')
+	},
+	{
+		title: 'UI顺序',
+		field: 'orderNo',
 	},{
 		title: '状态',
 		field: 'status',
@@ -52,7 +59,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-		if (selRecords[0].status == 0) {
+		if (selRecords[0].status != 1) {
             toastr.info("请先上架该线路再进行Tab内容设置");
             return;
         }
@@ -66,6 +73,10 @@ $(function() {
 				toastr.info("请选择记录");
 				return;
 			}
+			if (selRecords[0].status != 1) {
+            toastr.info("请先上架该线路，再进行推荐内容设置");
+            return;
+        }
 			window.location.href = "router_recom.html?lineCode="+selRecords[0].code;
 	});
 
@@ -75,6 +86,7 @@ $(function() {
 				toastr.info("请选择记录");
 				return;
 			}
+
 			if ( selRecords[0].status != 1 ){
 				 window.location.href = "router_up.html?code=" +selRecords[0].code; 	
 			}	

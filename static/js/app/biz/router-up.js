@@ -1,6 +1,6 @@
 $(function() {
 	var code = getQueryString('code');
-   
+    //var code
 	var fields = [
      {
 		title: '线路价格',
@@ -18,7 +18,7 @@ $(function() {
 		
 	},
 	{
-		title: 'UI编号',
+		title: 'UI顺序',
 		field: 'orderNo',
         number:true,
 		required: true,
@@ -27,6 +27,8 @@ $(function() {
 	
 	var options = {
         fields: fields,
+        code:code,
+        detailCode: '618102',
 	}; 
 
     options.buttons = [{

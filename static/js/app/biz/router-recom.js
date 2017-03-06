@@ -48,7 +48,7 @@ $(function() {
 		}
 	},
 	{
-		title: '内容编号',
+		title: '推荐内容',
 		field: 'comCode',
 		required: true,
 		type: 'select',

@@ -9,34 +9,34 @@ $(function() {
 	},{
 		field : 'name',
 		title : '游记名称',
-        readonly:view
+        	readonly:view
 	},{
 		title:"更新时间",
-		field:"updateDatetime",
-		formatter:dateFormat,
-        readonly:view
+		field:"publishDatetime",
+		// formatter:dateTimeFormat,
+	 
+		formatter: function(value, row, index){
+        	return row['updateDatetime'] ? dateTimeFormat(row['updateDatetime']) : dateTimeFormat(value);
+        },
+        	readonly:view
 	},{
 		title: '收藏次数',
 		field: 'collectionTimes'
 	},{
 		title: '点赞次数',
 		field: 'likeTimes',
-        readonly:view
-	},{
-		title: '举报次数',
-		field: 'reportTimes',
-        readonly:view
+        	readonly:view
 	},{
 		title: '审核状态',
 		field: 'status',
 		type:"select",
 		key:'tracheck_status',
 		formatter:Dict.getNameForList("tracheck_status"),
-        readonly:view
+        	readonly:view
 	},{
 		title:"备注",
 		field:"remark",
-        readonly:view
+       		 readonly:view
 	},];
 	
 	buildDetail({

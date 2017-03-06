@@ -18,10 +18,8 @@ $(function() {
 	},{
 		title: "房间类型",
 		field: 'roomType',
-		type:"select",
-		key:"hh_type",
-        formatter:function(v,data){
-		   return RoomType(data.oriData.roomType);
+		formatter:function(v,data){
+           return data.oriData.roomType;
         },
         readonly:view
 

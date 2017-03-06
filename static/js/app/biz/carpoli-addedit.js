@@ -7,20 +7,11 @@ $(function() {
         field:'carpoolCode',
         readonly:true,
     },{
-		title: '数量',
-		field: 'quantity',
-        readonly:true,
-	},{
 		title:"下单人",
-		field:"applyUser",
+		field:"name",
         readonly:true,
 		
 	},{
-		title:"下单说明",
-		field:"applyNote",
-         readonly:true,
-        
-    },{
         title:"下单时间",
         field:"applyDatetime",
         formatter:dateTimeFormat,
@@ -30,18 +21,16 @@ $(function() {
         field:"firstAmount",
         formatter:moneyFormat ,
          readonly:true, 
-    },{
-        title:"首次支付时间",
-        field:"firstPayDatetime",
-        formatter:dateTimeFormat ,
-        readonly:true, 
     },
-    // {
-    //     title:"第二次支付金额",
-    //     field:"firstPayAmount",
-    //     formatter:moneyFormat,
-    //      readonly:true,    
-    // },
+    {
+        title:"手机号",
+        field:"mobile",
+         readonly:true,    
+    },{
+		title: '数量',
+		field: 'quantity',
+        readonly:true,
+	},
     // {
     //     title:"第二次支付编号",
     //     field:"secondpayCode",
@@ -55,7 +44,12 @@ $(function() {
         formatter:Dict.getNameForList("carpoord_status"),
         search:true,
          readonly:true,
-	} ];
+	},{
+		title:"下单说明",
+		field:"applyNote",
+         readonly:true,
+        
+    } ];
 	
 	buildDetail({
 		fields: fields,
@@ -64,5 +58,5 @@ $(function() {
 		detailCode: '618255'
 	});
 	
-	
+	$("#subBtn").remove();
 });

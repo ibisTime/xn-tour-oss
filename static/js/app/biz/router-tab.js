@@ -40,11 +40,7 @@ $(function() {
         handler: function () {
             if ($('#jsForm').valid()) {
 				var data = $('#jsForm').serializeObject();
-                // var data = {};
-                // data['lineCode'] = code;
-				// data["type"]= $("#type").val();
-                // data["description"] = $("#description").val();
-				//data["comCode"] = $("#comCode").val();
+                 
                 reqApi({
                     code: "618092",
                     json: data
