@@ -12,8 +12,7 @@ $(function() {
 		title: 'UI位置',
 		field: 'location',
 		type:'select',
-		key:"hotelhot_status",
-		formatter: Dict.getNameForList('hotelhot_status'),
+		key:"hotel_location",
 		required: true,
 		
 	},

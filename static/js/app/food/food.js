@@ -38,13 +38,13 @@ $(function() {
 	},{
         title:"价格",
         field:"price",
-        formatter:moneyFormat
+      //  formatter:moneyFormat
     },{
-		title: '是否推荐',
+		title: '是否热门',
 		field: 'location',
 		type:'select',
-		key:"hotelhot_status",
-		formatter: Dict.getNameForList('hotelhot_status')
+		key:"hotel_location",
+		formatter: Dict.getNameForList('hotel_location')
 	},
 	{
 		title: 'UI顺序',

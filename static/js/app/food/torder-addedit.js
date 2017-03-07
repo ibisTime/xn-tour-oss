@@ -11,18 +11,21 @@ $(function() {
         readonly:view
     },{
 		title: '下单人',
-		field: 'applyUser',
+		field: 'realName',
         readonly:view
        
     },
-    // {
-	// 	title: '线路编号',
-	// 	field: 'lineCode',
-    //     readonly:view
-    // },
     {
-        title:'专线编号',
-        field:"specialLineCode",
+		title: '联系方式',
+		field: 'mobile',
+        readonly:view
+    },
+    {
+        title:'专线名称',
+        field:"name",
+        formatter:function(v,data){
+            return  data.specialLine.name;
+        },
         readonly:view
     },
       {
@@ -53,8 +56,6 @@ $(function() {
 		fields: fields,
 		code: code,
 		view:view,
-		//addCode: '',
-		//editCode: '',
 		detailCode: '618192'
 	});
 });

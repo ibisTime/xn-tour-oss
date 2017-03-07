@@ -21,7 +21,7 @@ $(function() {
     },{
 		field : 'outDate',
 		title : '出行日期',
-		formatter: dateTimeFormat
+		formatter: dateFormat
 	}, {
 		title: '价格',
 		field: 'price',
@@ -33,8 +33,8 @@ $(function() {
 		title: '是否推荐',
 		field: 'location',
 		type:'select',
-		key:"hotelhot_status",
-		formatter: Dict.getNameForList('hotelhot_status')
+		key:"hotel_location",
+		formatter: Dict.getNameForList('hotel_location')
 	},
 	{
 		title: 'UI顺序',
@@ -86,7 +86,10 @@ $(function() {
 				toastr.info("请选择记录");
 				return;
 			}
-
+			if ( selRecords[0].status ==1){
+				toastr.info("已上架");
+				return;
+			}
 			if ( selRecords[0].status != 1 ){
 				 window.location.href = "router_up.html?code=" +selRecords[0].code; 	
 			}	
@@ -115,9 +118,6 @@ $(function() {
 			}
 	});
 
-
-
-
      $('#edit2Btn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){
@@ -130,6 +130,17 @@ $(function() {
             }
             window.location.href = "router_addedit.html?code=" +selRecords[0].code;    
         });
-
-
+		 $('#addeditBtn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+			// if(selRecords[0].status != 0){
+            //     toastr.info("只有未上架才可信息修改");
+            //     return;
+            // }
+            window.location.href = "router_addedit2.html?code=" +selRecords[0].code;    
+        });
+        
 });

@@ -9,12 +9,10 @@ $(function() {
 	},{
 		field : 'name',
 		title : '游记名称',
-        	readonly:view
+        readonly:view
 	},{
 		title:"更新时间",
 		field:"publishDatetime",
-		// formatter:dateTimeFormat,
-	 
 		formatter: function(value, row, index){
         	return row['updateDatetime'] ? dateTimeFormat(row['updateDatetime']) : dateTimeFormat(value);
         },
@@ -26,6 +24,11 @@ $(function() {
 		title: '点赞次数',
 		field: 'likeTimes',
         	readonly:view
+	},{
+		title:"图片",
+		field:"pic",
+		type:"img",
+		readonly:view
 	},{
 		title: '审核状态',
 		field: 'status',

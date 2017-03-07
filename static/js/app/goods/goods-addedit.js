@@ -16,10 +16,6 @@ $(function() {
         value:"0",
         type:"hidden",
     },{
-        field:"quantity",
-        value:"0",
-        type:"hidden",
-    },{
         title: '商品名称',
         field: 'name',
         readonly:view,
@@ -48,6 +44,13 @@ $(function() {
         type: 'img',
         required: true,
         readonly:view
+    },{
+        title:"库存量",
+        field:"quantity",
+        number:true,
+        required: true,
+        readonly:view,
+         
     },{
         title: '备注',
         field: 'remark',

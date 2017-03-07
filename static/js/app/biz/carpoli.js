@@ -16,15 +16,11 @@ $(function() {
 	},{
 		title:"下单人",
 		field:"name",
-		// formatter:function(v,data){
-        //     return data.carpool.name
-        // }
+	 
 	},{
 		title:"手机号",
 		field:"mobile",
-		// formatter:function(v,data){
-        //     return data.carpool.mobile
-        // }
+		 
 	},{
 		title:"下单说明",
 		field:"applyNote",
@@ -37,21 +33,11 @@ $(function() {
         title:"首次支付金额",
         field:"firstPayAmount",
         formatter:moneyFormat    
-    },
-    // {
-    //     title:"首次支付编号",
-    //     field:"firstPayCode",
-         
-    // },
-    {
-        title:"第二次支付金额",
-        field:"firstPayAmount",
+    },{
+        title:"尾款",
+        field:"secondAmount",
         formatter:moneyFormat    
     },
-    // {
-    //     title:"第二次支付编号",
-    //     field:"secondpayCode",
-    //  }, 
      {
 		title:"状态",
 		field:"status",

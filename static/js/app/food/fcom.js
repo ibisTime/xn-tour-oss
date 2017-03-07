@@ -5,12 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	},
-	// {
-	// 	title: '关键词',
-	// 	field: 'content',
-    //     visible:false,
-    //     search:true
-	// },
+	 
 	{
 		field : 'commer1',
 		title : '用户名',
@@ -21,12 +16,14 @@ $(function() {
 		field : 'topCode',
 		title : '针对美食',
 		formatter:function(v,data){
-			return data.line.name
+			return data.food.name
 		},
-	},{
+	}, 
+	{
 		field : "type",
 		title : '美食类型',
 		formatter:function(v,data){
+			v = data.food.type;
 			if (v==9){
 				return "自助餐"
 			} else if (v==16){
@@ -46,7 +43,8 @@ $(function() {
 			}	
 
 		}
-	},{
+	},
+	{
 		title:"评论时间",
 		field:"commDatetime",
 		formatter:dateTimeFormat,

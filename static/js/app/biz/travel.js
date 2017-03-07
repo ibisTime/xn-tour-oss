@@ -22,7 +22,7 @@ $(function() {
 		},
 		search:true
 	},{
-		title: '是否置顶',
+		title: '是否热门',
 		field: 'location',
 		type:"select",
 		key:'trahot_status',

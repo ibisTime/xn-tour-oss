@@ -31,8 +31,8 @@ $(function() {
 		title: '是否推荐',
 		field: 'location',
 		type:'select',
-		key:"hotelhot_status",
-		formatter: Dict.getNameForList('hotelhot_status')
+		key:"hotel_location",
+		formatter: Dict.getNameForList('hotel_location')
 	},{
 		title: 'UI顺序',
 		field: 'orderNo',
@@ -109,7 +109,6 @@ $(function() {
                 toastr.info("未上架，无法下架");
                 return;
             }
-            //var msg = selRecords[0].status == 0 ? "确认上架该民宿？": "确认下架该民宿？";
 
             confirm("确认下架该民宿？").then(function() {
                 reqApi({

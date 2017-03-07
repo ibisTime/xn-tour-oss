@@ -9,23 +9,16 @@ $(function() {
         title:"关键词",
 	    search:true
 	}, {
-		field: "weight",
-		title:"权重",
-        type:'select',
-        key:"weight_type",
-        formatter:Dict.getNameForList("weight_type"),
+		field: "updater",
+		title:"更新人",
+        
 	}, {
-		field: "level",
-		title:"等级",
-        type:'select',
-        key:"word_level",
-        formatter:Dict.getNameForList("word_level"),
+		field: 'updateDatetime',
+        title: '更新时间',
+        formatter: dateTimeFormat
 	},{
-		field: "reaction",
-		title:"反应",
-        type:'select',
-        key:"word_reaction",
-        formatter:Dict.getNameForList("word_reaction"),
+		field: "remark",
+		title:"备注",
 	}];
 	buildList({
 		router: 'word',

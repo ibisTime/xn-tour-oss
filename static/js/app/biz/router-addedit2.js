@@ -81,16 +81,35 @@ $(function() {
 		required: true,
 		readonly:view
 	}];
-	
-	buildDetail({
-		fields: fields,
+	var options = {
+        fields: fields,
 		code: code,
-		view:view,
-		addCode: '618090',
-		editCode: '618091',
 		detailCode: '618102',
-		 
-	});
-	
+         
+	}; 
+
+    options.buttons = [{
+        title: '确定',
+        handler: function () {
+            if ($('#jsForm').valid()) {
+				var data = $('#jsForm').serializeObject();
+                    reqApi({
+                        code: "618090",
+                        json: data
+                    }).done(function () {
+                        sucDetail();
+                    });
+                
+            }
+        }
+    },
+	 {
+        title: '返回',
+        handler: function () {
+            goBack();
+        }
+    }];
+
+    buildDetail(options);
 	
 });

@@ -2,18 +2,13 @@ $(function() {
 	var code = getQueryString('code');
 
 	var fields = [
-    //     {
-	// 	hidden: true,
-	// 	field: "code",
-	// 	value: code,
-    //     data1:"code"
-	//    },
+    
      {
 		title: 'UI位置',
 		field: 'location',
 		type:'select',
-		key:"hotelhot_status",
-		formatter: Dict.getNameForList('hotelhot_status'),
+		key:"hotel_location",
+	 
 		required: true,
 		
 	},
@@ -27,8 +22,12 @@ $(function() {
 	
 	var options = {
         fields: fields,
-        // code: code,
-        // detailCode: '618012',
+        detailCode: '618012',
+        searchParams:{
+            type:"4",
+
+        },
+        dataType: "hotal"
 	}; 
 
     options.buttons = [{

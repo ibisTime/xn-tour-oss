@@ -84,17 +84,12 @@ $(function() {
         normalArea: true,
         maxlength: 255,
         readonly:view,
-        // formatter:function(v,data){
-        //     return data.hotal.specialDesc
-        // },
+         
         required:true
     }, {
         title: '酒店美食',
         field: 'foodDesc',
         type: "textarea",
-        //  formatter:function(v,data){
-        //     return data.hotal.foodDesc
-        // },
         normalArea: true,
         maxlength: 255,
         required: true,

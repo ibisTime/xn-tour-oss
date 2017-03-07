@@ -21,7 +21,7 @@ $(function() {
 		field : 'topCode',
 		title : '针对酒店',
 		formatter:function(v,data){
-			return data.line.name
+			return data.hotal.name
 		},
 	},{
 		title:"评论时间",

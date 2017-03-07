@@ -6,7 +6,10 @@ $(function() {
 		checkbox : true
     }, {
 		title: '用户名',
-		field: 'realName',
+		field: 'nickname',
+		// formatter: function(value, row, index){
+        // 	return row['realName'] ? row['realName'] : value;
+        // },
         search:true
 	},{
 		title: '手机号',

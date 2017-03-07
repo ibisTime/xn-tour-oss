@@ -46,8 +46,11 @@ $(function() {
         },{
             field: 'totalNum1',
             title: '房间总数',
-            value:"1",
+            value:1,
             readonly: true, 
+            formatter:function(v,data){
+                return  data.totalNum
+            }
         },{
             field: 'totalNum',
             type:"hidden", 

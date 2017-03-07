@@ -26,16 +26,6 @@ $(function() {
 		}
         
 	},
-	// 	{
-	// 	field : "type",
-	// 	title : '类型',
-    //     key:"ht_type",
-	// 	formatter:function(v,data){
-	// 		return  data.type
-	// 	},
-	// 	formatter:Dict.getNameForList("ht_type"),
-    //     type:"select"
-	// },
 	{
 		title:"评论时间",
 		field:"commDatetime",

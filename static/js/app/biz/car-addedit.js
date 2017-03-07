@@ -17,8 +17,8 @@ $(function() {
 		},
 		readonly:true,
 	}, {
-		title: '预约时间',
-		field: 'bookDatetime',
+		title: '出发时间',
+		field: 'outDatetime',
 		readonly:true,
         formatter:dateTimeFormat
 	}, {
@@ -41,7 +41,7 @@ $(function() {
     },{
         title:"状态",
         field:"status",
-        key:"order_status",
+        key:"sporder_status",
         type:"select",
         readonly:true
     },{

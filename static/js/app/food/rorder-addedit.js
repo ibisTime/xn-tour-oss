@@ -11,19 +11,25 @@ $(function() {
         readonly:view
     },{
 		title: '下单人',
-		field: 'applyUser',
+		field: 'name',
         readonly:view
        
     },{
-		title: '线路编号',
+		title: '线路名称',
 		field: 'lineCode',
+        formatter:function(v,data){
+         return  data.line.name;
+        },
         readonly:view
     },
-    // {
-    //     title:'支付订单号',
-    //     field:"payCode",
-    //     readonly:view
-    // },
+    {
+        title:'联系方式',
+        field:"mobile",
+        formatter:function(v,data){
+         return  data.mobile;
+        },
+        readonly:view
+    },
       {
 		title:"支付金额",
 		field:"amount",

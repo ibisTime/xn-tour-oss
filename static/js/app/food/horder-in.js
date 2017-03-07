@@ -14,8 +14,9 @@ $(function() {
         hidden:true,
         required:true
 	},{
-		title:"操作人密码",
+		title:"操作人登录密码",
 		field:"password",
+        type:"password",
         required:true
 	},{
 		title:"操作人",
@@ -24,17 +25,14 @@ $(function() {
         value:sessionStorage.getItem('userId'),
 		required:true,
         
-	},{
-        title:"备注",
-        field:"remark",
-        maxlength:255
-    }];
+	} 
+    ];
 	
 	 var options = {
         fields: fields,
-        // code: code,
-        // detailCode: '618052',
-		// dataType:"hotalOrder"
+        code: code,
+        detailCode: '618052',
+		dataType:"hotalOrder"
     };
 
     options.buttons = [{

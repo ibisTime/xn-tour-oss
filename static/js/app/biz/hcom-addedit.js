@@ -5,17 +5,15 @@ $(function() {
 	var fields = [ {
 		title: '针对酒店',
 		field: 'topCode',
-        // formatter:function(v,data){
-		// 	return  data.res.topCode
-		// },
+        formatter:function(v,data){
+			return data.hotal.name
+		},
 		readonly:true
     },	{
 		field : "type",
 		title : '类型',
         key:"ht_type",
-		// formatter:function(v,data){
-		// 	return  data.res.type
-		// },
+		 
 		formatter:Dict.getNameForList("ht_type"),
         type:"select"
 	},{
