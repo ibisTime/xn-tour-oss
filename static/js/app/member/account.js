@@ -34,14 +34,14 @@ $(function() {
     	title: '冻结金额',
     	formatter: moneyFormat
     },
-	{
-    	field: 'currency',
-    	title: '币种',
-    	type: 'select',
-		key: 'currency_type',
-		formatter: Dict.getNameForList('currency_type'),
-		// search: true
-    },
+	// {
+    // 	field: 'currency',
+    // 	title: '币种',
+    // 	type: 'select',
+	// 	key: 'currency_type',
+	// 	formatter: Dict.getNameForList('currency_type'),
+	// 	// search: true
+    // },
 	{
 		field : 'createDatetime',
 		title : '创建时间',
