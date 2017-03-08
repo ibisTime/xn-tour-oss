@@ -13,13 +13,16 @@ $(function() {
 		field : "type",
 		title : '类型',
         key:"ht_type",
-		 
-		formatter:Dict.getNameForList("ht_type"),
+		readonly:true ,
+		//formatter:Dict.getNameForList("ht_type"),
         type:"select"
 	},{
 		title: '用户名',
 		field: 'commer',
-		readonly:true
+		readonly:true,
+        formatter:function(v,data){
+            return  data.res.nickname;
+        }
 	}, {
 		title: '评论时间',
 		field: 'commDatetime',
@@ -30,9 +33,9 @@ $(function() {
 		field: 'content',
 		readonly:true
 	},{
-		title: '备注',
+		title: '审核说明',
 		field: "approveNote",
-         
+        required:true,
         maxlength:255,
 	}];
 	
@@ -48,7 +51,7 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = {};
                 data['code'] = code;
-                data['approverUser'] = sessionStorage.getItem('userName');
+                data['approver'] = sessionStorage.getItem('userName');
                 data["approveResult"] = "1";
                 data["approveNote"] = $("#approveNote").val();
                 reqApi({
@@ -65,7 +68,7 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = {};
                 data['code'] = code;
-                data['approverUser'] = sessionStorage.getItem('userName');
+                data['approver'] = sessionStorage.getItem('userName');
                 data["approveResult"] = "2";
                 data["approveNote"] = $("#approveNote").val();
                 reqApi({

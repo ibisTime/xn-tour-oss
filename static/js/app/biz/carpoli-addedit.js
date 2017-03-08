@@ -11,7 +11,11 @@ $(function() {
 		field:"name",
         readonly:true,
 		
-	},{
+	}, {
+        title:"下单人联系方式",
+        field:"mobile",
+         readonly:true,    
+    },{
         title:"下单时间",
         field:"applyDatetime",
         formatter:dateTimeFormat,
@@ -21,22 +25,35 @@ $(function() {
         field:"firstAmount",
         formatter:moneyFormat ,
          readonly:true, 
-    },
-    {
-        title:"手机号",
-        field:"mobile",
-         readonly:true,    
     },{
-		title: '数量',
-		field: 'quantity',
-        readonly:true,
-	},
-    // {
-    //     title:"第二次支付编号",
-    //     field:"secondpayCode",
-    //      readonly:true,
-    //  }, 
-     {
+        title:"司机",
+        field:'driver',
+        formatter:function(v,data){
+            return data.carpool.driver;
+        },
+         readonly:true, 
+
+    },{  title:"司机联系方式",
+        field:'mobiled',
+        formatter:function(v,data){
+            return data.carpool.mobile;
+        },
+         readonly:true, 
+
+    },{  title:"拼车起点",
+        field:'startSite',
+        formatter:function(v,data){
+            return data.carpool.startSite;
+        },
+         readonly:true, 
+
+    },{  title:"拼车目的地",
+        field:'endSite',
+        formatter:function(v,data){
+            return data.carpool.endSite;
+        },
+         readonly:true, 
+    },{
 		title:"状态",
 		field:"status",
         type:"select",

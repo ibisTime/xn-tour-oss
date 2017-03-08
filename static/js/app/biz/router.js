@@ -59,13 +59,12 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-		// if (selRecords[0].status != 1) {
-        //     toastr.info("请先上架该线路再进行Tab内容设置");
-        //     return;
-        // }
-
+		if (selRecords[0].status != 1) {
+            toastr.info("请先上架该线路再进行Tab内容设置");
+            return;
+        }
         window.location.href = "router_tab.html?lineCode=" + selRecords[0].code;
-		 
+		//window.location.href="router_tablist.html?lineCode="+selRecords[0].code; 
     });
 	$("#recomBtn").on("click", function() {
 			var selRecords = $('#tableList').bootstrapTable('getSelections');

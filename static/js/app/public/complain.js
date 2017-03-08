@@ -18,7 +18,7 @@ $(function() {
         title:"用户名",
         field:"commiter",
 		formatter:function(v,data){
-			return  data.res.mobile
+			return  data.res.nickname
 		}
     },{
 		field : 'type',

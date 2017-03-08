@@ -4,21 +4,14 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-    },
-    // {
-    //     title:"线路名称",
-    //     field:'name',
-    //     visible:false,
-    //     search:true
-    // },
-    {
+    },{
 		title: '起点',
 		field: 'startSite',
         search:true
 	},{
 		title:"终点",
 		field:"endSite",
-		
+		search:true
 	},{
 		title:"出发时间",
 		field:"outDatetime",

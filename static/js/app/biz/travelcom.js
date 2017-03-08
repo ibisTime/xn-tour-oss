@@ -20,7 +20,7 @@ $(function() {
 	},
 	{
 		field : "name",
-		title : '针对线路',
+		title : '针对游记',
 		formatter:function(v,data){
 			return　data.travels.name;
 		}

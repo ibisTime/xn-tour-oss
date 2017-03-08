@@ -92,11 +92,6 @@ $(function() {
 		type:"img",
 		readonly:true
 	},{
-		title: '线路图片',
-		field: 'pathPic',
-		type:"img",
-		readonly:true
-	} ,{
 		title:'备注',
 		field:"remark",
 		maxlength:255,
