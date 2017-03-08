@@ -80,6 +80,11 @@ $(function() {
 		type:"img",
 		required: true,
 		readonly:view
+	},{
+		title:'备注',
+		field:"remark",
+		maxlength:255
+
 	}];
 	var options = {
         fields: fields,
@@ -93,6 +98,7 @@ $(function() {
         handler: function () {
             if ($('#jsForm').valid()) {
 				var data = $('#jsForm').serializeObject();
+			
                     reqApi({
                         code: "618090",
                         json: data
