@@ -5,7 +5,7 @@ $(function() {
      {
 		title: '商品积分价格',
 		field: 'price1',
-		amount:true,
+		//amount:true,
 		required: true,
 		
 	},
@@ -20,8 +20,8 @@ $(function() {
 	
 	var options = {
         fields: fields,
-        // code: code,
-        // detailCode: '618012',
+        // detailCode: '618422',
+        // dataType:"product"
 	}; 
 
     options.buttons = [{

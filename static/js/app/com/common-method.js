@@ -1155,6 +1155,9 @@ function buildDetail(options) {
                 imgs.each(function (index, img) {
                     values.push($(img).attr('data-src') || $(img).find('img').attr('src'));
                 });
+                // if (item.type == 'img' && item.passValue) {
+                //     data[item.field] = $('#' + item.field).find('option:selected').html();
+                // }
                 data[el.id] = values.join('||');
             });
             if ($('#jsForm').find('#province')[0]) {
@@ -1181,6 +1184,9 @@ function buildDetail(options) {
                 if (item.type == 'select' && item.passValue) {
                     data[item.field] = $('#' + item.field).find('option:selected').html();
                 }
+                // if (item.type == 'img' && item.passValue) {
+                //     data[item.field] = $('#' + item.field).find('option:selected').html();
+                // }
                 if(item.type == "checkbox"){
                     data[item.field] = $.isArray(data[item.field]) ? data[item.field].join(",") : data[item.field];
                 }

@@ -97,14 +97,40 @@ $(function() {
         title: '确定',
         handler: function () {
             if ($('#jsForm').valid()) {
-				var data = $('#jsForm').serializeObject();
-			
-                    reqApi({
-                        code: "618090",
-                        json: data
-                    }).done(function () {
-                        sucDetail();
-                    });
+				var data = $('#jsForm').serializeObject(); 
+				delete data["code"];
+				$('#jsForm').find('.btn-file [type=file]').parent().next().each(function (i, el) {
+					var values = [];
+					var imgs = $(el).find('.img-ctn');
+					imgs.each(function (index, img) {
+						values.push($(img).attr('data-src') || $(img).find('img').attr('src'));
+					});
+					 
+					data[el.id] = values.join('||');
+				});
+				for (var i = 0, len = fields.length; i < len; i++) {
+					var item = fields[i];
+					if (item.equal && (!$('#' + item.field).is(':hidden') || !$('#' + item.field + 'Img').is(':hidden'))) {
+						data[item.equal] = $('#' + item.field).val() || $('#' + item.field).attr('src');
+					} else if (item.emptyValue && !data[item.field]) {
+						data[item.field] = item.emptyValue;
+					} else if (item.readonly && item.pass) {
+						data[item.field] = $('#' + item.field).attr('data-value') || $('#' + item.field).html();
+					}
+					if (item.type == 'select' && item.passValue) {
+						data[item.field] = $('#' + item.field).find('option:selected').html();
+					}
+					 
+					if(item.type == "checkbox"){
+						data[item.field] = $.isArray(data[item.field]) ? data[item.field].join(",") : data[item.field];
+					}
+				}
+				reqApi({
+					code: "618090",
+					json: data
+				}).done(function () {
+					sucDetail();
+				});
                 
             }
         }

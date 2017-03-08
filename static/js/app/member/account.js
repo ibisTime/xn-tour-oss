@@ -33,14 +33,16 @@ $(function() {
     	field: 'frozenAmount',
     	title: '冻结金额',
     	formatter: moneyFormat
-    },{
+    },
+	{
     	field: 'currency',
     	title: '币种',
     	type: 'select',
 		key: 'currency_type',
 		formatter: Dict.getNameForList('currency_type'),
-		search: true
-    },{
+		// search: true
+    },
+	{
 		field : 'createDatetime',
 		title : '创建时间',
 		formatter: dateTimeFormat
@@ -49,9 +51,9 @@ $(function() {
 		router: 'account',
 		columns: columns,
 		pageCode: '802500',
-		// searchParams:{
-		// 	currency:"CNY"
-		// }
+		searchParams:{
+			currency:"CNY"
+		}
 	});
 	
 	$('#applyBtn').click(function() {

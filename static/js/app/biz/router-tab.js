@@ -1,6 +1,6 @@
 $(function() {
 	var code = getQueryString('lineCode');
-	//var view =getQueryString("v");
+	//var name =getQueryString("name");
 	
 	var fields = [{
 		hidden: true,
@@ -9,6 +9,7 @@ $(function() {
 	}, {
 		title: '针对路线',
 		field: 'name',
+		 
 		readonly: true
 	},{
 		title: 'Tab名称',
@@ -32,7 +33,9 @@ $(function() {
 	var options = {
         fields: fields,
         code: code,
-        detailCode: '618102',
+		lineCode:code,
+        //detailCode: '618096',
+		detailCode: '618102',
 	}; 
 
     options.buttons = [{

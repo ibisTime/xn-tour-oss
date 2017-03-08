@@ -168,15 +168,8 @@ $(function() {
                     data[item.field] = $.isArray(data[item.field]) ? data[item.field].join(",") : data[item.field];
                 }
             }
-            data['id'] = data['code'];
-            if (data.longitude) {
-                reqApi({
-                    code: code ? options.editCode : options.addCode,
-                    json: data
-                }).done(function(data) {
-                    sucDetail();
-                });
-            } else {
+             data['id'] = data['code'];
+             
                 var addr = data.province + data.city + data.area + data.detail;
                 var myGeo = new BMap.Geocoder();
                 myGeo.getPoint(addr, function(point) {
@@ -193,7 +186,7 @@ $(function() {
                         alert("无法解析当前地址的经纬度!");
                     }
                 });
-            }
+             
         }
     });
 });

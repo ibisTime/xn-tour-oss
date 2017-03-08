@@ -59,10 +59,10 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-		if (selRecords[0].status != 1) {
-            toastr.info("请先上架该线路再进行Tab内容设置");
-            return;
-        }
+		// if (selRecords[0].status != 1) {
+        //     toastr.info("请先上架该线路再进行Tab内容设置");
+        //     return;
+        // }
 
         window.location.href = "router_tab.html?lineCode=" + selRecords[0].code;
 		 
@@ -76,8 +76,8 @@ $(function() {
 			if (selRecords[0].status != 1) {
             toastr.info("请先上架该线路，再进行推荐内容设置");
             return;
-        }
-			window.location.href = "router_recom.html?lineCode="+selRecords[0].code;
+            }
+			window.location.href = "router_recom.html?lineCode="+selRecords[0].code+"&name="+selRecords[0].name;
 	});
 
 	$("#frameBtn").on("click",function(){
@@ -136,11 +136,19 @@ $(function() {
                 toastr.info("请选择记录");
                 return;
             }
-			// if(selRecords[0].status != 0){
-            //     toastr.info("只有未上架才可信息修改");
-            //     return;
-            // }
+			if(selRecords[0].status != 2){
+                toastr.info("只有已下架的才可以复制新增");
+                return;
+            }
             window.location.href = "router_addedit2.html?code=" +selRecords[0].code;    
         });
-        
+        $('#detail2Btn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+			
+            window.location.href = "router_detail.html?code=" +selRecords[0].code;    
+        });
 });

@@ -17,7 +17,7 @@ $(function() {
 		type: 'select',
 		key: 'currency_type',
 		formatter: Dict.getNameForList('currency_type'),
-		search: true
+		//search: true
 	},{
 		field: 'channelType',
 		title: '渠道',

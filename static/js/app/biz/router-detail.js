@@ -1,6 +1,6 @@
 $(function() {
 	var code = getQueryString('code');
-	var  view =getQueryString('v');
+	 
 	var items = Dict.getName("router_type").map(function(item){
         return {
             key: item.dkey,
@@ -11,16 +11,16 @@ $(function() {
 	var fields = [ {
 		title: '线路名称',
 		field: 'name',
-		required: true,
+		
 		maxlength:32,
-		readonly:view
+		readonly:true
 	},{
 		title: '线路类型',
 		field: 'type',
 		type: 'checkbox',
         items:items,
-		required: true,
-		readonly:view
+		
+		readonly:true
 	},
 	{
     	field : 'category',
@@ -36,8 +36,8 @@ $(function() {
 			  return "旅游"
 		  }
 		},
-		required: true,
-		readonly:view ,
+		
+		readonly:true ,
 		title :"类别",
     },
 	 {
@@ -46,56 +46,70 @@ $(function() {
 		type:'select',
 		key:'router_type2',
 	 
-		required: true,
-		readonly:view
+		
+		readonly:true
 	},{
 		title: '旅行时间',
 		field: 'travelTime',
 		type:'select',
 		key:'router_time',
-		required: true,
-		readonly:view
+		
+		readonly:true
 	}, {
 		title: '集合地',
 		field: 'joinPlace',
-		required: true,
-		readonly:view
+		
+		readonly:true
 	},{
 		title:"出行日期",
 		field:"outDate",
 		type: "date",
         formatter:dateFormat,
-		required: true,
-		readonly:view
+		
+		readonly:true
 	}, {
-		title: '价格',
+		title: '线路价格',
 		field: 'price',
-		amount:true,
-		formatter:moneyFormat,
+        amount:true,
 		required: true,
-		readonly:view
+		readonly:true
+	},{
+		title: 'UI位置',
+		field: 'location',
+		type:'select',
+		key:"hotel_location",
+		required: true,
+		readonly:true
+	},
+	{
+		title: 'UI顺序',
+		field: 'orderNo',
+		required: true,
+		readonly:true
 	},{
 		title: '线路图片',
 		field: 'pathPic',
 		type:"img",
-		required: true,
-		readonly:view
+		readonly:true
 	},{
+		title: '线路图片',
+		field: 'pathPic',
+		type:"img",
+		readonly:true
+	} ,{
 		title:'备注',
 		field:"remark",
-		maxlength:255
+		maxlength:255,
+		readonly:true
 
 	}];
 	
 	buildDetail({
 		fields: fields,
-		code: code,
-		view:view,
-		addCode: '618090',
-		editCode: '618091',
+		code: code,    
 		detailCode: '618102',
 		 
 	});
-	
-	
+	$("#subBtn").remove();
+	 
 });
