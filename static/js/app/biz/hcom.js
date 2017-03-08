@@ -15,7 +15,7 @@ $(function() {
 		field : 'commer',
 		title : '用户名',
 		formatter:function(v,data){
-			return data.res.loginName
+			return data.res.nickname
 		}
 	},{
 		field : 'topCode',
@@ -58,7 +58,7 @@ $(function() {
 				return;
 		  }
 
-			window.location.href = "comment_addedit.html?code=" + selRecords[0].code;
+			window.location.href = "hcom_addedit.html?code=" + selRecords[0].code;
 			 
 	});
 

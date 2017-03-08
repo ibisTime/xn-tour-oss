@@ -8,7 +8,7 @@ $(function() {
 		field: 'location',
 		type:'select',
 		key:"hotel_location",
-		formatter: Dict.getNameForList('hotel_location'),
+		//formatter: Dict.getNameForList('hotel_location'),
 		required: true,
 		
 	},
@@ -22,8 +22,9 @@ $(function() {
 	
 	var options = {
         fields: fields,
-        // code: code,
-        // detailCode: '618012',
+        code: code,
+        detailCode: '618072',
+        dataType: "food"
 	}; 
 
     options.buttons = [{

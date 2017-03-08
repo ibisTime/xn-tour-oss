@@ -22,6 +22,7 @@ $(function() {
 	
 	var options = {
         fields: fields,
+        code:code,
         detailCode: '618012',
         searchParams:{
             type:"4",

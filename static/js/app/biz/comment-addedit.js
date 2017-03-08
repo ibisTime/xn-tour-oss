@@ -3,7 +3,7 @@ $(function() {
 	//var  view =getQueryString('v');
 	
 	var fields = [{
-		title: '针对酒店',
+		title: '针对线路',
 		field: 'name1',
         formatter:function(v,data){
             return data.line.name;
