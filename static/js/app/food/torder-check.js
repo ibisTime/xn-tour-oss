@@ -3,58 +3,52 @@ $(function() {
     //var  view =getQueryString('v');
 
     var fields = [{
-            title: "订单编号",
-            field: "code1",
-            formatter: function(v, data) {
-                return data.code
-            },
-            readonly: true
-        }, {
-            title: '下单人',
-            field: 'realName',
-            readonly: true
-
+        title: "订单编号",
+        field: "code1",
+        formatter: function(v, data) {
+            return data.code
         },
-        // {
-        // 	title: '线路编号',
-        // 	field: 'lineCode',
-        //     readonly:view
-        // },
-        {
-            title: '专线名称',
-            field: "name",
-            formatter: function(v, data) {
-                return data.specialLine.name;
-            },
-            readonly: view
+        readonly: true
+    }, {
+        title: '下单人',
+        field: 'realName',
+        readonly: true
 
-                readonly: true
+    }, {
+        title: '联系方式',
+        field: 'mobile',
+        readonly: true
+    }, {
+        title: '专线名称',
+        field: "name",
+        formatter: function(v, data) {
+            return data.specialLine.name;
         },
-        {
-            title: "支付金额",
-            field: "amount",
-            formatter: moneyFormat,
-            readonly: true
-        }, {
-            title: '下单时间',
-            field: 'applyDatetime',
-            formatter: dateTimeFormat,
-            readonly: true
-        }, {
-            title: "订单状态",
-            field: "status",
-            type: "select",
-            key: "sporder_status",
-            formatter: Dict.getNameForList("sporder_status"),
-            readonly: true
+        readonly: true
+    }, {
+        title: "支付金额",
+        field: "amount",
+        formatter: moneyFormat,
+        readonly: true
+    }, {
+        title: '下单时间',
+        field: 'applyDatetime',
+        formatter: dateTimeFormat,
+        readonly: true
+    }, {
+        title: "订单状态",
+        field: "status",
+        type: "select",
+        key: "sporder_status",
+        formatter: Dict.getNameForList("sporder_status"),
+        readonly: true
 
-        }, {
-            title: "审核说明",
-            field: 'approveNote',
-            maxlength: 255,
-            required: true,
-        }
-    ];
+    }, {
+        title: "审核说明",
+        field: 'approveNote',
+        maxlength: 255,
+        required: true,
+    }];
 
     var options = {
         fields: fields,

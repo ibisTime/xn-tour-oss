@@ -43,17 +43,23 @@ $(function() {
             formatter: function(v, data) {
                 return routerType2(data.line.style);
             },
-            type: "select",
-            //  key:"router_type2",  
-            //  formatter:Dict.getNameForList("router_type2"),
-        }, {
-            title: "线路类型",
-            field: "type",
-            formatter: function(v, data) {
-                return routerType(data.line.type);
-            },
-            type: "select",
         },
+        // {
+        //     title: "线路类型",
+        //     field: "type",
+        //     // formatter: function(v, data) {
+        //     //     return data.line.type
+        //     // },
+        //     type: "checkbox",
+        //     formatter: function(data) {
+        //         var arr = data.line.type.split(/,/),
+        //             str = "";
+        //         for (var i = 0; i < arr.length; i++) {
+        //             str += descriptionDict(arr[i]) + "、";
+        //         }
+        //         return i && str.substr(0, str.length - 1) || "";
+        //     }
+        // },
         {
             title: '价格',
             field: 'amount',
