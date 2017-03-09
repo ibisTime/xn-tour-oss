@@ -1422,7 +1422,7 @@ function buildDetail(options) {
                             buildList(options1);
                         } else {
                             if(item.useData){
-                                displayValue = data || [];
+                                displayValue = $.isArray(item.useData) ? item.useData : (data || []);
                             }
                             $('#' + item.field).html('<table id="' + item.field + 'List"></table>');
                             $('#' + item.field + 'List').bootstrapTable({
@@ -1847,6 +1847,16 @@ function buildDetail(options) {
                         });
                     })(item);
                 }
+            } else if(item.type == "o2m" && item.useData){
+                displayValue = $.isArray(item.useData) ? item.useData : [];
+                $('#' + item.field).html('<table id="' + item.field + 'List"></table>');
+                $('#' + item.field + 'List').bootstrapTable({
+                    striped: true,
+                    clickToSelect: true,
+                    singleSelect: true,
+                    columns: item.columns,
+                    data: displayValue
+                });
             }
         }
         for (var i = 0, len = imgList.length; i < len; i++) {

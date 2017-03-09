@@ -8,7 +8,7 @@ $(function() {
 		type:"select",
 		listCode:"618101",
 		keyName:"code",
-		valueName:"{{code.DATA}}-{{name.DATA}}",
+		valueName:"{{name.DATA}}",
 		required: true,
 		readonly:view
 	},{
