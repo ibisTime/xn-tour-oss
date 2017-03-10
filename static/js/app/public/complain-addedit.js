@@ -4,9 +4,9 @@ $(function() {
 
     var fields = [{
         title: '投诉人',
-        field: 'commiter',
+        field: 'commiter2',
         formatter: function(v, data) {
-            return data.res.realName
+            return data.res.nickname
         },
         readonly: true
     }, {
