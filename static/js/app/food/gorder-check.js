@@ -27,6 +27,17 @@ $(function() {
             title: '积分价格',
             field: 'amount1',
             readonly: true
+        }, {
+            title: '下单人',
+            field: 'mobile',
+            readonly: true
+        }, {
+            title: '下单人联系方式',
+            field: 'mobile1',
+            formatter: function(v, data) {
+                return data.mobile;
+            },
+            readonly: true
         },
         {
             title: '下单时间',

@@ -3,8 +3,8 @@ $(function() {
     var routerType2 = Dict.getNameForList("router_type2");
     // var routerDi= Dict.getNameForList("router_di");
     var routerTime = Dict.getNameForList("router_time");
+    var typeDict = Dict.getNameForList("router_type");
 
-    // console.log(routerType);
     var columns = [{
             field: '',
             title: '',
@@ -34,8 +34,6 @@ $(function() {
                 return routerTime(data.line.travelTime);
             },
             type: "select",
-            // key:'router_time',
-            // formatter:Dict.getNameForList("router_time"),
         },
         {
             title: "线路形式",
@@ -44,38 +42,39 @@ $(function() {
                 return routerType2(data.line.style);
             },
         },
-        // {
-        //     title: "线路类型",
-        //     field: "type",
-        //     // formatter: function(v, data) {
-        //     //     return data.line.type
-        //     // },
-        //     type: "checkbox",
-        //     formatter: function(data) {
-        //         var arr = data.line.type.split(/,/),
-        //             str = "";
-        //         for (var i = 0; i < arr.length; i++) {
-        //             str += descriptionDict(arr[i]) + "、";
-        //         }
-        //         return i && str.substr(0, str.length - 1) || "";
-        //     }
-        // },
+        {
+            title: "线路类型",
+            field: "type",
+            type: "checkbox",
+            formatter: function(v, data) {
+                var arr = data.line.type.split(/,/),
+                    str = "";
+                for (var i = 0; i < arr.length; i++) {
+                    str += typeDict(arr[i]) + "、";
+                }
+                return i && str.substr(0, str.length - 1) || "";
+
+            }
+        },
         {
             title: '价格',
             field: 'amount',
             formatter: moneyFormat
-        }, {
+        },
+        {
             title: '下单时间',
             field: 'applyDatetime',
             formatter: dateTimeFormat
-        }, {
+        },
+        {
             title: "订单状态",
             field: "status",
             type: "select",
             search: true,
             key: "sporder_status",
             formatter: Dict.getNameForList("sporder_status"),
-        }, {
+        },
+        {
             title: "买家嘱托",
             field: "applyNote"
         }

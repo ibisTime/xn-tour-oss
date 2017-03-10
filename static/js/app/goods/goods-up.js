@@ -5,6 +5,7 @@ $(function() {
             title: '商品积分价格',
             field: 'price1',
             amount: true,
+            formatter: moneyFormat,
             required: true,
 
         },
@@ -20,8 +21,9 @@ $(function() {
 
     var options = {
         fields: fields,
-        // detailCode: '618422',
-        // dataType:"product"
+        code: code,
+        detailCode: '618422',
+        dataType: "product"
     };
 
     options.buttons = [{

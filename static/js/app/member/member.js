@@ -1,5 +1,8 @@
 $(function() {
-
+    var userKind = {
+        "f1": "C端用户",
+        "f2": "B端用户"
+    }
     var columns = [{
             field: '',
             title: '',
@@ -26,8 +29,18 @@ $(function() {
             formatter: Dict.getNameForList("account_status")
         },
         {
+            title: "类型",
+            field: "kind",
+            search: true,
+            type: "select",
+            data: userKind,
+            formatter: function(v) {
+                return userKind[v];
+            }
+        },
+        {
             title: '备注',
-            field: 'remark',
+            field: 'remark'
         }
     ];
     buildList({
@@ -36,6 +49,11 @@ $(function() {
         pageCode: '805054',
         searchParams: {
             kind: "ff3"
+        },
+        beforeSearch: function(json) {
+            if ($("#kind").val() == "") {
+                json.kind = "ff3";
+            }
         }
     });
 

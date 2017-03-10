@@ -99,7 +99,7 @@ function moneyFormat(money, format) {
     money = parseFloat(money).toFixed(format);
     //千分位转化
     var re = /\d{1,3}(?=(\d{3})+$)/g;
-    money = money.replace(/^(\d+)((\.\d+)?)$/, function (s, s1, s2) {
+    money = money.replace(/^(\d+)((\.\d+)?)$/, function(s, s1, s2) {
         return s1.replace(re, "$&,") + s2;
     });
     if (!flag) {
@@ -250,7 +250,7 @@ function getMenuUrl(url, name) {
 function getUrlParam(key) {
     var json = {},
         data;
-    $.each(location.search.substr(1).split("&"), function (i, n) {
+    $.each(location.search.substr(1).split("&"), function(i, n) {
         data = n.split("=");
         json[data[0]] = data[1];
     });
@@ -265,7 +265,7 @@ function showPermissionControl() {
     var url = $("#basePath").val() + "/menu/list";
     var webUrl = window.location.pathname;
     var menuUrl = webUrl.substring($("#basePath").val().length);
-    var data = {"url": menuUrl};
+    var data = { "url": menuUrl };
     //var data = {"url":menuUrl,"kind":getCurrentKind()};
     //doGetAjaxIsAsync(url, data, false, doGetMenuCode);
 
@@ -283,7 +283,7 @@ function showPermissionControl() {
             code: '805026',
             json: pData,
             sync: true
-        }).then(function (data) {
+        }).then(function(data) {
             $('.tools .toolbar').empty();
             for (var i = 0; i < data.length; i++) {
                 var menuUrl = data[i].url;
@@ -307,10 +307,10 @@ function doGetMenuCode(res) {
 
 
 // 扩展方法
-$.fn.serializeObject = function () {
+$.fn.serializeObject = function() {
     var o = {};
     var a = this.serializeArray();
-    $.each(a, function () {
+    $.each(a, function() {
         if (o[this.name] !== undefined) {
             if (!o[this.name].push) {
                 o[this.name] = [o[this.name]];
@@ -323,7 +323,7 @@ $.fn.serializeObject = function () {
             }
             if ($('#' + this.name).attr('multiple')) {
                 var values = [];
-                $('#' + this.name).prev().find('.search-choice').each(function (i, item) {
+                $('#' + this.name).prev().find('.search-choice').each(function(i, item) {
                     values.push($(item).attr('data-value'));
                 });
                 o[this.name] = values;
@@ -335,7 +335,7 @@ $.fn.serializeObject = function () {
     return o;
 };
 
-$.fn.renderDropdown = function (data, keyName, valueName, defaultOption, filter) {
+$.fn.renderDropdown = function(data, keyName, valueName, defaultOption, filter) {
     var value, listCode, params, dict, filter = filter || '';
     if ($.isPlainObject(data)) {
         value = data.value;
@@ -351,15 +351,15 @@ $.fn.renderDropdown = function (data, keyName, valueName, defaultOption, filter)
             code: listCode,
             json: params,
             sync: true
-        }).then(function (d) {
+        }).then(function(d) {
             data.data = d;
         });
     }
     data = (data.data && data.data.list) || data.data || data || [];
     if (dict) {
-        dict.forEach(function (item) {
+        dict.forEach(function(item) {
             var dictData = Dict.getName(item[1]);
-            data.forEach(function (i) {
+            data.forEach(function(i) {
                 i[item[0] + 'Name'] = Dict.findName(dictData, i[item[0]]);
             });
 
@@ -383,7 +383,7 @@ $.fn.renderDropdown = function (data, keyName, valueName, defaultOption, filter)
     return data;
 };
 
-$.fn.renderDropdown2 = function (data, defaultOption) {
+$.fn.renderDropdown2 = function(data, defaultOption) {
     var html = "<option value=''></option>" + (defaultOption || '');
     for (var k in data) {
         if (data.hasOwnProperty(k)) {
@@ -408,7 +408,7 @@ function renderA(el, link) {
 
 // array
 
-Array.prototype.contains = function (obj) {
+Array.prototype.contains = function(obj) {
     var i = this.length;
     while (i--) {
         if (this[i] === obj) {
@@ -418,7 +418,7 @@ Array.prototype.contains = function (obj) {
     return false;
 }
 
-Array.prototype.each = function (fn) {
+Array.prototype.each = function(fn) {
     fn = fn || Function.K;
     var a = [];
     var args = Array.prototype.slice.call(arguments, 1);
@@ -429,7 +429,7 @@ Array.prototype.each = function (fn) {
     return a;
 };
 
-Array.prototype.uniquelize = function () {
+Array.prototype.uniquelize = function() {
     var ra = new Array();
     for (var i = 0; i < this.length; i++) {
         if (!ra.contains(this[i])) {
@@ -439,27 +439,27 @@ Array.prototype.uniquelize = function () {
     return ra;
 };
 
-Array.complement = function (a, b) {
+Array.complement = function(a, b) {
     return Array.minus(Array.union(a, b), Array.intersect(a, b));
 };
 
-Array.intersect = function (a, b) {
-    return a.uniquelize().each(function (o) {
+Array.intersect = function(a, b) {
+    return a.uniquelize().each(function(o) {
         return b.contains(o) ? o : null
     });
 };
 
-Array.minus = function (a, b) {
-    return a.uniquelize().each(function (o) {
+Array.minus = function(a, b) {
+    return a.uniquelize().each(function(o) {
         return b.contains(o) ? null : o
     });
 };
 
-Array.union = function (a, b) {
+Array.union = function(a, b) {
     return a.concat(b).uniquelize();
 };
 
-$(document).on('click', '.toolbar li[id*=Btn]', function (e) {
+$(document).on('click', '.toolbar li[id*=Btn]', function(e) {
     var text = $(this).text();
     localStorage.setItem('syj-btn', text);
 });
@@ -495,9 +495,9 @@ function getRoleLevel() {
 }
 
 
-$(function () {
+$(function() {
     //下拉框
-    setTimeout(function () {
+    setTimeout(function() {
         chosen();
         // 面包屑
         var topTitle = $('.nav .selected h2', window.parent.frames[0].document).text();
@@ -514,7 +514,7 @@ $(function () {
 
 });
 var oriVal = $.fn.val;
-$.fn.val = function (value) {
+$.fn.val = function(value) {
     var res = oriVal.apply($(this), arguments);
     if ($(this).is('select')) {
         $(this).trigger('chosen:updated');
@@ -522,15 +522,15 @@ $.fn.val = function (value) {
     return res || '';
 };
 
-$(document).on('click', 'input[type=reset]', function () {
+$(document).on('click', 'input[type=reset]', function() {
     var me = this;
-    setTimeout(function () {
+    setTimeout(function() {
         $(me).closest('.search-form').find('select').trigger('chosen:updated');
     }, 100);
 });
 
 var oriHtml = $.fn.html;
-$.fn.html = function (value) {
+$.fn.html = function(value) {
     var res = oriHtml.apply($(this), arguments);
     if ($(this).is('select')) {
         $(this).trigger('chosen:updated');
@@ -542,14 +542,14 @@ $.fn.html = function (value) {
 function zipImg(file, pos) {
     if (file.type != 'image/jpeg') {
         var reader = new FileReader();
-        reader.onload = function (evt) {
+        reader.onload = function(evt) {
             var image = evt.target.result;
             $(pos).attr("src", image);
         }
         reader.readAsDataURL(file);
     } else {
         var mpImg = new MegaPixImage(file);
-        mpImg.render(pos, {quality: 0.5});
+        mpImg.render(pos, { quality: 0.5 });
     }
 }
 
@@ -567,8 +567,8 @@ function goBack() {
     }
 }
 
-String.prototype.temp = function (obj) {
-    return this.replace(/\{\{(\w+)\.DATA\}\}/gi, function (matchs) {
+String.prototype.temp = function(obj) {
+    return this.replace(/\{\{(\w+)\.DATA\}\}/gi, function(matchs) {
         var returns = obj[matchs.replace(/\{\{(\w+)\.DATA\}\}/, '$1')];
         return (returns + "") == "undefined" ? "" : returns;
     });
@@ -577,7 +577,7 @@ String.prototype.temp = function (obj) {
 function objectArrayFilter(arr, keys) {
     keys = keys.split(',');
     var newArr = [];
-    arr.forEach(function (item) {
+    arr.forEach(function(item) {
         if (keys.indexOf(item.dkey) > -1) {
             newArr.push(item);
         }
@@ -614,10 +614,10 @@ function buildList(options) {
         if (item.search) {
             if (item.key || item.type == 'select') {
                 html += '<li><label>' + item.title + '</label><select ' + (item.multiple ? 'multiple' : '') + ' id="' + item.field + '" name="' + item.field + '"></select></li>';
-            }  else if (item.type1 == 'date' || item.type1 == "datetime") {
-				dateTimeList.push(item);
-				html += '<li style="width: 50%;"><label>'+item.title1+'</label><input id="'+item.field1+'" name="'+item.field1+'" class="lay-input"/><label style="float:none;padding-left: 10px;">至</label><input id="'+item.field2+'" name="'+item.field2+'" class="lay-input"/></li>';
-			} else if (item.type == "citySelect") {
+            } else if (item.type1 == 'date' || item.type1 == "datetime") {
+                dateTimeList.push(item);
+                html += '<li style="width: 50%;"><label>' + item.title1 + '</label><input id="' + item.field1 + '" name="' + item.field1 + '" class="lay-input"/><label style="float:none;padding-left: 10px;">至</label><input id="' + item.field2 + '" name="' + item.field2 + '" class="lay-input"/></li>';
+            } else if (item.type == "citySelect") {
                 html += '<li class="clearfix" style="width:56%;"><label>' + item.title + '</label><div id="city-group"><select id="province" name="province" class="control-def prov"></select>' +
                     '<select id="city" name="city" class="control-def city"></select>' +
                     '<select id="area" name="area" class="control-def dist"></select></div></li>';
@@ -634,22 +634,22 @@ function buildList(options) {
     }
     html += '<li><input id="searchBtn" type="button" class="btn" value="查询" /><input type="reset" class="btn" value="重置" /></li></ul>';
     $('.search-form').append(html);
-    
-   for (var i = 0, len = dateTimeList.length; i < len; i++) {
-		var item = dateTimeList[i];
-		laydate({
-			elem: '#' + item.field1,
-			min: item.minDate ? item.minDate : '',
-			istime: item.type1 == 'datetime',
-			format: item.type1 == 'datetime' ? 'YYYY-MM-DD hh:mm:ss' : 'YYYY-MM-DD'
-		});
-		laydate({
-			elem: '#' + item.field2,
-			min: item.minDate ? item.minDate : '',
-			istime: item.type1 == 'datetime',
-			format: item.type1 == 'datetime' ? 'YYYY-MM-DD hh:mm:ss' : 'YYYY-MM-DD'
-		});
-	}
+
+    for (var i = 0, len = dateTimeList.length; i < len; i++) {
+        var item = dateTimeList[i];
+        laydate({
+            elem: '#' + item.field1,
+            min: item.minDate ? item.minDate : '',
+            istime: item.type1 == 'datetime',
+            format: item.type1 == 'datetime' ? 'YYYY-MM-DD hh:mm:ss' : 'YYYY-MM-DD'
+        });
+        laydate({
+            elem: '#' + item.field2,
+            min: item.minDate ? item.minDate : '',
+            istime: item.type1 == 'datetime',
+            format: item.type1 == 'datetime' ? 'YYYY-MM-DD hh:mm:ss' : 'YYYY-MM-DD'
+        });
+    }
 
 
     for (var i = 0, len = dropDownList.length; i < len; i++) {
@@ -673,8 +673,8 @@ function buildList(options) {
                 $('#' + item.field)[0].pageParams.start += 1;
             }
 
-            (function (d) {
-                item.formatter = function (v) {
+            (function(d) {
+                item.formatter = function(v) {
                     return d[v] || d[+v];
                 };
             })(data);
@@ -687,7 +687,7 @@ function buildList(options) {
                 params: item.params,
                 keyName: item.keyName,
                 valueName: item.valueName
-            }, (item.defaultOption ? {defaultOption: '<option value="0">' + item.defaultOption + '</option>'} : {})));
+            }, (item.defaultOption ? { defaultOption: '<option value="0">' + item.defaultOption + '</option>' } : {})));
             var dataDict = {};
             if (item.defaultOption) {
                 dataDict['0'] = item.defaultOption;
@@ -699,8 +699,8 @@ function buildList(options) {
                 }
             }
 
-            item.formatter = (function (d) {
-                return function (v) {
+            item.formatter = (function(d) {
+                return function(v) {
                     return d[v];
                 };
             })(dataDict);
@@ -718,23 +718,23 @@ function buildList(options) {
         required: false
     });
 
-    $('#searchBtn').click(function () {
-        $('#tableList').bootstrapTable('refresh', {url: $('#tableList').bootstrapTable('getOptions').url});
+    $('#searchBtn').click(function() {
+        $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
     });
 
     if ($('.search-form').find('li').length == 1) {
         $('.search-form').find('li').hide();
     }
 
-    $('#addBtn').click(function () {
+    $('#addBtn').click(function() {
         window.location.href = options.router + "_addedit.html?-=-" + urlParamsStr;
     });
 
-    $('#exportBtn').click(function () {
+    $('#exportBtn').click(function() {
         $('.export .btn').click();
     });
 
-    $('#editBtn').click(function () {
+    $('#editBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
@@ -751,14 +751,14 @@ function buildList(options) {
         var codeParams = '';
         if (options.uid) {
 
-            options.uid.forEach(function (i) {
+            options.uid.forEach(function(i) {
                 codeParams += '&' + i + '=' + selRecords[0][i];
             });
         }
         window.location.href = options.router + "_addedit.html?code=" + (selRecords[0].code || selRecords[0].id) + urlParamsStr + codeParams;
     });
 
-    $('#deleteBtn').click(function () {
+    $('#deleteBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
@@ -768,14 +768,14 @@ function buildList(options) {
             return;
         }
 
-        confirm("确认是否删除该记录？").then(function () {
+        confirm("确认是否删除该记录？").then(function() {
             var codeParams = {
-            		code: selRecords[0].code,
-            		id: selRecords[0].id
-            	};
+                code: selRecords[0].code,
+                id: selRecords[0].id
+            };
             if (options.uid) {
                 codeParams = {};
-                options.uid.forEach(function (i) {
+                options.uid.forEach(function(i) {
                     codeParams[i] = selRecords[0][i];
                 });
             }
@@ -784,14 +784,14 @@ function buildList(options) {
             reqApi({
                 code: options.deleteCode,
                 json: data
-            }).done(function (data) {
+            }).done(function(data) {
                 sucList();
             });
         });
 
     });
 
-    $('#detailBtn').click(function () {
+    $('#detailBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
@@ -808,7 +808,7 @@ function buildList(options) {
         var codeParams = '';
         if (options.uid) {
 
-            options.uid.forEach(function (i) {
+            options.uid.forEach(function(i) {
                 codeParams += '&' + i + '=' + selRecords[0][i];
             });
         }
@@ -817,7 +817,7 @@ function buildList(options) {
 
     // 导入
     var dw;
-    $('#importBtn').click(function () {
+    $('#importBtn').click(function() {
         if (options.beforeImport) {
             if (!options.beforeImport()) {
                 return;
@@ -825,21 +825,21 @@ function buildList(options) {
         }
         dw = dialog({
             content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-            '<div class="alert-warning">xlsx文件导入，读取第一个sheet数据，第一行header定义字段属性（驼峰拼写）</div>' +
-            '<div class="form-body">' +
-            '<input type="file" id="importFile"/>' +
-            '</div></form>'
+                '<div class="alert-warning">xlsx文件导入，读取第一个sheet数据，第一行header定义字段属性（驼峰拼写）</div>' +
+                '<div class="form-body">' +
+                '<input type="file" id="importFile"/>' +
+                '</div></form>'
         });
         dw.showModal();
         //$('#importFile').on('change', handleFile);
         $('#importFile').on('change', getImportDataFun(options, dw));
     });
 
-    $(document).on('click', '.ui-popup-backdrop', function () {
+    $(document).on('click', '.ui-popup-backdrop', function() {
         dw && dw.close().remove();
     });
 
-    $('#checkBtn').click(function () {
+    $('#checkBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
@@ -856,7 +856,7 @@ function buildList(options) {
         var codeParams = '';
         if (options.uid) {
 
-            options.uid.forEach(function (i) {
+            options.uid.forEach(function(i) {
                 codeParams += '&' + i + '=' + selRecords[0][i];
             });
         }
@@ -865,8 +865,7 @@ function buildList(options) {
 
     var singleSelect = true;
     var detailView = false;
-    var detailFormatter = function () {
-    };
+    var detailFormatter = function() {};
     var sortName = '';
     var sortOrder = '';
     if ('singleSelect' in options) {
@@ -878,7 +877,7 @@ function buildList(options) {
     }
 
     if ('sortName' in options) {
-        sortName = options['sortName'].replace(/[A-Z]/g, function (word) {
+        sortName = options['sortName'].replace(/[A-Z]/g, function(word) {
             return '_' + word.toLowerCase()
         });
     }
@@ -899,7 +898,7 @@ function buildList(options) {
         singleSelect: singleSelect,
         detailView: detailView,
         detailFormatter: detailFormatter,
-        queryParams: function (params) {
+        queryParams: function(params) {
             var json = {};
             json.start = params.offset / params.limit + 1;
             json.limit = params.limit;
@@ -919,14 +918,17 @@ function buildList(options) {
                 systemCode: sessionStorage.getItem('systemCode')
             });
             params.order && (json.orderDir = params.order);
-            params.sort && (json.orderColumn = params.sort.replace(/[A-Z]/g, function (word) {
+            params.sort && (json.orderColumn = params.sort.replace(/[A-Z]/g, function(word) {
                 return '_' + word.toLowerCase()
             }));
-            var res = {code: options.pageCode, json: JSON.stringify(json)};
+            if (options.beforeSearch) {
+                options.beforeSearch(json);
+            }
+            var res = { code: options.pageCode, json: JSON.stringify(json) };
             return res;
         },
         queryParamsType: 'limit',
-        responseHandler: function (res) {
+        responseHandler: function(res) {
             return {
                 rows: res.data.list || res.data,
                 total: res.data.totalCount || res.data.length
@@ -945,7 +947,7 @@ function buildList(options) {
 }
 
 function selectImage(file, name) {
-    setTimeout(function () {
+    setTimeout(function() {
         $(file).valid();
     }, 10);
     if (!file.files || !file.files[0]) {
@@ -962,8 +964,11 @@ function buildDetail(options) {
     var title = $('.left-menu .active a', window.parent.frames[1] ? window.parent.frames[1].document : document).html();
     $('#page-title').html(title);
     var html = '<input type="hidden" id="code" name="code" class="control-def" />';
-    var dropDownList = [], rules = {}, textareaList = [];
-    var dateTimeList = [], imgList = [];
+    var dropDownList = [],
+        rules = {},
+        textareaList = [];
+    var dateTimeList = [],
+        imgList = [];
     for (var i = 0, len = fields.length; i < len; i++) {
         var item = fields[i];
         rules[item.field] = {};
@@ -1008,8 +1013,8 @@ function buildDetail(options) {
             rules[item.field].mobile = item.mobile;
         }
         if ('phone' in item) {
-                rules[item.field].phone = item.phone;
-            }
+            rules[item.field].phone = item.phone;
+        }
         if (item['Z+']) {
             rules[item.field]['Z+'] = item['Z+'];
         }
@@ -1050,13 +1055,13 @@ function buildDetail(options) {
                     '<span id="province" name="province" style="display: inline-block;"></span>' +
                     '<span id="city" name="city" style="display: inline-block;padding: 0 8px;"></span>' +
                     '<span id="area" name="area" style="display: inline-block;"></span></li>'
-            } else if(item.type == 'o2m' && item.useData){
+            } else if (item.type == 'o2m' && item.useData) {
                 html += '<li class="clearfix" type="' + (item.amount ? 'amount' : '') + '" style="' + (item.width ? ('width: ' + item.width + ';display:inline-block;') : '') + (item.hidden ? 'display: none;' : '') + '"><label>' + item.title + '</label><div id="' + item.field + '" name="' + item.field + '"></div></li>';
-            } else if(item.type == "checkbox") {
+            } else if (item.type == "checkbox") {
                 html += '<li class="clearfix" style="display:inline-block;"><label>' + item.title + ':</label>';
                 for (var k = 0, len1 = item.items.length; k < len1; k++) {
                     var rd = item.items[k];
-                    html += '<input type="checkbox" disabled id="'+item.field+'_checkbox' + k + '" name="' + item.field + '" value="' + rd.key + '"><label for="radio' + k + '" class="radio-text">'+(rd.value || '')+'<i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
+                    html += '<input type="checkbox" disabled id="' + item.field + '_checkbox' + k + '" name="' + item.field + '" value="' + rd.key + '"><label for="radio' + k + '" class="radio-text">' + (rd.value || '') + '<i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
                 }
                 html += '</li>';
             } else {
@@ -1070,10 +1075,10 @@ function buildDetail(options) {
                     html += '<input type="radio" id="radio' + k + '" name="' + item.field + '" value="' + rd.key + '"><label title="' + (rd.value || '') + '" for="radio' + k + '" class="radio-text"><i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
                 }
                 html += '</li>';
-            } else if(item.type == "checkbox") {
+            } else if (item.type == "checkbox") {
                 for (var k = 0, len1 = item.items.length; k < len1; k++) {
                     var rd = item.items[k];
-                    html += '<input type="checkbox" id="'+item.field+'_checkbox' + k + '" name="' + item.field + '" value="' + rd.key + '"><label for="radio' + k + '" class="radio-text">'+(rd.value || '')+'<i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
+                    html += '<input type="checkbox" id="' + item.field + '_checkbox' + k + '" name="' + item.field + '" value="' + rd.key + '"><label for="radio' + k + '" class="radio-text">' + (rd.value || '') + '<i class="zmdi ' + (rd.icon || '') + ' zmdi-hc-5x"></i></label>';
                 }
                 html += '</li>';
             } else if (item.type == 'password') {
@@ -1091,7 +1096,7 @@ function buildDetail(options) {
                     '<input type="file" tabindex="1" id="' + item.field + '" name="' + item.field + '" />' +
                     '</div><div id="' + item.field + '" style="margin-left: 195px;"></div></li>';
             } else if (item.type == 'textarea' && !item.normalArea) {
-                textareaList.push({field: item.field});
+                textareaList.push({ field: item.field });
                 html += '<div style="width:800px;float:left;"><textarea style="height:300px;" id="' + item.field + '" name="' + item.field + '"></textarea></div></li>';
             } else if (item.type == 'textarea' && item.normalArea) {
                 html += '<div style="width:400px;float:left;"><textarea style="height:200px;width: 320px;border: 1px solid #e0e0e0;padding: 8px;" id="' + item.field + '" name="' + item.field + '"></textarea></div></li>';
@@ -1100,7 +1105,7 @@ function buildDetail(options) {
                     '<select id="city" name="city" class="control-def city"></select>' +
                     '<select id="area" name="area" class="control-def dist"></select></div></li>';
                 if (item.required) {
-                    rules.province = {required: true};
+                    rules.province = { required: true };
                     // rules.city = {required: true};
                     // rules.area = {required: true};
                 }
@@ -1124,13 +1129,13 @@ function buildDetail(options) {
         for (var i = 0, len = options.buttons.length; i < len; i++) {
             var item = options.buttons[i];
             var id = 'btn-' + i;
-            btnHandlers.push({id: id, handler: item.handler});
+            btnHandlers.push({ id: id, handler: item.handler });
             btnHtml += '<input id="' + id + '" type="button" class="btn margin-left-20" value="' + item.title + '"/>';
         }
         btnHtml += '</li>';
         html += btnHtml;
     } else {
-        html += '<li><input id="subBtn" type="button" class="btn margin-left-100" value="'+( options.saveText || "保存" )+'"/><input id="backBtn" type="button" class="btn margin-left-20" value="返回"/></li>';
+        html += '<li><input id="subBtn" type="button" class="btn margin-left-100" value="' + (options.saveText || "保存") + '"/><input id="backBtn" type="button" class="btn margin-left-20" value="返回"/></li>';
     }
 
     $('#form-info').append(html);
@@ -1143,16 +1148,16 @@ function buildDetail(options) {
         $('#' + btnHandlers[i].id).on('click', btnHandlers[i].handler);
     }
 
-    $('#backBtn').click(function () {
+    $('#backBtn').click(function() {
         goBack();
     });
-    $('#subBtn').click(function () {
+    $('#subBtn').click(function() {
         if ($('#jsForm').valid()) {
             var data = $('#jsForm').serializeObject();
-            $('#jsForm').find('.btn-file [type=file]').parent().next().each(function (i, el) {
+            $('#jsForm').find('.btn-file [type=file]').parent().next().each(function(i, el) {
                 var values = [];
                 var imgs = $(el).find('.img-ctn');
-                imgs.each(function (index, img) {
+                imgs.each(function(index, img) {
                     values.push($(img).attr('data-src') || $(img).find('img').attr('src'));
                 });
                 // if (item.type == 'img' && item.passValue) {
@@ -1187,7 +1192,7 @@ function buildDetail(options) {
                 // if (item.type == 'img' && item.passValue) {
                 //     data[item.field] = $('#' + item.field).find('option:selected').html();
                 // }
-                if(item.type == "checkbox"){
+                if (item.type == "checkbox") {
                     data[item.field] = $.isArray(data[item.field]) ? data[item.field].join(",") : data[item.field];
                 }
             }
@@ -1201,12 +1206,12 @@ function buildDetail(options) {
             reqApi({
                 code: code ? options.editCode : options.addCode,
                 json: data
-            }).done(function (data) {
+            }).done(function(data) {
                 sucDetail();
             });
         }
     });
-    $("#jsForm").validate({'rules': rules});
+    $("#jsForm").validate({ 'rules': rules });
 
     for (var i = 0, len = dropDownList.length; i < len; i++) {
         var item = dropDownList[i];
@@ -1221,7 +1226,7 @@ function buildDetail(options) {
                 params: item.params,
                 keyName: item.keyName,
                 valueName: item.valueName
-            }, (item.defaultOption ? {defaultOption: '<option value="0">' + item.defaultOption + '</option>'} : {})));
+            }, (item.defaultOption ? { defaultOption: '<option value="0">' + item.defaultOption + '</option>' } : {})));
             if (item.pageCode) {
                 $('#' + item.field)[0].pageOptions = {
                     pageCode: item.pageCode,
@@ -1249,7 +1254,7 @@ function buildDetail(options) {
                 keyName: item.keyName,
                 valueName: item.valueName,
                 dict: item.dict
-            }, (item.defaultOption ? {defaultOption: '<option value="0">' + item.defaultOption + '</option>'} : {})));
+            }, (item.defaultOption ? { defaultOption: '<option value="0">' + item.defaultOption + '</option>' } : {})));
             $('#' + item.field)[0].pageOptions = {
                 pageCode: item.pageCode,
                 keyName: item.keyName,
@@ -1262,8 +1267,8 @@ function buildDetail(options) {
         }
         if (item.onChange) {
 
-            (function (i, data) {
-                $('#' + i.field).on('change', function (e) {
+            (function(i, data) {
+                $('#' + i.field).on('change', function(e) {
                     var record = Dict.findObj(data, this.value, i.keyName);
                     i.onChange(this.value, record);
                 });
@@ -1318,8 +1323,8 @@ function buildDetail(options) {
 
         if (item.onBlur) {
 
-            (function (i) {
-                $('#' + i.field).on('blur', function (e) {
+            (function(i) {
+                $('#' + i.field).on('blur', function(e) {
                     i.onBlur(this.value);
                 });
             })(item);
@@ -1328,7 +1333,7 @@ function buildDetail(options) {
 
     }
 
-    var detailParams = {code: code, id: code};
+    var detailParams = { code: code, id: code };
     if (code && typeof code == 'object') {
         detailParams = code;
         code = true;
@@ -1356,16 +1361,16 @@ function buildDetail(options) {
         reqApi({
             code: options.detailCode,
             json: detailParams
-        }).done(function (d) {
+        }).done(function(d) {
             var data = d;
-            if(options.dataType){
+            if (options.dataType) {
                 data = d[options.dataType];
                 data.oriData = d;
             }
 
             for (var i = 0, len = imgList.length; i < len; i++) {
-                (function (i) {
-                    setTimeout(function () {
+                (function(i) {
+                    setTimeout(function() {
                         var item = imgList[i];
                         uploadInit.call($('#' + item.field));
                     }, 10);
@@ -1376,11 +1381,11 @@ function buildDetail(options) {
                 var item = fields[i];
                 var value = item.value;
                 var displayValue = data[item.field];
-             
+
                 if (item.onKeyup) {
 
-                    (function (i, d) {
-                        $('#' + i.field).on('keyup', function () {
+                    (function(i, d) {
+                        $('#' + i.field).on('keyup', function() {
                             i.onKeyup(this.value, d);
                         });
                     })(item, data);
@@ -1397,8 +1402,8 @@ function buildDetail(options) {
                     if (item.type == 'm2o') {
                         if (displayValue) {
                             var clickDiv = $('#' + item.field).html('<a>' + displayValue + '</a>');
-                            (function (a) {
-                                clickDiv.on('click', function () {
+                            (function(a) {
+                                clickDiv.on('click', function() {
                                     window.open(a.url + '?v=1&code=' + data[a.codeField], '', 'width=1000,height=800');
                                 });
                             })(item);
@@ -1421,7 +1426,7 @@ function buildDetail(options) {
                             item.detailFormatter && (options1.detailFormatter = item.detailFormatter);
                             buildList(options1);
                         } else {
-                            if(item.useData){
+                            if (item.useData) {
                                 displayValue = $.isArray(item.useData) ? item.useData : (data || []);
                             }
                             $('#' + item.field).html('<table id="' + item.field + 'List"></table>');
@@ -1464,7 +1469,7 @@ function buildDetail(options) {
                         } else {
                             var dv = '';
                             if (realValue) {
-                                realValue.split('').forEach(function (i) {
+                                realValue.split('').forEach(function(i) {
                                     dv += Dict.getName(item.key, i) + ' | ';
                                 });
                                 dv = dv.slice(0, dv.length - 3);
@@ -1486,13 +1491,13 @@ function buildDetail(options) {
                             }
                         }
                         $('#' + item.field).html('<div class="zmdi ' + selectOne.icon + ' zmdi-hc-5x" title="' + selectOne.value + '"></div>');
-                    } else if(item.type == "checkbox"){
+                    } else if (item.type == "checkbox") {
                         var checkData = displayValue.split(/,/);
-                        for(var h = 0; h < checkData.length; h++){
+                        for (var h = 0; h < checkData.length; h++) {
                             for (var k = 0, len1 = item.items.length; k < len1; k++) {
                                 var rd = item.items[k];
-                                if(rd.key == checkData[h]){
-                                    $("#"+item.field+"_checkbox" + k).prop("checked",true);
+                                if (rd.key == checkData[h]) {
+                                    $("#" + item.field + "_checkbox" + k).prop("checked", true);
                                     break;
                                 }
                             }
@@ -1500,7 +1505,7 @@ function buildDetail(options) {
                     } else if (item.type == 'select' && (item.pageCode || item.listCode || item.detailCode)) {
                         var params = {};
                         if (!item.detailCode && item.pageCode) {
-                            params = {start: 1, limit: 1000000000};
+                            params = { start: 1, limit: 1000000000 };
                         }
                         var realValue = data[item['[value]']] || displayValue || '';
                         if (item.value && item.value.call) {
@@ -1513,11 +1518,11 @@ function buildDetail(options) {
                         } else if (realValue == 0) {
                             $('#' + item.field).html(item.defaultOption);
                         } else {
-                            (function (i, displayValue) {
+                            (function(i, displayValue) {
                                 reqApi({
                                     code: i.detailCode || i.listCode || i.pageCode,
                                     json: params
-                                }).then(function (d) {
+                                }).then(function(d) {
                                     var data;
                                     if (displayValue) {
                                         data = (d && d.list) || d[0] && d || [d];
@@ -1540,20 +1545,20 @@ function buildDetail(options) {
                     } else if (item.type == 'img') {
                         var value1 = item.value1;
                         var realValue = data[item['[value]']] || displayValue || '';
-                        if(value1){
+                        if (value1) {
                             value1 = value1.split(".");
-                            var temp = data[ value1[0] ];
-                            for(var k = 1; temp && k < value1.length; k++){
-                                if($.isArray(temp)){
+                            var temp = data[value1[0]];
+                            for (var k = 1; temp && k < value1.length; k++) {
+                                if ($.isArray(temp)) {
                                     temp = temp[0];
                                 }
-                                temp = temp && temp[ value1[k] ] || "";
+                                temp = temp && temp[value1[k]] || "";
                             }
                             realValue = temp || "";
                         }
                         if ($.isArray(realValue)) {
                             var imgHtml = '';
-                            realValue.forEach(function (img) {
+                            realValue.forEach(function(img) {
                                 imgHtml += '<img src="' + src + '" style="max-width: 300px;"/>';
                             });
                             $('#' + item.field).html(imgHtml);
@@ -1562,7 +1567,7 @@ function buildDetail(options) {
                             var imgsHtml = '';
                             var defaultFile = getDefaultFileIcon();
 
-                            sp.length && sp.forEach(function (item) {
+                            sp.length && sp.forEach(function(item) {
                                 var suffix = item.slice(item.lastIndexOf('.') + 1);
                                 var src = (item.indexOf('http://') > -1 ? item : (OSS.picBaseUrl + '/' + item));
                                 var src1 = (item.indexOf('http://') > -1 ? item.substring(item.lastIndexOf("/") + 1) : item);
@@ -1594,7 +1599,7 @@ function buildDetail(options) {
                                 }
                             });
                             $('#' + item.field).html(imgsHtml);
-                            $('#' + item.field).find('.zmdi-download').on('click', function (e) {
+                            $('#' + item.field).find('.zmdi-download').on('click', function(e) {
                                 var dSrc = OSS.picBaseUrl + '/' + $(this).parents("[data-src]").attr('data-src');
                                 window.open(dSrc, '_blank');
                             });
@@ -1640,7 +1645,7 @@ function buildDetail(options) {
                         var sp = realValue && realValue.split('||') || [];
                         var imgsHtml = '';
                         var defaultFile = getDefaultFileIcon();
-                        sp.length && sp.forEach(function (item) {
+                        sp.length && sp.forEach(function(item) {
                             var suffix = item.slice(item.lastIndexOf('.') + 1);
                             var src = (item.indexOf('http://') > -1 ? item : (OSS.picBaseUrl + '/' + item));
                             var src1 = (item.indexOf('http://') > -1 ? item.substring(item.lastIndexOf("/") + 1) : item);
@@ -1675,22 +1680,22 @@ function buildDetail(options) {
                             }
                         });
                         $('#' + item.field).html(imgsHtml);
-                        $('#' + item.field).find('.zmdi-close-circle-o').on('click', function (e) {
+                        $('#' + item.field).find('.zmdi-close-circle-o').on('click', function(e) {
                             $(this).parents("[data-src]").remove();
                         });
-                        $('#' + item.field).find('.zmdi-download').on('click', function (e) {
+                        $('#' + item.field).find('.zmdi-download').on('click', function(e) {
                             var dSrc = OSS.picBaseUrl + '/' + $(this).parents("[data-src]").attr('data-src');
                             window.open(dSrc, '_blank');
                         });
                     } else if (item.type == 'radio') {
                         $('input[name=' + item.field + '][value=' + displayValue + ']').prop('checked', true);
-                    } else if(item.type == "checkbox"){
+                    } else if (item.type == "checkbox") {
                         var checkData = displayValue.split(/,/);
-                        for(var h = 0; h < checkData.length; h++){
+                        for (var h = 0; h < checkData.length; h++) {
                             for (var k = 0, len1 = item.items.length; k < len1; k++) {
                                 var rd = item.items[k];
-                                if(rd.key == checkData[h]){
-                                    $("#"+item.field+"_checkbox" + k).prop("checked",true);
+                                if (rd.key == checkData[h]) {
+                                    $("#" + item.field + "_checkbox" + k).prop("checked", true);
                                     break;
                                 }
                             }
@@ -1711,14 +1716,14 @@ function buildDetail(options) {
                         data.city && $('#city').val(data.city);
                         data.area && $('#area').val(data.area);
                         if (item.onChange) {
-                            (function (i) {
-                                $("#province").on("change", function (e) {
+                            (function(i) {
+                                $("#province").on("change", function(e) {
                                     i.onChange($("#province").val(), $("#city").val(), $("#area").val());
                                 });
-                                $("#city").on("change", function (e) {
+                                $("#city").on("change", function(e) {
                                     i.onChange($("#province").val(), $("#city").val(), $("#area").val());
                                 });
-                                $("#area").on("change", function (e) {
+                                $("#area").on("change", function(e) {
                                     i.onChange($("#province").val(), $("#city").val(), $("#area").val());
                                 });
                             })(item);
@@ -1739,7 +1744,7 @@ function buildDetail(options) {
                             '<ul class="toolbar">' + innerHtml +
                             '</ul>' +
                             '</div><table id="' + item.field + 'List"  data-editable-emptytext="无"></table>');
-                        (function (item, options) {
+                        (function(item, options) {
                             addEditTableListener1("#addBtn-o2m", "#removeBtn-o2m", "#editBtn-o2m", '#' + item.field + 'List', item.columns, options);
                         })(item, options);
 
@@ -1752,11 +1757,11 @@ function buildDetail(options) {
                         });
                     } else if (item.type == 'datetime' || item.type == 'date') {
                         $('#' + item.field)
-                            .val( (item.type == 'datetime' ?
-                                    dateTimeFormat : dateFormat)(data[item.field]) );
+                            .val((item.type == 'datetime' ?
+                                dateTimeFormat : dateFormat)(data[item.field]));
                     } else {
-                        $('#' + item.field).val(item.amount ? moneyFormat(displayValue) : 
-                        item.formatter ? item.formatter(displayValue, data) : displayValue);
+                        $('#' + item.field).val(item.amount ? moneyFormat(displayValue) :
+                            item.formatter ? item.formatter(displayValue, data) : displayValue);
                     }
                 }
 
@@ -1801,8 +1806,8 @@ function buildDetail(options) {
             var value = item.value;
             if (item.onKeyup) {
 
-                (function (i) {
-                    $('#' + i.field).on('keyup', function () {
+                (function(i) {
+                    $('#' + i.field).on('keyup', function() {
                         i.onKeyup(this.value);
                     });
                 })(item);
@@ -1822,7 +1827,7 @@ function buildDetail(options) {
                     '<ul class="toolbar">' + innerHtml +
                     '</ul>' +
                     '</div><table id="' + item.field + 'List"  data-editable-emptytext="无"></table>');
-                (function (item, options) {
+                (function(item, options) {
                     addEditTableListener1("#addBtn-o2m", "#removeBtn-o2m", "#editBtn-o2m", '#' + item.field + 'List', item.columns, options);
                 })(item, options);
 
@@ -1835,19 +1840,19 @@ function buildDetail(options) {
                 });
             } else if (item.type == 'citySelect') {
                 if (item.onChange) {
-                    (function (i) {
-                        $("#province").on("change", function (e) {
+                    (function(i) {
+                        $("#province").on("change", function(e) {
                             i.onChange($("#province").val(), $("#city").val(), $("#area").val());
                         });
-                        $("#city").on("change", function (e) {
+                        $("#city").on("change", function(e) {
                             i.onChange($("#province").val(), $("#city").val(), $("#area").val());
                         });
-                        $("#area").on("change", function (e) {
+                        $("#area").on("change", function(e) {
                             i.onChange($("#province").val(), $("#city").val(), $("#area").val());
                         });
                     })(item);
                 }
-            } else if(item.type == "o2m" && item.useData){
+            } else if (item.type == "o2m" && item.useData) {
                 displayValue = $.isArray(item.useData) ? item.useData : [];
                 $('#' + item.field).html('<table id="' + item.field + 'List"></table>');
                 $('#' + item.field + 'List').bootstrapTable({
@@ -1860,8 +1865,8 @@ function buildDetail(options) {
             }
         }
         for (var i = 0, len = imgList.length; i < len; i++) {
-            (function (i) {
-                setTimeout(function () {
+            (function(i) {
+                setTimeout(function() {
                     var item = imgList[i];
                     uploadInit.call($('#' + item.field));
                 }, 10);
@@ -1877,18 +1882,18 @@ function buildDetail(options) {
     chosen();
 }
 
-$(document).ajaxStart(function () {
+$(document).ajaxStart(function() {
     $.blockUI({
-        overlayCSS: {backgroundColor: '#fff', opacity: 0.5},
+        overlayCSS: { backgroundColor: '#fff', opacity: 0.5 },
         message: null
     });
 }).ajaxStop($.unblockUI);
 
 function chosen() {
-    $('select').chosen && $('select').not('.norender').chosen({search_contains: true, allow_single_deselect: true});
-    $('select').chosen && $('select').not('.norender').chosen().change(function () {
+    $('select').chosen && $('select').not('.norender').chosen({ search_contains: true, allow_single_deselect: true });
+    $('select').chosen && $('select').not('.norender').chosen().change(function() {
         var that = this;
-        setTimeout(function () {
+        setTimeout(function() {
             $(that).parent().height($(that).prev().height());
         }, 1);
 
@@ -1904,10 +1909,10 @@ function text3dot(text, count) {
 
 }
 
-$.fn.highlight = function (type) {
+$.fn.highlight = function(type) {
     var that = this;
     that.parent().removeClass('swing');
-    setTimeout(function () {
+    setTimeout(function() {
         that.parent().addClass('swing');
     }, 1);
 };
@@ -1971,11 +1976,11 @@ function uploadInit() {
         chunk_size: '4mb', //分块上传时，每片的体积
         auto_start: true, //选择文件后自动上传，若关闭需要自己绑定事件触发上传
         init: {
-            'FilesAdded': function (up, files) {
+            'FilesAdded': function(up, files) {
                 if (editor.append) {
                     var defaultImg = getDefaultImgIcon();
                     var defaultFile = getDefaultFileIcon();
-                    plupload.each(files, function (file) {
+                    plupload.each(files, function(file) {
                         // 文件添加进队列后,处理相关的事情
                         var sourceLink = file.name;
                         var suffix = sourceLink.slice(sourceLink.lastIndexOf('.') + 1);
@@ -2025,21 +2030,21 @@ function uploadInit() {
                                 '</div>' +
                                 '</div>').appendTo(editor);
                         }
-                        imgCtn.find('.zmdi-close-circle-o').on('click', function (e) {
+                        imgCtn.find('.zmdi-close-circle-o').on('click', function(e) {
                             up.removeFile(file);
                             imgCtn.remove();
                         });
                     });
                 }
             },
-            'BeforeUpload': function (up, file) {
+            'BeforeUpload': function(up, file) {
                 // 每个文件上传前,处理相关的事情
                 //printLog('on BeforeUpload');
                 if (editor.append) {
                     editor.find("#" + file.id).find(".progress-striped").show();
                 }
             },
-            'UploadProgress': function (up, file) {
+            'UploadProgress': function(up, file) {
                 //
                 // 显示进度条
                 if (editor.showUploadProgress) {
@@ -2054,7 +2059,7 @@ function uploadInit() {
                 }
             },
 
-            'FileUploaded': function (up, file, info) {
+            'FileUploaded': function(up, file, info) {
                 // 每个文件上传成功后,处理相关的事情
                 // 其中 info 是文件上传成功后，服务端返回的json，形式如
                 // {
@@ -2086,18 +2091,18 @@ function uploadInit() {
                     } else {
                         imgCtn.attr("data-src", sourceLink1);
                     }
-                    (function (imgCtn, sourceLink) {
-                        imgCtn.find('.zmdi-download').on('click', function (e) {
+                    (function(imgCtn, sourceLink) {
+                        imgCtn.find('.zmdi-download').on('click', function(e) {
                             window.open(sourceLink, '_blank');
-                        });  //zmdi-name
+                        }); //zmdi-name
                     })(imgCtn, sourceLink);
                 }
             },
-            'Error': function (up, err, errTip) {
+            'Error': function(up, err, errTip) {
                 //上传出错时,处理相关的事情
                 //printLog('on Error');
             },
-            'UploadComplete': function () {
+            'UploadComplete': function() {
                 //队列文件处理完毕后,处理相关的事情
                 //printLog('on UploadComplete');
 
@@ -2106,10 +2111,10 @@ function uploadInit() {
             },
             // Key 函数如果有需要自行配置，无特殊需要请注释
             //,
-            'Key': function (up, file) {
+            'Key': function(up, file) {
                 // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
                 // 该配置必须要在 unique_names: false , save_key: false 时才生效
-//                 var key = "";
+                //                 var key = "";
                 // do something with key here
                 var sourceLink = file.name;
                 var suffix = sourceLink.slice(0, sourceLink.lastIndexOf('.'));
@@ -2124,15 +2129,15 @@ function uploadInit() {
 }
 
 function sleep(ms) {
-    return (new Promise(function (resolve, reject) {
-        setTimeout(function () {
+    return (new Promise(function(resolve, reject) {
+        setTimeout(function() {
             $.blockUI({
-                overlayCSS: {backgroundColor: '#fff', opacity: 0.5},
+                overlayCSS: { backgroundColor: '#fff', opacity: 0.5 },
                 message: null
             });
         }, 1);
 
-        setTimeout(function () {
+        setTimeout(function() {
             $.unblockUI();
             resolve();
         }, ms);
@@ -2141,29 +2146,29 @@ function sleep(ms) {
 
 function sucList() {
     toastr.success('操作成功');
-    $('#tableList').bootstrapTable('refresh', {url: $('#tableList').bootstrapTable('getOptions').url});
+    $('#tableList').bootstrapTable('refresh', { url: $('#tableList').bootstrapTable('getOptions').url });
 }
 
 function sucDetail() {
     toastr.success('操作成功');
-    sleep(1000).then(function () {
+    sleep(1000).then(function() {
         goBack();
     });
 }
 
 function confirm(msg) {
-    return (new Promise(function (resolve, reject) {
+    return (new Promise(function(resolve, reject) {
         var d = dialog({
             content: msg,
-            ok: function () {
+            ok: function() {
                 var that = this;
-                setTimeout(function () {
+                setTimeout(function() {
                     that.close().remove();
                 }, 1000);
                 resolve();
                 return true;
             },
-            cancel: function () {
+            cancel: function() {
                 reject();
                 return true;
             },
@@ -2178,13 +2183,13 @@ function confirm(msg) {
 function addEditTableListener1(addId, removeId, editId, tableId, columns, options) {
     //var isAdd = true;
     var idx = 0;
-    $("#model-save").on("click", function () {
+    $("#model-save").on("click", function() {
         if ($("#model-form").valid()) {
             var data = $("#model-form").serializeObject();
-            $("#model-form").find('.btn-file [type=file]').parent().next().each(function (i, el) {
+            $("#model-form").find('.btn-file [type=file]').parent().next().each(function(i, el) {
                 var values = [];
                 var imgs = $(el).find('.img-ctn');
-                imgs.each(function (index, img) {
+                imgs.each(function(index, img) {
                     values.push($(img).attr('data-src') || $(img).find('img').attr('src'));
                 });
                 var id = el.id.substring(0, el.id.length - 6);
@@ -2235,7 +2240,7 @@ function addEditTableListener1(addId, removeId, editId, tableId, columns, option
             $('#model-form').modal('hide');
         }
     });
-    editId && $(editId).on("click", function () {
+    editId && $(editId).on("click", function() {
         var selRecords = $(tableId).bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
@@ -2249,19 +2254,19 @@ function addEditTableListener1(addId, removeId, editId, tableId, columns, option
             record: selRecords[0]
         });
     });
-    addId && $(addId).on("click", function () {
+    addId && $(addId).on("click", function() {
         buildDetail1({
             fields: columns
         });
     });
-    removeId && $(removeId).on("click", function () {
+    removeId && $(removeId).on("click", function() {
         var selRecords = $(tableId).bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
         if (selRecords.length = 1) {
-            confirm("确认删除该信息？").then(function () {
+            confirm("确认删除该信息？").then(function() {
                 $(tableId).bootstrapTable('remove', {
                     field: 'code',
                     values: [selRecords[0].code]
@@ -2380,7 +2385,7 @@ function buildDetail1(options) {
                     '<input type="file" tabindex="1" id="' + item.field + 'Img-model" name="' + item.field + 'Img" />' +
                     '</div><div id="' + item.field + '-model" style="margin-left: 195px;"></div></li>';
             } else if (item.type == 'textarea' && !item.normalArea) {
-                textareaList.push({field: item.field});
+                textareaList.push({ field: item.field });
                 html += '<div style="width:800px;float:left;"><textarea style="height:300px;" id="' + item.field + '-model" name="' + item.field + '"></textarea></div></li>';
             } else if (item.type == 'textarea' && item.normalArea) {
                 html += '<div style="width:400px;float:left;"><textarea style="height:200px;width: 320px;border: 1px solid #e0e0e0;" id="' + item.field + '-model" name="' + item.field + '"></textarea></div></li>';
@@ -2389,9 +2394,9 @@ function buildDetail1(options) {
                     '<select id="city-model" name="city" class="control-def city"></select>' +
                     '<select id="area-model" name="area" class="control-def dist"></select></div></li>';
                 if (item.required) {
-                    rules["province"] = {required: true};
-                    rules["city"] = {required: true};
-                    rules["area"] = {required: true};
+                    rules["province"] = { required: true };
+                    rules["city"] = { required: true };
+                    rules["area"] = { required: true };
                 }
             } else if (item.type == 'datetime' || item.type == 'date') {
                 dateTimeList.push(item);
@@ -2404,7 +2409,7 @@ function buildDetail1(options) {
         }
     }
     $('#model-body').append(html);
-    $("#model-form").validate({'rules': rules});
+    $("#model-form").validate({ 'rules': rules });
     $('#code', $("#model-form")).val(options.code || "");
     for (var i = 0, len = dropDownList.length; i < len; i++) {
         var item = dropDownList[i];
@@ -2414,7 +2419,7 @@ function buildDetail1(options) {
         } else if (item.key) {
             data = $('#' + item.field + "-model").renderDropdown(Dict.getName(item.key), '', '', item.defaultOption ? '<option value="0">' + item.defaultOption + '</option>' : '');
         } else if (item.listCode) {
-            if(item.insureTypeList){
+            if (item.insureTypeList) {
                 var val = $("#" + item.insureTypeList).val();
                 item.params[item.insureTypeList] = val;
             }
@@ -2423,7 +2428,7 @@ function buildDetail1(options) {
                 params: item.params,
                 keyName: item.keyName,
                 valueName: item.valueName
-            }, (item.defaultOption ? {defaultOption: '<option value="0">' + item.defaultOption + '</option>'} : {})));
+            }, (item.defaultOption ? { defaultOption: '<option value="0">' + item.defaultOption + '</option>' } : {})));
             if (item.pageCode) {
                 $('#' + item.field + "-model")[0].pageOptions = {
                     pageCode: item.pageCode,
@@ -2451,7 +2456,7 @@ function buildDetail1(options) {
                 keyName: item.keyName,
                 valueName: item.valueName,
                 dict: item.dict
-            }, (item.defaultOption ? {defaultOption: '<option value="0">' + item.defaultOption + '</option>'} : {})));
+            }, (item.defaultOption ? { defaultOption: '<option value="0">' + item.defaultOption + '</option>' } : {})));
             $('#' + item.field + "-model")[0].pageOptions = {
                 pageCode: item.pageCode,
                 keyName: item.keyName,
@@ -2464,8 +2469,8 @@ function buildDetail1(options) {
         }
         if (item.onChange) {
 
-            (function (i, data) {
-                $('#' + i.field + "-model").on('change', function (e) {
+            (function(i, data) {
+                $('#' + i.field + "-model").on('change', function(e) {
                     var record = Dict.findObj(data, this.value, i.keyName);
                     i.onChange(this.value, record);
                 });
@@ -2522,8 +2527,8 @@ function buildDetail1(options) {
 
         if (item.onBlur) {
 
-            (function (i) {
-                $('#' + i.field + "-model").on('blur', function (e) {
+            (function(i) {
+                $('#' + i.field + "-model").on('blur', function(e) {
                     i.onBlur(this.value);
                 });
             })(item);
@@ -2532,8 +2537,8 @@ function buildDetail1(options) {
 
         if (item.onKeyup) {
 
-            (function (i) {
-                $('#' + i.field + "-model").on('keyup', function (e) {
+            (function(i) {
+                $('#' + i.field + "-model").on('keyup', function(e) {
                     i.onKeyup(this.value);
                 });
             })(item);
@@ -2541,7 +2546,7 @@ function buildDetail1(options) {
         }
 
     }
-    var detailParams = {code: code, id: code};
+    var detailParams = { code: code, id: code };
     if (code && typeof code == 'object') {
         detailParams = code;
         code = true;
@@ -2552,8 +2557,8 @@ function buildDetail1(options) {
         }
     }
     for (var i = 0, len = imgList.length; i < len; i++) {
-        (function (i) {
-            setTimeout(function () {
+        (function(i) {
+            setTimeout(function() {
                 var item = imgList[i];
                 uploadInit.call($('#' + item.field + "-model"));
             }, 40);
@@ -2615,8 +2620,8 @@ function buildDetail1(options) {
                 if (item.type == 'm2o') {
                     if (displayValue) {
                         var clickDiv = $('#' + item.field + "-model").html('<a>' + displayValue + '</a>');
-                        (function (a) {
-                            clickDiv.on('click', function () {
+                        (function(a) {
+                            clickDiv.on('click', function() {
                                 window.open(a.url + '?v=1&code=' + data[a.codeField], '', 'width=1000,height=800');
                             });
                         })(item);
@@ -2679,7 +2684,7 @@ function buildDetail1(options) {
                     } else {
                         var dv = '';
                         if (realValue) {
-                            realValue.split('').forEach(function (i) {
+                            realValue.split('').forEach(function(i) {
                                 dv += Dict.getName(item.key, i) + ' | ';
                             });
                             dv = dv.slice(0, dv.length - 3);
@@ -2704,7 +2709,7 @@ function buildDetail1(options) {
                 } else if (item.type == 'select' && (item.pageCode || item.listCode || item.detailCode)) {
                     var params = {};
                     if (!item.detailCode && item.pageCode) {
-                        params = {start: 1, limit: 1000000000};
+                        params = { start: 1, limit: 1000000000 };
                     }
                     var realValue = data[item['[value]']] || displayValue || '';
                     if (item.value && item.value.call) {
@@ -2717,11 +2722,11 @@ function buildDetail1(options) {
                     } else if (realValue == 0) {
                         $('#' + item.field + "-model").html(item.defaultOption);
                     } else {
-                        (function (i, displayValue) {
+                        (function(i, displayValue) {
                             reqApi({
                                 code: i.detailCode || i.listCode || i.pageCode,
                                 json: params
-                            }).then(function (d) {
+                            }).then(function(d) {
                                 var data;
                                 if (displayValue) {
                                     data = (d && d.list) || d[0] && d || [d];
@@ -2745,7 +2750,7 @@ function buildDetail1(options) {
                     var realValue = data[item['[value]']] || displayValue || '';
                     if ($.isArray(realValue)) {
                         var imgHtml = '';
-                        realValue.forEach(function (img) {
+                        realValue.forEach(function(img) {
                             imgHtml += '<img src="' + img + '" style="max-width: 300px;"/>';
                         });
                         $('#' + item.field + "-model").html(imgHtml);
@@ -2754,7 +2759,7 @@ function buildDetail1(options) {
                         var imgsHtml = '';
 
                         var defaultFile = getDefaultFileIcon();
-                        sp.length && sp.forEach(function (item) {
+                        sp.length && sp.forEach(function(item) {
                             var suffix = item.slice(item.lastIndexOf('.') + 1);
                             var src = (item.indexOf('http://') > -1 ? item : (OSS.picBaseUrl + '/' + item));
                             var src1 = (item.indexOf('http://') > -1 ? item.substring(item.lastIndexOf("/") + 1) : item);
@@ -2787,7 +2792,7 @@ function buildDetail1(options) {
                             }
                         });
                         $('#' + item.field + "-model").html(imgsHtml);
-                        $('#' + item.field + "-model").find('.zmdi-download').on('click', function (e) {
+                        $('#' + item.field + "-model").find('.zmdi-download').on('click', function(e) {
                             var dSrc = OSS.picBaseUrl + '/' + $(this).parents("[data-src]").attr('data-src');
                             window.open(dSrc, '_blank');
                         });
@@ -2823,7 +2828,7 @@ function buildDetail1(options) {
                     var sp = realValue && realValue.split('||') || [];
                     var imgsHtml = '';
                     var defaultFile = getDefaultFileIcon();
-                    sp.length && sp.forEach(function (item) {
+                    sp.length && sp.forEach(function(item) {
                         var suffix = item.slice(item.lastIndexOf('.') + 1);
                         var src = (item.indexOf('http://') > -1 ? item : (OSS.picBaseUrl + '/' + item));
                         var src1 = (item.indexOf('http://') > -1 ? item.substring(item.lastIndexOf("/") + 1) : item);
@@ -2858,10 +2863,10 @@ function buildDetail1(options) {
                         }
                     });
                     $('#' + item.field + "-model").html(imgsHtml);
-                    $('#' + item.field + "-model").find('.zmdi-close-circle-o').on('click', function (e) {
+                    $('#' + item.field + "-model").find('.zmdi-close-circle-o').on('click', function(e) {
                         $(this).parents("[data-src]").remove();
                     });
-                    $('#' + item.field + "-model").find('.zmdi-download').on('click', function (e) {
+                    $('#' + item.field + "-model").find('.zmdi-download').on('click', function(e) {
                         var dSrc = OSS.picBaseUrl + '/' + $(this).parents("[data-src]").attr('data-src');
                         window.open(dSrc, '_blank');
                     });
@@ -2934,7 +2939,7 @@ function chosen1() {
         search_contains: true,
         allow_single_deselect: true
     });
-    $('select', $("#model-form")).chosen && $('select', $("#model-form")).not('.norender').chosen().change(function () {
+    $('select', $("#model-form")).chosen && $('select', $("#model-form")).not('.norender').chosen().change(function() {
         // var that = this;
         // setTimeout(function() {
         //     $(that).parent().height($(that).prev().height());
@@ -2985,7 +2990,7 @@ function calculateMonthlyPayments(bj, ll, time) {
     bj = (bj + "").replace(/,/g, "");
     ll = (ll + "").replace(/,/g, "");
     if ($.isNumeric(bj) && $.isNumeric(ll) && $.isNumeric(time)) {
-        ll = +ll / 1200;    //除以12个月，再除以100，因为传入的是百分比
+        ll = +ll / 1200; //除以12个月，再除以100，因为传入的是百分比
         bj = +bj;
         time = +time;
         var a1 = Math.pow(ll + 1, time);
@@ -3057,7 +3062,7 @@ function getImportDataFun(options, dw) {
 
     function xw_noxfer(data, cb) {
         var worker = new Worker(XW.noxfer);
-        worker.onmessage = function (e) {
+        worker.onmessage = function(e) {
             switch (e.data.t) {
                 case 'ready':
                     break;
@@ -3070,12 +3075,12 @@ function getImportDataFun(options, dw) {
             }
         };
         var arr = rABS ? data : btoa(fixdata(data));
-        worker.postMessage({d: arr, b: rABS});
+        worker.postMessage({ d: arr, b: rABS });
     }
 
     function xw_xfer(data, cb) {
         var worker = new Worker(rABS ? XW.rABS : XW.norABS);
-        worker.onmessage = function (e) {
+        worker.onmessage = function(e) {
             switch (e.data.t) {
                 case 'ready':
                     break;
@@ -3114,7 +3119,7 @@ function getImportDataFun(options, dw) {
 
     function to_json(workbook) {
         var result = {};
-        workbook.SheetNames.forEach(function (sheetName) {
+        workbook.SheetNames.forEach(function(sheetName) {
             var roa = X.utils.sheet_to_row_object_array(workbook.Sheets[sheetName], {
                 header: 1
             });
@@ -3127,7 +3132,7 @@ function getImportDataFun(options, dw) {
 
     function to_csv(workbook) {
         var result = [];
-        workbook.SheetNames.forEach(function (sheetName) {
+        workbook.SheetNames.forEach(function(sheetName) {
             var csv = X.utils.sheet_to_csv(workbook.Sheets[sheetName]);
             if (csv.length > 0) {
                 result.push("SHEET: " + sheetName);
@@ -3140,7 +3145,7 @@ function getImportDataFun(options, dw) {
 
     function to_formulae(workbook) {
         var result = [];
-        workbook.SheetNames.forEach(function (sheetName) {
+        workbook.SheetNames.forEach(function(sheetName) {
             var formulae = X.utils.get_formulae(workbook.Sheets[sheetName]);
             if (formulae.length > 0) {
                 result.push("SHEET: " + sheetName);
@@ -3155,7 +3160,7 @@ function getImportDataFun(options, dw) {
 
     function b64it() {
         if (typeof console !== 'undefined') console.log("onload", new Date());
-        var wb = X.read(tarea.value, {type: 'base64', WTF: wtf_mode});
+        var wb = X.read(tarea.value, { type: 'base64', WTF: wtf_mode });
         process_wb(wb);
     }
 
@@ -3168,9 +3173,9 @@ function getImportDataFun(options, dw) {
         for (var key in output) {
             sheetName = key;
         }
-        output.forEach(function (item) {
+        output.forEach(function(item) {
             var obj = {};
-            header.forEach(function (i, index) {
+            header.forEach(function(i, index) {
                 obj[i] = item[index];
             });
             list.push(obj);
@@ -3187,7 +3192,7 @@ function getImportDataFun(options, dw) {
         e.dataTransfer.dropEffect = 'copy';
     }
 
-    return function (e) {
+    return function(e) {
         rABS = true;
         use_worker = false;
         var files = e.target.files;
@@ -3196,7 +3201,7 @@ function getImportDataFun(options, dw) {
         if (f) {
             var reader = new FileReader();
             var name = f.name;
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 if (typeof console !== 'undefined') console.log("onload", new Date(), rABS, use_worker);
                 var data = e.target.result;
                 try {
@@ -3205,10 +3210,10 @@ function getImportDataFun(options, dw) {
                     } else {
                         var wb;
                         if (rABS) {
-                            wb = X.read(data, {type: 'binary'});
+                            wb = X.read(data, { type: 'binary' });
                         } else {
                             var arr = fixdata(data);
-                            wb = X.read(btoa(arr), {type: 'base64'});
+                            wb = X.read(btoa(arr), { type: 'base64' });
                         }
                         process_wb(wb);
                     }
@@ -3222,6 +3227,7 @@ function getImportDataFun(options, dw) {
         }
     }
 }
+
 function isDocOrAviOrZip(suffix) {
     if (suffix == 'docx' || suffix == 'doc' || suffix == 'pdf' ||
         suffix == 'xls' || suffix == 'xlsx' || suffix == "mp4" ||
@@ -3230,6 +3236,7 @@ function isDocOrAviOrZip(suffix) {
     }
     return false;
 }
+
 function getDocOrAviOrZipIcon(suffix) {
     var suffixMap = {
         'docx': __inline('../images/word.png'),
@@ -3244,6 +3251,7 @@ function getDocOrAviOrZipIcon(suffix) {
     };
     return suffixMap[suffix];
 }
+
 function isAcceptImg(suffix) {
     if (suffix == 'jpg' || suffix == 'gif' ||
         suffix == 'png' || suffix == 'bmp') {
@@ -3251,10 +3259,12 @@ function isAcceptImg(suffix) {
     }
     return false;
 }
+
 function getDefaultImgIcon() {
     var src = __inline("../images/default_img.png");
     return src;
 }
+
 function getDefaultFileIcon() {
     var src = __inline("../images/default_file.png");
     return src;

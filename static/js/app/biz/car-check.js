@@ -11,11 +11,12 @@ $(function() {
             readonly: true
         }, {
             title: '下单人',
-            field: 'booker',
+            field: 'booker1',
             readonly: true,
             formatter: function(v, data) {
-                return data.res.realName;
+                return data.res.mobile
             },
+            readonly: true
         },
         {
             title: '手机号',
