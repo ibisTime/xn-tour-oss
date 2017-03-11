@@ -69,7 +69,7 @@ $(function() {
     }, {
         title: 'url地址',
         field: "url",
-        required: true,
+        //required: true,
         readonly: view,
         //maxlength: 255
     }, {
