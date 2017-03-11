@@ -9,12 +9,12 @@ $(function() {
             return data.line.name
         },
     }, {
-        field: 'realName1',
+        field: 'mobile',
         title: '用户名',
         readonly: view,
-        formatter: function(v, data) {
-            return data.line.mobile
-        },
+        // formatter: function(v, data) {
+        //     return data.line.mobile
+        // },
     }, {
         field: 'name',
         title: '游记名称',

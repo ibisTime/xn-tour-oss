@@ -28,6 +28,7 @@ $(function() {
         }, {
             title: '积分价格',
             field: 'amount1',
+            formatter: moneyFormat,
             readonly: view
         }, {
             title: '下单人',

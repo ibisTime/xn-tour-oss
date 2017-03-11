@@ -43,9 +43,9 @@ $(function() {
             readonly: true
         }, {
             title: "下单人",
-            field: "applyUser",
+            field: "mobile",
             formatter: function(v, data) {
-                return data.oriData.applyUser;
+                return data.oriData.mobile;
             },
             readonly: true
         }, {
@@ -112,7 +112,7 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = {};
                 data['code'] = code;
-                data['approverUser'] = sessionStorage.getItem('userName');
+                data['approver'] = sessionStorage.getItem('userName');
                 data["approveResult"] = "0";
                 data["approveNote"] = $("#approveNote").val();
                 reqApi({

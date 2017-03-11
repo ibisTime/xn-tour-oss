@@ -11,7 +11,7 @@ $(function() {
     }, {
         title: "积分价格",
         field: "price1",
-        //formatter:moneyFormat
+        formatter: moneyFormat,
     }, {
         title: "商品状态",
         field: "status",

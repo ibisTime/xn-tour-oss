@@ -6,7 +6,10 @@ $(function() {
             value: item.dvalue
         };
     });
-
+    var onLineStatus = {
+        "0": "已下架",
+        "1": "已上架"
+    }
     var specialLine = [],
         hotel = [],
         food = [];
@@ -24,18 +27,21 @@ $(function() {
             if (d.type == "1")
                 specialLine.push({
                     code: d.specialLine.code,
-                    name: d.specialLine.name
+                    name: d.specialLine.name,
+                    isOnline: d.isOnline
                 });
             else if (d.type == "2")
                 hotel.push({
                     code: d.hotal.code,
                     name: d.hotal.name,
-                    category: d.hotal.category
+                    category: d.hotal.category,
+                    isOnline: d.isOnline
                 });
             else if (d.type == "3")
                 food.push({
                     code: d.food.code,
-                    name: d.food.name
+                    name: d.food.name,
+                    isOnline: d.isOnline
                 })
         });
     });
@@ -118,12 +124,6 @@ $(function() {
             type: "img",
             readonly: true
         }, {
-            title: '备注',
-            field: "remark",
-            maxlength: 255,
-            readonly: true
-
-        }, {
             title: "亮点Tab",
             field: 'ldTab',
             type: "textarea",
@@ -186,6 +186,12 @@ $(function() {
                 formatter: function(value, data) {
                     return '<a href=speline_addedit.html?v=1&code=' + data.code + ' style="line-height: inherit;">' + value + '</a>';
                 }
+            }, {
+                field: 'isOnline',
+                title: '状态',
+                formatter: function(v, data) {
+                    return onLineStatus[v];
+                }
             }],
             useData: specialLine
         }, {
@@ -203,6 +209,12 @@ $(function() {
                         return '<a href=hotel_addedit.html?v=1&code=' + data.code + ' style="line-height: inherit;">' + value + '</a>';
                     }
                 }
+            }, {
+                field: 'isOnline',
+                title: '状态',
+                formatter: function(v, data) {
+                    return onLineStatus[v];
+                }
             }],
             useData: hotel
         }, {
@@ -215,6 +227,12 @@ $(function() {
                 title: '名称',
                 formatter: function(value, data) {
                     return '<a href=../food/food_addedit.html?v=1&code=' + data.code + ' style="line-height: inherit;">' + value + '</a>';
+                }
+            }, {
+                field: 'isOnline',
+                title: '状态',
+                formatter: function(v, data) {
+                    return onLineStatus[v];
                 }
             }],
             useData: food

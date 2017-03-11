@@ -50,9 +50,9 @@ $(function() {
 
         }, {
             title: "下单人",
-            field: "applyUser",
+            field: "mobile",
             formatter: function(v, data) {
-                return data.oriData.applyUserMobile;
+                return data.oriData.mobile;
             },
             readonly: view
         }, {

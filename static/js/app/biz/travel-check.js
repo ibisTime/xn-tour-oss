@@ -10,11 +10,11 @@ $(function() {
         },
         readonly: true
     }, {
-        field: 'realName1',
+        field: 'mobile',
         title: '用户名',
-        formatter: function(v, data) {
-            return data.line.mobile
-        },
+        // formatter: function(v, data) {
+        //     return data.line.mobile
+        // },
         readonly: true
     }, {
         field: 'name',
@@ -33,8 +33,9 @@ $(function() {
         type: "img",
         readonly: true
     }, {
-        title: "审核说明",
-        field: "approveNote"
+        title: "备注",
+        field: "approveNote",
+        maxlength: 255
     }];
 
     var options = {

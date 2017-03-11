@@ -2,22 +2,18 @@ $(function() {
     var code = getQueryString('code');
 
     var fields = [{
-            title: '商品积分价格',
-            field: 'price1',
-            amount: true,
-            formatter: moneyFormat,
-            required: true,
+        title: '商品积分价格',
+        field: 'price1',
+        amount: true,
+        //formatter: moneyFormat,
+        required: true,
 
-        },
-        {
-
-            field: 'price2',
-            value: "0",
-            hidden: true,
-            required: true,
-
-        }
-    ];
+    }, {
+        field: 'price2',
+        value: "0",
+        hidden: true,
+        required: true
+    }];
 
     var options = {
         fields: fields,
