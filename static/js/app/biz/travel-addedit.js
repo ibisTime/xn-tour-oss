@@ -39,6 +39,11 @@ $(function() {
         type: "img",
         readonly: view
     }, {
+        title: "内容",
+        field: "description",
+        type: "textarea",
+        readonly: view
+    }, {
         title: '审核状态',
         field: 'status',
         type: "select",

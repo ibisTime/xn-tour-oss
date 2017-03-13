@@ -57,7 +57,7 @@ $(function() {
         search:true
 	},{
 		title:"备注",
-		field:"remark",
+		field:"approveNote",
 	}];
 	buildList({
 		router: 'fcom',

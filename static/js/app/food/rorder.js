@@ -75,8 +75,8 @@ $(function() {
             formatter: Dict.getNameForList("sporder_status"),
         },
         {
-            title: "买家嘱托",
-            field: "applyNote"
+            title: "备注",
+            field: "remark"
         }
     ];
     buildList({

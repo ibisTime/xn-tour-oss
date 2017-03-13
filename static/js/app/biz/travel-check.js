@@ -33,6 +33,11 @@ $(function() {
         type: "img",
         readonly: true
     }, {
+        title: "内容",
+        field: "description",
+        type: "textarea",
+        readonly: true
+    }, {
         title: "备注",
         field: "approveNote",
         maxlength: 255
@@ -69,7 +74,7 @@ $(function() {
                 data['code'] = code;
                 data['approverUser'] = sessionStorage.getItem('userName');
                 data["approvelResult"] = "0";
-                //data["approveNote"] = $("#approveNote").val();
+                data["approveNote"] = $("#approveNote").val();
                 reqApi({
                     code: "618123",
                     json: data

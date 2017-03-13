@@ -52,7 +52,7 @@ $(function() {
             title: "下单人",
             field: "mobile",
             formatter: function(v, data) {
-                return data.oriData.mobile;
+                return data.oriData.applyUserName;
             },
             readonly: view
         }, {

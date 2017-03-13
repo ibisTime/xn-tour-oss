@@ -6,7 +6,7 @@ $(function() {
         checkbox: true
     }, {
         field: 'name',
-        title: '线路名称',
+        title: '专线名称',
         search: true
     }, {
         field: 'type',

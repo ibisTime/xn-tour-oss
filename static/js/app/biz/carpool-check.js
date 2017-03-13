@@ -48,7 +48,7 @@ $(function() {
                 data['code'] = code;
                 data['approverUser'] = sessionStorage.getItem('userName');
                 data["approvelResult"] = "0";
-                //data["approveNote"] = $("#approveNote").val();
+                data["remark"] = $("#remark").val();
                 reqApi({
                     code: "618123",
                     json: data

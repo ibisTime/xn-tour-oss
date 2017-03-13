@@ -37,7 +37,7 @@ $(function() {
 	},{
 		title:"房型",
 		field:"roomType",
-		search:true
+		//search:true
 	},
 	{ 
 		title: '下单时间',
@@ -51,8 +51,8 @@ $(function() {
         key:"htorder_status",
         formatter:Dict.getNameForList("htorder_status")
 	},{
-		title:"买家嘱托",
-		field:"applyNote",
+		title:"备注",
+		field:"remark",
         
 	}];
 	buildList({

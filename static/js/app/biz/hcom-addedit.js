@@ -69,7 +69,7 @@ $(function() {
                 var data = {};
                 data['code'] = code;
                 data['approver'] = sessionStorage.getItem('userName');
-                data["approveResult"] = "2";
+                data["approveResult"] = "0";
                 data["approveNote"] = $("#approveNote").val();
                 reqApi({
                     code: "618311",
