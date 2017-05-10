@@ -60,14 +60,16 @@ $(function() {
             field: 'joinPlace',
             required: true,
             readonly: view
-        }, {
-            title: "出行日期",
-            field: "outDate",
-            type: "date",
-            formatter: dateFormat,
-            required: true,
-            readonly: view
-        }, {
+        },
+        //  {
+        //     title: "出行日期",
+        //     field: "outDate",
+        //     type: "date",
+        //     formatter: dateFormat,
+        //     required: true,
+        //     readonly: view
+        // },
+        {
             title: '价格',
             field: 'price',
             amount: true,
@@ -80,7 +82,70 @@ $(function() {
             type: "img",
             required: true,
             readonly: view
-        }
+        }, {
+            title: '组团社名',
+            field: 'groupName',
+            required: true,
+            maxlength: 32,
+            readonly: view
+        }, {
+            title: '组团社电话',
+            field: 'groupMobile',
+            required: true,
+            maxlength: 32,
+            readonly: view
+        }, {
+            field:"province1",
+            title: '目的地',
+            required: true,
+            type: 'citySelect',
+            formatter: function (v, data) {
+                      var result = ( data.province || "" ) + ( data.city || "" ) + ( data.area || "" );
+                      return result || "-";
+                  },
+                    afterSet: function (v, data) {
+                      if (view) {
+                          $('#province').html(data.province);
+                          data.city && $('#city').html(data.city);
+                          data.area && $('#area').html(data.area);
+                          }
+                  },
+            readonly:view
+        }, {
+            title: '详细地址',
+            field: 'detail',
+            required: true,
+            maxlength: 100,
+            readonly:view
+        },{
+            title: '经度',
+            field: 'longitude',
+            required: true,
+            west:true,
+            readonly:view,
+            hidden:!view,
+        },{
+            title: '纬度',
+            field: 'latitude',
+            required: true,
+            north:true,
+            hidden:!view,
+            readonly:view
+        },{
+            title: "最早出发日期",
+            field: "outDateStart",
+            type: "date",
+            formatter: dateFormat,
+            required: true,
+            readonly: view
+        }, {
+            title: "最晚出发日期",
+            field: "outDateEnd",
+            type: "date",
+            formatter: dateFormat,
+            required: true,
+            readonly: view
+        }   
     ];
     var options = {
         fields: fields,
@@ -120,6 +185,7 @@ $(function() {
                         if (item.type == "checkbox") {
                             data[item.field] = $.isArray(data[item.field]) ? data[item.field].join(",") : data[item.field];
                         }
+
                     }
                     reqApi({
                         code: "618090",
