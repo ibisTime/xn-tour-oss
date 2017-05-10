@@ -36,6 +36,10 @@ $(function() {
             formatter: moneyFormat,
             readonly: view
         }, {
+            title: '出行时间',
+            field: 'outDate',
+            formatter: dateFormat
+        }, {
             title: '下单时间',
             field: 'applyDatetime',
             formatter: dateTimeFormat,

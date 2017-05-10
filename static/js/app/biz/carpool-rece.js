@@ -13,6 +13,16 @@ $(function() {
 		mobile:true,
 		required: true
 	},{
+        title: '车型',
+        field: 'models',
+        required: true,
+        maxlength:32
+    },{
+        title: '车牌',
+        field: 'license',
+        maxlength:32,
+        required: true
+    },{
 		title: '备注',
 		field: 'remark',
 		maxlength:255

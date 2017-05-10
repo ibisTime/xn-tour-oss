@@ -4,6 +4,10 @@ $(function() {
             field: '',
             title: '',
             checkbox: true
+        },{
+            title: '线路编号',
+            field: 'code',
+            search: true
         }, {
             field: 'name',
             title: '线路名称',
@@ -15,14 +19,16 @@ $(function() {
             key: 'router_type2',
             formatter: Dict.getNameForList("router_type2"),
             search: true
-        }, {
+        },  {
             field: 'joinPlace',
             title: '集合地',
-        }, {
-            field: 'outDate',
-            title: '出行日期',
-            formatter: dateFormat
-        }, {
+        }, 
+        // {
+        //     field: 'outDate',
+        //     title: '出行日期',
+        //     formatter: dateFormat
+        // },
+         {
             title: '价格',
             field: 'price',
             formatter: moneyFormat
@@ -77,7 +83,7 @@ $(function() {
             toastr.info("已上架不可以修改");
             return;
         }
-        window.location.href = "router_recom.html?lineCode=" + selRecords[0].code + "&name=" + selRecords[0].name;
+        window.location.href = "router_recom0.html?lineCode=" + selRecords[0].code + "&name=" + selRecords[0].name;
     });
 
     $("#frameBtn").on("click", function() {
@@ -151,4 +157,5 @@ $(function() {
 
         window.location.href = "router_detail.html?code=" + selRecords[0].code;
     });
+    $('#delete2Btn').off("click").hide();
 });

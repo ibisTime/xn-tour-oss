@@ -1,4 +1,4 @@
-$(function() {
+ $(function() {
 
     var columns = [{
             field: '',
@@ -27,7 +27,14 @@ $(function() {
             key: 'account_status',
             formatter: Dict.getNameForList('account_status'),
             search: true
-        }, {
+        },  {
+            field1: "dateStart",
+            field2: "dateEnd",
+            title1: "创建时间",
+            type1: "datetime",
+            search: true,
+            visible: false
+        },{
             field: 'amount',
             title: '余额',
             formatter: moneyFormat

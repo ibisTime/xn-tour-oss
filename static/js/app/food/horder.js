@@ -1,5 +1,5 @@
 $(function() {
-	
+
 
 
 	var columns = [{
@@ -9,7 +9,7 @@ $(function() {
     },{
         title:"订单编号",
         field:'code',
-   
+
     },{
 		title: '酒店名称',
 		field: 'name',
@@ -33,13 +33,13 @@ $(function() {
 		      },
 	},{
 		title:"房间数",
-		field:"quantity", 
+		field:"quantity",
 	},{
 		title:"房型",
 		field:"roomType",
 		//search:true
 	},
-	{ 
+	{
 		title: '下单时间',
 		field: 'applyDatetime',
         formatter:dateTimeFormat
@@ -53,26 +53,26 @@ $(function() {
 	},{
 		title:"备注",
 		field:"remark",
-        
+
 	}];
 	buildList({
 		router: 'horder',
 		columns: columns,
 		pageCode: '618050',
-		 
+
 	});
-         
+
          $('#cancelBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){
                 toastr.info("请选择记录");
                 return;
-            } 
-		 
-		   
+            }
+
+
 			if(selRecords[0].status !=1 && selRecords[0].status!=0){
                      toastr.info("该订单不能被取消");
-                    return;	
+                    return;
             }else{
                confirm("确认取消该订单？").then(function() {
                     reqApi({
@@ -85,7 +85,7 @@ $(function() {
                   });
             }
        });
-        
+
       $('#check2Btn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){
@@ -98,8 +98,8 @@ $(function() {
                 toastr.info("该订单不是待审核状态");
                 return;
             }
-            
-        }); 
+
+        });
          $('#enterBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){
@@ -112,20 +112,38 @@ $(function() {
                 toastr.info("该订单不是可以入住的状态");
                 return;
             }
-            
-        });    
-         $('#outBtn').click(function() {
+
+        });
+
+        $('#outBtn').click(function() {
             var selRecords = $('#tableList').bootstrapTable('getSelections');
             if(selRecords.length <= 0){
                 toastr.info("请选择记录");
                 return;
             }
-			if(selRecords[0].status ==32){
+            if(selRecords[0].status ==32){
                 window.location.href ="horder_out.html?code="+selRecords[0].code;
             }else{
                 toastr.info("该订单不是可以退房的状态");
                 return;
             }
-            
-        });   
+
+        });
+
+         $('#edit2Btn').click(function() {
+            var selRecords = $('#tableList').bootstrapTable('getSelections');
+            if(selRecords.length <= 0){
+                toastr.info("请选择记录");
+                return;
+            }
+
+
+			if(selRecords[0].status ==0 || selRecords[0].status ==1){
+                window.location.href ="horder_addedit2.html?code="+selRecords[0].code+"&v=1&v1=0";
+            }else{
+                toastr.info("该订单不是可以修改的状态");
+                return;
+            }
+
+        });
 });

@@ -94,13 +94,15 @@ $(function() {
             title: '集合地',
             field: 'joinPlace',
             readonly: true
-        }, {
-            title: "出行日期",
-            field: "outDate",
-            type: "date",
-            formatter: dateFormat,
-            readonly: true
-        }, {
+        },
+        //  {
+        //     title: "出行日期",
+        //     field: "outDate",
+        //     type: "date",
+        //     formatter: dateFormat,
+        //     readonly: true
+        // },
+         {
             title: '线路价格',
             field: 'price',
             amount: true,
@@ -236,6 +238,61 @@ $(function() {
                 }
             }],
             useData: food
+        }, {
+            title: '组团社名',
+            field: 'groupName',
+            maxlength: 32,
+            readonly: true
+        }, {
+            title: '组团社电话',
+            field: 'groupMobile',
+            maxlength: 32,
+            readonly: true
+        }, {
+            field:"province1",
+            title: '目的地',
+            type: 'citySelect',
+            formatter: function (v, data) {
+                      var result = ( data.province || "" ) + ( data.city || "" ) + ( data.area || "" );
+                      return result || "-";
+                  },
+                    afterSet: function (v, data) {
+                      if (true) {
+                          $('#province').html(data.province);
+                          data.city && $('#city').html(data.city);
+                          data.area && $('#area').html(data.area);
+                          }
+                  },
+            readonly:true
+        }, {
+            title: '详细地址',
+            field: 'detail',
+            maxlength: 100,
+            readonly:true
+        },{
+            title: '经度',
+            field: 'longitude',
+            west:true,
+            readonly:true,
+            hidden:false
+        },{
+            title: '纬度',
+            field: 'latitude',
+            north:true,
+            hidden:false,
+            readonly:true
+        },{
+            title: "最早出发日期",
+            field: "outDateStart",
+            type: "date",
+            formatter: dateFormat,
+            readonly: true
+        }, {
+            title: "最晚出发日期",
+            field: "outDateEnd",
+            type: "date",
+            formatter: dateFormat,
+            readonly: true
         }
     ];
 

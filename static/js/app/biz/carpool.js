@@ -31,6 +31,12 @@ $(function() {
     },{
         title:"联系方式",
         field:"mobile"
+    },{
+        title: '车型',
+        field: 'models'
+    },{
+        title: '车牌',
+        field: 'license'
     }, {
         title:"拼车人数",
         field:"totalNum"

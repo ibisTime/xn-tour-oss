@@ -36,12 +36,18 @@ $(function() {
         location:"depart_deli"
         },
         readonly:view
-    }, {
+    },{
         title: '美食图片',
         field: 'pic',
         type: 'img',
         required: true,
         readonly:view
+    },{
+        title: '推荐理由',
+        field: 'recommend',
+        type:"textarea",
+        required: true,
+        readonly:view,
     },{
         field: 'price',
         title: '价格',
@@ -71,7 +77,7 @@ $(function() {
 		field: 'detail',
 		required: true,
 		maxlength: 100,
-		readonly:view 
+		readonly:view
 	},{
 		title: '经度',
 		field: 'longitude',
@@ -85,23 +91,23 @@ $(function() {
 		required: true,
 		north:true,
         hidden:!view,
-		readonly:view   
+		readonly:view
 	},{
 		title: '用餐时段',
 		field: 'supplyTime',
-		type:"checkbox", 
+		type:"checkbox",
         items: items,
 		readonly:view ,
         required: true,
 	},{
 		title: '用餐人数',
 		field: 'maxSeat',
-		type:"checkbox", 
+		type:"checkbox",
         items: items2,
 		readonly:view ,
         required: true,
 	}];
-    
+
    var options = {
         fields: fields,
 		code: code,
@@ -155,7 +161,7 @@ $(function() {
                 }
             }
              data['id'] = data['code'];
-             
+
                 var addr = data.province + data.city + data.area + data.detail;
                 var myGeo = new BMap.Geocoder();
                 myGeo.getPoint(addr, function(point) {
@@ -172,8 +178,8 @@ $(function() {
                         alert("无法解析当前地址的经纬度!");
                     }
                 });
-             
+
         }
-    });    
-    
+    });
+
 });
