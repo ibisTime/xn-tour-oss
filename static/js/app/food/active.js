@@ -12,20 +12,20 @@ $(function() {
         title: '活动开始时间',
 		field: 'startDate',
         type:'date',
-        formatter:dateTimeFormat,
+        formatter:dateTimeFormat
         
     },{
         title: '活动结束时间',
 		field: 'endDate',
-        type:'datetime',
-        formatter:dateTimeFormat,
+        type:'date',
+        formatter:dateTimeFormat
        
     },{
 		title: '活动地点',
 		field: 'site',
         
 	},{
-		title:"活动状态",
+		title:"活动状态", 
 		field:"status",
         type:"select",
         key:"active_status",

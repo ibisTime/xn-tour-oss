@@ -61,11 +61,11 @@ $(function() {
             field: 'amount',
             formatter: moneyFormat
         },
-        {
-            title: '出行时间',
-            field: 'outDate',
-            formatter:dateFormat
-        },
+        // {
+        //     title: '出行时间',
+        //     field: 'outDate',
+        //     formatter:dateFormat
+        // },
         {
             title: '下单时间',
             field: 'applyDatetime',

@@ -15,7 +15,7 @@ $(function() {
         title: '游记名称',
         search: true
     }, {
-        field: 'lineCode',
+        field: 'lineName',
         title: '针对线路',
         formatter: function(v, data) {
             return data.line.name

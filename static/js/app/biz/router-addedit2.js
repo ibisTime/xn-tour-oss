@@ -7,7 +7,7 @@ $(function() {
             value: item.dvalue
         };
     });
-
+console.log(items)
     var fields = [{
             title: '线路名称',
             field: 'name',
@@ -159,7 +159,7 @@ $(function() {
             handler: function() {
                 if ($('#jsForm').valid()) {
                     var data = $('#jsForm').serializeObject();
-                    delete data["code"];
+                    // delete data["code"];
                     $('#jsForm').find('.btn-file [type=file]').parent().next().each(function(i, el) {
                         var values = [];
                         var imgs = $(el).find('.img-ctn');
@@ -169,6 +169,18 @@ $(function() {
 
                         data[el.id] = values.join('||');
                     });
+                    if ($('#jsForm').find('#province')[0]) {
+                        var province = $('#province').val();
+                        var city = $('#city').val();
+                        var area = $('#area').val();
+                        if (!city) {
+                            data['city'] = province;
+                            data['area'] = province;
+                        } else if (!area) {
+                            data['city'] = province;
+                            data['area'] = city;
+                        }
+                    }
                     for (var i = 0, len = fields.length; i < len; i++) {
                         var item = fields[i];
                         if (item.equal && (!$('#' + item.field).is(':hidden') || !$('#' + item.field + 'Img').is(':hidden'))) {
@@ -187,12 +199,31 @@ $(function() {
                         }
 
                     }
-                    reqApi({
-                        code: "618090",
-                        json: data
-                    }).done(function() {
-                        sucDetail();
-                    });
+                    data['id'] = data['code'];
+
+                   var addr = data.province + data.city + data.area + data.detail;
+                   var myGeo = new BMap.Geocoder();
+                   myGeo.getPoint(addr, function(point) {
+                       if (point) {
+                           data.longitude = point.lng;
+                           data.latitude = point.lat;
+                           reqApi({
+                               code:'618090',
+                               json: data
+                           }).done(function(data) {
+                               sucDetail();
+                           });
+                       } else {
+                           alert("无法解析当前地址的经纬度!");
+                       }
+                   });
+                                           
+                    // reqApi({
+                    //     code: "618090",
+                    //     json: data
+                    // }).done(function() {
+                    //     sucDetail();
+                    // });
 
                 }
             }

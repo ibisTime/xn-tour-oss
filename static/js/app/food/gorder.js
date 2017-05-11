@@ -8,14 +8,16 @@ $(function() {
         title: "订单编号",
         field: 'code',
         search: true
-    }, {
-        title: '商品名称',
-        field: 'productName',
-        formatter: function(v, data) {
-            return data.productOrderList[0].productName
-        },
-        search: true
-    }, {
+    }, 
+    // {
+    //     title: '商品名称',
+    //     field: 'productName',
+    //     formatter: function(v, data) {
+    //         return data.productOrderList[0].productName
+    //     },
+        // search: true
+    // }, 
+    {
         title: '积分价格',
         field: 'amount1',
         formatter: moneyFormat
