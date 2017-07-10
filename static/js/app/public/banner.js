@@ -1,5 +1,5 @@
 $(function() {
-	
+
 	var columns = [{
 		field : '',
 		title : '',
@@ -13,20 +13,20 @@ $(function() {
 		field: 'location',
         formatter: function(v){
 			if(v == "index_banner"){
-				return '首页';
-			}		   
-		},  
-        
+				return '微信端首页';
+			}else if(v == "pc_index_banner"){
+				return 'pc端首页';
+			}
+		}
 	}, {
 		title: '顺序',
 		field: 'orderNo',
-        
-	},  {
+
+	}, {
 		title: '备注',
 		field: 'remark',
 	}];
 	buildList({
-		router: 'banner',
 		columns: columns,
 		pageCode: '806050',
 		deleteCode: '806041',
@@ -36,7 +36,7 @@ $(function() {
 			systemCode:"CD-CLW000005",
 		}
 	});
-         
-    
+
+
 
 });

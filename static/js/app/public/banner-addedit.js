@@ -4,7 +4,7 @@ $(function() {
 
     var fields = [{
         field: "status",
-        required: 'true',
+        required: true,
         value: 1,
         hidden: true
     }, {
@@ -14,22 +14,22 @@ $(function() {
     }, {
         field: "type",
         value: 2,
-        required: 'true',
+        required: true,
         hidden: true
     }, {
         field: "belong",
         title: '属于',
         value: 1,
-        required: 'true',
+        required: true,
         hidden: true
     }, {
         field: "parentCode",
         value: 0,
-        required: 'true',
+        required: true,
         hidden: true
     }, {
         field: "contentType",
-        required: 'true',
+        required: true,
         value: 1,
         hidden: true
     }, {
@@ -42,15 +42,15 @@ $(function() {
         field: 'name',
         required: true,
         readonly: view,
-        maxlength: 32 //
+        maxlength: 32
     }, {
         title: '位置',
         field: 'location',
         type: "select",
         data: {
-            "index_banner": "首页"
+            "index_banner": "微信端首页",
+            "pc_index_banner": "pc端首页"
         },
-        value: "index_banner",
         required: true,
         readonly: view
     }, {
@@ -69,9 +69,7 @@ $(function() {
     }, {
         title: 'url地址',
         field: "url",
-        //required: true,
-        readonly: view,
-        //maxlength: 255
+        readonly: view
     }, {
         title: '备注',
         field: 'remark',
