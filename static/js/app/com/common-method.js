@@ -1610,7 +1610,7 @@ function buildDetail(options) {
                             data.city = "";
                             data.area = "";
                         } else if (data.province == data.city && data.city != data.area) {
-                            data.city = data.area;
+                            data.city = data.province;
                         }
                         $('#province').html(data.province);
                         data.city && $('#city').html(data.city);

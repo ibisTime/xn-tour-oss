@@ -108,16 +108,12 @@ $(function() {
         title: '民宿特色',
         field: 'specialDesc',
         type: "textarea",
-        normalArea: true,
-        maxlength: 255,
         readonly:view,
         required: true,
     }, {
         title: '民宿美食',
         field: 'foodDesc',
         type: "textarea",
-        normalArea: true,
-        maxlength: 255,
         readonly:view,
         required:true
     },{

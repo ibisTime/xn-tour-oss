@@ -16,7 +16,7 @@ $(function() {
 			|| data.ckey == "disclaimer" || data.ckey == "version_state"
 			|| data.ckey == "user_item" || data.ckey == "service_item"
 		 	|| data.ckey == "business_cooperation" || data.ckey == "common_problem"
-		 	|| data.ckey == "news_guide" || data.ckey == "web_introduce"){
+		 	|| data.ckey == "news_guide" || data.ckey == "web_introduce" || data.ckey == "buy_info"){
 			noteConfig.type = "textarea";
 		}
 	})
