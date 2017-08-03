@@ -37,7 +37,8 @@ $(function() {
 		pageCode: '804040',
 		searchParams: {
 			pushType: '41',
-			channelType: '4'
+			channelType: '4',
+			toSystemCode: OSS.system
 		}
 	});
 	
