@@ -69,9 +69,9 @@ $(function() {
         }, {
             title: "订单状态",
             field: "status",
-            formatter: function(v, data) {
-                return data.productOrderList[0].status
-            },
+            type: "select",
+            key: "order_status",
+            formatter: Dict.getNameForList("order_status"),
             readonly: true
         }, {
             title: "备注",
