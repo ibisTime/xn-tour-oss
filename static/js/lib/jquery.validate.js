@@ -152,7 +152,7 @@ $.extend($.fn, {
 
 		var data = $.validator.normalizeRules(
 		$.extend(
-			{isNotFace: true},
+//			{isNotFace: true},合法字符校验
 			$.validator.classRules(element),
 			$.validator.attributeRules(element),
 			$.validator.dataRules(element),
